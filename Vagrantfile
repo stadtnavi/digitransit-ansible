@@ -13,8 +13,15 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
 
   # Disable default shared folder as it's causing me problems on my Fedora
-  # host.
+  # host. We don't need it.
   config.vm.synced_folder ".", "/vagrant", disabled: true
+
+
+  # Not sure if OS X hosts also use libvirt. Probably VirtualBox.
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.cpus = 4
+    libvirt.memory = 12288 # 12GB
+  end
 
   # Run `ansible provision` to install digitransit in Ansible
   config.vm.provision "ansible" do |ansible|

@@ -10,7 +10,7 @@ services:
     volumes:
       - ${PWD}/logs:/var/log/nginx
   opentripplanner-hb:
-    image: mfdz/opentripplanner:hb-latest
+    image: mfdz/opentripplanner:latest
     environment:
       - ROUTER_NAME=hb
       - ROUTER_DATA_CONTAINER_URL=http://opentripplanner-data-con-hb:8080
@@ -21,7 +21,7 @@ services:
     networks:
       - digitransit
   digitransit-ui:
-    image: mfdz/digitransit-ui:hb-latest
+    image: mfdz/digitransit-ui:latest
     networks:
       - digitransit
     environment:

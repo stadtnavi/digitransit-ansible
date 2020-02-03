@@ -8,5 +8,5 @@ vagrant: galaxy-install
 	vagrant provision
 
 staging: galaxy-install
-	ansible-playbook -i staging digitransit.yml -vvv
+	ansible-playbook -i staging digitransit.yml
 

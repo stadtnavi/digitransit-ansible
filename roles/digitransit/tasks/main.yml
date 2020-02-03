@@ -21,4 +21,28 @@
     name:
       - nginx
     state: present
-  become: yes
+
+- name: Copy nginx sites-available conf
+  template: src=nginx-site.conf dest=/etc/digitransit/
+  notify: Restart nginx
+
+- name: Remove the default nginx site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify: Restart nginx
+
+- name: Symlink to sites-available
+  file:
+    src: /etc/digitransit/nginx-site.conf
+    dest: /etc/nginx/sites-available/digitransit-proxy.conf
+    state: link
+  notify: Restart nginx
+
+- name: Symlink to sites-enabled
+  file:
+    src: /etc/digitransit/nginx-site.conf
+    dest: /etc/nginx/sites-enabled/digitransit-proxy.conf
+    state: link
+  notify: Restart nginx
+

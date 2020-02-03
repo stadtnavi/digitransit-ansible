@@ -1,0 +1,10 @@
+---
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+
+- name: Restart docker-compose
+  service:
+    name: digitransit-docker-compose
+    state: restarted

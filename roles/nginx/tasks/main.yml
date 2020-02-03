@@ -1,0 +1,7 @@
+---
+- name: Install packages
+  package:
+    name:
+      - nginx
+    state: present
+  become: yes

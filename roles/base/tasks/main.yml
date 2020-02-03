@@ -1,0 +1,12 @@
+---
+- name: Install base packages
+  package:
+    name:
+      - htop
+      - tree
+      - neovim
+      - cron-apt
+    state: present
+
+- name: Install global aliases
+  template: src=alias.sh dest=/etc/profile.d/

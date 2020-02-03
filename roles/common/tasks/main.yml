@@ -1,8 +1,0 @@
----
-- name: Install base packages
-  package:
-    name:
-      - htop
-      - tree
-    state: present
-  become: yes

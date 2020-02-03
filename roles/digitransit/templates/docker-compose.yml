@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  digitransit-proxy:
+    image: transportkollektiv/digitransit-proxy:hb
+    networks:
+      - digitransit
+    ports:
+      - 8080:8080
+    volumes:
+      - ${PWD}/logs:/var/log/nginx
+  opentripplanner-hb:
+    image: mfdz/opentripplanner:hb-latest
+    environment:
+      - ROUTER_NAME=hb
+      - ROUTER_DATA_CONTAINER_URL=http://opentripplanner-data-con-hb:8080
+    networks:
+      - digitransit
+  opentripplanner-data-con-hb:
+    image: mfdz/opentripplanner-data-container-hb:latest
+    networks:
+      - digitransit
+  digitransit-ui:
+    image: mfdz/digitransit-ui:hb-latest
+    networks:
+      - digitransit
+    environment:
+      - CONFIG=hb
+    #  - GEOCODING_BASE_URL=https://api.mobil-in-herrenberg.de/geocoding/v1
+    #  - API_URL=api.mobil-in-herrenberg.de
+      - GEOCODING_BASE_URL=http://api.localhost:8080/geocoding/v1
+      - API_URL=http://api.localhost:8080
+  hsl-map-server:
+    image: mfdz/hsl-map-server:latest
+    networks:
+      - digitransit
+    environment:
+      - OTP_URL=opentripplanner-hb:8080/otp/routers/hb/index/graphql
+  photon-pelias-adapter:
+    image: stadtulm/photon-pelias-adapter:latest
+    networks:
+      - digitransit
+    environment:
+      - PHOTON_URL=https://api.mfdz.de/photon/
+
+networks:
+  digitransit:
+    # all default
+

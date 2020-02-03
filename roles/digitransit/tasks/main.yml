@@ -1,0 +1,24 @@
+---
+- name: Creates directory
+  file:
+    path: /etc/digitransit
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+
+- name: Install docker compose file
+  template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
+
+- name: Install service file for digitransit-docker-compose
+  template: src=digitransit-docker-compose.service dest=/etc/systemd/system/digitransit-docker-compose.service
+
+- name: Start digitransit
+  systemd: state=started name=digitransit-docker-compose daemon_reload=yes
+
+- name: Install nginx packages
+  package:
+    name:
+      - nginx
+    state: present
+  become: yes

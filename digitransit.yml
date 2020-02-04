@@ -6,4 +6,5 @@
   roles:
     - base
     - geerlingguy.docker
+    - geerlingguy.certbot
     - digitransit

@@ -2,4 +2,14 @@
 docker_install_compose: true
 users:
   - lenni
-
+certbot_certs:
+  - domains:
+    - "{{hostname}}"
+certbot_auto_renew: true
+certbot_create_if_missing: true
+certbot_admin_email: mail@leonard.io
+certbot_create_standalone_stop_services:
+  - nginx
+# run the certificate updates at a non-round time
+certbot_auto_renew_minute: "44"
+certbot_auto_renew_hour: "3"

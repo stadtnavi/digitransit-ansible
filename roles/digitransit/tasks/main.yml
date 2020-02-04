@@ -9,6 +9,7 @@
 
 - name: Install docker compose file
   template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
+  notify: Restart docker-compose
 
 - name: Install service file for digitransit-docker-compose
   template: src=digitransit-docker-compose.service dest=/etc/systemd/system/digitransit-docker-compose.service

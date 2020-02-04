@@ -12,6 +12,7 @@
 
 - name: Install service file for digitransit-docker-compose
   template: src=digitransit-docker-compose.service dest=/etc/systemd/system/digitransit-docker-compose.service
+  notify: Restart docker-compose
 
 - name: Start digitransit
   systemd: state=started name=digitransit-docker-compose daemon_reload=yes

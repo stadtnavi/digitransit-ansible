@@ -1,7 +1,10 @@
 ---
+ansible_python_interpreter: auto_silent
 docker_install_compose: true
+
 users:
   - lenni
+
 certbot_certs:
   - domains:
     - "{{hostname}}"

@@ -24,26 +24,38 @@
     state: present
 
 - name: Copy nginx sites-available conf
-  template: src=nginx-site.conf dest=/etc/digitransit/
+  template: src=nginx-site.conf dest=/etc/digitransit/{{ item }}.conf
+  with_items:
+    - "{{ hostname }}"
+    - "{{ api_hostname }}"
   notify: Restart nginx
 
-- name: Remove the default nginx site
+- name: Remove the old nginx configs
   file:
-    path: /etc/nginx/sites-enabled/default
+    path: /etc/nginx/sites-enabled/{{ item }}
     state: absent
+  with_items:
+    - default
+    - digitransit-proxy.conf
   notify: Restart nginx
 
 - name: Symlink to sites-available
   file:
-    src: /etc/digitransit/nginx-site.conf
-    dest: /etc/nginx/sites-available/digitransit-proxy.conf
+    src: /etc/digitransit/{{ item }}.conf
+    dest: /etc/nginx/sites-available/{{ item }}.conf
     state: link
+  with_items:
+    - "{{ hostname }}"
+    - "{{ api_hostname }}"
   notify: Restart nginx
 
 - name: Symlink to sites-enabled
   file:
-    src: /etc/digitransit/nginx-site.conf
-    dest: /etc/nginx/sites-enabled/digitransit-proxy.conf
+    src: /etc/digitransit/{{ item }}.conf
+    dest: /etc/nginx/sites-enabled/{{ item }}.conf
     state: link
+  with_items:
+    - "{{ hostname }}"
+    - "{{ api_hostname }}"
   notify: Restart nginx
 

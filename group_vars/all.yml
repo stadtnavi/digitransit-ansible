@@ -7,7 +7,9 @@ users:
 
 certbot_certs:
   - domains:
-    - "{{hostname}}"
+    - "{{ hostname }}"
+  - domains:
+    - "{{ api_hostname }}"
 certbot_auto_renew: true
 certbot_create_if_missing: true
 certbot_admin_email: mail@leonard.io

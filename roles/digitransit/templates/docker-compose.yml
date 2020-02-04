@@ -26,7 +26,6 @@ services:
       - digitransit
     environment:
       - CONFIG=hb
-
       - GEOCODING_BASE_URL=https://{{ hostname }}/geocoding/v1
       - API_URL=https://{{ hostname }}
   hsl-map-server:

@@ -17,4 +17,3 @@
     groups: docker
     append: yes
   with_items: "{{ users }}"
-

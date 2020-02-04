@@ -10,3 +10,11 @@
 
 - name: Install global aliases
   template: src=alias.sh dest=/etc/profile.d/
+
+- name: Adding existing user '{{ item }}' to group sudo
+  user:
+    name: '{{ item }}'
+    groups: docker
+    append: yes
+  with_items: "{{ users }}"
+

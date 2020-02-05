@@ -30,5 +30,6 @@ are placed or symlinked into `/etc/digitransit`.
 #### Interesting commands inside the provisioned host
 
 - `digitransit-logs`: docker-compose logs
+- `systemctl start|stop|restart digitransit-docker-compose`: start and cleanly shutdown the docker-compose containers
 
 

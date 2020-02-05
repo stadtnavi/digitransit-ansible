@@ -1,3 +1,4 @@
 ---
 hostname: mih.mitfahren-bw.de
 api_hostname: api.mih.mitfahren-bw.de
+certbot_admin_email: mail@leonard.io

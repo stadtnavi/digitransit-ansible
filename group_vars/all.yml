@@ -11,8 +11,8 @@ certbot_certs:
   - domains:
     - "{{ api_hostname }}"
 certbot_auto_renew: true
+certbot_auto_renew_user: root
 certbot_create_if_missing: true
-certbot_admin_email: mail@leonard.io
 certbot_create_standalone_stop_services:
   - nginx
 # run the certificate updates at a non-round time

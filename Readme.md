@@ -11,7 +11,7 @@ This playbook has been tested with a Debian Buster (10) host only.
 
 In order to execute the ansible playbook you need a user on the host and `sudo`
 must be installed (which is not the case when using the Debian minimal base image).
-You also must enable (passwordless sudo)[https://serverfault.com/questions/160581/how-to-setup-passwordless-sudo-on-linux]
+You also must enable [passwordless sudo](https://serverfault.com/questions/160581/how-to-setup-passwordless-sudo-on-linux)
 
 ##### DNS
 
@@ -29,7 +29,8 @@ are placed or symlinked into `/etc/digitransit`.
 
 #### Interesting commands inside the provisioned host
 
-- `digitransit-logs`: docker-compose logs
 - `systemctl start|stop|restart digitransit-docker-compose`: start and cleanly shutdown the docker-compose containers
+
+To see the complete list of aliases check out [`alias.sh`](roles/base/templates/alias.sh).
 
 

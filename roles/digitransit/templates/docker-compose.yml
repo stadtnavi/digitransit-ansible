@@ -28,6 +28,8 @@ services:
       - CONFIG=hb
       - GEOCODING_BASE_URL=https://{{ api_hostname }}/geocoding/v1
       - API_URL=https://{{ api_hostname }}
+      - MAP_URL={{ map_url }}
+      - MAP_KEY={{ map_key }}
   hsl-map-server:
     image: mfdz/hsl-map-server:latest
     networks:

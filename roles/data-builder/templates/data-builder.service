@@ -20,7 +20,7 @@ ExecStartPre=-docker stop ${CONTAINER_NAME}
 ExecStartPre=-docker rm ${CONTAINER_NAME}
 ExecStartPre=docker pull ${IMAGE_NAME}
 
-ExecStart=docker run --name ${CONTAINER_NAME} -e ROUTERS=hb -e ORG=mfdz -e AUTO_REBUILD_HOUR=2 -e HOST_DATA=${DATA_DIR} -v /var/run/docker.sock:/var/run/docker.sock -v ${DATA_DIR}:/opt/otp-data-builder/data mfdz/otp-data-builder:latest
+ExecStart=docker run --name ${CONTAINER_NAME} -e ROUTERS=hb -e ORG=mfdz -e AUTO_REBUILD_HOUR=17 -e HOST_DATA=${DATA_DIR} -v /var/run/docker.sock:/var/run/docker.sock -v ${DATA_DIR}:/opt/otp-data-builder/data mfdz/otp-data-builder:latest
 
 ExecStop=docker stop ${CONTAINER_NAME}
 

@@ -1,0 +1,15 @@
+---
+- name: Create graphs directory
+  file:
+    path: /var/data-builder/graphs
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+
+- name: Install service file for data-builder
+  template: src=data-builder.service dest=/etc/systemd/system/
+  notify: Restart data-builder
+
+- name: Start data builder
+  systemd: state=started name=data-builder daemon_reload=yes

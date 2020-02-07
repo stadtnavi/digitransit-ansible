@@ -1,0 +1,22 @@
+[Unit]
+Description=data-builder for OTP graphs
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+# docker-pull could take a while so we disable the timeout
+TimeoutStartSec=0
+
+Environment=IMAGE_NAME=mfdz/otp-data-builder:latest
+Environment=CONTAINER_NAME=opentripplanner-data-builder
+
+# prefixing with - means that the commands are allowed to fail
+ExecStartPre=-docker stop opentripplanner-data-container
+ExecStartPre=-docker rm opentripplanner-data-container
+ExecStartPre=docker pull $IMAGE_NAME
+
+ExecStart=docker run --rm --name opentripplanner-data-container -e ROUTERS=hb -e ORG=mfdz -e AUTO_REBUILD_HOUR=13 -e HOST_DATA=$PWD/data -v /var/run/docker.sock:/var/run/docker.sock -v /var/data-builder/graphs:/opt/otp-data-builder/data mfdz/otp-data-builder:latest
+
+[Install]
+WantedBy=multi-user.target

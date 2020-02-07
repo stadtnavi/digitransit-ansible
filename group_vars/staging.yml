@@ -5,3 +5,5 @@ certbot_admin_email: mail@leonard.io
 
 map_url: https://api.maptiler.com/maps/c3e8e9d6-1155-4329-80f3-6c03a2bcc7a4/256/
 map_key: eA0drARBA1uPzLR6StGD
+
+matomo_url: https://cdn.matomo.cloud/mobilinherrenberg.matomo.cloud/container_jUK6B6kx_staging_ab39081a68e03eba00bfeae4.js

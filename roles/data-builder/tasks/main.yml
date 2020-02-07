@@ -7,7 +7,7 @@
     group: root
     mode: 0775
 
-- name: Install service file for data-builder
+- name: Install systemd service file
   template: src=data-builder.service dest=/etc/systemd/system/
   notify: Restart data-builder
 

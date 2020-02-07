@@ -6,6 +6,8 @@
       - tree
       - neovim
       - cron-apt
+      - ripgrep
+      - silversearcher-ag
     state: present
 
 - name: Install global aliases

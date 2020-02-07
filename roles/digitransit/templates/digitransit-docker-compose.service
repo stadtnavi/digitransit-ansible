@@ -14,12 +14,10 @@ ExecStartPre=docker-compose rm -fv
 ExecStartPre=-/bin/bash -c 'docker volume ls -qf "name=digitransit_" | xargs docker volume rm'
 ExecStartPre=docker-compose pull
 ExecStartPre=-/bin/bash -c 'docker network ls -qf "name=digitransit_" | xargs docker network rm'
-#ExecStartPre=-/bin/bash -c 'docker ps -aqf "name=%i_*" | xargs docker rm'
 
-# Compose up
 ExecStart=docker-compose up
 
-# Compose down, remove containers and volumes
+ExecStop=docker-compose pull
 ExecStop=docker-compose down -v
 
 [Install]

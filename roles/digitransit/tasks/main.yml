@@ -24,6 +24,10 @@
       - nginx
     state: present
 
+- name: Copy nginx conf
+  template: src=nginx.conf dest=/etc/nginx/
+  notify: Restart nginx
+
 - name: Copy nginx sites-available conf
   template: src=nginx-site.conf dest=/etc/digitransit/{{ item }}.conf
   with_items:

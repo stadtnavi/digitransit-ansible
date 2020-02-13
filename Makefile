@@ -8,5 +8,5 @@ vagrant: galaxy-install
 	vagrant provision
 
 staging: galaxy-install
-	ansible-playbook -i staging digitransit.yml
+	ansible-playbook --vault-password-file vault-password -i staging digitransit.yml
 

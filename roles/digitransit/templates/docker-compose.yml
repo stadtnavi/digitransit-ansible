@@ -17,7 +17,7 @@ services:
     networks:
       - digitransit
   opentripplanner-data-con-hb:
-    image: mfdz/opentripplanner-data-container-hb:latest
+    image: mfdz/opentripplanner-data-container-hb:local
     networks:
       - digitransit
   digitransit-ui:

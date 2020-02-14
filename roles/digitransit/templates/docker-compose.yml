@@ -30,8 +30,8 @@ services:
       - API_URL=https://{{ api_hostname }}
       - MAP_URL={{ map_url }}
       - MAP_KEY={{ map_key }}
-      - MATOMO_URL= {{ matomo_url }}
-      - ENABLE_CARPOOL = {{ enable_carpool }}
+      - MATOMO_URL={{ matomo_url }}
+      - ENABLE_CARPOOL={{ enable_carpool }}
   hsl-map-server:
     image: mfdz/hsl-map-server:latest
     networks:
@@ -48,4 +48,5 @@ services:
 networks:
   digitransit:
     # all default
+
 

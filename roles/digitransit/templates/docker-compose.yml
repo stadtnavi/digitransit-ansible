@@ -2,7 +2,7 @@ version: '3'
 
 services:
   digitransit-proxy:
-    image: transportkollektiv/digitransit-proxy:hb
+    image: lehrenfried/digitransit-proxy:latest
     networks:
       - digitransit
     ports:

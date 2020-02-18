@@ -14,7 +14,7 @@ services:
     environment:
       - ROUTER_NAME=hb
       - ROUTER_DATA_CONTAINER_URL=http://opentripplanner-data-con-hb:8080
-      - API_URL=https://{{ api_hostname }}
+      - API_URL=https://{{ api_hostname }}/routing/v1/
       - ENCRYPTION_SECRET_KEY={{ encryption_secret_key }}
     networks:
       - digitransit

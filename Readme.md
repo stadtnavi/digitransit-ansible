@@ -6,14 +6,14 @@ Install mfdz's digitransit with ansible
 - `make staging`: connects to the staging host and applies the playbook there
 
 In order for this commands to work, you also need to place the ansible vault
-password file onto you file system. Please get in touch with @leonardehrenfried
+password file onto your file system. Please get in touch with @leonardehrenfried
 to get it.
 
-#### Host requirements
+#### Digitransit target host requirements
 
-This playbook has been tested with a Debian Buster (10) host only.
+This playbook has been tested with a Debian Buster (10) target only.
 
-In order to execute the ansible playbook you need a user on the host and `sudo`
+In order to execute the ansible playbook you need a user on the target host and `sudo`
 must be installed (which is not the case when using the Debian minimal base image).
 You also must enable [passwordless sudo](https://serverfault.com/questions/160581/how-to-setup-passwordless-sudo-on-linux)
 

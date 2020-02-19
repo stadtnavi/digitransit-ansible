@@ -4,8 +4,8 @@
   hosts: all
   become: yes
   roles:
-    - base
     - geerlingguy.docker
+    - base
     - geerlingguy.certbot
     - digitransit
     - data-builder

@@ -9,11 +9,11 @@
 
 - name: Install docker-compose file
   template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
-  notify: Restart docker-compose
+  notify: Restart digitransit
 
 - name: Install service file for digitransit-docker-compose
   template: src=digitransit-docker-compose.service dest=/etc/systemd/system/
-  notify: Restart docker-compose
+  notify: Restart digitransit
 
 - name: Start digitransit
   systemd: state=started name=digitransit-docker-compose daemon_reload=yes
@@ -28,7 +28,7 @@
   template: src=nginx.conf dest=/etc/nginx/
   notify: Restart nginx
 
-- name: Copy nginx sites-available conf
+- name: Copy nginx site conf
   template: src=nginx-site.conf dest=/etc/digitransit/{{ item }}.conf
   with_items:
     - "{{ hostname }}"

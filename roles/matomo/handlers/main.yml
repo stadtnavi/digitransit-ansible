@@ -4,7 +4,7 @@
     name: nginx
     state: restarted
 
-- name: Restart digitransit
+- name: Restart matomo docker-compose
   service:
-    name: digitransit-docker-compose
+    name: matomo-docker-compose
     state: restarted

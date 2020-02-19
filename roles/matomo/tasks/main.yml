@@ -1,0 +1,46 @@
+---
+- name: Create matomo config directory
+  file:
+    path: /etc/matomo
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+
+- name: Install config files
+  template: src={{ item }} dest=/etc/matomo/
+  with_items:
+    - docker-compose.yml
+    - db.env
+    - matomo.conf
+  notify: Restart matomo docker-compose
+
+- name: Install service file for matomo-docker-compose
+  template: src=matomo-docker-compose.service dest=/etc/systemd/system/
+  notify: Restart matomo docker-compose
+
+- name: Start matomo
+  systemd: state=started name=matomo-docker-compose daemon_reload=yes
+
+- name: Copy nginx site conf
+  template: src=nginx-site.conf dest=/etc/matomo/{{ matomo_hostname }}.conf
+  notify: Restart nginx
+
+- name: Symlink to sites-available
+  file:
+    src: /etc/matomo/{{ matomo_hostname }}.conf
+    dest: /etc/nginx/sites-available/{{ matomo_hostname }}.conf
+    state: link
+  notify: Restart nginx
+
+- name: Symlink to sites-enabled
+  file:
+    src: /etc/matomo/{{ matomo_hostname }}.conf
+    dest: /etc/nginx/sites-enabled/{{ matomo_hostname }}.conf
+    state: link
+  notify: Restart nginx
+
+
+
+
+

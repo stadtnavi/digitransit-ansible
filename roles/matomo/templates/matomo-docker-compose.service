@@ -1,0 +1,26 @@
+[Unit]
+Description=matomo service with docker-compose
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+
+WorkingDirectory=/etc/matomo/
+
+# Remove old containers, images and volumes
+#ExecStartPre=docker-compose down -v
+#ExecStartPre=docker-compose rm -fv
+#ExecStartPre=-/bin/bash -c 'docker volume ls -qf "name=digitransit_" | xargs docker volume rm'
+#ExecStartPre=docker-compose pull --ignore-pull-failures
+#ExecStartPre=-/bin/bash -c 'docker network ls -qf "name=digitransit_" | xargs docker network rm'
+
+ExecStop=docker-compose down
+ExecStartPre=docker-compose pull
+ExecStart=docker-compose up
+
+ExecStop=docker-compose pull
+ExecStop=docker-compose down -v
+
+[Install]
+WantedBy=multi-user.target

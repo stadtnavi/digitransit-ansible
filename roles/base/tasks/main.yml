@@ -8,6 +8,7 @@
       - cron-apt
       - ripgrep
       - silversearcher-ag
+      - autojump
     state: present
 
 - name: Install global aliases

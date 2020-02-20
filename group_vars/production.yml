@@ -17,6 +17,12 @@ map_key: eA0drARBA1uPzLR6StGD
 
 matomo_url: https://track.mfdz.de/js/container_pnZyrJod_staging_d4f5b96d498b755e4a260d94.js
 
+# needs to be different on production as there minio is running on port 9000
+matomo_port: 9009
+
+# needs to be different on production as there is already another digitransit running on 8080
+digitransit_port: 8888
+
 enable_carpool: "true"
 
 mfdz_gtfs_url: !vault |

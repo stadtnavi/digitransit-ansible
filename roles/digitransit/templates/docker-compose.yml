@@ -6,7 +6,7 @@ services:
     networks:
       - digitransit
     ports:
-      - 8080:8080
+      - {{ digitransit_port }}:8080
     volumes:
       - ${PWD}/logs:/var/log/nginx
   opentripplanner-hb:

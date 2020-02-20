@@ -31,3 +31,6 @@ digitransit:
     ui: mfdz/digitransit-ui:latest
     map_server: mfdz/hsl-map-server:latest
 
+matomo_port: 9000
+digitransit_port: 8080
+

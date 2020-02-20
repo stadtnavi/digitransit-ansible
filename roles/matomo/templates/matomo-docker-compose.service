@@ -6,6 +6,9 @@ After=docker.service
 [Service]
 Restart=always
 
+# disable timeout
+TimeoutStartSec=0
+
 WorkingDirectory=/etc/matomo/
 
 # Remove old containers, images and volumes
@@ -15,12 +18,12 @@ WorkingDirectory=/etc/matomo/
 #ExecStartPre=docker-compose pull --ignore-pull-failures
 #ExecStartPre=-/bin/bash -c 'docker network ls -qf "name=digitransit_" | xargs docker network rm'
 
-ExecStop=docker-compose down
-ExecStartPre=docker-compose pull
-ExecStart=docker-compose up
+ExecStop=/usr/local/bin/docker-compose down
+ExecStartPre=/usr/local/bin/docker-compose pull
+ExecStart=/usr/local/bin/docker-compose up
 
-ExecStop=docker-compose pull
-ExecStop=docker-compose down -v
+ExecStop=/usr/local/bin/docker-compose pull
+ExecStop=/usr/local/bin/docker-compose down -v
 
 [Install]
 WantedBy=multi-user.target

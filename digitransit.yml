@@ -8,5 +8,5 @@
     - base
     - geerlingguy.certbot
     - matomo
-    - digitransit
     - data-builder
+      #- digitransit

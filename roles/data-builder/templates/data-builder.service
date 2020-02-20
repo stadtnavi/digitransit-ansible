@@ -6,7 +6,7 @@ After=docker.service
 
 [Service]
 Restart=always
-# docker-pull could take a while so we disable the timeout
+# /usr/bin/docker-pull could take a while so we disable the timeout
 TimeoutStartSec=0
 
 Environment=CONTAINER_NAME=opentripplanner-data-builder
@@ -16,13 +16,13 @@ Environment=DATA_DIR=/var/data-builder/data
 WorkingDirectory=/var/data-builder/
 
 # prefixing with - means that the commands are allowed to fail
-ExecStartPre=-docker stop ${CONTAINER_NAME}
-ExecStartPre=-docker rm ${CONTAINER_NAME}
-ExecStartPre=docker pull ${IMAGE_NAME}
+ExecStartPre=-/usr/bin/docker stop ${CONTAINER_NAME}
+ExecStartPre=-/usr/bin/docker rm ${CONTAINER_NAME}
+ExecStartPre=/usr/bin/docker pull ${IMAGE_NAME}
 
-ExecStart=docker run --name ${CONTAINER_NAME} -e ROUTERS=hb -e ORG=mfdz -e AUTO_REBUILD_HOUR=17 -e HOST_DATA=${DATA_DIR} -e MFDZ_GTFS_URL={{ mfdz_gtfs_url }} -v /var/run/docker.sock:/var/run/docker.sock -v ${DATA_DIR}:/opt/otp-data-builder/data ${IMAGE_NAME}
+ExecStart=/usr/bin/docker run --name ${CONTAINER_NAME} -e ROUTERS=hb -e ORG=mfdz -e AUTO_REBUILD_HOUR=17 -e HOST_DATA=${DATA_DIR} -e MFDZ_GTFS_URL={{ mfdz_gtfs_url }} -v /var/run/docker.sock:/var/run/docker.sock -v ${DATA_DIR}:/opt/otp-data-builder/data ${IMAGE_NAME}
 
-ExecStop=docker stop ${CONTAINER_NAME}
+ExecStop=/usr/bin/docker stop ${CONTAINER_NAME}
 
 [Install]
 WantedBy=multi-user.target

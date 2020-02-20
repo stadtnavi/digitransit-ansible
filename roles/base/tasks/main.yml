@@ -6,7 +6,6 @@
       - tree
       - neovim
       - cron-apt
-      - ripgrep
       - silversearcher-ag
       - autojump
       - jq

@@ -1,7 +1,11 @@
 ---
 digitransit:
   images:
+    proxy: lehrenfried/digitransit-proxy:latest
+    otp: mfdz/opentripplanner:latest
     data_container: mfdz/opentripplanner-data-container-hb:latest
+    ui: mfdz/digitransit-ui:latest
+    map_server: mfdz/hsl-map-server:latest
 
 hostname: pilot.mobil-in-herrenberg.de
 api_hostname: api.mobil-in-herrenberg.de

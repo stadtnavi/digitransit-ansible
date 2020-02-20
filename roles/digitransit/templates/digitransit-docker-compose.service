@@ -1,25 +1,28 @@
 [Unit]
-Description=digitransit service with docker-compose
+Description=digitransit service with /usr/local/bin/docker-compose
 Requires=docker.service
 After=docker.service
 
 [Service]
 Restart=always
 
+# disable timeout as it can take a long time to pull images
+TimeoutStartSec=0
+
 WorkingDirectory=/etc/digitransit/
 
 # Remove old containers, images and volumes
 ExecStartPre=-/bin/bash -c 'echo "Restarting digitransit on {{ inventory_hostname }}" | send-to-matrix'
-ExecStartPre=docker-compose down -v
-ExecStartPre=docker-compose rm -fv
+ExecStartPre=/usr/local/bin/docker-compose down -v
+ExecStartPre=/usr/local/bin/docker-compose rm -fv
 ExecStartPre=-/bin/bash -c 'docker volume ls -qf "name=digitransit_" | xargs docker volume rm'
-ExecStartPre=docker-compose pull --ignore-pull-failures
+ExecStartPre=/usr/local/bin/docker-compose pull --ignore-pull-failures
 ExecStartPre=-/bin/bash -c 'docker network ls -qf "name=digitransit_" | xargs docker network rm'
 
-ExecStart=docker-compose up
+ExecStart=/usr/local/bin/docker-compose up
 
-ExecStop=docker-compose pull --ignore-pull-failures
-ExecStop=docker-compose down -v
+ExecStop=/usr/local/bin/docker-compose pull --ignore-pull-failures
+ExecStop=/usr/local/bin/docker-compose down -v
 
 [Install]
 WantedBy=multi-user.target

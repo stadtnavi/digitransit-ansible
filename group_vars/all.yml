@@ -12,6 +12,7 @@ certbot_certs:
     - "{{ api_hostname }}"
   - domains:
     - "{{ matomo_hostname }}"
+
 certbot_auto_renew: true
 certbot_auto_renew_user: root
 certbot_create_if_missing: true
@@ -20,3 +21,13 @@ certbot_create_standalone_stop_services:
 # run the certificate updates at a non-round time
 certbot_auto_renew_minute: "44"
 certbot_auto_renew_hour: "3"
+
+# default images - override in staging/prodction.yml if you want to use fixed tags
+digitransit:
+  images:
+    proxy: lehrenfried/digitransit-proxy:latest
+    otp: mfdz/opentripplanner:latest
+    data_container: mfdz/opentripplanner-data-container-hb:local
+    ui: mfdz/digitransit-ui:latest
+    map_server: mfdz/hsl-map-server:latest
+

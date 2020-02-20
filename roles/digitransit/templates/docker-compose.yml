@@ -2,7 +2,7 @@ version: '3'
 
 services:
   digitransit-proxy:
-    image: lehrenfried/digitransit-proxy:latest
+    image: {{ digitransit["images"]["proxy"] }}
     networks:
       - digitransit
     ports:
@@ -10,7 +10,7 @@ services:
     volumes:
       - ${PWD}/logs:/var/log/nginx
   opentripplanner-hb:
-    image: mfdz/opentripplanner:latest
+    image: {{ digitransit["images"]["otp"] }}
     environment:
       - ROUTER_NAME=hb
       - ROUTER_DATA_CONTAINER_URL=http://opentripplanner-data-con-hb:8080
@@ -19,11 +19,11 @@ services:
     networks:
       - digitransit
   opentripplanner-data-con-hb:
-    image: mfdz/opentripplanner-data-container-hb:local
+    image: {{ digitransit["images"]["data_container"] }}
     networks:
       - digitransit
   digitransit-ui:
-    image: mfdz/digitransit-ui:latest
+    image: {{ digitransit["images"]["ui"] }}
     networks:
       - digitransit
     environment:
@@ -35,7 +35,7 @@ services:
       - MATOMO_URL={{ matomo_url }}
       - ENABLE_CARPOOL={{ enable_carpool }}
   hsl-map-server:
-    image: mfdz/hsl-map-server:latest
+    image: {{ digitransit["images"]["map_server"] }}
     networks:
       - digitransit
     environment:

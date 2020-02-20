@@ -1,4 +1,8 @@
 ---
+digitransit:
+  images:
+    data_container: mfdz/opentripplanner-data-container-hb:latest
+
 hostname: pilot.mobil-in-herrenberg.de
 api_hostname: api.mobil-in-herrenberg.de
 matomo_hostname: track-temp.leonard.io

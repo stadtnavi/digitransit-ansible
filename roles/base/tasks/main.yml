@@ -9,6 +9,7 @@
       - ripgrep
       - silversearcher-ag
       - autojump
+      - jq
     state: present
 
 - name: Install global aliases
@@ -21,13 +22,22 @@
     append: yes
   with_items: "{{ users }}"
 
+
 - name: Install systemd files for docker-prune
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:
     - docker-prune.service
     - docker-prune.timer
 
-- name: Start digitransit
+- name: Start docker-prune.timer
   systemd: state=started name=docker-prune.timer daemon_reload=yes
+
+- name: Copy send-to-matrix script
+  template:
+    src: "{{ item }}"
+    dest: /usr/local/bin
+    mode: 711
+  with_items:
+    - send-to-matrix
 
 

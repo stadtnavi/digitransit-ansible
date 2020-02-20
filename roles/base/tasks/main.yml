@@ -20,3 +20,14 @@
     groups: docker
     append: yes
   with_items: "{{ users }}"
+
+- name: Install systemd files for docker-prune
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
+    - docker-prune.service
+    - docker-prune.timer
+
+- name: Start digitransit
+  systemd: state=started name=docker-prune.timer daemon_reload=yes
+
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=Remove old docker data (images, volumes, networks) that are older than a week
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStart=docker system prune --all -f --filter until=168h
+
+[Install]
+WantedBy=multi-user.target

@@ -18,12 +18,12 @@ WorkingDirectory=/etc/matomo/
 #ExecStartPre=docker-compose pull --ignore-pull-failures
 #ExecStartPre=-/bin/bash -c 'docker network ls -qf "name=digitransit_" | xargs docker network rm'
 
-ExecStop=/usr/local/bin/docker-compose down
+ExecStop=/usr/local/bin/docker-compose stop
 ExecStartPre=/usr/local/bin/docker-compose pull
 ExecStart=/usr/local/bin/docker-compose up
 
 ExecStop=/usr/local/bin/docker-compose pull
-ExecStop=/usr/local/bin/docker-compose down -v
+ExecStop=/usr/local/bin/docker-compose stop
 
 [Install]
 WantedBy=multi-user.target

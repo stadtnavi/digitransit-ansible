@@ -10,4 +10,4 @@ homeserver=matrix.org
 room=!IrnikvWjkqDcxiUMCw:matrix.org
 accesstoken={{ matrix_bot_token }}
 
-#curl -XPOST -d "$( jq -Rsc --arg msgtype "$msgtype" '{$msgtype, body:.}')" "https://$homeserver/_matrix/client/r0/rooms/$room/send/m.room.message?access_token=$accesstoken"
+curl -XPOST -d "$( jq -Rsc --arg msgtype "$msgtype" '{$msgtype, body:.}')" "https://$homeserver/_matrix/client/r0/rooms/$room/send/m.room.message?access_token=$accesstoken"

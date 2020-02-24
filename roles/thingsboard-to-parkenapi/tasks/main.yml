@@ -6,6 +6,14 @@
     mode: 711
     checksum: sha256:6ab6ab93a3546937d557ea31f7cf9333a704297d1621bf8004033b3ecedc0c4c
 
+- name: Creates directory
+  file:
+    path: /var/parkenapi/
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
+
 - name: Install systemd files
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:

@@ -6,7 +6,7 @@ User=www-data
 Group=www-data
 Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
 Environment=THINGSBOARD_PASSWORD={{ thingsboard_password }}
-ExecStart=/usr/local/bin/thingsboard-to-parkenapi /var/www/parkenapi.json
+ExecStart=/usr/local/bin/thingsboard-to-parkenapi /var/parkenapi/parkenapi.json
 
 [Install]
 WantedBy=multi-user.target

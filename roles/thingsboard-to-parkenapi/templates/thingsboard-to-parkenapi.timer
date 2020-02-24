@@ -1,0 +1,10 @@
+[Unit]
+Description=Run thingsboard-to-parkenapi.service every minute
+
+[Timer]
+# every 2 minutes
+OnCalendar=*:0/2
+Persistent=true
+
+[Install]
+WantedBy=timers.target

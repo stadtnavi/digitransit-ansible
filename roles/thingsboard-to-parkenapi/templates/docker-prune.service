@@ -1,0 +1,10 @@
+[Unit]
+Description=Convert the thingsboard data to parkenapi format
+
+[Service]
+Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
+Environment=THINGSBOARD_PASSWORD={{ thingsboard_password }}
+ExecStart=/usr/local/bin/thingsboard-to-parkenapi /tmp/parkenapi.json
+
+[Install]
+WantedBy=multi-user.target

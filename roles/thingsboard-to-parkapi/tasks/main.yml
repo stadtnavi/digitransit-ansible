@@ -1,10 +1,10 @@
 ---
 - name: Download thingsboard-to-parkapi script
   get_url:
-    url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/9db58d1060/thingsboard-to-parkapi
+    url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/master/thingsboard-to-parkapi
     dest: /usr/local/bin/thingsboard-to-parkapi
     mode: 711
-    checksum: sha256:305b7bc9a6ebe9c56eb56e9ff1cee558937d46ce6385579f56aebf8f6f0c1e70
+    checksum: sha256:60f12aa6d68975f05ce26edbdcec91d8576219718772548a982334ec463e5481
 
 - name: Creates directory
   file:
@@ -17,12 +17,12 @@
 
 - name: Download static parking_lots.geojson file
   get_url:
-    url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/9db58d1060/parking_lots.geojson
+    url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/master/parking_lots.geojson
     dest: /var/parkapi
     owner: www-data
     group: www-data
     mode: 0775
-    checksum: sha256:9f013307ca794e8d454a9606c37bc2f392765c5cc7da26c56c526636a25bb6a3
+    #checksum: sha256:9f013307ca794e8d454a9606c37bc2f392765c5cc7da26c56c526636a25bb6a3
 
 
 - name: Install systemd files

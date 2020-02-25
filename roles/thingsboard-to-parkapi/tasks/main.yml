@@ -1,10 +1,10 @@
 ---
 - name: Download thingsboard-to-parkapi script
   get_url:
-    url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/f5ada7cc796/thingsboard-to-parkapi
+    url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/9db58d1060/thingsboard-to-parkapi
     dest: /usr/local/bin/thingsboard-to-parkapi
     mode: 711
-    checksum: sha256:af61997c635eceaafb3445e42dfae565ca8dcad4c25bb9d9bf1c40adc5cfa0f4
+    checksum: sha256:305b7bc9a6ebe9c56eb56e9ff1cee558937d46ce6385579f56aebf8f6f0c1e70
 
 - name: Creates directory
   file:
@@ -17,7 +17,7 @@
 
 - name: Download static parking_lots.geojson file
   get_url:
-    url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/f5ada7cc796/parking_lots.geojson
+    url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/9db58d1060/parking_lots.geojson
     dest: /var/parkapi
     owner: www-data
     group: www-data

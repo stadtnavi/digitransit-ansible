@@ -40,7 +40,6 @@
     - "{{ api_hostname }}"
   notify: Restart nginx
 
-
 - name: Remove the old nginx configs
   file:
     path: /etc/nginx/sites-enabled/{{ item }}

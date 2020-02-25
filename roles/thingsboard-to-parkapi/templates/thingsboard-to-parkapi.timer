@@ -1,5 +1,5 @@
 [Unit]
-Description=Run thingsboard-to-parkenapi.service every minute
+Description=Run thingsboard-to-parkapi.service every minute
 
 [Timer]
 # every 2 minutes

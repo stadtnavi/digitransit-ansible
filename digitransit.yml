@@ -6,7 +6,7 @@
   roles:
     - geerlingguy.docker
     - base
-    - thingsboard-to-parkenapi
+    - thingsboard-to-parkapi
     - geerlingguy.certbot
     - matomo
     - data-builder

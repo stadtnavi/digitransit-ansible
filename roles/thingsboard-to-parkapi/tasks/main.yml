@@ -1,0 +1,26 @@
+---
+- name: Download thingsboard-to-parkapi script
+  get_url:
+    url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/62147a20e/thingsboard-to-parkapi
+    dest: /usr/local/bin/thingsboard-to-parkapi
+    mode: 711
+    checksum: sha256:6ab6ab93a3546937d557ea31f7cf9333a704297d1621bf8004033b3ecedc0c4c
+
+- name: Creates directory
+  file:
+    path: /var/parkapi/
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
+
+- name: Install systemd files
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
+    - thingsboard-to-parkapi.service
+    - thingsboard-to-parkapi.timer
+
+- name: Start docker-prune.timer
+  systemd: state=started name=thingsboard-to-parkapi.timer daemon_reload=yes
+
+

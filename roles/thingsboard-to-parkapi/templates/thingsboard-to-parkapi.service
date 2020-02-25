@@ -1,10 +1,12 @@
 [Unit]
-Description=Convert the thingsboard data to parkenapi format
+Description=Convert the thingsboard data to parkapi format
 
 [Service]
+User=www-data
+Group=www-data
 Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
 Environment=THINGSBOARD_PASSWORD={{ thingsboard_password }}
-ExecStart=/usr/local/bin/thingsboard-to-parkenapi /tmp/parkenapi.json
+ExecStart=/usr/local/bin/thingsboard-to-parkapi /var/parkapi/parkapi.json
 
 [Install]
 WantedBy=multi-user.target

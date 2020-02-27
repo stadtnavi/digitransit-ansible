@@ -22,7 +22,7 @@
     owner: www-data
     group: www-data
     mode: 0775
-    #checksum: sha256:9f013307ca794e8d454a9606c37bc2f392765c5cc7da26c56c526636a25bb6a3
+    checksum: sha256:0fbc7aeb74a96a36066db9c6bfd0ad37954a68a3ae50a70a0ffd7066d3b5b83a
 
 
 - name: Install systemd files

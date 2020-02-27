@@ -4,7 +4,7 @@
     url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/master/thingsboard-to-parkapi
     dest: /usr/local/bin/thingsboard-to-parkapi
     mode: 711
-    checksum: sha256:734afeebd733f3d242e21eb9aeef748a5cfdaf4c4884a7a040eba5bdfe77830d
+    checksum: sha256:c51bf51ab19d96e3631674201c507e928cc127d194321c6c75f359a707c926e4
 
 - name: Creates directory
   file:

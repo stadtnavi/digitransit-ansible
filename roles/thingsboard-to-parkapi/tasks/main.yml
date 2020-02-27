@@ -4,7 +4,7 @@
     url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/master/thingsboard-to-parkapi
     dest: /usr/local/bin/thingsboard-to-parkapi
     mode: 711
-    checksum: sha256:a9ac871d9f7e340414e2ed48c4aeb3c66c706c87190959f3e088c0c9206f992e
+    checksum: sha256:f5faf015b46b1667cf6984adbca642b791acc43f00f2d19dbee30e5658cd853c
 
 - name: Creates directory
   file:
@@ -22,7 +22,7 @@
     owner: www-data
     group: www-data
     mode: 0775
-    checksum: sha256:0fbc7aeb74a96a36066db9c6bfd0ad37954a68a3ae50a70a0ffd7066d3b5b83a
+    checksum: sha256:2d11c42a440023779d89fbb118752c984d0cc558cf8bbcf1f4dc058c88c1c47e
 
 
 - name: Install systemd files

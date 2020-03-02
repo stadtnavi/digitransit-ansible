@@ -10,6 +10,7 @@ Restart=always
 TimeoutStartSec=0
 
 Environment=CONTAINER_NAME=opentripplanner-data-builder
+Environment=SEED_IMAGE_NAME=mfdz/opentripplanner-data-container-hb:latest
 Environment=IMAGE_NAME=mfdz/otp-data-builder:latest
 Environment=DATA_DIR=/var/data-builder/data
 
@@ -19,6 +20,7 @@ WorkingDirectory=/var/data-builder/
 ExecStartPre=-/usr/bin/docker stop ${CONTAINER_NAME}
 ExecStartPre=-/usr/bin/docker rm ${CONTAINER_NAME}
 ExecStartPre=/usr/bin/docker pull ${IMAGE_NAME}
+ExecStartPre=/usr/bin/docker pull ${SEED_IMAGE_NAME}
 
 ExecStart=/usr/bin/docker run --name ${CONTAINER_NAME} -e ROUTERS=hb -e ORG=mfdz -e AUTO_REBUILD_HOUR=23 -e HOST_DATA=${DATA_DIR} -e MFDZ_GTFS_URL={{ mfdz_gtfs_url }} -v /var/run/docker.sock:/var/run/docker.sock -v ${DATA_DIR}:/opt/otp-data-builder/data ${IMAGE_NAME}
 

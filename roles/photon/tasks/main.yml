@@ -1,0 +1,26 @@
+---
+- name: Install base packages
+  package:
+    name:
+      - python-docker
+    state: present
+
+- name: create photon network
+  docker_network:
+    name: photon-network
+
+- name: Import and run Nominatim
+  docker_container:
+    name: nominatim
+    image: thomasnordquist/nominatim
+    ports:
+      - "8082:80"
+      - "5432:5432"
+    networks:
+      - name: photon-network
+    env:
+      PBF_URL: "{{ osm_pbf_url }}"
+      REPLICATION_URL: "{{osm_updates_url}}"
+      IMPORT_WIKIPEDIA: "{{ nominatim_import_wikipedia}}"
+      THREADS: "4"
+

@@ -50,3 +50,7 @@ thingsboard_password: !vault |
           3135643035336435610a326634653963393338336330393339316234623863326535643264393863
           6463
 
+# photon/nominatim
+osm_pbf_url: http://download.geofabrik.de/europe/dach-latest.osm.pbf
+osm_updates_url: http://download.geofabrik.de/europe/germany/europe/dach-updates/
+nominatim_import_wikipedia: "true"

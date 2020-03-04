@@ -27,3 +27,14 @@
       IMPORT_WIKIPEDIA: "{{ nominatim_import_wikipedia}}"
       THREADS: "5"
 
+- name: Import and run photon
+  docker_container:
+    name: photon
+    image: mfdz/photon:0.3.0-mfdz-003
+    networks:
+      - name: photon-network
+    volumes:
+      - photon-data-dach:/photon/photon_data:rw
+    env:
+      NOMINATIM_PORT_5432_TCP_ADDR: nominatim
+

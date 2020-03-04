@@ -37,4 +37,7 @@
       - photon-data-dach:/photon/photon_data:rw
     env:
       NOMINATIM_PORT_5432_TCP_ADDR: nominatim
+      # this is purposefully set to a directory as otherwise the container tries to import a JSON file
+      # if the "dump" is a directory it does the import through postgres directly
+      JSON_DUMP_FILE: "/etc/"
 

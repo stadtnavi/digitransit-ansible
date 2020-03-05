@@ -2,6 +2,7 @@
 ansible_python_interpreter: auto_silent
 docker_install_compose: true
 
+
 users:
   - lenni
 
@@ -54,3 +55,4 @@ thingsboard_password: !vault |
 osm_pbf_url: http://download.geofabrik.de/europe/dach-latest.osm.pbf
 osm_updates_url: http://download.geofabrik.de/europe/dach-updates/
 nominatim_import_wikipedia: "true"
+install_photon: False

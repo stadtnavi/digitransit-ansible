@@ -27,20 +27,6 @@
       IMPORT_WIKIPEDIA: "{{ nominatim_import_wikipedia}}"
       THREADS: "5"
 
-- name: Import and run photon
-  docker_container:
-    name: photon
-    image: mfdz/photon:0.3.0-mfdz-003
-    networks:
-      - name: photon-network
-    volumes:
-      - photon-data-dach:/photon/photon_data:rw
-    env:
-      NOMINATIM_PORT_5432_TCP_ADDR: nominatim
-      # this is purposefully set to a directory as otherwise the container tries to import a JSON file
-      # if the "dump" is a directory it does the import through postgres directly
-      JSON_DUMP_FILE: "/etc/"
-
 - name: Install systemd files for nominatim-update
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:
@@ -49,3 +35,36 @@
 
 - name: Start nomimatim-update.timer
   systemd: state=started name=nominatim-update.timer daemon_reload=yes
+
+- name: Import and run photon
+  docker_container:
+    name: photon
+    image: mfdz/photon:0.3.0-mfdz-003
+    networks:
+      - name: photon-network
+    volumes:
+      - photon-data-dach:/photon/photon_data:rw
+    ports:
+      - "2322:2322"
+    env:
+      NOMINATIM_PORT_5432_TCP_ADDR: nominatim
+      # this is purposefully set to a directory as otherwise the container tries to import a JSON file
+      # if the "dump" is a directory it does the import through postgres directly
+      JSON_DUMP_FILE: "/etc/"
+
+- name: Copy photon nginx site conf
+  template: src=photon-site.conf dest=/etc/nginx/sites-available/{{ item }}.conf
+  with_items:
+    - "{{ photon_hostname }}"
+  notify: Restart nginx
+
+- name: Symlink to sites-available
+  file:
+    src: /etc/nginx/sites-available/{{ item }}.conf
+    dest: /etc/nginx/sites-enabled/{{ item }}.conf
+    state: link
+  with_items:
+    - "{{ photon_hostname }}"
+  notify: Restart nginx
+
+

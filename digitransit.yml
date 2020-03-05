@@ -4,12 +4,11 @@
   hosts: all
   become: yes
   roles:
-    #- geerlingguy.docker
-    #- base
-    #- thingsboard-to-parkapi
-    #- geerlingguy.certbot
-    #- matomo
-    #- data-builder
+    - base
+    - thingsboard-to-parkapi
+    - geerlingguy.certbot
+    - matomo
+    - data-builder
     - role: photon
       when: install_photon
     - digitransit

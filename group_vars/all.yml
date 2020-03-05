@@ -1,7 +1,9 @@
 ---
+# silence ansible warnings
 ansible_python_interpreter: auto_silent
-docker_install_compose: true
+networks_cli_compatible: no
 
+docker_install_compose: true
 
 users:
   - lenni
@@ -13,6 +15,8 @@ certbot_certs:
     - "{{ api_hostname }}"
   - domains:
     - "{{ matomo_hostname }}"
+  - domains:
+    - "{{ photon_hostname }}"
 
 certbot_auto_renew: true
 certbot_auto_renew_user: root

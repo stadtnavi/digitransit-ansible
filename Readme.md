@@ -28,12 +28,19 @@ non-UI related API requests to their corresponding docker containers.
 
 #### Configuration files
 
-All interesting configuration files, that don't live inside docker containers,
+The digitransit configuration files, that don't live inside docker containers,
 are placed or symlinked into `/etc/digitransit`.
 
-#### Interesting commands inside the provisioned host
+#### Common tasks
 
-- `systemctl start|stop|restart digitransit-docker-compose`: start and cleanly shutdown the docker-compose containers
+*Restarting digitransit*
+
+`systemctl restart digitransit-docker-compose`
+
+This also checks if there are newer images available on dockerhub and downloads
+them prior to restarting.
+
+*aliases*
 
 To see the complete list of aliases check out [`alias.sh`](roles/base/templates/alias.sh).
 

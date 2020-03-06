@@ -1,4 +1,4 @@
-### digitransit-ansible
+## digitransit-ansible
 
 Install mfdz's digitransit with ansible
 
@@ -9,7 +9,7 @@ In order for this commands to work, you also need to place the ansible vault
 password file onto your file system. Please get in touch with @leonardehrenfried
 to get it.
 
-#### Digitransit target host requirements
+### Digitransit target host requirements
 
 This playbook has been tested with a Debian Buster (10) target only.
 
@@ -17,31 +17,59 @@ In order to execute the ansible playbook you need a user on the target host and 
 must be installed (which is not the case when using the Debian minimal base image).
 You also must enable [passwordless sudo](https://serverfault.com/questions/160581/how-to-setup-passwordless-sudo-on-linux)
 
-##### DNS
+#### DNS
 
 In order for the automatic TLS certificate generation to work, you need to 
 configure a DNS entry for the host.
 
-On top of the main DNS entry, you also need a second one, that starts with
-`api.` which points to the exact same machine. This is used to proxy all 
-non-UI related API requests to their corresponding docker containers.
+On top of the main DNS entry, you also need up to three other ones:
 
-#### Configuration files
+- One that starts with `api.` which points to the exact same machine. This is used to 
+proxy all non-UI related API requests to their corresponding docker containers.
+- One for matomo
+- If you want to install Photon on the server too, you need hostname for that too.
+
+### Configuration files
 
 The digitransit configuration files, that don't live inside docker containers,
 are placed or symlinked into `/etc/digitransit`.
 
-#### Common tasks
+### Automatic graph builds
 
-*Restarting digitransit*
+The docker container `data-builder` builds a new graph every night at 11pm UTC.
+If you want to change the time add env variable `BUILD_TIME` to the container.
+
+The original script also uploads data to dockerhub but since mfdz's version contains
+personally identifiable information we cannot do that. This means that the graph
+build needs to happen on the same machine as digitransit runs.
+
+The `data-builder` then tags the built image as `mfdz/opentripplanner-data-container-hb:test`,
+however digitransit expectes the tag `local`.
+
+Therefore you need to tag the `test` container as `mfdz/opentripplanner-data-container-hb:local`.
+
+This isn't a great solution so we probably want to revisit this topic.
+
+### Common tasks
+
+**Restarting digitransit**
 
 `systemctl restart digitransit-docker-compose`
 
 This also checks if there are newer images available on dockerhub and downloads
-them prior to restarting.
+them prior to restarting. 
 
-*aliases*
+It also cleanly stops and removes the containers. This
+is important because `hsl-map-server` cannot be stopped and restarted.
 
-To see the complete list of aliases check out [`alias.sh`](roles/base/templates/alias.sh).
+**Triggering a rebuild of the OTP graph**
+
+`systemctl restart data-builder`
+
+A build is run every night but sometimes you want to trigger it instantly.
+
+**aliases**
+
+To see the complete list of useful aliases check out [`alias.sh`](roles/base/templates/alias.sh).
 
 

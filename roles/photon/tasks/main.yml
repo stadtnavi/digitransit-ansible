@@ -39,7 +39,7 @@
 - name: Import and run photon
   docker_container:
     name: photon
-    image: mfdz/photon:0.3.0-mfdz-003
+    image: lehrenfried/photon:latest
     networks:
       - name: photon-network
     volumes:
@@ -51,6 +51,7 @@
       # this is purposefully set to a directory as otherwise the container tries to import a JSON file
       # if the "dump" is a directory it does the import through postgres directly
       JSON_DUMP_FILE: "/etc/"
+      AUTOMATIC_UPDATES: "true"
 
 - name: Copy photon nginx site conf
   template: src=photon-site.conf dest=/etc/nginx/sites-available/{{ item }}.conf

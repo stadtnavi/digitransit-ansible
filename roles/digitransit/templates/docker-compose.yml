@@ -47,7 +47,7 @@ services:
     networks:
       - digitransit
     environment:
-      - PHOTON_URL=https://api.mfdz.de/photon/
+      - PHOTON_URL=https://photon-temp.leonard.io/
 
 networks:
   digitransit:

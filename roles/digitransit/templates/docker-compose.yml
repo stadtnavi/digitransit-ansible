@@ -33,7 +33,6 @@ services:
       - MAP_URL={{ map_url }}
       - MAP_KEY={{ map_key }}
       - MATOMO_URL={{ matomo_url }}
-      - ENABLE_CARPOOL={{ enable_carpool }}
       - NODE_ENV=production
   hsl-map-server:
     image: {{ digitransit["images"]["map_server"] }}

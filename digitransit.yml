@@ -4,10 +4,10 @@
   hosts: all
   become: yes
   roles:
-    #- base
-    #- thingsboard-to-parkapi
-    #- geerlingguy.certbot
-    #- matomo
+    - base
+    - thingsboard-to-parkapi
+    - geerlingguy.certbot
+    - matomo
     - data-builder
     - role: photon
       when: install_photon

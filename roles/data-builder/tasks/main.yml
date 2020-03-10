@@ -7,9 +7,12 @@
     group: root
     mode: 0775
 
-- name: Install systemd service file
-  template: src=data-builder.service dest=/etc/systemd/system/
+- name: Install systemd files
+  template: src={{ item }} dest=/etc/systemd/system/
   notify: Restart data-builder
+  with_items:
+    - data-builder.service
+    - data-builder.timer
 
-- name: Start data builder
-  systemd: state=started name=data-builder daemon_reload=yes
+- name: Start data-builder.timer
+  systemd: state=started name=data-builder.timer daemon_reload=yes

@@ -1,0 +1,9 @@
+[Unit]
+Description=Build a container every night
+
+[Timer]
+# run it every night at 1
+OnCalendar=*-*-* 1:00:00
+
+[Install]
+WantedBy=timers.target

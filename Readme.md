@@ -36,19 +36,20 @@ are placed or symlinked into `/etc/digitransit`.
 
 ### Automatic graph builds
 
-The docker container `data-builder` builds a new graph every night at 11pm UTC.
-If you want to change the time add env variable `BUILD_TIME` to the container.
+The docker container `data-builder` builds a new graph every night at 1 o'clock.
+This is controlled by the systemd timer `data-builder` and if you want to modify
+this, then edit `data-builder.timer` and `data-builder.service`.
 
 The original script also uploads data to dockerhub but since mfdz's version contains
 personally identifiable information we cannot do that. This means that the graph
 build needs to happen on the same machine as digitransit runs.
 
-The `data-builder` then tags the built image as `mfdz/opentripplanner-data-container-hb:test`,
-however digitransit expectes the tag `local`.
+The `data-builder` then tags the built image as `mfdz/opentripplanner-data-container-hb:test`
+`mfdz/opentripplanner-data-container-hb:local`. The `local` tag is what
+digitransit uses.
 
-Therefore you need to tag the `test` container as `mfdz/opentripplanner-data-container-hb:local`.
-
-This isn't a great solution so we probably want to revisit this topic.
+Since the `data-container` containers are quite large, the `docker-prune` timer
+removes every night containers that have not been used for 3 days.
 
 ### Common tasks
 

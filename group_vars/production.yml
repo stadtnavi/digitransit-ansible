@@ -1,12 +1,12 @@
 ---
 
-otp_docker_tag: {{ otp_docker_tag }}
+otp_docker_tag: latest
 digitransit:
   images:
     proxy: lehrenfried/digitransit-proxy:latest
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
-    ui: mfdz/digitransit-ui:cfb72f6c2b1aeb12c4c86f4c9503318d63fca8876606994a59b7272cced40605
+    ui: mfdz/digitransit-ui:latest
     map_server: mfdz/hsl-map-server:latest
 
 hostname: pilot.mobil-in-herrenberg.de

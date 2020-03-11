@@ -1,7 +1,7 @@
 ---
 # silence ansible warnings
 ansible_python_interpreter: auto_silent
-networks_cli_compatible: "no"
+networks_cli_compatible: no
 
 docker_install_compose: true
 

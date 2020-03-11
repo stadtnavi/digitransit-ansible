@@ -10,8 +10,6 @@ map_key: eA0drARBA1uPzLR6StGD
 
 matomo_url: https://track.mfdz.de/js/container_TeHZVOVk_staging_a1a89f1a01da974800990125.js
 
-nnable_carpool: "true"
-
 mfdz_gtfs_url: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           38313535653439303366343762306433626166366466333531366239663161316539386564616236

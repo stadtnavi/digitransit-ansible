@@ -34,6 +34,8 @@ services:
       - MAP_KEY={{ map_key }}
       - MATOMO_URL={{ matomo_url }}
       - NODE_ENV=production
+      - FAHRGEMEINSCHAFT_API_KEY={{ fahrgemeinschaft_api_key }}
+      - FAHRGEMEINSCHAFT_AUTH_KEY={{ fahrgemeinschaft_auth_key }}
   hsl-map-server:
     image: {{ digitransit["images"]["map_server"] }}
     networks:

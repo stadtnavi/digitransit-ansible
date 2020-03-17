@@ -32,6 +32,7 @@
   template: src=nginx-site.conf dest=/etc/digitransit/{{ item }}.conf
   with_items:
     - "{{ hostname }}"
+    - "{{ secondary_hostname }}"
   notify: Restart nginx
 
 - name: Copy api host nginx site conf
@@ -56,6 +57,7 @@
     state: link
   with_items:
     - "{{ hostname }}"
+    - "{{ secondary_hostname }}"
     - "{{ api_hostname }}"
   notify: Restart nginx
 
@@ -66,6 +68,7 @@
     state: link
   with_items:
     - "{{ hostname }}"
+    - "{{ secondary_hostname }}"
     - "{{ api_hostname }}"
   notify: Restart nginx
 

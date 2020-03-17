@@ -9,7 +9,9 @@ digitransit:
     ui: mfdz/digitransit-ui:latest
     map_server: mfdz/hsl-map-server:latest
 
-hostname: pilot.mobil-in-herrenberg.de
+hostname: hbg.stadtnavi.de
+# as soon as the migration is complete the secondary_hostname should be removed
+secondary_hostname: pilot.mobil-in-herrenberg.de
 api_hostname: api.mobil-in-herrenberg.de
 matomo_hostname: track.mobil-in-herrenberg.de
 # this isn't really the photon hostname as photon is disabled on production

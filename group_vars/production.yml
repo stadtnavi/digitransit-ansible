@@ -6,24 +6,24 @@ digitransit:
     proxy: lehrenfried/digitransit-proxy:latest
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
-    ui: mfdz/digitransit-ui:latest
+    ui: mfdz/digitransit-ui:ci-60aec8084734b973a92a02395e829b901d3a5f14
     map_server: mfdz/hsl-map-server:latest
 
 hostname: hbg.stadtnavi.de
 # as soon as the migration is complete the secondary_hostname should be removed
 secondary_hostname: pilot.mobil-in-herrenberg.de
-api_hostname: api.mobil-in-herrenberg.de
-matomo_hostname: track.mobil-in-herrenberg.de
+api_hostname: api.stadtnavi.de
+matomo_hostname: track.stadtnavi.de
 # this isn't really the photon hostname as photon is disabled on production
 # it is here so that the playbook suceeds even when this variable is not defined
 # TODO: find a better solution for this
-photon_hostname: track.mobil-in-herrenberg.de
+photon_hostname: track.stadtnavi.de
 certbot_admin_email: mail@leonard.io
 
 map_url: https://api.maptiler.com/maps/c3e8e9d6-1155-4329-80f3-6c03a2bcc7a4/256/
 map_key: eA0drARBA1uPzLR6StGD
 
-matomo_url: https://track.mobil-in-herrenberg.de/js/container_uzMuZE7B.js
+matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
 
 # needs to be different on production as there minio is running on port 9000
 matomo_port: 9009

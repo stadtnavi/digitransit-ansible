@@ -72,3 +72,13 @@
     - "{{ api_hostname }}"
   notify: Restart nginx
 
+- name: Install systemd files for digitransit-restart
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
+    - digitransit-restart.service
+    - digitransit-restart.timer
+
+- name: Start digitransit-restart.timer
+  systemd: state=started name=digitransit-restart.timer daemon_reload=yes
+
+

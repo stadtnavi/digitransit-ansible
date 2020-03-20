@@ -1,0 +1,10 @@
+[Unit]
+Description=Restart digitransit every night
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStart=/usr/bin/systemctl restart digitransit-docker-compose.service
+
+[Install]
+WantedBy=multi-user.target

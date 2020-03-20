@@ -9,7 +9,7 @@ digitransit:
     ui: mfdz/digitransit-ui:ci-60aec8084734b973a92a02395e829b901d3a5f14
     map_server: mfdz/hsl-map-server:latest
 
-hostname: hbg.stadtnavi.de
+hostname: herrenberg.stadtnavi.de
 # as soon as the migration is complete the secondary_hostname should be removed
 secondary_hostname: pilot.mobil-in-herrenberg.de
 api_hostname: api.stadtnavi.de

@@ -2,4 +2,4 @@
 - name: Restart data-builder
   service:
     name: data-builder
-    state: restarted
+    state: started

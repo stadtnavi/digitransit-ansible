@@ -1,12 +1,12 @@
 ---
 
-otp_docker_tag: e7b62f62c666
+otp_docker_tag: 2d90c10439f891f69377798cbd09a03ca880c000
 digitransit:
   images:
     proxy: lehrenfried/digitransit-proxy:latest
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
-    ui: mfdz/digitransit-ui:ci-60aec8084734b973a92a02395e829b901d3a5f14
+    ui: mfdz/digitransit-ui:ci-c4c86c941b343700bb2482317e681f2998adb11a
     map_server: mfdz/hsl-map-server:latest
 
 hostname: herrenberg.stadtnavi.de

@@ -1,6 +1,6 @@
 ---
 
-otp_docker_tag: latest
+otp_docker_tag: e7b62f62c666
 digitransit:
   images:
     proxy: lehrenfried/digitransit-proxy:latest

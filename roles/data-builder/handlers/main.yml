@@ -1,5 +1,5 @@
 ---
 - name: Restart data-builder
-  service:
-    name: data-builder
-    state: started
+  systemd:
+    name: data-builder.service
+    state: reloaded

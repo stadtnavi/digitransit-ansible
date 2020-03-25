@@ -2,7 +2,6 @@
 Description=Convert the thingsboard data to parkapi format
 
 [Service]
-type=one-shot
 User=www-data
 Group=www-data
 Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}

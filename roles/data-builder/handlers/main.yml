@@ -2,4 +2,4 @@
 - name: Restart data-builder
   systemd:
     name: data-builder.service
-    state: reloaded
+    enabled: true

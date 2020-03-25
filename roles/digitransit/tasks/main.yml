@@ -21,6 +21,7 @@
 - name: Install nginx packages
   package:
     name:
+      - dnsmasq # for some reason outgoing traffic to port 53 (DNS) is blocked and we need to use this package to fake a local DNS server
       - nginx
     state: present
 

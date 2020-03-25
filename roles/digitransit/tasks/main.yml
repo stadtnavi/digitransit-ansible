@@ -25,6 +25,14 @@
       - nginx
     state: present
 
+- name: Create tile cache directory
+  file:
+    path: /var/cache/nginx
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
+
 - name: Copy nginx conf
   template: src=nginx.conf dest=/etc/nginx/
   notify: Restart nginx

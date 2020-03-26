@@ -11,9 +11,6 @@ users:
 certbot_certs:
   - domains:
     - "{{ hostname }}"
-  # as soon as the migration is complete the secondary_hostname should be removed
-  - domains:
-    - "{{ secondary_hostname }}"
   - domains:
     - "{{ api_hostname }}"
   - domains:

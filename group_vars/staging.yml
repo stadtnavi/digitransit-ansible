@@ -1,7 +1,5 @@
 ---
 hostname: mih.mitfahren-bw.de
-# as soon as the migration is complete the secondary_hostname should be removed
-secondary_hostname: mih.mitfahren-bw.de
 api_hostname: api.mih.mitfahren-bw.de
 matomo_hostname: track.mfdz.de
 photon_hostname: photon-temp.leonard.io

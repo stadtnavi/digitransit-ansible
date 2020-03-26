@@ -9,16 +9,16 @@ services:
       - {{ digitransit_port }}:8080
     volumes:
       - ${PWD}/logs:/var/log/nginx
-  opentripplanner-hb:
+  opentripplanner:
     image: {{ digitransit["images"]["otp"] }}
     environment:
       - ROUTER_NAME=hb
-      - ROUTER_DATA_CONTAINER_URL=http://opentripplanner-data-con-hb:8080
+      - ROUTER_DATA_CONTAINER_URL=http://opentripplanner-data-con:8080
       - API_URL=https://{{ api_hostname }}/routing/v1/
       - ENCRYPTION_SECRET_KEY={{ encryption_secret_key }}
     networks:
       - digitransit
-  opentripplanner-data-con-hb:
+  opentripplanner-data-con:
     image: {{ digitransit["images"]["data_container"] }}
     networks:
       - digitransit
@@ -41,7 +41,7 @@ services:
       - digitransit
     environment:
       - PARK_API_URL=https://{{ api_hostname }}/parkapi.json
-      - OTP_URL=opentripplanner-hb:8080/otp/routers/hb/index/graphql
+      - OTP_URL=opentripplanner:8080/otp/routers/hb/index/graphql
   photon-pelias-adapter:
     image: stadtulm/photon-pelias-adapter:latest
     networks:

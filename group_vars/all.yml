@@ -24,9 +24,9 @@ certbot_auto_renew_user: root
 certbot_create_if_missing: true
 certbot_create_standalone_stop_services:
   - nginx
-# run the certificate updates at a non-round time
-certbot_auto_renew_minute: "44"
-certbot_auto_renew_hour: "3"
+
+certbot_auto_renew_minute: "2"
+certbot_auto_renew_hour: "0"
 
 # the docker tag/sha used to build containers and run OTP itself in the digitransit docker-compose
 # cluster
@@ -34,7 +34,7 @@ otp_docker_tag: latest
 # default images - override in staging/production.yml if you want to use fixed tags
 digitransit:
   images:
-    proxy: lehrenfried/digitransit-proxy:pre-migration
+    proxy: lehrenfried/digitransit-proxy:post-migration
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
     ui: mfdz/digitransit-ui:latest

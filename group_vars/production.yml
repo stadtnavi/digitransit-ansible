@@ -1,5 +1,6 @@
 ---
 
+data_builder_tag: ci-f895c9790f95445a56d13fd1ecc1b2fbf8aca144
 otp_docker_tag: 2d90c10439f891f69377798cbd09a03ca880c000
 digitransit:
   images:
@@ -20,6 +21,7 @@ certbot_admin_email: mail@leonard.io
 
 map_url: "https://api.maptiler.com/maps/c3e8e9d6-1155-4329-80f3-6c03a2bcc7a4/256/{z}/{x}/{y}.png?key=eA0drARBA1uPzLR6StGD"
 matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
+
 
 # needs to be different on production as there minio is running on port 9000
 matomo_port: 9009

@@ -12,7 +12,7 @@ TimeoutStartSec=0
 
 Environment=CONTAINER_NAME=opentripplanner-data-builder
 Environment=SEED_IMAGE_NAME=mfdz/opentripplanner-data-container-hb:latest
-Environment=IMAGE_NAME=mfdz/otp-data-builder:latest
+Environment=IMAGE_NAME=mfdz/otp-data-builder:{{ data_builder_tag }}
 Environment=DATA_DIR=/var/data-builder/data
 
 WorkingDirectory=/var/data-builder/

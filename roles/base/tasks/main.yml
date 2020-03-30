@@ -35,8 +35,6 @@
     enabled: yes
     daemon_reload: yes
 
-
-
 - name: Copy send-to-matrix script
   template:
     src: "{{ item }}"

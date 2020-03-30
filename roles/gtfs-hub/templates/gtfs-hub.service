@@ -1,0 +1,31 @@
+[Unit]
+Description=gtfs-hub scripts to build a unified feed
+Requires=docker.service
+After=docker.service
+
+
+[Service]
+Type=oneshot
+Restart=no
+# /usr/bin/docker-pull could take a while so we disable the timeout
+TimeoutStartSec=0
+
+Environment=CONTAINER_NAME=gtfs-hub
+Environment=IMAGE_NAME=mfdz/gtfs-hub:latest
+Environment=DATA_DIR=/var/gtfs-hub
+
+WorkingDirectory=/var/gtfs-hub
+
+# prefixing with - means that the commands are allowed to fail
+ExecStartPre=-/usr/bin/docker stop ${CONTAINER_NAME}
+ExecStartPre=-/usr/bin/docker rm ${CONTAINER_NAME}
+ExecStartPre=/usr/bin/docker pull ${IMAGE_NAME}
+
+ExecStart=/usr/bin/docker run --name ${CONTAINER_NAME} -e HOST_DATA=${DATA_DIR} -v ${DATA_DIR}:/var/data -v /var/run/docker.sock:/var/run/docker.sock ${IMAGE_NAME}
+
+ExecStart=-/bin/bash -c 'echo "gtfs-hub build complete on {{ inventory_hostname }}" | send-to-matrix'
+
+ExecStop=/usr/bin/docker stop ${CONTAINER_NAME}
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+---
+- name: Create data directory
+  file:
+    path: /var/gtfs-hub
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+
+- name: Install systemd files
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
+    - gtfs-hub.service
+    #- data-builder.timer
+
+    #- name: Start data-builder.timer
+    #systemd:
+      #name: data-builder.timer
+      #state: started
+      #enabled: yes
+      #daemon_reload: yes

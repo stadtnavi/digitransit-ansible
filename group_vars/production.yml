@@ -1,6 +1,7 @@
 ---
 
-data_builder_tag: ci-f895c9790f95445a56d13fd1ecc1b2fbf8aca144
+data_builder_tag: ci-b8a3dd6419168ac40abfe2bed60eff96de8b6f2d
+
 otp_docker_tag: 2d90c10439f891f69377798cbd09a03ca880c000
 digitransit:
   images:

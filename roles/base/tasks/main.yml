@@ -29,7 +29,13 @@
     - docker-prune.timer
 
 - name: Start docker-prune.timer
-  systemd: state=started name=docker-prune.timer daemon_reload=yes
+  systemd:
+    name: thingsboard-to-parkapi.timer
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+
 
 - name: Copy send-to-matrix script
   template:

@@ -4,6 +4,7 @@ Description=Build a container every night
 [Timer]
 # run it every night at 11
 OnCalendar=*-*-* 23:00:00
+Persistent=true
 
 [Install]
 WantedBy=timers.target

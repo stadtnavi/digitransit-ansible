@@ -16,7 +16,11 @@
   notify: Restart digitransit
 
 - name: Start digitransit
-  systemd: state=started name=digitransit-docker-compose daemon_reload=yes
+  systemd:
+    name: digitransit-docker-compose
+    state: started
+    enabled: yes
+    daemon_reload: yes
 
 - name: Install nginx packages
   package:
@@ -85,6 +89,10 @@
     - digitransit-restart.timer
 
 - name: Start digitransit-restart.timer
-  systemd: state=started name=digitransit-restart.timer daemon_reload=yes
+  systemd:
+    name: digitransit-restart.timer
+    state: started
+    enabled: yes
+    daemon_reload: yes
 
 

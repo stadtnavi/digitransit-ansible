@@ -31,7 +31,11 @@
     - thingsboard-to-parkapi.service
     - thingsboard-to-parkapi.timer
 
-- name: Start docker-prune.timer
-  systemd: state=started name=thingsboard-to-parkapi.timer daemon_reload=yes
+- name: Start thingsboard timer
+  systemd:
+    name: thingsboard-to-parkapi.timer
+    state: started
+    enabled: yes
+    daemon_reload: yes
 
 

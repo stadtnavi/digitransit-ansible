@@ -15,4 +15,8 @@
     - data-builder.timer
 
 - name: Start data-builder.timer
-  systemd: state=started name=data-builder.timer daemon_reload=yes
+  systemd:
+    name: data-builder.timer
+    state: started
+    enabled: yes
+    daemon_reload: yes

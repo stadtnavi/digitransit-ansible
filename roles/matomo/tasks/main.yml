@@ -20,7 +20,11 @@
   notify: Restart matomo docker-compose
 
 - name: Start matomo
-  systemd: state=started name=matomo-docker-compose daemon_reload=yes
+  systemd:
+    name: matomo-docker-compose
+    state: started
+    enabled: yes
+    daemon_reload: yes
 
 - name: Copy nginx site conf
   template: src=nginx-site.conf dest=/etc/matomo/{{ matomo_hostname }}.conf

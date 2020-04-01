@@ -11,11 +11,10 @@
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:
     - gtfs-hub.service
-    #- data-builder.timer
+    - gtfs-hub.timer
 
-    #- name: Start data-builder.timer
-    #systemd:
-      #name: data-builder.timer
-      #state: started
-      #enabled: yes
-      #daemon_reload: yes
+- name: Start data-builder.timer
+  systemd:
+    name: gtfs-hub.timer
+    enabled: yes
+    daemon_reload: yes

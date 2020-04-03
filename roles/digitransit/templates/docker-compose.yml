@@ -43,7 +43,7 @@ services:
       - PARK_API_URL=https://{{ api_hostname }}/parkapi.json
       - OTP_URL=opentripplanner:8080/otp/routers/hb/index/graphql
   photon-pelias-adapter:
-    image: lehrenfried/photon-pelias-adapter:latest
+    image: stadtulm/photon-pelias-adapter:latest
     networks:
       - digitransit
     environment:

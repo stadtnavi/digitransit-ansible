@@ -2,7 +2,7 @@
 
 data_builder_tag: ci-b8a3dd6419168ac40abfe2bed60eff96de8b6f2d
 
-otp_docker_tag: 2d90c10439f891f69377798cbd09a03ca880c000
+otp_docker_tag: 4e9b27d7263426255770c3441d6c5b8ab6152834
 digitransit:
   images:
     proxy: lehrenfried/digitransit-proxy:post-migration

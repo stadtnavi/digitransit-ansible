@@ -23,7 +23,7 @@ ExecStart=/usr/local/bin/docker-compose up
 
 ExecStop=/usr/local/bin/docker-compose pull --ignore-pull-failures
 # remove untagged digitransit-ui images as they clog up the staging system's disk
-ExecStop=-/bin/bash -c "docker images | grep digitransit-ui | grep "<none>" | awk '{print $3}' | xargs --no-run-if-empty docker rmi"
+ExecStop=-/bin/bash -c "docker images | grep digitransit-ui | grep '<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rmi"
 ExecStop=/usr/local/bin/docker-compose down -v
 
 [Install]

@@ -3,6 +3,7 @@ version: '3'
 services:
   digitransit-proxy:
     image: {{ digitransit["images"]["proxy"] }}
+    restart: on-failure:5
     networks:
       - digitransit
     ports:
@@ -11,6 +12,7 @@ services:
       - ${PWD}/logs:/var/log/nginx
   opentripplanner:
     image: {{ digitransit["images"]["otp"] }}
+    restart: on-failure:5
     environment:
       - ROUTER_NAME=hb
       - ROUTER_DATA_CONTAINER_URL=http://opentripplanner-data-con:8080
@@ -21,10 +23,12 @@ services:
       - digitransit
   opentripplanner-data-con:
     image: {{ digitransit["images"]["data_container"] }}
+    restart: on-failure:5
     networks:
       - digitransit
   digitransit-ui:
     image: {{ digitransit["images"]["ui"] }}
+    restart: on-failure:5
     networks:
       - digitransit
     environment:
@@ -38,6 +42,7 @@ services:
       - FAHRGEMEINSCHAFT_AUTH_KEY={{ fahrgemeinschaft_auth_key }}
   hsl-map-server:
     image: {{ digitransit["images"]["map_server"] }}
+    restart: on-failure:5
     networks:
       - digitransit
     environment:
@@ -45,6 +50,7 @@ services:
       - OTP_URL=opentripplanner:8080/otp/routers/hb/index/graphql
   photon-pelias-adapter:
     image: stadtulm/photon-pelias-adapter:latest
+    restart: on-failure:5
     networks:
       - digitransit
     environment:

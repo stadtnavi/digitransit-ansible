@@ -28,7 +28,7 @@ services:
       - digitransit
   digitransit-ui:
     image: {{ digitransit["images"]["ui"] }}
-    restart: on-failure:5
+    restart: on-failure
     networks:
       - digitransit
     environment:

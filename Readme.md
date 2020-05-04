@@ -63,6 +63,15 @@ them prior to restarting.
 It also cleanly stops and removes the containers. This
 is important because `hsl-map-server` cannot be stopped and restarted.
 
+**Viewing logs**
+
+All logs are sent to `journald` for storage and automatic deletion. Here is
+a list of common `journalctl`.
+
+- Viewing *all* digitransit logs: `journalctl -u digitransit-docker-compose.service`
+- Viewing digitransit-ui logs: `journalctl CONTAINER_NAME=digitransit-ui`
+- Viewing opentripplanner logs: `journalctl CONTAINER_NAME=opentripplanner`
+
 **Triggering a rebuild of the OTP graph**
 
 `systemctl restart data-builder`

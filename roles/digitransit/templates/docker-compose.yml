@@ -13,6 +13,8 @@ services:
   opentripplanner:
     image: {{ digitransit["images"]["otp"] }}
     restart: on-failure:5
+    logging:
+      driver: journald
     environment:
       - ROUTER_NAME=hb
       - ROUTER_DATA_CONTAINER_URL=http://opentripplanner-data-con:8080
@@ -45,9 +47,13 @@ services:
     restart: on-failure:5
     networks:
       - digitransit
+    logging:
+      driver: journald
     environment:
       - PARK_API_URL=https://{{ api_hostname }}/parkapi.json
       - OTP_URL=opentripplanner:8080/otp/routers/hb/index/graphql
+    logging:
+      driver: journald
   photon-pelias-adapter:
     image: stadtulm/photon-pelias-adapter:latest
     restart: on-failure:5

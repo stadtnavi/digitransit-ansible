@@ -3,6 +3,7 @@ version: '3'
 services:
   digitransit-proxy:
     image: {{ digitransit["images"]["proxy"] }}
+    container_name: digitransit-proxy
     restart: on-failure:5
     networks:
       - digitransit
@@ -13,6 +14,7 @@ services:
   opentripplanner:
     image: {{ digitransit["images"]["otp"] }}
     restart: on-failure:5
+    container_name: opentripplanner
     logging:
       driver: journald
     environment:
@@ -33,6 +35,7 @@ services:
   digitransit-ui:
     image: {{ digitransit["images"]["ui"] }}
     restart: on-failure
+    container_name: digitransit-ui
     networks:
       - digitransit
     logging:
@@ -48,6 +51,7 @@ services:
       - FAHRGEMEINSCHAFT_AUTH_KEY={{ fahrgemeinschaft_auth_key }}
   hsl-map-server:
     image: {{ digitransit["images"]["map_server"] }}
+    container_name: hsl-map-server
     restart: on-failure:5
     networks:
       - digitransit
@@ -60,6 +64,7 @@ services:
       driver: journald
   photon-pelias-adapter:
     image: stadtulm/photon-pelias-adapter:latest
+    container_name: photon-pelias-adapter
     logging:
       driver: journald
     restart: on-failure:5

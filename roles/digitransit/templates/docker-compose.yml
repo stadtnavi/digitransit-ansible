@@ -26,6 +26,8 @@ services:
   opentripplanner-data-con:
     image: {{ digitransit["images"]["data_container"] }}
     restart: on-failure:5
+    logging:
+      driver: journald
     networks:
       - digitransit
   digitransit-ui:
@@ -33,6 +35,8 @@ services:
     restart: on-failure
     networks:
       - digitransit
+    logging:
+      driver: journald
     environment:
       - CONFIG=hb
       - GEOCODING_BASE_URL=https://{{ api_hostname }}/geocoding/v1
@@ -56,6 +60,8 @@ services:
       driver: journald
   photon-pelias-adapter:
     image: stadtulm/photon-pelias-adapter:latest
+    logging:
+      driver: journald
     restart: on-failure:5
     networks:
       - digitransit

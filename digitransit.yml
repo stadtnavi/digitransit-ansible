@@ -8,8 +8,6 @@
     - thingsboard-to-parkapi
     - geerlingguy.certbot
     - matomo
-    - role: gtfs-hub
-      when: install_gtfs_hub
     - data-builder
     - role: photon
       when: install_photon

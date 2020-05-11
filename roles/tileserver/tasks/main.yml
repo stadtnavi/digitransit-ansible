@@ -1,0 +1,34 @@
+---
+- name: Install base packages
+  package:
+    name:
+      - pyosmium
+    state: present
+
+
+- name: Create graphs directory
+  file:
+    path: /var/tileserver/
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+
+- name: Install config and script files
+  template: src={{ item }} dest=/var/tileserver/
+  with_items:
+    - build-mbtiles
+    - config-openmaptiles.json
+    - process-openmaptiles.lua
+
+- name: Install systemd files
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
+    - tilemaker.service
+    - tilemaker.timer
+
+- name: Start tilemaker.timer
+  systemd:
+    name: tilemaker.timer
+    enabled: yes
+    daemon_reload: yes

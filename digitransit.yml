@@ -9,6 +9,8 @@
     - geerlingguy.certbot
     - matomo
     - data-builder
+    - digitransit
     - role: photon
       when: install_photon
-    - digitransit
+    - role: tileserver
+      when: install_tileserver

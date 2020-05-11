@@ -1,0 +1,9 @@
+[Unit]
+Description=Rebuild tiles every night
+
+[Timer]
+OnCalendar=*-*-* 02:15:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

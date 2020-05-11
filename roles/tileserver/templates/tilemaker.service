@@ -1,0 +1,10 @@
+[Unit]
+Description=Build mbtiles
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStart=/var/tileserver/build-mbtiles
+
+[Install]
+WantedBy=multi-user.target

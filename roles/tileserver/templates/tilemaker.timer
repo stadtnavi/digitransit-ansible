@@ -1,5 +1,5 @@
 [Unit]
-Description=Rebuild tiles every night
+Description=Rebuild mbtiles every night
 
 [Timer]
 OnCalendar=*-*-* 02:15:00

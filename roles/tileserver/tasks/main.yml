@@ -30,5 +30,6 @@
 - name: Start tilemaker.timer
   systemd:
     name: tilemaker.timer
+    state: started
     enabled: yes
     daemon_reload: yes

@@ -1,0 +1,29 @@
+{
+  "options": {
+    "paths": {
+      "root": "/usr/src/app/node_modules/tileserver-gl-styles",
+      "fonts": "fonts",
+      "styles": "/data",
+      "mbtiles": "/data"
+    },
+    "tileMargin": 50
+  },
+  "styles": {
+    "streets": {
+      "style": "streets.json",
+      "tilejson": {
+        "bounds": [
+          7.372216,
+          47.18741,
+          10.514946,
+          49.794564
+        ]
+      }
+    }
+  },
+  "data": {
+    "v3": {
+      "mbtiles": "output.mbtiles"
+    }
+  }
+}

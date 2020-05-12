@@ -26,6 +26,8 @@
   with_items:
     - tilemaker.service
     - tilemaker.timer
+    - tileserver.service
+  notify: Restart tileserver
 
 - name: Start tilemaker.timer
   systemd:
@@ -33,3 +35,8 @@
     state: started
     enabled: yes
     daemon_reload: yes
+
+  with_items:
+    - tilemaker.timer
+    - tileserver.service
+

@@ -23,7 +23,7 @@
   },
   "data": {
     "v3": {
-      "mbtiles": "output.mbtiles"
+      "mbtiles": "input.mbtiles"
     }
   }
 }

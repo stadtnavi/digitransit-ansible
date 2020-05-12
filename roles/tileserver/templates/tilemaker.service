@@ -4,6 +4,7 @@ Requires=docker.service
 After=docker.service
 
 [Service]
+WorkingDirectory=/var/tileserver
 ExecStart=/var/tileserver/build-mbtiles
 
 [Install]

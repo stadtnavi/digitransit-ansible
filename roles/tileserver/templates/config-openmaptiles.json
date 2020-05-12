@@ -30,7 +30,7 @@
     "aeroway":           { "minzoom": 11, "maxzoom": 14 },
     "park":              { "minzoom": 11, "maxzoom": 14 },
     "landuse":           { "minzoom": 11, "maxzoom": 14 },
-    "landcover":         { "minzoom": 6, "maxzoom": 14, "simplify_below": 10, "simplify_length": 1, "simplify_ratio": 2},
+    "landcover":         { "minzoom": 7, "maxzoom": 14 },
     "mountain_peak":     { "minzoom": 11, "maxzoom": 14 }
   },
   "settings": {

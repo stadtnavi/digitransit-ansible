@@ -1,17 +1,21 @@
 #! /bin/bash -e
 
 PBF_FILE=baden-wuerttemberg.osm.pbf
+IMAGE_NAME=lehrenfried/tilemaker
 
 rm -f ${PBF_FILE}
 curl http://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf -o ${PBF_FILE}
 
-nice -n 15 \
+docker pull ${IMAGE_NAME}
+nice -n 19 \
   docker run \
   -v /var/tileserver/:/srv \
-  --rm lehrenfried/tilemaker /srv/${PBF_FILE} \
+  --rm ${IMAGE_NAME} /srv/${PBF_FILE} \
   --output=/srv/output.mbtiles \
   --config=/srv/config-openmaptiles.json \
   --process=/srv/process-openmaptiles.lua \
   --verbose
+
+mv output.mbtiles input.mbtiles
 
 echo "mbtiles build complete on {{ inventory_hostname }}" | send-to-matrix

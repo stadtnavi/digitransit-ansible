@@ -65,8 +65,8 @@
           ]
         }
       },
-      "source": "landcover",
-      "source-layer": "globallandcover",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
       "type": "fill"
     },
     {
@@ -95,8 +95,8 @@
           ]
         }
       },
-      "source": "landcover",
-      "source-layer": "globallandcover",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
       "type": "fill"
     },
     {
@@ -125,8 +125,8 @@
           ]
         }
       },
-      "source": "landcover",
-      "source-layer": "globallandcover",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
       "type": "fill"
     },
     {
@@ -155,8 +155,8 @@
           ]
         }
       },
-      "source": "landcover",
-      "source-layer": "globallandcover",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
       "type": "fill"
     },
     {
@@ -185,8 +185,8 @@
           ]
         }
       },
-      "source": "landcover",
-      "source-layer": "globallandcover",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
       "type": "fill"
     },
     {
@@ -218,8 +218,8 @@
           ]
         }
       },
-      "source": "landcover",
-      "source-layer": "globallandcover",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
       "type": "fill"
     },
     {

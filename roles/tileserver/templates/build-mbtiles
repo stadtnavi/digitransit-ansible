@@ -18,4 +18,4 @@ nice -n 19 \
 
 mv output.mbtiles input.mbtiles
 
-echo "mbtiles build complete on {{ inventory_hostname }}" | send-to-matrix
+echo "🗺️ mbtiles build complete on {{ inventory_hostname }} 🗺️" | send-to-matrix

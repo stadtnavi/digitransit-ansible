@@ -89,7 +89,7 @@ function node_function(node)
 		elseif place == "state"         then rank = 1
 		elseif place == "city"          then rank = 2
 		elseif place == "town"          then rank = 3
-		elseif place == "village"       then rank = 4
+		elseif place == "village"       then rank = 3
 		elseif place == "suburb"        then rank = 3
 		elseif place == "neighbourhood" then rank = 4
 		elseif place == "locality"      then rank = 4

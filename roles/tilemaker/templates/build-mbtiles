@@ -15,8 +15,10 @@ rm -f ${TILEMAKER_OUTPUT_FILE}
 docker pull ${IMAGE_NAME}
 nice -n 19 \
   docker run \
-  -v /var/tileserver/:/srv \
-  --rm ${IMAGE_NAME} /srv/${PBF_FILE} \
+  -v /var/tilemaker/:/srv \
+  --name tilemaker \
+  --rm \
+  ${IMAGE_NAME} /srv/${PBF_FILE} \
   --output=/srv/${TILEMAKER_OUTPUT_FILE} \
   --config=/srv/config-openmaptiles.json \
   --process=/srv/process-openmaptiles.lua \

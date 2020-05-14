@@ -8,5 +8,7 @@ WorkingDirectory=/var/tilemaker
 ExecStart=/var/tilemaker/build-mbtiles
 Restart=always
 
+ExecStop=-/usr/bin/docker stop tilemaker
+
 [Install]
 WantedBy=multi-user.target

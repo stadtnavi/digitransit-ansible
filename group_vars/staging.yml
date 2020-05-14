@@ -75,4 +75,4 @@ matrix_bot_token: !vault |
           3031353138306461663431346665376462353763636631663338
 
 install_photon: True
-install_tileserver: True
+install_tilemaker: True

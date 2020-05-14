@@ -1,0 +1,28 @@
+#! /bin/bash -e
+
+PBF_DOWNLOAD_URL={{ tilemaker_pbf_download_url }}
+PBF_FILE=tilemaker-input.osm.pbf
+IMAGE_NAME=lehrenfried/tilemaker
+
+TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles
+TILEMAKER_FINAL_OUTPUT_FILE=tilemaker-output.mbtiles
+
+rm -f ${PBF_FILE}
+curl -s ${PBF_DOWNLOAD_URL} -o ${PBF_FILE}
+
+rm -f ${TILEMAKER_OUTPUT_FILE}
+
+docker pull ${IMAGE_NAME}
+nice -n 19 \
+  docker run \
+  -v /var/tileserver/:/srv \
+  --rm ${IMAGE_NAME} /srv/${PBF_FILE} \
+  --output=/srv/${TILEMAKER_OUTPUT_FILE} \
+  --config=/srv/config-openmaptiles.json \
+  --process=/srv/process-openmaptiles.lua \
+  --verbose
+
+# tilemaker doesn't like it when the output file already exists to we move it
+mv ${TILEMKER_OUTPUT_FILE} ${TILEMAKER_FINAL_OUTPUT_FILE}
+
+echo "🗺️ mbtiles build complete on {{ inventory_hostname }} 🗺️" | send-to-matrix

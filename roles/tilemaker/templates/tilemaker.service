@@ -4,8 +4,9 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-WorkingDirectory=/var/tileserver
-ExecStart=/var/tileserver/build-mbtiles
+WorkingDirectory=/var/tilemaker
+ExecStart=/var/tilemaker/build-mbtiles
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

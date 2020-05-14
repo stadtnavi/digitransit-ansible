@@ -5,11 +5,12 @@
   become: yes
   roles:
     - base
-    - role: photon
-      when: install_photon
-    - role: tileserver
-      when: install_tileserver
+    - role: tilemaker
+      when: install_tilemaker
+    - tileserver
     - digitransit
     - thingsboard-to-parkapi
     - matomo
     - data-builder
+    - role: photon
+      when: install_photon

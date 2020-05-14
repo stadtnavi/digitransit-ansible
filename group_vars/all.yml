@@ -112,5 +112,5 @@ osm_updates_url: http://download.geofabrik.de/europe/dach-updates/
 nominatim_import_wikipedia: "true"
 install_photon: False
 
-# tileserver
-install_tileserver: False
+# tilemaker
+install_tilemaker: False

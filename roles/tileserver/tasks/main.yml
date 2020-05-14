@@ -17,31 +17,20 @@
 - name: Install config and script files
   template: src={{ item }} dest=/var/tileserver/
   with_items:
-    - build-mbtiles
-    - config-openmaptiles.json
-    - process-openmaptiles.lua
     - streets.json
     - tileserver-config.json
   notify: Restart tileserver
 
-- name: Make script executable
-  file: dest=/var/tileserver/build-mbtiles mode=a+x
-
 - name: Install systemd files
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:
-    - tilemaker.service
-    - tilemaker.timer
     - tileserver.service
   notify: Restart tileserver
 
-- name: Start tilemaker.timer
+- name: Start tileserver
   systemd:
-    name: tilemaker.timer
+    name: tileserver.service
     state: started
     enabled: yes
     daemon_reload: yes
-  with_items:
-    - tilemaker.timer
-    - tileserver.service
 

@@ -1,0 +1,39 @@
+---
+- name: Install packages
+  package:
+    name:
+      - pyosmium
+      - curl
+    state: present
+
+- name: Create data directory
+  file:
+    path: /var/tilemaker/
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+
+- name: Install config and script files
+  template: src={{ item }} dest=/var/tilemaker/
+  with_items:
+    - build-mbtiles
+    - config-openmaptiles.json
+    - process-openmaptiles.lua
+
+- name: Make script executable
+  file: dest=/var/tilemaker/build-mbtiles mode=a+x
+
+- name: Install systemd files
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
+    - tilemaker.service
+    - tilemaker.timer
+
+- name: Start tilemaker.timer
+  systemd:
+    name: tilemaker.timer
+    state: started
+    enabled: yes
+    daemon_reload: yes
+

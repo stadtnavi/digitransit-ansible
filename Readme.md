@@ -34,9 +34,27 @@ proxy all non-UI related API requests to their corresponding docker containers.
 The digitransit configuration files, that don't live inside docker containers,
 are placed or symlinked into `/etc/digitransit`.
 
+### Timers
+
+This playbook uses systemd timers as a replacement for cron jobs.
+
+If you want to list them run `systemctl list-timers`.
+
+As of May 2020 this list as follows:
+
+```
+systemctl list-timers 
+NEXT                          LEFT          LAST                          PASSED               UNIT                           ACTIVATES
+Thu 2020-05-14 12:18:00 CEST  20s left      Thu 2020-05-14 12:16:01 CEST  1min 38s ago         thingsboard-to-parkapi.timer   thingsboard-to-parkapi.service
+Thu 2020-05-14 23:00:00 CEST  10h left      Wed 2020-05-13 23:00:01 CEST  13h ago              data-builder.timer             data-builder.service
+Fri 2020-05-15 00:00:00 CEST  11h left      Thu 2020-05-14 00:00:01 CEST  12h ago              docker-prune.timer             docker-prune.service
+Fri 2020-05-15 02:00:00 CEST  13h left      Thu 2020-05-14 02:00:01 CEST  10h ago              digitransit-restart.timer      digitransit-restart.service
+Fri 2020-05-15 02:15:00 CEST  13h left      Thu 2020-05-14 02:15:02 CEST  10h ago              tilemaker.timer                tilemaker.service
+```
+
 ### Automatic graph builds
 
-The docker container `data-builder` builds a new graph every night at 1 o'clock.
+The docker container `data-builder` builds a new graph every night at 11 o'clock.
 This is controlled by the systemd timer `data-builder` and if you want to modify
 this, then edit `data-builder.timer` and `data-builder.service`.
 
@@ -76,7 +94,7 @@ a list of common `journalctl`.
 
 `systemctl restart data-builder`
 
-A build is run every night but sometimes you want to trigger it instantly.
+A build is run every night but sometimes you want to trigger it manually.
 
 **aliases**
 

@@ -3,10 +3,14 @@ Description=Build mbtiles
 Requires=docker.service
 After=docker.service
 
+# Restart three times within 10 minutes so that an intermittent network failures are gracefully handled
+StartLimitIntervalSec=600
+StartLimitBurst=3
+
 [Service]
 WorkingDirectory=/var/tilemaker
 ExecStart=/var/tilemaker/build-mbtiles
-Restart=always
+Restart=on-failure
 
 ExecStop=-/usr/bin/docker stop tilemaker
 

@@ -8,7 +8,7 @@ TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles
 TILEMAKER_FINAL_OUTPUT_FILE=tilemaker-output.mbtiles
 
 rm -f ${PBF_FILE}
-curl -s ${PBF_DOWNLOAD_URL} -o ${PBF_FILE}
+curl -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 
 rm -f ${TILEMAKER_OUTPUT_FILE}
 
@@ -25,6 +25,6 @@ nice -n 19 \
   --verbose
 
 # tilemaker doesn't like it when the output file already exists to we move it
-mv ${TILEMKER_OUTPUT_FILE} ${TILEMAKER_FINAL_OUTPUT_FILE}
+mv "${TILEMAKER_OUTPUT_FILE}" "${TILEMAKER_FINAL_OUTPUT_FILE}"
 
 echo "🗺️ mbtiles build complete on {{ inventory_hostname }} 🗺️" | send-to-matrix

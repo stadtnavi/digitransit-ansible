@@ -4869,13 +4869,9 @@
   "name": "Satellite Overlay",
   "pitch": 0,
   "sources": {
-    "landcover": {
-      "type": "vector",
-      "url": "https://api.maptiler.com/tiles/landcover/tiles.json?key=eA0drARBA1uPzLR6StGD"
-    },
-    "openmaptiles": {
-      "type": "vector",
-      "url": "https://api.maptiler.com/tiles/v3/tiles.json?key=eA0drARBA1uPzLR6StGD"
+    "openmaptiles":{
+      "type":"vector",
+      "url":"mbtiles://{v3}"
     }
   },
   "sprite": "https://cloud.maptiler.com/api/sprites/53061fbd-c3bf-4c0d-a1e2-84413aa16fec",

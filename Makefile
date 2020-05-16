@@ -1,4 +1,5 @@
 .PHONY: vagrant staging production tileserver
+.PRECIOUS: tileserver/%.osm.pbf
 
 PLAYBOOK_CMD:=ansible-playbook --vault-password-file vault-password
 

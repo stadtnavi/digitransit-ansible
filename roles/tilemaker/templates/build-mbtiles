@@ -27,4 +27,4 @@ nice -n 19 \
 # tilemaker doesn't like it when the output file already exists to we move it
 mv "${TILEMAKER_OUTPUT_FILE}" "${TILEMAKER_FINAL_OUTPUT_FILE}"
 
-echo "🗺️ mbtiles build complete on {{ inventory_hostname }} 🗺️" | send-to-matrix
+echo "🏗️ mbtiles build complete on {{ inventory_hostname }} 🏗️" | send-to-matrix

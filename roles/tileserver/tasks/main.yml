@@ -25,12 +25,17 @@
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:
     - tileserver.service
+    - tileserver-restart.service
+    - tileserver-restart.timer
   notify: Restart tileserver
 
-- name: Start tileserver
+- name: Start tileserver and restart every night
   systemd:
-    name: tileserver.service
+    name: "{{ item }}"
     state: started
     enabled: yes
     daemon_reload: yes
+  with_items:
+    - tileserver.service
+    - tileserver-restart.timer
 

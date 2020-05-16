@@ -1,0 +1,10 @@
+[Unit]
+Description=Restart tileserver every night
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStart=/bin/systemctl restart tileserver.service
+
+[Install]
+WantedBy=multi-user.target

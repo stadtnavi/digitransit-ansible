@@ -8,9 +8,15 @@ Environment=CONTAINER_IMAGE=maptiler/tileserver-gl
 Environment=CONTAINER_NAME=tileserver
 TimeoutStartSec=0
 Restart=always
+
+ExecStartPre=-/bin/bash -c 'echo "🗺️ Restarting tileserver on {{ inventory_hostname }} 🗺️ " send-to-matrix'
 ExecStartPre=-/usr/bin/docker stop ${CONTAINER_NAME}
 ExecStartPre=-/usr/bin/docker rm ${CONTAINER_NAME}
 ExecStartPre=/usr/bin/docker pull ${CONTAINER_IMAGE}
+# rsync makes sure that it's a noop when the files are the same
+# i would have preferred a symlink but that doesn't work with docker volumes
+ExecStartPre=-/usr/bin/rsync /var/tilemaker/tilemaker-output.mbtiles /var/tileserver/input.mbtiles
+
 ExecStart=/usr/bin/docker run --rm --name ${CONTAINER_NAME} -v /var/tileserver/:/data -p 5000:80 ${CONTAINER_IMAGE} -u https://api.mih.mitfahren-bw.de/tiles/openmaptiles/ --config tileserver-config.json
 
 [Install]

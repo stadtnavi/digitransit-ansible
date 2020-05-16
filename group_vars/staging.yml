@@ -5,8 +5,6 @@ matomo_hostname: track.mfdz.de
 photon_hostname: photon-temp.leonard.io
 certbot_admin_email: mail@leonard.io
 
-map_url: "https://api.maptiler.com/maps/c3e8e9d6-1155-4329-80f3-6c03a2bcc7a4/256/{z}/{x}/{y}.png?key=eA0drARBA1uPzLR6StGD"
-
 matomo_url: https://track.mfdz.de/js/container_TeHZVOVk_staging_a1a89f1a01da974800990125.js
 
 mfdz_gtfs_url: !vault |

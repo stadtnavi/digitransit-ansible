@@ -20,7 +20,6 @@ matomo_hostname: track.stadtnavi.de
 photon_hostname: track.stadtnavi.de
 certbot_admin_email: mail@leonard.io
 
-map_url: "https://api.maptiler.com/maps/c3e8e9d6-1155-4329-80f3-6c03a2bcc7a4/256/{z}/{x}/{y}.png?key=eA0drARBA1uPzLR6StGD"
 matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
 
 

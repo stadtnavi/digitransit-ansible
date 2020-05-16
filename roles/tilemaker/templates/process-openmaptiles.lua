@@ -140,7 +140,7 @@ end
 majorRoadValues = Set { "motorway", "trunk", "primary" }
 mainRoadValues  = Set { "secondary", "motorway_link", "trunk_link", "primary_link", "secondary_link" }
 midRoadValues   = Set { "tertiary", "tertiary_link" }
-minorRoadValues = Set { "unclassified", "residential", "road" }
+minorRoadValues = Set { "unclassified", "residential", "road", "living_street" }
 trackValues     = Set { "cycleway", "byway", "bridleway", "track" }
 pathValues      = Set { "footway", "path" }
 linkValues      = Set { "motorway_link", "trunk_link", "primary_link", "secondary_link", "tertiary_link" }

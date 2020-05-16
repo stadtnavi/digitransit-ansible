@@ -18,6 +18,7 @@
   template: src={{ item }} dest=/var/tileserver/
   with_items:
     - streets.json
+    - satellite-overlay.json
     - tileserver-config.json
   notify: Restart tileserver
 

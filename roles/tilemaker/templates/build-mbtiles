@@ -13,10 +13,10 @@ curl -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 rm -f ${TILEMAKER_OUTPUT_FILE}
 
 docker pull ${IMAGE_NAME}
-nice -n 19 \
-  docker run \
+docker run \
   -v /var/tilemaker/:/srv \
   --name tilemaker \
+  --cpu-shares 512 \ # if CPU is constrained then lower this process' priority
   --rm \
   ${IMAGE_NAME} /srv/${PBF_FILE} \
   --output=/srv/${TILEMAKER_OUTPUT_FILE} \

@@ -142,7 +142,7 @@ mainRoadValues  = Set { "secondary", "motorway_link", "trunk_link", "primary_lin
 midRoadValues   = Set { "tertiary", "tertiary_link" }
 minorRoadValues = Set { "unclassified", "residential", "road", "living_street" }
 trackValues     = Set { "cycleway", "byway", "bridleway", "track" }
-pathValues      = Set { "footway", "path" }
+pathValues      = Set { "footway", "path", "steps" }
 linkValues      = Set { "motorway_link", "trunk_link", "primary_link", "secondary_link", "tertiary_link" }
 
 aerowayBuildings= Set { "terminal", "gate", "tower" }

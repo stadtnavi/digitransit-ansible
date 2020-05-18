@@ -2748,6 +2748,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#e9ac77",
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -2800,6 +2801,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#e9ac77",
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -2898,6 +2900,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fc8",
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -2947,6 +2950,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fff",
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -3040,6 +3044,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fea",
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -3087,6 +3092,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fff",
+        "line-opacity": 0.2,
         "line-opacity": 1,
         "line-width": {
           "base": 1.2,
@@ -3132,6 +3138,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fff",
+        "line-opacity": 0.2,
         "line-dasharray": [
           2,
           2
@@ -3181,6 +3188,7 @@
       "metadata": {},
       "paint": {
         "line-color": "rgba(245, 245, 243, 1)",
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -3225,6 +3233,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fff",
+        "line-opacity": 0.2,
         "line-dasharray": [
           2,
           2
@@ -3274,6 +3283,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fea",
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -3319,6 +3329,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fea",
+        "line-opacity": 0.2,
         "line-dasharray": [
           2,
           2
@@ -3371,6 +3382,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fc8",
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -3419,6 +3431,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fc8",
+        "line-opacity": 0.2,
         "line-dasharray": [
           2,
           2
@@ -3463,6 +3476,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#bbb",
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.4,
           "stops": [
@@ -3503,6 +3517,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#bbb",
+        "line-opacity": 0.2,
         "line-dasharray": [
           0.2,
           8

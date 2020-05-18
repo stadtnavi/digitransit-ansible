@@ -357,7 +357,6 @@ function way_function(way)
 			way:LayerAsCentroid("water_name_detail")
 			SetNameAttributes(way)
 			way:Attribute("class", class)
-			way:AttributeNumeric("rank", 10)
 		end
 		return -- in case we get any landuse processing
 	end

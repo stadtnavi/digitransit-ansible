@@ -1,6 +1,8 @@
 .PHONY: vagrant staging production tileserver
 .PRECIOUS: tileserver/%.osm.pbf
 
+# ansible
+
 PLAYBOOK_CMD:=ansible-playbook --vault-password-file vault-password
 
 galaxy-install:
@@ -15,6 +17,8 @@ staging: galaxy-install
 
 production: galaxy-install
 	${PLAYBOOK_CMD} -i production digitransit.yml
+
+# tileserver
 
 tileserver/stuttgart-regbez.osm.pbf:
 	mkdir -p tileserver
@@ -37,4 +41,5 @@ tileserver-%: tileserver/%.mbtiles
 
 tileserver: tileserver-vaihingen
 
-
+copy-upstream:
+	cp roles/tilemaker/templates/process-openmaptiles.lua ../tilemaker/resources/

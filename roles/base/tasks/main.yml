@@ -10,6 +10,7 @@
       - silversearcher-ag
       - autojump
       - jq
+      - zsh
     state: present
 
 - name: Install global aliases
@@ -17,6 +18,11 @@
 
 - hostname:
     name: "{{ server_name }}"
+
+- name: Add hostname to /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    line: "127.0.0.1 {{ server_name }}"
 
 - name: Set timezone to Europe/Berlin
   timezone:
@@ -28,7 +34,7 @@
     groups:
       - docker
       - systemd-journal
-    shell: /bin/bash
+    shell: /bin/zsh
     append: yes
   with_items: "{{ users }}"
 

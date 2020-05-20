@@ -51,7 +51,7 @@ digitransit_port: 8080
 
 docker_prune_max_age: 7d
 
-thingsboard_to_parkapi_commit: 944428f8cc6ea956f89df525170f12e9b0975024
+thingsboard_to_parkapi_commit: 7aedf34de553155df81e858674dcd23ac57fe6d3
 
 thingsboard_username: !vault |
           $ANSIBLE_VAULT;1.1;AES256

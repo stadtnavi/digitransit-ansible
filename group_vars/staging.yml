@@ -5,6 +5,8 @@ matomo_hostname: track.mfdz.de
 photon_hostname: photon-temp.leonard.io
 certbot_admin_email: mail@leonard.io
 
+docker_prune_max_age: 36h
+
 matomo_url: https://track.mfdz.de/js/container_TeHZVOVk_staging_a1a89f1a01da974800990125.js
 
 mfdz_gtfs_url: !vault |

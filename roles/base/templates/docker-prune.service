@@ -4,7 +4,7 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-ExecStart=/usr/bin/docker system prune -a -f --filter until=36h
+ExecStart=/usr/bin/docker system prune -a -f --filter until={{ docker_prune_max_age }}
 
 [Install]
 WantedBy=multi-user.target

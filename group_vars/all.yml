@@ -47,6 +47,8 @@ digitransit:
 matomo_port: 9000
 digitransit_port: 8080
 
+docker_prune_max_age: 7d
+
 thingsboard_to_parkapi_commit: 944428f8cc6ea956f89df525170f12e9b0975024
 
 thingsboard_username: !vault |

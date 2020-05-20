@@ -4,6 +4,7 @@
   hosts: all
   become: yes
   roles:
+    #- geerlingguy.swap
     - base
     - role: tilemaker
       when: install_tilemaker

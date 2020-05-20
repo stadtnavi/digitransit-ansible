@@ -5,6 +5,8 @@ networks_cli_compatible: no
 
 docker_install_compose: true
 
+swap_file_size_mb: '16000'
+
 users:
   - lenni
 

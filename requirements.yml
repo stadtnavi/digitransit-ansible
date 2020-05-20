@@ -2,4 +2,5 @@
   version: 2.6.0
 - src: geerlingguy.certbot
   version: 3.0.3
-
+- src: geerlingguy.swap
+  version: 1.0.1

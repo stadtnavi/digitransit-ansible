@@ -1,6 +1,6 @@
 ---
 
-- name: Setup infrastructure pieces: photon and tileserver
+- name: Setup infrastructure pieces
   hosts: all
   become: yes
   roles:

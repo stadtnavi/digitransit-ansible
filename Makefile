@@ -1,4 +1,4 @@
-.PHONY: vagrant staging production tileserver
+.PHONY: vagrant staging production tileserver infrastructure
 .PRECIOUS: tileserver/%.osm.pbf
 
 # ansible
@@ -17,6 +17,9 @@ staging: galaxy-install
 
 production: galaxy-install
 	${PLAYBOOK_CMD} -i production digitransit.yml
+
+infrastructure: galaxy-install
+	${PLAYBOOK_CMD} -i infrastructure infrastructure.yml
 
 # tileserver
 

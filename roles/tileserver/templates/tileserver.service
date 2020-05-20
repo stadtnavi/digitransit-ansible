@@ -8,6 +8,7 @@ Environment=CONTAINER_IMAGE=maptiler/tileserver-gl
 Environment=CONTAINER_NAME=tileserver
 TimeoutStartSec=0
 Restart=always
+
 # restart every hour :(
 RuntimeMaxSec=3600
 

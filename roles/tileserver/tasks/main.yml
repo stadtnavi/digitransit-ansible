@@ -17,7 +17,7 @@
 - name: Copy nginx site conf
   template: src=nginx-site.conf dest=/etc/nginx/sites-enabled/{{item}}.conf
   with_items:
-    - tiles.leonard.io
+    - "{{ tiles_hostname }}"
   notify: Restart nginx
 
 

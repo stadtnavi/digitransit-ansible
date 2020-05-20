@@ -2,3 +2,4 @@
 dependencies:
   - role: base
   - role: geerlingguy.docker
+  - role: geerlingguy.certbot

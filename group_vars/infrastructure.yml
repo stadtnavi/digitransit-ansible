@@ -1,12 +1,15 @@
 ---
 
 server_name: infrastructure
-photon_hostname: photon.stadtnavi.de
+
+tiles_hostname: tiles.leonard.io
+photon_hostname: photon-v2.leonard.io
 
 certbot_certs:
   - domains:
-    - photon.stadtnavi.de
+    - "{{ tiles_hostname }}"
   - domains:
-    - tiles.stadtnavi.de
+    - "{{ photon_hostname }}"
+
 
 

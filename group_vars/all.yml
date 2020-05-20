@@ -26,6 +26,7 @@ certbot_auto_renew_user: root
 certbot_create_if_missing: true
 certbot_create_standalone_stop_services:
   - nginx
+certbot_admin_email: mail@leonard.io
 
 certbot_auto_renew_minute: "2"
 certbot_auto_renew_hour: "0"

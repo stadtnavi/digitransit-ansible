@@ -6,12 +6,7 @@
   roles:
     #- geerlingguy.swap
     - base
-    - role: tilemaker
-      when: install_tilemaker
-    - tileserver
     - digitransit
     - thingsboard-to-parkapi
     - matomo
     - data-builder
-    - role: photon
-      when: install_photon

@@ -6,7 +6,6 @@ hostname: mih.mitfahren-bw.de
 api_hostname: api.mih.mitfahren-bw.de
 matomo_hostname: track.mfdz.de
 photon_hostname: photon-temp.leonard.io
-certbot_admin_email: mail@leonard.io
 
 docker_prune_max_age: 36h
 

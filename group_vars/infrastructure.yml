@@ -1,5 +1,8 @@
 ---
 
+server_name: infrastructure
+photon_hostname: photon.stadtnavi.de
+
 certbot_certs:
   - domains:
     - photon.stadtnavi.de

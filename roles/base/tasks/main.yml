@@ -28,6 +28,7 @@
     groups:
       - docker
       - systemd-journal
+    shell: /bin/bash
     append: yes
   with_items: "{{ users }}"
 
@@ -40,7 +41,7 @@
 
 - name: Start docker-prune.timer
   systemd:
-    name: thingsboard-to-parkapi.timer
+    name: docker-prune.timer
     state: started
     enabled: yes
     daemon_reload: yes

@@ -34,7 +34,7 @@
     groups:
       - docker
       - systemd-journal
-    shell: /bin/zsh
+    shell: /bin/bash
     append: yes
   with_items: "{{ users }}"
 

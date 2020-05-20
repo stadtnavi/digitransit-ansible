@@ -1,4 +1,7 @@
 ---
+
+server_name: staging
+
 hostname: mih.mitfahren-bw.de
 api_hostname: api.mih.mitfahren-bw.de
 matomo_hostname: track.mfdz.de

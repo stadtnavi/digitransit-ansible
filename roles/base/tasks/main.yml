@@ -15,6 +15,9 @@
 - name: Install global aliases
   template: src=alias.sh dest=/etc/profile.d/
 
+- hostname:
+    name: "{{ server_name }}"
+
 - name: Set timezone to Europe/Berlin
   timezone:
     name: Europe/Berlin

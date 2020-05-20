@@ -1,6 +1,6 @@
 ---
 
-- name: Apply the digitransit stack to all noded to all nodes
+- name: Apply the digitransit stack
   hosts: all
   become: yes
   roles:

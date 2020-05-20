@@ -1,4 +1,9 @@
 ---
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+
 - name: Restart tileserver
   service:
     name: tileserver

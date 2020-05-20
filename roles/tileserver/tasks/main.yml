@@ -3,7 +3,22 @@
   package:
     name:
       - pyosmium
+      - nginx
     state: present
+
+- name: Create tile cache directory
+  file:
+    path: /var/cache/nginx
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
+
+- name: Copy nginx site conf
+  template: src=nginx-site.conf dest=/etc/nginx/sites-enabled/{{item}}.conf
+  with_items:
+    - tiles.stadtnavi.de
+  notify: Restart nginx
 
 
 - name: Create graphs directory

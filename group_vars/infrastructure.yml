@@ -1,0 +1,9 @@
+---
+
+certbot_certs:
+  - domains:
+    - photon.stadtnavi.de
+  - domains:
+    - tiles.stadtnavi.de
+
+

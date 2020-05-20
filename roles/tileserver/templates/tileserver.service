@@ -8,8 +8,10 @@ Environment=CONTAINER_IMAGE=maptiler/tileserver-gl
 Environment=CONTAINER_NAME=tileserver
 TimeoutStartSec=0
 Restart=always
+# restart every hour :(
+RuntimeMaxSec=3600
 
-ExecStartPre=-/bin/bash -c 'echo "🗺️ Restarting tileserver on {{ inventory_hostname }} 🗺️" | send-to-matrix'
+#ExecStartPre=-/bin/bash -c 'echo "🗺️ Restarting tileserver on {{ inventory_hostname }} 🗺️" | send-to-matrix'
 ExecStartPre=-/usr/bin/docker stop ${CONTAINER_NAME}
 ExecStartPre=-/usr/bin/docker rm ${CONTAINER_NAME}
 ExecStartPre=/usr/bin/docker pull ${CONTAINER_IMAGE}

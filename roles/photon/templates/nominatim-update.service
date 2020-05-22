@@ -4,7 +4,7 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-ExecStart=/usr/bin/docker exec nominatim sudo -u nominatim /srv/nominatim/Nominatim/build/utils/update.php --import-osmosis
+ExecStart=docker exec nominatim sudo -u nominatim /app/src/build/utils/update.php --import-osmosis
 
 [Install]
 WantedBy=multi-user.target

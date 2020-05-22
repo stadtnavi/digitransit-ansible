@@ -7,8 +7,8 @@ Requires=docker.service
 
 Environment=CONTAINER_IMAGE=stadtnavi/nominatim:3.4
 Environment=CONTAINER_NAME=nominatim
-Environment=PBF_URL=http://download.geofabrik.de/europe/germany/baden-wuerttemberg/stuttgart-regbez-latest.osm.pbf
-Environment=REPLICATION_URL=http://download.geofabrik.de/europe/germany/baden-wuerttemberg/stuttgart-regbez-updates/
+Environment=PBF_URL=https://download.geofabrik.de/europe/dach-latest.osm.pbf
+Environment=REPLICATION_URL=https://download.geofabrik.de/europe/dach-updates/
 Environment=IMPORT_WIKIPEDIA=true
 TimeoutStartSec=0
 Restart=always

@@ -1,0 +1,23 @@
+[Unit]
+Description=Nominatim
+After=docker.service
+Requires=docker.service
+
+[Service]
+Environment=CONTAINER_IMAGE=stadtnavi/nominatim:3.4
+Environment=CONTAINER_NAME=nominatim
+Environment=PBF_URL=
+Environment=UPDATE_URL=http://download.geofabrik.de/europe/germany/baden-wuerttemberg/stuttgart-regbez-latest.osm.pbf
+Environment=REPLICATION_URL=http://download.geofabrik.de/europe/germany/baden-wuerttemberg/stuttgart-regbez-updates/
+TimeoutStartSec=0
+Restart=always
+
+ExecStartPre=-docker stop ${CONTAINER_NAME}
+ExecStartPre=docker pull ${CONTAINER_IMAGE}
+
+ExecStart=docker run --name ${CONTAINER_NAME} -e PBF_URL -e REPLICATION_URL -p 5432:5432 -p 7070:8080 ${CONTAINER_IMAGE}
+
+ExecStop=-docker stop ${CONTAINER_NAME}
+
+[Install]
+WantedBy=multi-user.target

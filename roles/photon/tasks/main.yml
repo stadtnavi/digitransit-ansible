@@ -9,32 +9,18 @@
   docker_network:
     name: photon-network
 
-- name: Import and run Nominatim
-  docker_container:
-    name: nominatim
-    image: thomasnordquist/nominatim
-    keep_volumes: true
-    volumes:
-      - nominatim-data:/var/lib/postgresql/
-    ports:
-      - "8082:80"
-      - "5432:5432"
-    networks:
-      - name: photon-network
-    env:
-      PBF_URL: "{{ osm_pbf_url }}"
-      REPLICATION_URL: "{{osm_updates_url}}"
-      IMPORT_WIKIPEDIA: "{{ nominatim_import_wikipedia}}"
-      THREADS: "5"
-
 - name: Install systemd files for nominatim-update
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:
+    - nominatim.service
     - nominatim-update.service
     - nominatim-update.timer
 
 - name: Start nomimatim-update.timer
-  systemd: state=started name=nominatim-update.timer daemon_reload=yes
+  systemd: state=started name="{{ item }}" daemon_reload=yes
+  with_items:
+    - nominatim.service
+    - nominatim-update.timer
 
 - name: Import and run photon
   docker_container:

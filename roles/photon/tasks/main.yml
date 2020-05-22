@@ -17,7 +17,7 @@
     - nominatim-update.timer
 
 - name: Start nomimatim-update.timer
-  systemd: state=started name="{{ item }}" daemon_reload=yes
+  systemd: state=restarted name="{{ item }}" daemon_reload=yes
   with_items:
     - nominatim.service
     - nominatim-update.timer

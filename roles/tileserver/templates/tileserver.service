@@ -4,7 +4,7 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-Environment=CONTAINER_IMAGE=maptiler/tileserver-gl
+Environment=CONTAINER_IMAGE=maptiler/tileserver-gl:v3.0.0
 Environment=CONTAINER_NAME=tileserver
 Environment=MEM_LIMIT=4096m
 TimeoutStartSec=0

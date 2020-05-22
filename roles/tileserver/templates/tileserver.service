@@ -10,7 +10,11 @@ Environment=MEM_LIMIT=4096m
 TimeoutStartSec=0
 Restart=always
 
-ExecStartPre=-/bin/bash -c 'echo "🗺️ Restarting tileserver on {{ inventory_hostname }} 🗺️" | send-to-matrix'
+# Sadly, it has a memory leak :(
+# https://github.com/maptiler/tileserver-gl/issues/418
+RuntimeMaxSec=3600
+
+#ExecStartPre=-/bin/bash -c 'echo "🗺️ Restarting tileserver on {{ inventory_hostname }} 🗺️" | send-to-matrix'
 ExecStartPre=-/usr/bin/docker stop ${CONTAINER_NAME}
 ExecStartPre=-/usr/bin/docker rm ${CONTAINER_NAME}
 ExecStartPre=/usr/bin/docker pull ${CONTAINER_IMAGE}

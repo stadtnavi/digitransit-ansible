@@ -1,0 +1,28 @@
+[Unit]
+Description=Photon
+After=docker.service
+Requires=nominatim.service
+
+[Service]
+
+Environment=CONTAINER_IMAGE=lehrenfried/photon:latest
+Environment=CONTAINER_NAME=photon
+TimeoutStartSec=0
+Restart=always
+
+Environment=NOMINATIM_PORT_5432_TCP_ADDR=nominatim
+
+# this is purposefully set to a directory as otherwise the container tries to import a JSON file
+# if the "dump" is a directory it does the import through postgres directly
+Environment=JSON_DUMP_FILE=/etc/
+Environment=AUTOMATIC_UPDATES=true
+
+ExecStartPre=-docker pull ${CONTAINER_IMAGE}
+ExecStartPre=-docker stop ${CONTAINER_NAME}
+ExecStartPre=-docker rm ${CONTAINER_NAME}
+ExecStart=docker run --name ${CONTAINER_NAME} --log-driver=journald -v photon-data:/photon/photon_data:rw -p 2322:2322 --network photon -e NOMINATIM_PORT_5432_TCP_ADDR -e JSON_DUMP_FILE -e AUTOMATIC_UPDATES ${CONTAINER_IMAGE}
+
+ExecStop=-docker stop ${CONTAINER_NAME}
+
+[Install]
+WantedBy=multi-user.target

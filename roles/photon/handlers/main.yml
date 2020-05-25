@@ -4,4 +4,14 @@
     name: nginx
     state: restarted
 
+- name: Restart nominatim
+  service:
+    name: nominatim
+    state: restarted
+
+- name: Restart photon
+  service:
+    name: photon
+    state: restarted
+
 

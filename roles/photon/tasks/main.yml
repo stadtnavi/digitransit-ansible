@@ -15,29 +15,17 @@
     - nominatim.service
     - nominatim-update.service
     - nominatim-update.timer
+    - photon.service
+  notify:
+    - Restart nominatim
+    - Restart photon
 
-- name: Start nomimatim-update.timer
+- name: Start nomimatim and photon services
   systemd: state=started name="{{ item }}" enabled=yes daemon_reload=yes
   with_items:
     - nominatim.service
     - nominatim-update.timer
-
-- name: Import and run photon
-  docker_container:
-    name: photon
-    image: lehrenfried/photon:latest
-    networks:
-      - name: photon-network
-    volumes:
-      - photon-data-dach:/photon/photon_data:rw
-    ports:
-      - "2322:2322"
-    env:
-      NOMINATIM_PORT_5432_TCP_ADDR: nominatim
-      # this is purposefully set to a directory as otherwise the container tries to import a JSON file
-      # if the "dump" is a directory it does the import through postgres directly
-      JSON_DUMP_FILE: "/etc/"
-      AUTOMATIC_UPDATES: "true"
+    - photon.service
 
 - name: Copy photon nginx site conf
   template: src=photon-site.conf dest=/etc/nginx/sites-available/{{ item }}.conf

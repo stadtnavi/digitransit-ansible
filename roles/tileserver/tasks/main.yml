@@ -71,4 +71,10 @@
   template: src=monit.check dest=/etc/monit/conf-enabled/tileserver.cfg
   notify: Restart monit
 
+- name: Set monit to check every 30 seconds
+  lineinfile:
+    path: /etc/monit/monitrc
+    regexp: 'set daemon'
+    line: "set daemon 30 # check every 30 seconds"
+  notify: Restart monit
 

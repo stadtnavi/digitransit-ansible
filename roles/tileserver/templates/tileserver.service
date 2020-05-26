@@ -12,7 +12,7 @@ Restart=always
 
 # Sadly, it has a memory leak :(
 # https://github.com/maptiler/tileserver-gl/issues/418
-RuntimeMaxSec=3600
+RuntimeMaxSec=21600
 
 #ExecStartPre=-/bin/bash -c 'echo "🗺️ Restarting tileserver on {{ inventory_hostname }} 🗺️" | send-to-matrix'
 ExecStartPre=-/usr/bin/docker stop ${CONTAINER_NAME}

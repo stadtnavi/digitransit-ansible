@@ -1,0 +1,7 @@
+check host tileserver with address {{ tiles_hostname }}
+    start program = "/usr/bin/systemctl start tileserver" with timeout 10 seconds
+    stop program = "/usr/bin/systemctl stop tileserver" with timeout 10 seconds
+    if failed
+        port 443 protocol https and request "/tiles/openmaptiles/styles/streets/9/268/176.png"
+        status = 200
+    then restart

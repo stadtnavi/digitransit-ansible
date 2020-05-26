@@ -56,3 +56,19 @@
     - tileserver.service
     - tileserver-restart.timer
 
+- apt_repository:
+    repo: "deb http://deb.debian.org/debian buster-backports main contrib non-free"
+    state: present
+    update_cache: yes
+
+- name: Install monit from backports
+  apt:
+    name: monit
+    state: present
+    default_release: buster-backports
+
+- name: Copy monit file
+  template: src=monit.check dest=/etc/monit/conf-enabled/tileserver.cfg
+  notify: Restart monit
+
+

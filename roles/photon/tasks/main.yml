@@ -17,8 +17,8 @@
     - nominatim-update.timer
     - photon.service
   notify:
+    # photon.service dependens on nominatim.service so it's restarted, too.
     - Restart nominatim
-    - Restart photon
 
 - name: Start nomimatim and photon services
   systemd: state=started name="{{ item }}" enabled=yes daemon_reload=yes

@@ -1,4 +1,3 @@
 ---
 dependencies:
-  - role: geerlingguy.docker
   - role: nginx

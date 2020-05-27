@@ -1,12 +1,4 @@
 ---
-- name: Install packages
-  package:
-    name:
-      - dnsmasq # for some reason outgoing traffic to port 53 (DNS) is blocked and we need to use this package to fake a local DNS server
-      - nginx
-      - pyosmium
-    state: present
-
 - name: Create tile cache directory
   file:
     path: /var/cache/nginx
@@ -21,8 +13,7 @@
     - "{{ tiles_hostname }}"
   notify: Restart nginx
 
-
-- name: Create graphs directory
+- name: Create working dir directory
   file:
     path: /var/tileserver/
     state: directory

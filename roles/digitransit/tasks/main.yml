@@ -7,6 +7,14 @@
     group: root
     mode: 0775
 
+- name: Create tile cache directory
+  file:
+    path: /var/cache/nginx
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
+
 - name: Install docker-compose file
   template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
   notify: Restart digitransit
@@ -21,25 +29,6 @@
     state: started
     enabled: yes
     daemon_reload: yes
-
-- name: Install nginx packages
-  package:
-    name:
-      - dnsmasq # for some reason outgoing traffic to port 53 (DNS) is blocked and we need to use this package to fake a local DNS server
-      - nginx
-    state: present
-
-- name: Create tile cache directory
-  file:
-    path: /var/cache/nginx
-    state: directory
-    owner: www-data
-    group: www-data
-    mode: 0775
-
-- name: Copy nginx conf
-  template: src=nginx.conf dest=/etc/nginx/
-  notify: Restart nginx
 
 - name: Copy main host nginx site conf
   template: src=nginx-site.conf dest=/etc/digitransit/{{ item }}.conf

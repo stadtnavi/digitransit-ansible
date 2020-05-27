@@ -10,6 +10,14 @@ swap_file_size_mb: '16000'
 users:
   - lenni
 
+firewall_allowed_tcp_ports:
+  - "22"
+  - "443"
+
+firewall_state: started
+firewall_enabled_at_boot: true
+firewall_flush_rules_and_chains: false
+
 certbot_certs:
   - domains:
     - "{{ hostname }}"

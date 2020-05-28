@@ -7,8 +7,8 @@ Requires=docker.service
 
 Environment=CONTAINER_IMAGE=stadtnavi/nominatim:latest
 Environment=CONTAINER_NAME=nominatim
-Environment=PBF_URL=http://leonard.io/stadtnavi-photon-bounding-box.osm.pbf
-Environment=REPLICATION_URL=https://download.geofabrik.de/europe/dach-updates/
+Environment=PBF_URL=http://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf
+Environment=REPLICATION_URL=http://download.geofabrik.de/europe/germany/baden-wuerttemberg-updates/
 Environment=IMPORT_WIKIPEDIA=true
 Environment=NOMINATIM_PASSWORD={{ nominatim_db_password }}
 TimeoutStartSec=0

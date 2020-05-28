@@ -1,0 +1,6 @@
+#! /bin/bash
+
+cd /etc/digitransit
+docker-compose pull
+echo "🗃️ Restarting single digitransit container '$1' on {{ inventory_hostname }} 🗃️" | send-to-matrix
+docker-compose up -d --no-deps $1

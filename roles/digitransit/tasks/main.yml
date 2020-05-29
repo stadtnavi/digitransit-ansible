@@ -17,14 +17,15 @@
     group: www-data
     mode: 0775
 
-- name: Install docker-compose file
-  template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
-
 - name: Copy container restart script
   template:
     src: restart-digitransit-container
     dest: /usr/local/bin/
     mode: a+x
+
+- name: Install docker-compose file
+  template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
+  notify: Restart digitransit-ui
 
 - name: Install service file for digitransit-docker-compose
   template:

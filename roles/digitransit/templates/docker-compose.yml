@@ -1,5 +1,6 @@
 version: '3'
 
+
 services:
   digitransit-proxy:
     image: {{ digitransit["images"]["proxy"] }}

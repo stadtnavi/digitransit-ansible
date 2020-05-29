@@ -8,7 +8,6 @@
     mode: 0775
   with_items:
     - /etc/digitransit
-    - /etc/digitransit/versions
 
 - name: Create tile cache directory
   file:
@@ -26,11 +25,6 @@
     src: restart-digitransit-container
     dest: /usr/local/bin/
     mode: a+x
-
-- name: Install version file
-  copy:
-    content: "{{ digitransit['images']['ui'] }}"
-    dest: /etc/digitransit/versions/digitransit-ui
 
 - name: Install service file for digitransit-docker-compose
   template:

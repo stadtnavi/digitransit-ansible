@@ -7,8 +7,8 @@ Requires=docker.service
 
 Environment=CONTAINER_IMAGE=stadtnavi/nominatim:latest
 Environment=CONTAINER_NAME=nominatim
-Environment=PBF_URL=http://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf
-Environment=REPLICATION_URL=http://download.geofabrik.de/europe/germany/baden-wuerttemberg-updates/
+Environment=PBF_URL=https://download.geofabrik.de/europe/dach-latest.osm.pbf
+Environment=REPLICATION_URL=https://download.geofabrik.de/europe/dach-updates/
 Environment=IMPORT_WIKIPEDIA=true
 Environment=NOMINATIM_PASSWORD={{ nominatim_db_password }}
 TimeoutStartSec=0
@@ -17,7 +17,7 @@ Restart=always
 ExecStartPre=-docker network create --driver bridge photon
 ExecStartPre=-docker stop ${CONTAINER_NAME}
 ExecStartPre=-docker rm ${CONTAINER_NAME}
-ExecStart=docker run --name ${CONTAINER_NAME} --log-driver=journald --network=photon -e PBF_URL -e REPLICATION_URL -e IMPORT_WIKIPEDIA -e NOMINATIM_PASSWORD -v nominatim-data:/app -v nominatim-postgres:/var/lib/postgresql/11/main ${CONTAINER_IMAGE}
+ExecStart=docker run --name ${CONTAINER_NAME} --log-driver=journald --network=photon -e PBF_URL -e REPLICATION_URL -e IMPORT_WIKIPEDIA -e NOMINATIM_PASSWORD -v nominatim-data:/app/src/data -v nominatim-postgres:/var/lib/postgresql/11/main ${CONTAINER_IMAGE}
 
 ExecStop=-docker stop ${CONTAINER_NAME}
 

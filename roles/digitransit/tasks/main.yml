@@ -33,8 +33,9 @@
     dest: /etc/digitransit/versions/digitransit-ui
 
 - name: Install service file for digitransit-docker-compose
-  template: src=digitransit-docker-compose.service dest=/etc/systemd/system/
-  #notify: Restart digitransit
+  template:
+    src: digitransit-docker-compose.service
+    dest: /etc/systemd/system/
 
 - name: Start digitransit
   systemd:

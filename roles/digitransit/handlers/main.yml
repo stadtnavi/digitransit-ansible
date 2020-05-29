@@ -4,7 +4,5 @@
     name: nginx
     state: restarted
 
-- name: Restart digitransit
-  service:
-    name: digitransit-docker-compose
-    state: restarted
+- name: Restart digitransit-ui
+  command: restart-digitransit-container digitransit-ui

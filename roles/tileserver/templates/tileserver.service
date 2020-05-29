@@ -14,7 +14,7 @@ Restart=always
 # https://github.com/maptiler/tileserver-gl/issues/418
 RuntimeMaxSec=21600
 
-#ExecStartPre=-/bin/bash -c 'echo "🗺️ Restarting tileserver on {{ inventory_hostname }} 🗺️" | send-to-matrix'
+#ExecStartPre=-/usr/local/bin/send-to-matrix "🗺️ Restarting tileserver on {{ inventory_hostname }} 🗺️"
 ExecStartPre=-/usr/bin/docker stop ${CONTAINER_NAME}
 ExecStartPre=-/usr/bin/docker rm ${CONTAINER_NAME}
 ExecStartPre=/usr/bin/docker pull ${CONTAINER_IMAGE}

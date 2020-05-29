@@ -25,7 +25,7 @@ ExecStartPre=/usr/bin/docker pull ${SEED_IMAGE_NAME}
 
 ExecStart=/usr/bin/docker run --name ${CONTAINER_NAME} -e ROUTERS=hb -e ORG=mfdz -e DOCKER_TAG=local -e OTP_TAG={{ otp_docker_tag }} -e HOST_DATA=${DATA_DIR} -e MFDZ_GTFS_URL={{ mfdz_gtfs_url }} -v /var/run/docker.sock:/var/run/docker.sock -v ${DATA_DIR}:/opt/otp-data-builder/data ${IMAGE_NAME}
 
-ExecStart=-/bin/bash -c 'echo "📦 Graph build complete on {{ inventory_hostname }} 📦" | send-to-matrix'
+ExecStart=-/usr/local/bin/send-to-matrix "📦 Graph build complete on {{ inventory_hostname }} 📦"
 
 ExecStop=/usr/bin/docker stop ${CONTAINER_NAME}
 

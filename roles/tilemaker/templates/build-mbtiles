@@ -25,4 +25,4 @@ docker run \
 # tilemaker doesn't like it when the output file already exists to we move it
 mv "${TILEMAKER_OUTPUT_FILE}" "${TILEMAKER_FINAL_OUTPUT_FILE}"
 
-echo "🏗️ mbtiles build complete on {{ inventory_hostname }} 🏗️" | send-to-matrix
+send-to-matrix "🏗️ mbtiles build complete on {{ inventory_hostname }} 🏗️"

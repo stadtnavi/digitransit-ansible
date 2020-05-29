@@ -12,7 +12,7 @@ TimeoutStartSec=0
 WorkingDirectory=/etc/digitransit/
 
 # Remove old containers, images and volumes
-ExecStartPre=-/bin/bash -c 'echo "🔁 Restarting digitransit on {{ inventory_hostname }} 🔁" | send-to-matrix'
+ExecStartPre=-/usr/local/bin/send-to-matrix "🔁 Restarting digitransit on {{ inventory_hostname }} 🔁"
 ExecStartPre=/usr/local/bin/docker-compose down -v
 ExecStartPre=/usr/local/bin/docker-compose rm -fv
 ExecStartPre=-/bin/bash -c 'docker volume ls -qf "name=digitransit_" | xargs docker volume rm'

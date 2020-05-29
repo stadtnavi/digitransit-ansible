@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Adjust homserver, room, and accesstoken to your particular setup
-# Script is expecting data to be piped in on STDIN
 # Example:
-# echo "some text" | send-to-matrix
+# send-to-matrix "some text"
 
 msgtype=m.text
 homeserver=matrix.org
 room=!UXrSFkkJoppiEZEfgC:matrix.org
 accesstoken={{ matrix_bot_token }}
 
-curl -s -o /dev/null -XPOST -d "$( jq -Rsc --arg msgtype "$msgtype" '{$msgtype, body:.}')" "https://$homeserver/_matrix/client/r0/rooms/$room/send/m.room.message?access_token=$accesstoken"
+payload=`jq -nc --arg msg "$1" '{msgtype:"m.text", body:$msg}'`
+curl -XPOST -d "$payload" "https://$homeserver/_matrix/client/r0/rooms/$room/send/m.room.message?access_token=$accesstoken"

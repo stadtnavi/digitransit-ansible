@@ -23,7 +23,7 @@ ExecStartPre=/usr/bin/docker pull ${IMAGE_NAME}
 
 ExecStart=/usr/bin/docker run --name ${CONTAINER_NAME} -e HOST_DATA=${DATA_DIR} -v ${DATA_DIR}:/var/data -v /var/run/docker.sock:/var/run/docker.sock ${IMAGE_NAME}
 
-ExecStart=-/bin/bash -c 'echo "gtfs-hub build complete on {{ inventory_hostname }}" | send-to-matrix'
+ExecStart=-/usr/local/bin/send-to-matrix "gtfs-hub build complete on {{ inventory_hostname }}"
 
 ExecStop=/usr/bin/docker stop ${CONTAINER_NAME}
 

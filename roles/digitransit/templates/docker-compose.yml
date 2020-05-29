@@ -45,6 +45,7 @@ services:
       - GEOCODING_BASE_URL=https://{{ api_hostname }}/geocoding/v1
       - API_URL=https://{{ api_hostname }}
       - MAP_URL={{ map_url }}
+      - SEMI_TRANSPARENT_MAP_URL={{ semi_transparent_map_url }}
       - MATOMO_URL={{ matomo_url }}
       - NODE_ENV=production
       - FAHRGEMEINSCHAFT_API_KEY={{ fahrgemeinschaft_api_key }}

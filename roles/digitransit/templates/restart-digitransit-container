@@ -4,5 +4,5 @@ CONTAINER_NAME=$1
 
 cd /etc/digitransit
 docker-compose pull
-echo "🗃️ Restarting single digitransit container '$1' on {{ inventory_hostname }} 🗃️" | send-to-matrix
+echo "🗃️ Restarting digitransit container '$1' on {{ inventory_hostname }} 🗃️" | send-to-matrix
 docker-compose up -d --no-deps $CONTAINER_NAME

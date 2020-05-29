@@ -4,7 +4,7 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-Environment=CONTAINER_IMAGE=maptiler/tileserver-gl:v3.0.0
+Environment=CONTAINER_IMAGE=stadtnavi/tileserver-gl:2.6.0
 Environment=CONTAINER_NAME=tileserver
 Environment=MEM_LIMIT=4096m
 TimeoutStartSec=0
@@ -14,7 +14,7 @@ Restart=always
 # https://github.com/maptiler/tileserver-gl/issues/418
 RuntimeMaxSec=21600
 
-#ExecStartPre=-/usr/local/bin/send-to-matrix "🗺️ Restarting tileserver on {{ inventory_hostname }} 🗺️"
+#ExecStartPre=-/usr/local/bin/send-to-matrix "🗺️ Restarting tileserver on {{ inventory_hostname }}"
 ExecStartPre=-/usr/bin/docker stop ${CONTAINER_NAME}
 ExecStartPre=-/usr/bin/docker rm ${CONTAINER_NAME}
 ExecStartPre=/usr/bin/docker pull ${CONTAINER_IMAGE}

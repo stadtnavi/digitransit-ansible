@@ -10,7 +10,7 @@ digitransit:
     proxy: lehrenfried/digitransit-proxy:post-migration
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
-    ui: stadtnavi/digitransit-ui:e2f82f332b9e245eb88a417a7419202c8d8c1e1b
+    ui: stadtnavi/digitransit-ui:7076fad709156760878ac2fc6fd3b519abfd388b
     map_server: mfdz/hsl-map-server:688564327
 
 hostname: herrenberg.stadtnavi.de

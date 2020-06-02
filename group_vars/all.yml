@@ -47,8 +47,10 @@ certbot_admin_email: mail@leonard.io
 certbot_auto_renew_minute: "2"
 certbot_auto_renew_hour: "0"
 
-map_url: "https://api.maptiler.com/maps/c3e8e9d6-1155-4329-80f3-6c03a2bcc7a4/256/{z}/{x}/{y}{r}.png?key=eA0drARBA1uPzLR6StGD"
-semi_transparent_map_url: "https://api.maptiler.com/maps/ffa4d49e-c68c-46c8-ab3f-60543337cecb/256/{z}/{x}/{y}.png?key=eA0drARBA1uPzLR6StGD"
+map_url: "https://tiles.stadtnavi.eu/streets/{z}/{x}/{y}{r}.png"
+semi_transparent_map_url: "https://tiles.stadtnavi.eu/satellite-overlay/{z}/{x}/{y}{r}.png"
+#map_url: "https://api.maptiler.com/maps/c3e8e9d6-1155-4329-80f3-6c03a2bcc7a4/256/{z}/{x}/{y}{r}.png?key=eA0drARBA1uPzLR6StGD"
+#semi_transparent_map_url: "https://api.maptiler.com/maps/ffa4d49e-c68c-46c8-ab3f-60543337cecb/256/{z}/{x}/{y}.png?key=eA0drARBA1uPzLR6StGD"
 
 # the docker tag/sha used to build containers and run OTP itself in the digitransit docker-compose
 # cluster

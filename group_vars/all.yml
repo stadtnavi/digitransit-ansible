@@ -67,6 +67,8 @@ digitransit:
 matomo_port: 9000
 digitransit_port: 8080
 
+photon_url: https://photon.stadtnavi.eu
+
 docker_prune_max_age: 7d
 
 thingsboard_to_parkapi_commit: 7aedf34de553155df81e858674dcd23ac57fe6d3

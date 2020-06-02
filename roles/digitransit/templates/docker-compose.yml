@@ -73,7 +73,7 @@ services:
     networks:
       - digitransit
     environment:
-      - PHOTON_URL=https://photon-temp.leonard.io/
+      - PHOTON_URL={{ photon_url }}
 
 networks:
   digitransit:

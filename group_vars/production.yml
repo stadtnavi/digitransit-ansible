@@ -16,17 +16,15 @@ digitransit:
 hostname: herrenberg.stadtnavi.de
 api_hostname: api.stadtnavi.de
 matomo_hostname: track.stadtnavi.de
-# this isn't really the photon hostname as photon is disabled on production
-# it is here so that the playbook suceeds even when this variable is not defined
-# TODO: find a better solution for this
-photon_hostname: track.stadtnavi.de
+
 certbot_admin_email: mail@leonard.io
 
 matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
-
-
 # needs to be different on production as there minio is running on port 9000
 matomo_port: 9009
+
+photon_url: https://photon-temp.leonard.io
+
 
 # needs to be different on production as there is already another digitransit running on 8080
 digitransit_port: 8888

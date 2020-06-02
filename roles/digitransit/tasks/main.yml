@@ -1,11 +1,13 @@
 ---
 - name: Create digitransit config directory
   file:
-    path: /etc/digitransit
+    path: "{{ item }}"
     state: directory
     owner: root
     group: root
     mode: 0775
+  with_items:
+    - /etc/digitransit
 
 - name: Create tile cache directory
   file:
@@ -15,13 +17,20 @@
     group: www-data
     mode: 0775
 
+- name: Copy container restart script
+  template:
+    src: restart-digitransit-container
+    dest: /usr/local/bin/
+    mode: a+x
+
 - name: Install docker-compose file
   template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
-  notify: Restart digitransit
+  notify: Restart digitransit-ui
 
 - name: Install service file for digitransit-docker-compose
-  template: src=digitransit-docker-compose.service dest=/etc/systemd/system/
-  #notify: Restart digitransit
+  template:
+    src: digitransit-docker-compose.service
+    dest: /etc/systemd/system/
 
 - name: Start digitransit
   systemd:

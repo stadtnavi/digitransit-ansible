@@ -81,6 +81,10 @@ them prior to restarting.
 It also cleanly stops and removes the containers. This
 is important because `hsl-map-server` cannot be stopped and restarted.
 
+**Restarting a single digitransit container**
+
+`restart-digitransit-container digitransit-ui`
+
 **Viewing logs**
 
 All logs are sent to `journald` for storage and automatic deletion. Here is

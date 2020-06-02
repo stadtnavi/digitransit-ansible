@@ -7,7 +7,8 @@ api_hostname: api.mih.mitfahren-bw.de
 matomo_hostname: track.mfdz.de
 photon_hostname: photon-temp.leonard.io
 
-docker_prune_max_age: 36h
+map_url: "https://tiles.stadtnavi.eu/streets/{z}/{x}/{y}{r}.png"
+semi_transparent_map_url: "https://tiles.stadtnavi.eu/satellite-overlay/{z}/{x}/{y}{r}.png"
 
 matomo_url: https://track.mfdz.de/js/container_TeHZVOVk_staging_a1a89f1a01da974800990125.js
 
@@ -54,5 +55,3 @@ matomo_db_root_password: !vault |
           64386237323337623061336466343066393232633638646538336162373631323839383635303562
           6138626538356638663630303966353739316135656162613465
 
-install_photon: False
-install_tilemaker: True

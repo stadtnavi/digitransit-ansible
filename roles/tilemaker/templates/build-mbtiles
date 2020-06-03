@@ -17,6 +17,7 @@ docker run \
   -v /var/tilemaker/:/srv \
   --name tilemaker \
   --rm \
+  --cpu-shares 512 \
   ${IMAGE_NAME} /srv/${PBF_FILE} \
   --output=/srv/${TILEMAKER_OUTPUT_FILE} \
   --config=/srv/config-openmaptiles.json \

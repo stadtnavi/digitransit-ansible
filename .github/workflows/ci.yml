@@ -1,0 +1,26 @@
+name: "Continuous Integration"
+
+on:
+  push:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    name: Compile, install and build mbtiles
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential docker
+      - name: Build openmaptiles-compatible mbtiles files of Liechtenstein
+        run: |
+          mkdir -p tileserver
+          curl http://download.geofabrik.de/europe/liechtenstein-latest.osm.pbf -o ./tileserver/liechtenstein.osm.pbf
+          cp roles/tilemaker/templates/*.json roles/tilemaker/templates/*.lua tileserver
+          docker run -v `pwd`/tileserver:/srv --rm lehrenfried/tilemaker:latest /srv/liechtenstein.osm.pbf --output=/srv/liechtenstein.mbtiles --config=/srv/config-openmaptiles.json --process=/srv/process-openmaptiles.lua

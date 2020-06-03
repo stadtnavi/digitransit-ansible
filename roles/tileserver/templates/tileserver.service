@@ -10,14 +10,11 @@ Environment=MEM_LIMIT=4096m
 TimeoutStartSec=0
 Restart=always
 
-# Sadly, it has a memory leak :(
-# https://github.com/maptiler/tileserver-gl/issues/418
-RuntimeMaxSec=21600
-
-#ExecStartPre=-/usr/local/bin/send-to-matrix "🗺️ Restarting tileserver on {{ inventory_hostname }}"
+ExecStartPre=-/usr/local/bin/send-to-matrix "🗺️ Restarting tileserver on {{ inventory_hostname }}"
 ExecStartPre=-/usr/bin/docker stop ${CONTAINER_NAME}
 ExecStartPre=-/usr/bin/docker rm ${CONTAINER_NAME}
 ExecStartPre=/usr/bin/docker pull ${CONTAINER_IMAGE}
+
 # rsync makes sure that it's a noop when the files are the same
 # I would have preferred a symlink but that doesn't work with docker volumes
 ExecStartPre=-rsync --update /var/tilemaker/tilemaker-output.mbtiles /var/tileserver/input.mbtiles

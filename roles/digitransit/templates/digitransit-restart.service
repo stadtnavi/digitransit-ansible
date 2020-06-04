@@ -4,6 +4,7 @@ Requires=docker.service
 After=docker.service
 
 [Service]
+Type=oneshot
 ExecStart=/bin/systemctl restart digitransit-docker-compose.service
 
 [Install]

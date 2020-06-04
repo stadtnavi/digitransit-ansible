@@ -2,7 +2,7 @@
 Description=Restart container every night
 
 [Timer]
-OnCalendar=*-*-* 04:00:00
+OnCalendar=*-*-* 05:00:00
 Persistent=true
 
 [Install]

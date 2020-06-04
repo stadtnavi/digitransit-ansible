@@ -64,7 +64,7 @@ digitransit:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
     ui: stadtnavi/digitransit-ui:latest
-    map_server: mfdz/hsl-map-server:latest
+    map_server: mfdz/hsl-map-server:688564327
 
 matomo_port: 9000
 digitransit_port: 8080

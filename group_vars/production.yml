@@ -4,7 +4,7 @@ server_name: production
 
 data_builder_tag: ci-e86b6185719a6803d698ddacc061032aa58a33fe
 
-otp_docker_tag: 3fa2223c23c8e22ed38e526d84005e3cd75692bb
+otp_docker_tag: ac6615b3d5013ed51d69ce5e952c0d0216a7a4b5
 digitransit:
   images:
     proxy: lehrenfried/digitransit-proxy:post-migration

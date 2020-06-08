@@ -71,7 +71,8 @@ digitransit_port: 8080
 
 photon_url: https://photon.stadtnavi.eu
 
-docker_prune_max_age: 7d
+# one week
+docker_prune_max_age: 168h
 
 thingsboard_to_parkapi_commit: 0a10ecce3fdd3e97801fd35f16803b987feae832
 

@@ -16,6 +16,8 @@
     - nominatim-update.service
     - nominatim-update.timer
     - photon.service
+    - photon-update.service
+    - photon-update.timer
   notify:
     # photon.service dependens on nominatim.service so it's restarted, too.
     - Restart nominatim
@@ -26,6 +28,7 @@
     - nominatim.service
     - nominatim-update.timer
     - photon.service
+    - photon-update.timer
 
 - name: Copy photon nginx site conf
   template: src=photon-site.conf dest=/etc/nginx/sites-available/{{ item }}.conf

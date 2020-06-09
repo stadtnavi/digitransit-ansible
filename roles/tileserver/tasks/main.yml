@@ -69,3 +69,10 @@
     line: "set daemon 30 # check every 30 seconds"
   notify: Restart monit
 
+- name: Start monit
+  service:
+    name: monit
+    state: started
+
+
+

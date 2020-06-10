@@ -301,7 +301,6 @@ function way_function(way)
 		way:Attribute("class", railway)
 
 		way:Layer("transportation_name", false)
-		SetNameAttributes(way)
 		way:Attribute("class", "rail")
 	end
 

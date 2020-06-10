@@ -1,7 +1,6 @@
 [Unit]
 Description=Photon
 After=docker.service
-Requires=nominatim.service
 
 [Service]
 

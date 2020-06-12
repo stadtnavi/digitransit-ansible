@@ -27,6 +27,10 @@ tileserver/stuttgart-regbez.osm.pbf:
 	mkdir -p tileserver
 	curl "http://download.geofabrik.de/europe/germany/baden-wuerttemberg/stuttgart-regbez-latest.osm.pbf" -o $@
 
+tileserver/hungary.osm.pbf:
+	mkdir -p tileserver
+	curl "http://download.geofabrik.de/europe/hungary-latest.osm.pbf" -o $@
+
 tileserver/%.osm.pbf: tileserver/stuttgart-regbez.osm.pbf
 	mkdir -p tileserver
 	curl -s "https://raw.githubusercontent.com/leonardehrenfried/polygons/master/$*.geojson" -o tileserver/$*.geojson
@@ -43,6 +47,16 @@ tileserver-%: tileserver/%.mbtiles
 	docker run --rm --name tileserver -v $(PWD)/tileserver:/data -p 8080:80 maptiler/tileserver-gl:latest --config tileserver-config.json
 
 tileserver: tileserver-vaihingen
+
+tileserver-szeged: tileserver/hungary.osm.pbf
+	cp roles/tilemaker/templates/*.json roles/tilemaker/templates/*.lua tileserver
+	cp roles/tileserver/templates/*.json tileserver
+	curl -s "https://raw.githubusercontent.com/leonardehrenfried/polygons/master/szeged.geojson" -o tileserver/szeged.geojson
+	osmium extract --polygon tileserver/szeged.geojson tileserver/hungary.osm.pbf -o tileserver/szeged.osm.pbf  --overwrite --set-bounds
+	docker run -v $(PWD)/tileserver:/srv -i -t --rm lehrenfried/tilemaker /srv/szeged.osm.pbf --output=/srv/szeged.mbtiles --config=/srv/config-openmaptiles.json --process=/srv/process-openmaptiles.lua
+	cp tileserver/szeged.mbtiles tileserver/input.mbtiles
+	docker run --rm --name tileserver -v $(PWD)/tileserver:/data -p 8080:80 maptiler/tileserver-gl:latest --config tileserver-config.json
+
 
 copy-upstream:
 	cp roles/tilemaker/templates/process-openmaptiles.lua ../tilemaker/resources/

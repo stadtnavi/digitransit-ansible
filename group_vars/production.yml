@@ -10,7 +10,7 @@ digitransit:
     proxy: lehrenfried/digitransit-proxy:post-migration
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
-    ui: stadtnavi/digitransit-ui:7076fad709156760878ac2fc6fd3b519abfd388b
+    ui: stadtnavi/digitransit-ui:e4d9624d821e8ff7a60a2dddbeb7aaa54ab820da
     map_server: mfdz/hsl-map-server:688564327
 
 hostname: herrenberg.stadtnavi.de
@@ -23,8 +23,7 @@ matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
 # needs to be different on production as there minio is running on port 9000
 matomo_port: 9009
 
-photon_url: https://photon-temp.leonard.io
-
+#photon_url: https://photon-temp.leonard.io
 
 # needs to be different on production as there is already another digitransit running on 8080
 digitransit_port: 8888
@@ -72,5 +71,3 @@ matomo_db_root_password: !vault |
           35396430373233643231323237326330636333663538313830323363643231616634396133643530
           6461636662353639373262666133373239336433646437306264
 
-install_photon: False
-install_tilemaker: True

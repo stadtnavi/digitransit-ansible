@@ -21,6 +21,6 @@ jobs:
       - name: Build openmaptiles-compatible mbtiles files of Liechtenstein
         run: |
           mkdir -p tileserver
-          curl http://download.geofabrik.de/europe/liechtenstein-latest.osm.pbf -o ./tileserver/liechtenstein.osm.pbf
+          curl http://download.geofabrik.de/europe/germany/baden-wuerttemberg/tuebingen-regbez-latest.osm.pbf -o ./tileserver/tuebingen-regbez.osm.pbf
           cp roles/tilemaker/templates/*.json roles/tilemaker/templates/*.lua tileserver
-          docker run -v `pwd`/tileserver:/srv --rm lehrenfried/tilemaker:latest /srv/liechtenstein.osm.pbf --output=/srv/liechtenstein.mbtiles --config=/srv/config-openmaptiles.json --process=/srv/process-openmaptiles.lua
+          docker run -v `pwd`/tileserver:/srv --rm lehrenfried/tilemaker:latest /srv/tuebingen-regbez.osm.pbf --output=/srv/tuebingen-regbez.mbtiles --config=/srv/config-openmaptiles.json --process=/srv/process-openmaptiles.lua

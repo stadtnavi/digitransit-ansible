@@ -4,7 +4,7 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-ExecStartPre=docker exec nominatim sudo -u nominatim /app/src/build/utils/update.php --init-updates
+#ExecStartPre=docker exec nominatim sudo -u nominatim /app/src/build/utils/update.php --init-updates
 ExecStart=docker exec nominatim sudo -u nominatim /app/src/build/utils/update.php --import-osmosis --no-index
 
 [Install]

@@ -2,7 +2,7 @@
 Description=Run nominatim-update daily
 
 [Timer]
-OnCalendar=*-*-* 5:00:00
+OnCalendar=*-*-* 5:15:00
 Persistent=true
 
 [Install]

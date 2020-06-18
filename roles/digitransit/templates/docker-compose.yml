@@ -65,7 +65,7 @@ services:
     logging:
       driver: journald
   photon-pelias-adapter:
-    image: lehrenfried/photon-pelias-adapter:latest
+    image: stadtulm/photon-pelias-adapter:47c824d
     container_name: photon-pelias-adapter
     logging:
       driver: journald

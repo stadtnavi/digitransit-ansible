@@ -352,6 +352,10 @@ function way_function(way)
 	elseif waterway == "boatyard"  then way:Layer("landuse", isClosed); way:Attribute("class", "industrial")
 	elseif waterway == "dam"       then way:Layer("building",isClosed)
 	elseif waterway == "fuel"      then way:Layer("landuse", isClosed); way:Attribute("class", "industrial")
+	elseif waterway~=""			   then way:Layer("waterway_detail",false)
+										way:Attribute("class", waterway)
+										SetNameAttributes(way)
+										SetBrunnelAttributes(way)
 	end
 
 	-- Set 'building' and associated

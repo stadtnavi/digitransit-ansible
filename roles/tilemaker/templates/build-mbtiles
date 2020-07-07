@@ -2,7 +2,7 @@
 
 PBF_DOWNLOAD_URL={{ tilemaker_pbf_download_url }}
 PBF_FILE=tilemaker-input.osm.pbf
-IMAGE_NAME="lehrenfried/tilemaker:1.6.0"
+IMAGE_NAME="lehrenfried/tilemaker:latest"
 
 TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles
 TILEMAKER_FINAL_OUTPUT_FILE=tilemaker-output.mbtiles

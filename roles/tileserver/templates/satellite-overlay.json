@@ -714,7 +714,7 @@
       "id": "tunnel_motorway_casing",
       "layout": {
         "line-join": "round",
-        "visibility": "none"
+        "visibility": "visible"
       },
       "metadata": {},
       "paint": {

@@ -91,28 +91,29 @@ function node_function(node)
 	end
 
 	-- Write 'place'
+	-- note that OpenMapTiles has a rank for countries (1-3), states (1-6) and cities (1-10+);
+	--   we could potentially approximate it for cities based on the population tag
 	local place = node:Find("place")
 	if place ~= "" then
-		local rank = 5
+		local rank = nil
+		local mz = 13
 
-		if     place == "continent"     then rank = 1
-		elseif place == "country"       then rank = 1
-		elseif place == "state"         then rank = 1
-		elseif place == "city"          then rank = 2
-		elseif place == "town"          then rank = 3
-		elseif place == "village"       then rank = 3
-		elseif place == "suburb"        then rank = 3
-		elseif place == "neighbourhood" then rank = 4
-		elseif place == "locality"      then rank = 4
-		elseif place == "hamlet"        then rank = 4 end
-
-		if rank <= 4 then
-			node:Layer("place", false)
-		else
-			node:Layer("place_detail", false)
+		if     place == "continent"     then mz=2
+		elseif place == "country"       then mz=3; rank=1
+		elseif place == "state"         then mz=4; rank=2
+		elseif place == "city"          then mz=5; rank=3
+		elseif place == "town"          then mz=7
+		elseif place == "village"       then mz=9
+		elseif place == "suburb"        then mz=11
+		elseif place == "hamlet"        then mz=11
+		elseif place == "neighbourhood" then mz=12
+		elseif place == "locality"      then mz=12
 		end
-		node:AttributeNumeric("rank", rank)
+
+		node:Layer("place", false)
 		node:Attribute("class", place)
+		node:MinZoom(mz)
+		if rank then node:AttributeNumeric("rank", rank) end
 		SetNameAttributes(node)
 		return
 	end
@@ -132,10 +133,11 @@ function node_function(node)
 
 	-- Write 'mountain_peak' and 'water_name'
 	local natural = node:Find("natural")
-	if natural == "peak" then
+	if natural == "peak" or natural == "volcano" then
 		node:Layer("mountain_peak", false)
 		SetEleAttributes(node)
-		node:AttributeNumeric("rank", 5)
+		node:AttributeNumeric("rank", 1)
+		node:Attribute("class", natural)
 		SetNameAttributes(node)
 		return
 	end
@@ -314,6 +316,7 @@ function way_function(way)
 		way:Attribute("class", railway)
 
 		way:Layer("transportation_name", false)
+		SetNameAttributes(way)
 		way:Attribute("class", "rail")
 	end
 
@@ -346,6 +349,7 @@ function way_function(way)
 		else
 		    way:Layer("waterway_detail",false)
 		end
+		if way:Find("intermittent")=="yes" then way:AttributeNumeric("intermittent", 1) else way:AttributeNumeric("intermittent", 0) end
 		way:Attribute("class", waterway)
 		SetNameAttributes(way)
 		SetBrunnelAttributes(way)
@@ -455,7 +459,7 @@ end
 function SetEleAttributes(obj)
     local ele = obj:Find("ele")
 	if ele ~= "" then
-		local meter = tonumber(ele) or 0
+		local meter = math.floor(tonumber(ele) or 0)
 		local feet = math.floor(meter * 3.2808399)
 		obj:AttributeNumeric("ele", meter)
 		obj:AttributeNumeric("ele_ft", feet)

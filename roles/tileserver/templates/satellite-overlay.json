@@ -2143,6 +2143,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fea",
+        "line-opacity": 0.2,
         "line-dasharray": [
           2,
           2

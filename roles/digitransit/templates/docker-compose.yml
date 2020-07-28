@@ -24,6 +24,7 @@ services:
       - API_URL=https://{{ api_hostname }}/routing/v1/
       - ENCRYPTION_SECRET_KEY={{ encryption_secret_key }}
       - JAVA_OPTS=-Xmx8G
+      - ASTAR_STATISTICS={{ a_star_statistics }}
     networks:
       - digitransit
   opentripplanner-data-con:

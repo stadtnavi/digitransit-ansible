@@ -27,7 +27,8 @@ ExecStart=/usr/bin/docker run --name ${CONTAINER_NAME} -e ROUTERS=hb -e ORG=mfdz
 
 ExecStart=-/usr/local/bin/send-to-matrix "📦 Graph build complete on {{ inventory_hostname }}"
 
-ExecStop=/usr/bin/docker stop ${CONTAINER_NAME}
+ExecStopPost=/usr/bin/docker stop ${CONTAINER_NAME}
+ExecStopPost=-/usr/local/bin/send-to-matrix "❌ Graph build failed on {{ inventory_hostname }}"
 
 [Install]
 WantedBy=multi-user.target

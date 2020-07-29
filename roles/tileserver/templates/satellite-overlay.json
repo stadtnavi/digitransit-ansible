@@ -625,7 +625,7 @@
           0.5,
           0.25
         ],
-        "line-opacity": 1,
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -1106,7 +1106,7 @@
       "id": "tunnel_secondary_tertiary",
       "layout": {
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "metadata": {},
       "paint": {

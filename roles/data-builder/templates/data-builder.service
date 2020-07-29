@@ -6,6 +6,7 @@ After=docker.service
 
 [Service]
 Type=oneshot
+RemainAfterExit=true
 Restart=no
 # /usr/bin/docker-pull could take a while so we disable the timeout
 TimeoutStartSec=0

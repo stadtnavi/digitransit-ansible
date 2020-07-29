@@ -21,7 +21,7 @@
           1,
           1.5
         ],
-        "line-opacity": 1
+        "line-opacity": 0.2
       },
       "source": "openmaptiles",
       "source-layer": "water",
@@ -412,7 +412,7 @@
           0.5,
           0.25
         ],
-        "line-opacity": 1,
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -510,7 +510,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#e9ac77",
-        "line-opacity": 1,
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -1016,7 +1016,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fff",
-        "line-opacity": 1,
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -1065,7 +1065,7 @@
           2,
           2
         ],
-        "line-opacity": 1,
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -2556,7 +2556,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#e9ac77",
-        "line-opacity": 1,
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -2649,7 +2649,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#e9ac77",
-        "line-opacity": 1,
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [

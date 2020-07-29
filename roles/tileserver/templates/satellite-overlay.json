@@ -2458,6 +2458,7 @@
       },
       "paint": {
         "line-color": "#bbbbbb",
+        "line-opacity": 0.2,
         "line-gap-width": {
           "base": 1.3,
           "stops": [
@@ -2510,6 +2511,7 @@
       },
       "paint": {
         "line-color": "rgba(134, 204, 250, 1)",
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.3,
           "stops": [
@@ -2901,6 +2903,7 @@
       "metadata": {},
       "paint": {
         "line-color": "hsl(0, 0%, 100%)",
+        "line-opacity": 0.2,
         "line-dasharray": [
           1,
           0.3
@@ -3045,6 +3048,7 @@
       "metadata": {},
       "paint": {
         "line-color": "#fff",
+        "line-opacity": 0.2,
         "line-dasharray": [
           2,
           2

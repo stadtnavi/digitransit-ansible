@@ -2755,7 +2755,7 @@
       "metadata": {},
       "paint": {
         "line-color": "rgba(195, 189, 187, 1)",
-        "line-opacity": 1,
+        "line-opacity": 0.2,
         "line-width": {
           "base": 1.2,
           "stops": [

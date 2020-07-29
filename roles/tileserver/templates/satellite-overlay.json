@@ -2602,6 +2602,7 @@
       },
       "metadata": {},
       "paint": {
+        "line-opacity": 0.2,
         "line-color": "#cfcdca",
         "line-width": {
           "base": 1.2,

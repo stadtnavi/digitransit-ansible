@@ -1,8 +1,8 @@
 [Unit]
-Description=Run nominatim-update daily
+Description=Run nominatim-update periodically
 
 [Timer]
-OnCalendar=*-*-* 5:00:00
+OnCalendar=*-*-* *:00:00
 Persistent=true
 
 [Install]

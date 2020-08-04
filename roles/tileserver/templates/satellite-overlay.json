@@ -39,7 +39,7 @@
       "id": "waterway_tunnel",
       "layout": {
         "line-cap": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "minzoom": 14,
       "paint": {
@@ -88,7 +88,7 @@
       "id": "waterway_river",
       "layout": {
         "line-cap": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "metadata": {},
       "paint": {
@@ -132,7 +132,8 @@
       ],
       "id": "waterway_river_intermittent",
       "layout": {
-        "line-cap": "round"
+        "line-cap": "round",
+        "visibility": "none"
       },
       "metadata": {},
       "paint": {
@@ -181,7 +182,7 @@
       "id": "waterway_other",
       "layout": {
         "line-cap": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "metadata": {},
       "paint": {
@@ -226,7 +227,7 @@
       "id": "waterway_other_intermittent",
       "layout": {
         "line-cap": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "metadata": {},
       "paint": {

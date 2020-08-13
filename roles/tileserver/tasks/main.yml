@@ -13,6 +13,11 @@
     - "{{ tiles_hostname }}"
   notify: Restart nginx
 
+- name: Copy unauthorized.png
+  copy:
+    src: unauthorized.png
+    dest: /usr/share/nginx/html/
+
 - name: Create working dir directory
   file:
     path: /var/tileserver/
@@ -73,6 +78,4 @@
   service:
     name: monit
     state: started
-
-
 

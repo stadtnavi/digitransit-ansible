@@ -2,7 +2,7 @@
 
 server_name: production
 
-data_builder_tag: ci-bfb3ca2181fc0114523f12dd54365999c217b5a2
+data_builder_tag: ci-a43d78bdb048b6f90338495a7cf7e60811c28d61
 
 otp_docker_tag: eae424fff84235a6e97007683ecbc1c6ef0f4b40
 digitransit:

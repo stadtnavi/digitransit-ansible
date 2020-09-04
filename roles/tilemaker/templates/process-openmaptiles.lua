@@ -317,6 +317,7 @@ function way_function(way)
 
 		way:Layer("transportation_name", false)
 		SetNameAttributes(way)
+		way:MinZoom(14)
 		way:Attribute("class", "rail")
 	end
 
@@ -359,8 +360,8 @@ function way_function(way)
 	end
 
 	-- Set 'building' and associated
-	if building~="" then 
-		way:Layer("building", true) 
+	if building~="" then
+		way:Layer("building", true)
 		SetMinZoomByArea(way)
 	end
 
@@ -378,9 +379,14 @@ function way_function(way)
 		SetMinZoomByArea(way)
 		way:Attribute("class",class)
 		if way:Find("intermittent")=="yes" then way:Attribute("intermittent",1) end
-		if way:Holds("name") then
+    -- we only want to show the names of actual lakes, not every man-made basin that probably doesn't even have a name other than "basin"
+    -- examples for which we don't want to show a name:
+    --  https://www.openstreetmap.org/way/2595868
+    --  https://www.openstreetmap.org/way/27201902
+		if way:Holds("name") and natural=="water" then
 			way:LayerAsCentroid("water_name_detail")
 			SetNameAttributes(way)
+			SetMinZoomByArea(way)
 			way:Attribute("class", class)
 		end
 		return -- in case we get any landuse processing

@@ -346,9 +346,9 @@ function way_function(way)
 	-- Set 'waterway' and associated
 	if waterwayClasses[waterway] and not isClosed then
 		if waterway == "river" and way:Holds("name") then
-		    way:Layer("waterway",false)
+			way:Layer("water_name_detail", false)
 		else
-		    way:Layer("waterway_detail",false)
+			way:Layer("waterway_detail", false)
 		end
 		if way:Find("intermittent")=="yes" then way:AttributeNumeric("intermittent", 1) else way:AttributeNumeric("intermittent", 0) end
 		way:Attribute("class", waterway)
@@ -378,17 +378,19 @@ function way_function(way)
 		way:Layer("water",true)
 		SetMinZoomByArea(way)
 		way:Attribute("class",class)
+
 		if way:Find("intermittent")=="yes" then way:Attribute("intermittent",1) end
-    -- we only want to show the names of actual lakes, not every man-made basin that probably doesn't even have a name other than "basin"
-    -- examples for which we don't want to show a name:
-    --  https://www.openstreetmap.org/way/2595868
-    --  https://www.openstreetmap.org/way/27201902
+		-- we only want to show the names of actual lakes not every man-made basin that probably doesn't even have a name other than "basin"
+		-- examples for which we don't want to show a name:
+		--  https://www.openstreetmap.org/way/2595868
+		--  https://www.openstreetmap.org/way/27201902
 		if way:Holds("name") and natural=="water" then
 			way:LayerAsCentroid("water_name_detail")
 			SetNameAttributes(way)
 			SetMinZoomByArea(way)
 			way:Attribute("class", class)
 		end
+
 		return -- in case we get any landuse processing
 	end
 

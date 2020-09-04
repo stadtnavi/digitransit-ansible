@@ -27,14 +27,18 @@ tileserver/stuttgart-regbez.osm.pbf:
 	mkdir -p tileserver
 	curl "http://download.geofabrik.de/europe/germany/baden-wuerttemberg/stuttgart-regbez-latest.osm.pbf" -o $@
 
+tileserver/baden-wuerttemberg.osm.pbf:
+	mkdir -p tileserver
+	curl "http://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf" -o $@
+
 tileserver/hungary.osm.pbf:
 	mkdir -p tileserver
 	curl "http://download.geofabrik.de/europe/hungary-latest.osm.pbf" -o $@
 
-tileserver/%.osm.pbf: tileserver/stuttgart-regbez.osm.pbf
+tileserver/%.osm.pbf: tileserver/baden-wuerttemberg.osm.pbf
 	mkdir -p tileserver
 	curl -s "https://raw.githubusercontent.com/leonardehrenfried/polygons/master/$*.geojson" -o tileserver/$*.geojson
-	osmium extract --polygon tileserver/$*.geojson tileserver/stuttgart-regbez.osm.pbf -o tileserver/$*.osm.pbf  --overwrite --set-bounds
+	osmium extract --polygon tileserver/$*.geojson tileserver/baden-wuerttemberg.osm.pbf -o tileserver/$*.osm.pbf  --overwrite --set-bounds
 
 tileserver/%.mbtiles: tileserver/%.osm.pbf
 	cp roles/tilemaker/templates/*.json roles/tilemaker/templates/*.lua tileserver

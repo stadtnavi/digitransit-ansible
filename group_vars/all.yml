@@ -74,7 +74,7 @@ photon_url: https://photon.stadtnavi.eu
 # one week
 docker_prune_max_age: 168h
 
-thingsboard_to_parkapi_commit: 0a10ecce3fdd3e97801fd35f16803b987feae832
+thingsboard_to_parkapi_commit: 3fe3b1232d6665616f2768e34c98a9bcf5e4ca72
 
 thingsboard_username: !vault |
           $ANSIBLE_VAULT;1.1;AES256

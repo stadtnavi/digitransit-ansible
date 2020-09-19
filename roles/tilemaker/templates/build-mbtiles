@@ -8,7 +8,7 @@ TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles
 TILEMAKER_FINAL_OUTPUT_FILE=tilemaker-output.mbtiles
 
 rm -f ${PBF_FILE}
-curl -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
+curl --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 
 rm -f ${TILEMAKER_OUTPUT_FILE}
 

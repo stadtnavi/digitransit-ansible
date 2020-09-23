@@ -2,7 +2,7 @@
 Description=Rebuild mbtiles every night
 
 [Timer]
-OnCalendar=*-*-* 02:30:00
+OnCalendar=*-*-* 03:30:00
 Persistent=true
 
 [Install]

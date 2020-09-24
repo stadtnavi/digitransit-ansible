@@ -26,4 +26,6 @@ docker run \
 # tilemaker doesn't like it when the output file already exists to we move it
 mv "${TILEMAKER_OUTPUT_FILE}" "${TILEMAKER_FINAL_OUTPUT_FILE}"
 
-send-to-matrix "🏗️ mbtiles build complete on {{ inventory_hostname }}"
+TIMESTAMP=`osmium show ${PBF_FILE} | head -15 | grep osmosis_replication_timestamp | tr -d '[:space:]' | cut -d '=' -f 2`
+
+send-to-matrix "🏗️ mbtiles build complete on {{ inventory_hostname }}. OSM data from ${TIMESTAMP}"

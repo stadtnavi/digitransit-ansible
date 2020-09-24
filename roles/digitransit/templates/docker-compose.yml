@@ -43,7 +43,7 @@ services:
     logging:
       driver: journald
     environment:
-      - CONFIG=hb
+      - CONFIG={{ digitransit_config }}
       - GEOCODING_BASE_URL=https://{{ api_hostname }}/geocoding/v1
       - API_URL=https://{{ api_hostname }}
       - MAP_URL={{ map_url }}

@@ -33,8 +33,6 @@ certbot_certs:
     - "{{ api_hostname }}"
   - domains:
     - "{{ matomo_hostname }}"
-  - domains:
-    - "{{ photon_hostname }}"
 
 certbot_auto_renew: true
 certbot_auto_renew_options: --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx"

@@ -1,33 +1,35 @@
 ---
 
-digitransit_config: hb
-server_name: production
+digitransit_config: ludwigsburg
+server_name: ludwigsburg
 
 data_builder_tag: ci-a43d78bdb048b6f90338495a7cf7e60811c28d61
 
-otp_docker_tag: fe76ec41335f86acc5ea755a15cb4c3d4ea846d7
+otp_docker_tag: latest
 digitransit:
   images:
     proxy: lehrenfried/digitransit-proxy:post-migration
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
-    ui: stadtnavi/digitransit-ui:0b2f614e8929802803373c5eda605080cd9c3f57
-    map_server: stadtnavi/hsl-map-server:6aadfc70df0f60ae4f68980ca546af788c6fb37c
+    ui: stadtnavi/digitransit-ui:latest
+    map_server: stadtnavi/hsl-map-server:latest
 
-hostname: herrenberg.stadtnavi.de
-api_hostname: api.stadtnavi.de
-matomo_hostname: track.stadtnavi.de
+hostname: ludwigsburg.stadtnavi.eu
+api_hostname: api.stadtnavi.eu
+matomo_hostname: track.stadtnavi.eu
+
+certbot_certs:
+  - domains:
+    - "{{ hostname }}"
+  - domains:
+    - "{{ api_hostname }}"
+  - domains:
+    - "{{ matomo_hostname }}"
+
 
 certbot_admin_email: mail@leonard.io
 
 matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
-# needs to be different on production as there minio is running on port 9000
-matomo_port: 9009
-
-#photon_url: https://photon-temp.leonard.io
-
-# needs to be different on production as there is already another digitransit running on 8080
-digitransit_port: 8888
 
 mfdz_gtfs_url: !vault |
           $ANSIBLE_VAULT;1.1;AES256

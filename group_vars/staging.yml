@@ -1,5 +1,6 @@
 ---
 
+digitransit_config: hb
 server_name: staging
 
 hostname: mih.mitfahren-bw.de

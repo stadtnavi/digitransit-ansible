@@ -18,4 +18,5 @@
   systemd:
     name: data-builder.timer
     enabled: yes
+    state: started
     daemon_reload: yes

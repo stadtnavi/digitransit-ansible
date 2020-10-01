@@ -40,13 +40,16 @@
     daemon_reload: yes
 
 - name: Copy main host nginx site conf
-  template: src=nginx-site.conf dest=/etc/digitransit/{{ item }}.conf
+  template: src=nginx-site.conf dest=/etc/nginx/sites-enabled/{{ item.domain }}.conf
   with_items:
-    - "{{ hostname }}"
+    - domain: "{{ hostname }}"
+      port: "{{ digitransit_port }}"
+    - domain: "herrenberg.stadtnavi.eu"
+      port: 8081
   notify: Restart nginx
 
 - name: Copy api host nginx site conf
-  template: src=nginx-site-api.conf dest=/etc/digitransit/{{ item }}.conf
+  template: src=nginx-site-api.conf dest=/etc/nginx/sites-enabled/{{ item }}.conf
   with_items:
     - "{{ api_hostname }}"
   notify: Restart nginx
@@ -58,26 +61,6 @@
   with_items:
     - default
     - digitransit-proxy.conf
-  notify: Restart nginx
-
-- name: Symlink to sites-available
-  file:
-    src: /etc/digitransit/{{ item }}.conf
-    dest: /etc/nginx/sites-available/{{ item }}.conf
-    state: link
-  with_items:
-    - "{{ hostname }}"
-    - "{{ api_hostname }}"
-  notify: Restart nginx
-
-- name: Symlink to sites-enabled
-  file:
-    src: /etc/digitransit/{{ item }}.conf
-    dest: /etc/nginx/sites-enabled/{{ item }}.conf
-    state: link
-  with_items:
-    - "{{ hostname }}"
-    - "{{ api_hostname }}"
   notify: Restart nginx
 
 - name: Install systemd files for digitransit-restart

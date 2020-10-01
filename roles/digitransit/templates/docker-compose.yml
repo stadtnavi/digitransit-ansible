@@ -52,6 +52,26 @@ services:
       - NODE_ENV=production
       - FAHRGEMEINSCHAFT_API_KEY={{ fahrgemeinschaft_api_key }}
       - FAHRGEMEINSCHAFT_AUTH_KEY={{ fahrgemeinschaft_auth_key }}
+  digitransit-ui-herrenberg:
+    image: {{ digitransit["images"]["ui"] }}
+    ports:
+      - 8081:8080
+    restart: on-failure
+    container_name: digitransit-ui-herrenberg
+    networks:
+      - digitransit
+    logging:
+      driver: journald
+    environment:
+      - CONFIG=hb
+      - GEOCODING_BASE_URL=https://{{ api_hostname }}/geocoding/v1
+      - API_URL=https://{{ api_hostname }}
+      - MAP_URL={{ map_url }}
+      - SEMI_TRANSPARENT_MAP_URL={{ semi_transparent_map_url }}
+      - MATOMO_URL={{ matomo_url }}
+      - NODE_ENV=production
+      - FAHRGEMEINSCHAFT_API_KEY={{ fahrgemeinschaft_api_key }}
+      - FAHRGEMEINSCHAFT_AUTH_KEY={{ fahrgemeinschaft_auth_key }}
   hsl-map-server:
     image: {{ digitransit["images"]["map_server"] }}
     container_name: hsl-map-server

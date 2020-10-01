@@ -15,6 +15,7 @@ digitransit:
     map_server: stadtnavi/hsl-map-server:latest
 
 hostname: ludwigsburg.stadtnavi.eu
+herrenberg_hostname: herrenberg.stadtnavi.eu
 api_hostname: api.stadtnavi.eu
 matomo_hostname: track.stadtnavi.eu
 
@@ -25,7 +26,8 @@ certbot_certs:
     - "{{ api_hostname }}"
   - domains:
     - "{{ matomo_hostname }}"
-
+  - domains:
+    - "{{ herrenberg_hostname }}"
 
 certbot_admin_email: mail@leonard.io
 

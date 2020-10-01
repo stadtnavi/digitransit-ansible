@@ -25,6 +25,7 @@
 
 - name: Install docker-compose file
   template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
+  with_items: "{{ digitransit_ui }}"
   notify: Restart digitransit-ui
 
 - name: Install service file for digitransit-docker-compose
@@ -41,11 +42,7 @@
 
 - name: Copy main host nginx site conf
   template: src=nginx-site.conf dest=/etc/nginx/sites-enabled/{{ item.domain }}.conf
-  with_items:
-    - domain: "{{ hostname }}"
-      port: "{{ digitransit_port }}"
-    - domain: "herrenberg.stadtnavi.eu"
-      port: 8081
+  with_items: "{{ digitransit_ui }}"
   notify: Restart nginx
 
 - name: Copy api host nginx site conf

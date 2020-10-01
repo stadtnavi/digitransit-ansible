@@ -1,7 +1,13 @@
 ---
-
-digitransit_config: ludwigsburg
 server_name: ludwigsburg
+
+digitransit_ui:
+  - config: hb
+    port: 8081
+    domain: herrenberg.stadtnavi.eu
+  - config: ludwigsburg
+    port: 8082
+    domain: ludwigsburg.stadtnavi.eu
 
 data_builder_tag: ci-a43d78bdb048b6f90338495a7cf7e60811c28d61
 
@@ -14,20 +20,18 @@ digitransit:
     ui: stadtnavi/digitransit-ui:latest
     map_server: stadtnavi/hsl-map-server:latest
 
-hostname: ludwigsburg.stadtnavi.eu
-herrenberg_hostname: herrenberg.stadtnavi.eu
 api_hostname: api.stadtnavi.eu
 matomo_hostname: track.stadtnavi.eu
 
 certbot_certs:
   - domains:
-    - "{{ hostname }}"
+    - "{{ digitransit_ui[0].domain }}"
+  - domains:
+    - "{{ digitransit_ui[1].domain }}"
   - domains:
     - "{{ api_hostname }}"
   - domains:
     - "{{ matomo_hostname }}"
-  - domains:
-    - "{{ herrenberg_hostname }}"
 
 certbot_admin_email: mail@leonard.io
 

@@ -4,7 +4,6 @@
   hosts: all
   become: yes
   roles:
-    #- geerlingguy.swap
     - base
     - digitransit
     - thingsboard-to-parkapi

@@ -104,4 +104,6 @@ A build is run every night but sometimes you want to trigger it manually.
 
 To see the complete list of useful aliases check out [`alias.sh`](roles/base/templates/alias.sh).
 
+## Subtopics
 
+- [Adding another digitransit-ui instance](./docs/adding-a-ui-instance.md)

@@ -14,7 +14,7 @@ data_builder_tag: ci-a43d78bdb048b6f90338495a7cf7e60811c28d61
 otp_docker_tag: latest
 digitransit:
   images:
-    proxy: lehrenfried/digitransit-proxy:post-migration
+    proxy: stadtnavi/digitransit-proxy:566bd01469f624eedbac89936416cdbade56ef65
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
     ui: stadtnavi/digitransit-ui:latest

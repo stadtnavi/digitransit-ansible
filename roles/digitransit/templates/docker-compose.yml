@@ -37,7 +37,7 @@ services:
 
 {% for item in digitransit_ui %}
   digitransit-ui-{{ item["config"] }}:
-    image: {{ digitransit["images"]["ui"] }}
+    image: {{ item["image"] }}
     restart: on-failure
     container_name: digitransit-ui-{{ item["config"]}}
     ports:

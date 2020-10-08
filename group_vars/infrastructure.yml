@@ -23,6 +23,8 @@ tileserver_allowed_referrers:
   - .localhost
   - .ludwigsburg.stadtnavi.eu
   - .herrenberg.stadtnavi.eu
+  - .next.leonard.io
   - .mih.mitfahren-bw.de
   - .herrenberg.stadtnavi.de
   - .stadtnavi.github.io
+  - .digitransit-next.leonard.io

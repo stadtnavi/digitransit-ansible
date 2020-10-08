@@ -35,6 +35,8 @@ certbot_certs:
   - domains:
     - "{{ digitransit_ui[1].domain }}"
   - domains:
+    - "{{ digitransit_ui[2].domain }}"
+  - domains:
     - "{{ api_hostname }}"
   - domains:
     - "{{ matomo_hostname }}"

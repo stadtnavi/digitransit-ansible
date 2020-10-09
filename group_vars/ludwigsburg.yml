@@ -12,7 +12,7 @@ digitransit_ui:
     image: stadtnavi/digitransit-ui:latest
   - config: hbnext
     port: 8083
-    domain: digitransit-next.leonard.io
+    domain: next.stadtnavi.eu
     image: stadtnavi/digitransit-ui:next
 
 data_builder_tag: ci-a43d78bdb048b6f90338495a7cf7e60811c28d61

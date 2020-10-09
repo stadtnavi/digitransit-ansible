@@ -21,9 +21,8 @@ nominatim_db_password: !vault |
 
 tileserver_allowed_referrers:
   - .localhost
-  - .ludwigsburg.stadtnavi.eu
-  - .herrenberg.stadtnavi.eu
-  - .next.leonard.io
+  - "*.stadtnavi.eu"
+  - "*.stadtnavi.de"
   - .mih.mitfahren-bw.de
   - .herrenberg.stadtnavi.de
   - .stadtnavi.github.io

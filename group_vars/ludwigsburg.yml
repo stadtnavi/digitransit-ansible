@@ -26,8 +26,8 @@ digitransit:
     ui: stadtnavi/digitransit-ui:latest
     map_server: stadtnavi/hsl-map-server:latest
 
-api_hostname: api.stadtnavi.eu
-matomo_hostname: track.stadtnavi.eu
+api_hostname: api.stadtnavi.de
+matomo_hostname: track.stadtnavi.de
 
 certbot_certs:
   - domains:

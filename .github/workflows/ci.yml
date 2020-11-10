@@ -18,4 +18,4 @@ jobs:
           mkdir -p tileserver
           curl http://download.geofabrik.de/europe/germany/baden-wuerttemberg/tuebingen-regbez-latest.osm.pbf -o ./tileserver/tuebingen-regbez.osm.pbf
           cp roles/tilemaker/templates/*.json roles/tilemaker/templates/*.lua tileserver
-          docker run -v `pwd`/tileserver:/srv --rm lehrenfried/tilemaker:latest /srv/tuebingen-regbez.osm.pbf --output=/srv/tuebingen-regbez.mbtiles --config=/srv/config-openmaptiles.json --process=/srv/process-openmaptiles.lua
+          docker run -v `pwd`/tileserver:/srv --rm stadtnavi/tilemaker:latest /srv/tuebingen-regbez.osm.pbf --output=/srv/tuebingen-regbez.mbtiles --config=/srv/config-openmaptiles.json --process=/srv/process-openmaptiles.lua

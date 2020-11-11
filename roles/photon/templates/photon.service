@@ -4,7 +4,7 @@ After=docker.service
 
 [Service]
 
-Environment=CONTAINER_IMAGE=lehrenfried/photon:latest
+Environment=CONTAINER_IMAGE=mfdz/photon:7affa539b8f6cab7e9a223f6424b353bc2cceefd
 Environment=CONTAINER_NAME=photon
 TimeoutStartSec=0
 Restart=always

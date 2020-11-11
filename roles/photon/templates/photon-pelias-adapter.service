@@ -1,0 +1,22 @@
+[Unit]
+Description=Photon Pelias Adapter
+After=docker.service
+
+[Service]
+
+Environment=CONTAINER_IMAGE=mfdz/photon-pelias-adapter:1ac1413de3fc88ec1f61ee8cee803824c98e06fd
+Environment=CONTAINER_NAME=photon-pelias-adapter
+TimeoutStartSec=0
+Restart=always
+
+Environment=PHOTON_URL=https://{{photon_hostname}}
+
+ExecStartPre=-docker pull ${CONTAINER_IMAGE}
+ExecStartPre=-docker stop ${CONTAINER_NAME}
+ExecStartPre=-docker rm ${CONTAINER_NAME}
+ExecStart=docker run --name ${CONTAINER_NAME} --log-driver=journald -p 9100:8080 -e NOMINATIM_DB_HOST -e NOMINATIM_DB_PASSWORD -e PHOTON_URL ${CONTAINER_IMAGE}
+
+ExecStop=-docker stop ${CONTAINER_NAME}
+
+[Install]
+WantedBy=multi-user.target

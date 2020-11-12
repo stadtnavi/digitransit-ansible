@@ -18,10 +18,16 @@
     - photon.service
     - photon-update.service
     - photon-update.timer
-    - photon-pelias-adapter.service
   notify:
     # photon.service dependens on nominatim.service so it's restarted, too.
     - Restart nominatim
+
+- name: Install systemd files for photon-pelias-adapter
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
+    - photon-pelias-adapter.service
+  notify:
+    - Restart photon-pelias-adapter
 
 - name: Start nomimatim and photon services
   systemd: state=started name="{{ item }}" enabled=yes daemon_reload=yes

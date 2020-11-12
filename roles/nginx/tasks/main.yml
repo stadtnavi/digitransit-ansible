@@ -6,6 +6,9 @@
       - nginx
     state: present
 
-- name: Copy nginx conf
-  template: src=nginx.conf dest=/etc/nginx/
+- name: Copy nginx conf files
+  template: src="{{ item }}" dest=/etc/nginx/
+  with_items:
+    - nginx.conf
+    - cors.conf
   notify: Restart nginx

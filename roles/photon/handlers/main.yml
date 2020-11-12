@@ -1,8 +1,14 @@
 ---
-- name: Restart nginx
+- name: Check nginx conf
+  command: "/usr/sbin/nginx -t"
+  become: yes
+  listen: "Restart nginx"
+
+- name: Restart nginx service
   service:
     name: nginx
     state: restarted
+  listen: "Restart nginx"
 
 - name: Restart nominatim
   service:
@@ -12,6 +18,11 @@
 - name: Restart photon
   service:
     name: photon
+    state: restarted
+
+- name: Restart photon-pelias-adapter
+  service:
+    name: photon-pelias-adapter
     state: restarted
 
 

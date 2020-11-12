@@ -48,7 +48,7 @@ services:
       driver: journald
     environment:
       - CONFIG={{ item["config"] }}
-      - GEOCODING_BASE_URL=https://{{ api_hostname }}/geocoding/v1
+      - GEOCODING_BASE_URL={{ photon_url }}/pelias/v1
       - API_URL=https://{{ api_hostname }}
       - MAP_URL={{ map_url }}
       - SEMI_TRANSPARENT_MAP_URL={{ semi_transparent_map_url }}
@@ -71,16 +71,6 @@ services:
       - OTP_URL=opentripplanner:8080/otp/routers/hb/index/graphql
     logging:
       driver: journald
-  photon-pelias-adapter:
-    image: mfdz/photon-pelias-adapter:1ac1413de3fc88ec1f61ee8cee803824c98e06fd
-    container_name: photon-pelias-adapter
-    logging:
-      driver: journald
-    restart: on-failure:5
-    networks:
-      - digitransit
-    environment:
-      - PHOTON_URL={{ photon_url }}
 
 networks:
   digitransit:

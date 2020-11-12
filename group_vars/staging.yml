@@ -6,7 +6,6 @@ server_name: staging
 hostname: mih.mitfahren-bw.de
 api_hostname: api.mih.mitfahren-bw.de
 matomo_hostname: track.mfdz.de
-photon_hostname: photon-temp.leonard.io
 
 matomo_url: https://track.mfdz.de/js/container_TeHZVOVk_staging_a1a89f1a01da974800990125.js
 

@@ -3,7 +3,7 @@
 
 # ansible
 
-PLAYBOOK_CMD:=ansible-playbook --vault-password-file vault-password
+PLAYBOOK_CMD:=ANSIBLE_PIPELINING=true ansible-playbook --vault-password-file vault-password
 
 galaxy-install:
 	ansible-galaxy install -r requirements.yml

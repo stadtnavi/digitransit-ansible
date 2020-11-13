@@ -138,10 +138,6 @@ wmts_password: !vault |
 osm_pbf_url: http://download.geofabrik.de/europe/dach-latest.osm.pbf
 osm_updates_url: http://download.geofabrik.de/europe/dach-updates/
 nominatim_import_wikipedia: "true"
-install_photon: False
-
-# tilemaker
-install_tilemaker: False
 
 matrix_bot_token: !vault |
           $ANSIBLE_VAULT;1.1;AES256

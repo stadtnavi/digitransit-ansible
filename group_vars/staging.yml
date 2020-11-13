@@ -1,11 +1,46 @@
 ---
+server_name: production
 
-digitransit_config: hb
-server_name: staging
+digitransit_ui:
+  - config: hb
+    port: 8081
+    domain: herrenberg.staging.stadtnavi.eu
+    image: stadtnavi/digitransit-ui:711fecdaab3bcb121a37e0f95697c3188b039a36
+  - config: ludwigsburg
+    port: 8082
+    domain: ludwigsburg.staging.stadtnavi.eu
+    image: stadtnavi/digitransit-ui:latest
+  - config: hbnext
+    port: 8083
+    domain: next.staging.stadtnavi.eu
+    image: stadtnavi/digitransit-ui:next
 
-hostname: mih.mitfahren-bw.de
+data_builder_tag: latest
+
+otp_docker_tag: latest-2020-10-22T21.52.41-6e58a44
+digitransit:
+  images:
+    proxy: stadtnavi/digitransit-proxy:latest
+    otp: mfdz/opentripplanner:{{ otp_docker_tag }}
+    data_container: mfdz/opentripplanner-data-container-hb:local
+    map_server: stadtnavi/hsl-map-server:latest
+
 api_hostname: api.mih.mitfahren-bw.de
 matomo_hostname: track.mfdz.de
+
+certbot_certs:
+  - domains:
+    - "{{ digitransit_ui[0].domain }}"
+  - domains:
+    - "{{ digitransit_ui[1].domain }}"
+  - domains:
+    - "{{ digitransit_ui[2].domain }}"
+  - domains:
+    - "{{ api_hostname }}"
+  - domains:
+    - "{{ matomo_hostname }}"
+
+certbot_admin_email: mail@leonard.io
 
 matomo_url: https://track.mfdz.de/js/container_TeHZVOVk_staging_a1a89f1a01da974800990125.js
 
@@ -52,4 +87,3 @@ matomo_db_root_password: !vault |
           64386237323337623061336466343066393232633638646538336162373631323839383635303562
           6138626538356638663630303966353739316135656162613465
 
-a_star_statistics: "true"

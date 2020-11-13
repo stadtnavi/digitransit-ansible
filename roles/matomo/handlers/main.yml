@@ -1,9 +1,4 @@
 ---
-- name: Restart nginx
-  service:
-    name: nginx
-    state: restarted
-
 - name: Restart matomo docker-compose
   service:
     name: matomo-docker-compose

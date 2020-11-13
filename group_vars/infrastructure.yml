@@ -3,7 +3,6 @@
 server_name: infrastructure
 
 tiles_hostname: tiles.stadtnavi.eu
-photon_hostname: photon.stadtnavi.eu
 
 certbot_certs:
   - domains:

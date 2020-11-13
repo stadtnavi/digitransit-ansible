@@ -66,7 +66,8 @@ digitransit:
 matomo_port: 9000
 digitransit_port: 8080
 
-photon_url: https://photon.stadtnavi.eu
+photon_hostname: photon.stadtnavi.eu
+photon_url: https://{{ photon_hostname }}
 
 # one week
 docker_prune_max_age: 168h

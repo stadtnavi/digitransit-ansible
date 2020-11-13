@@ -25,7 +25,7 @@ digitransit:
     data_container: mfdz/opentripplanner-data-container-hb:local
     map_server: stadtnavi/hsl-map-server:latest
 
-api_hostname: api.mih.mitfahren-bw.de
+api_hostname: api.staging.stadtnavi.eu
 matomo_hostname: track.mfdz.de
 
 certbot_certs:

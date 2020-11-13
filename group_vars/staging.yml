@@ -1,5 +1,5 @@
 ---
-server_name: production
+server_name: staging
 
 digitransit_ui:
   - config: hb

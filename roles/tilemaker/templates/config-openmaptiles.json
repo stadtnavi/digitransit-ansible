@@ -40,7 +40,8 @@
 		"name": "Tilemaker to OpenMapTiles schema",
 		"version": "3.0",
 		"description": "Tile config based on OpenMapTiles schema",
-		"compress": "gzip"
+		"compress": "gzip",
+    "bounding_box" : [5.864417,47.26543,15.05078,55.14777]
 	}
 }
 

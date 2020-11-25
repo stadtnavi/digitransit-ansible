@@ -7,8 +7,13 @@ IMAGE_NAME="stadtnavi/tilemaker:latest"
 TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles
 TILEMAKER_FINAL_OUTPUT_FILE=tilemaker-output.mbtiles
 
-rm -f ${PBF_FILE}
-curl --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
+if [ -f "$PBF_FILE" ]; then
+  echo "$PBF_FILE exists. Downloading updates."
+  pyosmium-up-to-date -v $PBF_FILE || true
+else
+  echo "$PBF_FILE does not exist."
+  curl --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
+fi
 
 rm -f ${TILEMAKER_OUTPUT_FILE}
 

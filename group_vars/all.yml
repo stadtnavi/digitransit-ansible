@@ -72,7 +72,7 @@ photon_url: https://{{ photon_hostname }}
 # one week
 docker_prune_max_age: 168h
 
-thingsboard_to_parkapi_commit: 21c2691a8add0ca7a6c00debcde14cd7f28cfafc
+thingsboard_to_parkapi_commit: 690c271aa54830770c659f8daef6126075a769a8
 
 thingsboard_username: !vault |
           $ANSIBLE_VAULT;1.1;AES256

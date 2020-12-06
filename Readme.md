@@ -5,9 +5,14 @@ Install mfdz's digitransit with ansible
 - `make vagrant`: starts a Vagrant VM and applies the digitransit playbook
 - `make staging`: connects to the staging host and applies the playbook there
 
-In order for this commands to work, you also need to place the ansible vault
-password file onto your file system. Please get in touch with @leonardehrenfried
-to get it.
+### Vault 
+
+Secrets are encrypted with ansible vault. In order to run the above playbooks
+you need to place a file called `vault-password` into the root of the repository
+- it's ignored by version control.
+
+Please get in touch with @leonardehrenfried to get the decryption key to paste
+into this file.
 
 ### Digitransit target host requirements
 

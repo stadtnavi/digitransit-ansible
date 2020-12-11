@@ -69,6 +69,7 @@ services:
     environment:
       - PARK_API_URL=https://{{ api_hostname }}/parkapi.json
       - OTP_URL=opentripplanner:8080/otp/routers/hb/index/graphql
+      - CIFS_URL=https://gtfs.mfdz.de/roadworks/hbg.cifs.json
     logging:
       driver: journald
 

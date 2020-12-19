@@ -5,7 +5,7 @@ digitransit_ui:
   - config: hb
     port: 8081
     domain: herrenberg.stadtnavi.de
-    image: stadtnavi/digitransit-ui:1672d08f923c75475c3c05378efb2c09ec588809
+    image: stadtnavi/digitransit-ui:05a009a0d5b767e55f0420e1325680f8adfddf2a
   - config: ludwigsburg
     port: 8082
     domain: ludwigsburg.stadtnavi.eu
@@ -23,7 +23,7 @@ digitransit:
     proxy: stadtnavi/digitransit-proxy:c2d5ca0da5e5abe5b8e156dfc25e66e44bf76079
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
-    map_server: stadtnavi/hsl-map-server:90e1854e611f8ca5270da5cfd850c5e6a24ea24b
+    map_server: stadtnavi/hsl-map-server:6d98dbc621f2a685fc1a81bd01b4c44464d56af3
 
 api_hostname: api.stadtnavi.de
 matomo_hostname: track.stadtnavi.de

@@ -1,5 +1,8 @@
 [Unit]
 Description=Convert the thingsboard data to parkapi format
+Type=oneshot
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 User=www-data

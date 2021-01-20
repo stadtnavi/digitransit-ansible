@@ -17,7 +17,7 @@ digitransit_ui:
 
 data_builder_tag: ci-8581ff532baef42cd37749ec2a73ca7307195ddb
 
-otp_docker_tag: latest-2020-10-22T21.52.41-6e58a44
+otp_docker_tag: 54bebcb19492bfed5a6b569a1a876c866377e590
 digitransit:
   images:
     proxy: stadtnavi/digitransit-proxy:c2d5ca0da5e5abe5b8e156dfc25e66e44bf76079

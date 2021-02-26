@@ -71,7 +71,7 @@ services:
       - OTP_URL=opentripplanner:8080/otp/routers/hb/index/graphql
       - CIFS_URL=https://gtfs.mfdz.de/roadworks/hbg.cifs.json
       - WEATHER_STATIONS_URL=https://data.mfdz.de/hbg/roadweather/weather.geojson
-      - CHARGING_STATIONS_URL=https://raw.githubusercontent.com/stadtnavi/tilelive-charging-stations/main/geojson/charging-stations.geojson
+      - CHARGING_STATIONS_URL=https://data.mfdz.de/hbg/charging-stations/charging-stations.geojson
     logging:
       driver: journald
 

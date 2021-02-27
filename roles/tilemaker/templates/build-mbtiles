@@ -2,7 +2,7 @@
 
 PBF_DOWNLOAD_URL={{ tilemaker_pbf_download_url }}
 PBF_FILE=tilemaker-input.osm.pbf
-IMAGE_NAME="stadtnavi/tilemaker:latest"
+IMAGE_NAME="stadtnavi/tilemaker:d0e8e69aaf4e9adbfc55b238d48fe49ef2b857a5"
 
 TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles
 TILEMAKER_FINAL_OUTPUT_FILE=tilemaker-output.mbtiles

@@ -27,5 +27,6 @@ tileserver_allowed_referrers:
   - .stadtnavi.github.io
   - .digitransit-next.leonard.io
   - "*.service-bw.de"
+  - "*.komm.one"
 
 photon_pelias_adapter_tag: bca447189d8fbafbcee4a88115e87c1268f07495

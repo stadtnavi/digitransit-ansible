@@ -72,7 +72,7 @@ services:
       - CIFS_URL=https://gtfs.mfdz.de/roadworks/hbg.cifs.json
       - WEATHER_STATIONS_URL=https://data.mfdz.de/hbg/roadweather/weather.geojson
       - CHARGING_STATIONS_URL=https://data.mfdz.de/hbg/charging-stations/charging-stations.geojson
-      - BUS_POSITIONS_URL=https://raw.githubusercontent.com/stadtnavi/tilelive-bus-positions/main/geojson/bus-positions.geojson
+      - BUS_POSITIONS_URL=https://api.staging.stadtnavi.eu/herrenberg/bus/bus-positions.geojson
     logging:
       driver: journald
 

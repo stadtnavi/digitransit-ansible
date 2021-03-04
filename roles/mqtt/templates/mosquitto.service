@@ -1,0 +1,23 @@
+[Unit]
+Description=Mosquitto MQTT broker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment=IMAGE_NAME=eclipse-mosquitto:2.0.8
+Environment=CONTAINER_NAME=mosquitto
+ExecStartPre=docker pull ${IMAGE_NAME} --quiet
+ExecStart=docker run --name ${CONTAINER_NAME} --rm \
+    -p 1884:1884 \
+    -p 8883:8883 \
+    -p 8884:8884 \
+    -v /etc/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf \
+    -v /etc/mosquitto/mosquitto.acl:/mosquitto/config/mosquitto.acl \
+    -v /etc/mosquitto/mosquitto.passwd:/mosquitto/config/mosquitto.passwd \
+    -v /etc/ssl/certs/DST_Root_CA_X3.pem:/mosquitto/config/ca.pem \
+    -v /etc/letsencrypt/live/{{ api_hostname }}/fullchain.pem:/mosquitto/config/cert.pem \
+    -v /etc/letsencrypt/live/{{ api_hostname }}/privkey.pem:/mosquitto/config/key.pem \
+    ${IMAGE_NAME}
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,32 @@
+---
+- name: Creates directory
+  file:
+    path: /etc/mosquitto/
+    state: directory
+    owner: root
+    group: root
+
+- name: Install mosquitto config files
+  template:
+    src: '{{ item }}'
+    dest: /etc/mosquitto/
+  with_items:
+    - mosquitto.conf
+    - mosquitto.acl
+    - mosquitto.passwd
+  notify: Restart mosquitto
+
+- name: Install systemd files
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
+    - mosquitto.service
+  notify: Restart mosquitto
+
+- name: Start mosquitto
+  systemd:
+    name: mosquitto.service
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+

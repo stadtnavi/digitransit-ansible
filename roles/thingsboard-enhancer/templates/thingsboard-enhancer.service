@@ -10,7 +10,7 @@ Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
 Environment=THINGSBOARD_PASSWORD={{ thingsboard_password }}
 Environment=TZ={{ timezone }}
 Environment=DOCKER_IMAGE=stadtnavi/thingsboard-json-enhancer
-ExecStart=docker run --rm -v /var/thingsboard/herrenberg/:/out -e THINGSBOARD_HOST -e THINGSBOARD_USERNAME -e THINGSBOARD_PASSWORD -e TZ ${DOCKER_IMAGE} thingsboard-json-enhancer -i templates/bus/ -o /out/
+ExecStart=docker run --rm -v /var/thingsboard/herrenberg/:/out -e THINGSBOARD_HOST -e THINGSBOARD_USERNAME -e THINGSBOARD_PASSWORD -e TZ ${DOCKER_IMAGE} thingsboard-json-enhancer -i templates/bus/ -o /out/bus/
 ExecStart=chown -R www-data:www-data /var/thingsboard/herrenberg/
 ExecStart=docker pull ${DOCKER_IMAGE} --quiet
 

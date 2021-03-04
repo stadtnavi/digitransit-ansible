@@ -1,7 +1,7 @@
 ---
 - name: Creates directory
   file:
-    path: /var/thingsboard/herrenberg/
+    path: /var/thingsboard/herrenberg/bus/
     state: directory
     owner: www-data
     group: www-data

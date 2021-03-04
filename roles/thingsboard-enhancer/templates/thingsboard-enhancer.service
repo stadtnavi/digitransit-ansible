@@ -1,15 +1,18 @@
 [Unit]
-Description=Convert the thingsboard data to parkapi format
+Description=Convert the bus positions from thingsboard to GeoJSON
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 Type=oneshot
-Environment=THINGSBOARD_API_URL={{ thingsboard_api_url }}
+Environment=THINGSBOARD_HOST={{ thingsboard_api_url }}
 Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
 Environment=THINGSBOARD_PASSWORD={{ thingsboard_password }}
-ExecStart=docker run --rm -v /var/thingsboard/herrenberg/:/out --env THINGSBOARD_HOST=${THINGSBOARD_API_URL} --env THINGSBOARD_USERNAME='${THINGSBOARD_USERNAME}' --env THINGSBOARD_PASSWORD='${THINGSBOARD_PASSWORD}' stadtnavi/thingsboard-json-enhancer thingsboard-json-enhancer -i templates/bus/ -o /out/
-ExecStart=chown www-data:www-data /var/thingsboard/herrenberg/*
+Environment=TZ={{ timezone }}
+Environment=DOCKER_IMAGE=stadtnavi/thingsboard-json-enhancer
+ExecStart=docker run --rm -v /var/thingsboard/herrenberg/:/out -e THINGSBOARD_HOST -e THINGSBOARD_USERNAME -e THINGSBOARD_PASSWORD -e TZ ${DOCKER_IMAGE} thingsboard-json-enhancer -i templates/bus/ -o /out/
+ExecStart=chown -R www-data:www-data /var/thingsboard/herrenberg/
+ExecStart=docker pull ${DOCKER_IMAGE} --quiet
 
 [Install]
 WantedBy=multi-user.target

@@ -26,7 +26,7 @@
 
 - name: Set timezone to Europe/Berlin
   timezone:
-    name: Europe/Berlin
+    name: '{{ timezone }}'
 
 - name: Adding existing user '{{ item }}' to group sudo
   user:

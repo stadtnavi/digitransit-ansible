@@ -3,6 +3,8 @@
 ansible_python_interpreter: auto_silent
 networks_cli_compatible: no
 
+timezone: Europe/Berlin
+
 docker_install_compose: true
 
 swap_file_size_mb: '16000'

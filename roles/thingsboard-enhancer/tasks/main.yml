@@ -1,0 +1,23 @@
+---
+- name: Creates directory
+  file:
+    path: /var/thingsboard/herrenberg/
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
+
+- name: Install systemd files
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
+    - thingsboard-enhancer.service
+    - thingsboard-enhancer.timer
+
+- name: Start thingsboard timer
+  systemd:
+    name: thingsboard-enhancer.timer
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+

@@ -5,6 +5,7 @@
   become: yes
   roles:
     - base
+    - thingsboard-enhancer
     - digitransit
     - thingsboard-to-parkapi
     - matomo

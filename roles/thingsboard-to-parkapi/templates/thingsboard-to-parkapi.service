@@ -1,10 +1,10 @@
 [Unit]
 Description=Convert the thingsboard data to parkapi format
-Type=oneshot
 After=network-online.target
 Wants=network-online.target
 
 [Service]
+Type=oneshot
 User=www-data
 Group=www-data
 Environment=THINGSBOARD_API_URL={{ thingsboard_api_url }}

@@ -5,9 +5,10 @@
   become: yes
   roles:
     - base
-    - mqtt
+    - thingsboard-to-mqtt
     - thingsboard-enhancer
     - digitransit
+    - mqtt
     - thingsboard-to-parkapi
     - matomo
     - data-builder

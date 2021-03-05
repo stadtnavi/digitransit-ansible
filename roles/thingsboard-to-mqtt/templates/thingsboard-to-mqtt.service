@@ -1,0 +1,29 @@
+[Unit]
+Description=Forward the bus positions from thingsboard to MQTT
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment=THINGSBOARD_HOST={{ thingsboard_api_url }}
+Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
+Environment=THINGSBOARD_PASSWORD="{{ thingsboard_password }}"
+Environment=MQTT_BROKER_URL={{ api_hostname }}
+Environment=MQTT_USER=publisher
+Environment=MQTT_PASSWORD="{{ mqtt_publisher_password }}"
+Environment=DOCKER_IMAGE=stadtnavi/thingsboard-to-gtfsrt-mqtt
+Environment=CONTAINER_NAME=thingsboard-to-mqtt
+
+ExecStartPre=docker pull ${DOCKER_IMAGE} --quiet
+ExecStartPre=-docker stop ${CONTAINER_NAME}
+ExecStart=docker run --rm \
+    -e THINGSBOARD_HOST \
+    -e THINGSBOARD_USERNAME \
+    -e THINGSBOARD_PASSWORD \
+    -e MQTT_USER \
+    -e MQTT_PASSWORD \
+    -e MQTT_BROKER_URL \
+    --name ${CONTAINER_NAME} \
+    ${DOCKER_IMAGE}
+
+[Install]
+WantedBy=multi-user.target

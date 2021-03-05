@@ -1,0 +1,17 @@
+---
+- name: Install systemd files
+  template:
+    src: '{{ item }}'
+    dest: /etc/systemd/system/
+  with_items:
+    - thingsboard-to-mqtt.service
+  notify: Restart thingsboard-to-mqtt
+
+- name: Start mosquitto
+  systemd:
+    name: thingsboard-to-mqtt.service
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+

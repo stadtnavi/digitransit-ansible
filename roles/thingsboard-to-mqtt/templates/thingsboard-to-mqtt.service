@@ -24,6 +24,7 @@ ExecStart=docker run --rm \
     -e MQTT_BROKER_URL \
     --name ${CONTAINER_NAME} \
     ${DOCKER_IMAGE}
+ExecStop=-docker kill ${CONTAINER_NAME}
 
 [Install]
 WantedBy=multi-user.target

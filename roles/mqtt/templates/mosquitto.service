@@ -5,7 +5,8 @@ Wants=network-online.target
 
 [Service]
 Restart=always
-RuntimeMaxSec=604800 # restart after a week
+# restart after a week in order to reload the TLS certificate
+RuntimeMaxSec=604800
 Environment=IMAGE_NAME=eclipse-mosquitto:2.0.8
 Environment=CONTAINER_NAME=mosquitto
 ExecStartPre=docker pull ${IMAGE_NAME} --quiet

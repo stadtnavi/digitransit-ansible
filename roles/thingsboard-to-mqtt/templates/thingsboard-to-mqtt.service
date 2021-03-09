@@ -4,6 +4,8 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
+Restart=always
+
 Environment=THINGSBOARD_HOST={{ thingsboard_api_url }}
 Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
 Environment=THINGSBOARD_PASSWORD="{{ thingsboard_password }}"

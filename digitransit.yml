@@ -6,7 +6,6 @@
   roles:
     - base
     - thingsboard-to-mqtt
-    - thingsboard-enhancer
     - digitransit
     - mqtt
     - thingsboard-to-parkapi

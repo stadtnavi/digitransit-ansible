@@ -5,7 +5,7 @@ digitransit_ui:
   - config: hb
     port: 8081
     domain: herrenberg.stadtnavi.de
-    image: stadtnavi/digitransit-ui:830ed29662fb258c3c08b72c700e1c9289245d35
+    image: stadtnavi/digitransit-ui:d86bacfde4ca01f7ef3640f4859113744eeb5157
   - config: ludwigsburg
     port: 8082
     domain: ludwigsburg.stadtnavi.eu

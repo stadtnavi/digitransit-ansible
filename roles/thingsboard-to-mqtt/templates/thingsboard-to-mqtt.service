@@ -13,7 +13,7 @@ Environment=THINGSBOARD_PASSWORD="{{ thingsboard_password }}"
 Environment=MQTT_BROKER_URL={{ api_hostname }}
 Environment=MQTT_USER=publisher
 Environment=MQTT_PASSWORD="{{ mqtt_publisher_password }}"
-Environment=DOCKER_IMAGE=stadtnavi/thingsboard-to-gtfsrt-mqtt
+Environment=DOCKER_IMAGE=stadtnavi/thingsboard-to-gtfsrt-mqtt:{{ thingsboard_to_mqtt_version }}
 Environment=CONTAINER_NAME=thingsboard-to-mqtt
 
 ExecStartPre=docker pull ${DOCKER_IMAGE} --quiet

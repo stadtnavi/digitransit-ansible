@@ -23,7 +23,7 @@ digitransit:
     proxy: stadtnavi/digitransit-proxy:c2d5ca0da5e5abe5b8e156dfc25e66e44bf76079
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
-    map_server: stadtnavi/hsl-map-server:ec756de757cc35505824e57bab2a9638548c64b5
+    map_server: stadtnavi/hsl-map-server:9fe2fa87361cb34db31e5d0c5a5df9820d15a5cc
 
 api_hostname: api.stadtnavi.de
 matomo_hostname: track.stadtnavi.de

@@ -5,8 +5,8 @@ Wants=network-online.target
 
 [Service]
 Restart=always
-RestartSec=15
-RuntimeMaxSec=900
+RestartSec=5
+RuntimeMaxSec=1800
 
 Environment=THINGSBOARD_HOST={{ thingsboard_api_url }}
 Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}

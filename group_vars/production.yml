@@ -17,13 +17,13 @@ digitransit_ui:
 
 data_builder_tag: ci-8581ff532baef42cd37749ec2a73ca7307195ddb
 
-otp_docker_tag: db4f80b49a0ce4467c54e5e8e84e102d77018935
+otp_docker_tag: 5b126ea6eecc609c3c349acab0a8b429860aa34e
 digitransit:
   images:
     proxy: stadtnavi/digitransit-proxy:c2d5ca0da5e5abe5b8e156dfc25e66e44bf76079
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     data_container: mfdz/opentripplanner-data-container-hb:local
-    map_server: stadtnavi/hsl-map-server:9fe2fa87361cb34db31e5d0c5a5df9820d15a5cc
+    map_server: stadtnavi/hsl-map-server:923077ee5175d9fb90c766746997eb47f1b20ecc
 
 api_hostname: api.stadtnavi.de
 matomo_hostname: track.stadtnavi.de

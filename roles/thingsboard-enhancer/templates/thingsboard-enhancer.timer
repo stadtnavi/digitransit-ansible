@@ -3,9 +3,11 @@ Description=Run thingsboard-to-parkapi.service every minute
 
 [Timer]
 # every 15 seconds
-OnCalendar=*:*:0/15
+#OnCalendar=*:*:0/15
+#
+# every minute
+OnCalendar=*:0/1
 Persistent=true
-AccuracySec=1s
 
 [Install]
 WantedBy=timers.target

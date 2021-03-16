@@ -1,14 +1,18 @@
 ---
 - name: Creates directory
   file:
-    path: /var/thingsboard/herrenberg/bus/
+    path: /var/thingsboard/herrenberg/{{ item }}/
     state: directory
     owner: www-data
     group: www-data
     mode: 0775
+  with_items:
+    - "charging-stations"
 
 - name: Install systemd files
-  template: src={{ item }} dest=/etc/systemd/system/
+  template:
+    src: "{{ item }}"
+    dest: /etc/systemd/system/
   with_items:
     - thingsboard-enhancer.service
     - thingsboard-enhancer.timer

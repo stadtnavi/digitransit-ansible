@@ -1,5 +1,5 @@
 [Unit]
-Description=Run thingsboard-to-parkapi.service every minute
+Description=Run thingsboard-enhancer.service every minute
 
 [Timer]
 # every 15 seconds

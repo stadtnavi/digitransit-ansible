@@ -1,5 +1,5 @@
 [Unit]
-Description=Convert the bus positions from thingsboard to GeoJSON
+Description=Convert thingsboard data to GeoJSON
 After=network-online.target
 Wants=network-online.target
 

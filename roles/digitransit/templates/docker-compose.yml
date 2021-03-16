@@ -71,8 +71,7 @@ services:
       - OTP_URL=opentripplanner:8080/otp/routers/hb/index/graphql
       - CIFS_URL=https://gtfs.mfdz.de/roadworks/hbg.cifs.json
       - WEATHER_STATIONS_URL=https://data.mfdz.de/hbg/roadweather/weather.geojson
-      - CHARGING_STATIONS_URL=https://data.mfdz.de/hbg/charging-stations/charging-stations.geojson
-      - BUS_POSITIONS_URL=https://api.staging.stadtnavi.eu/herrenberg/bus/bus-positions.geojson
+      - CHARGING_STATIONS_URL=https://{{ api_hostname }}/herrenberg/charging-stations/charging-stations.geojson
     logging:
       driver: journald
 

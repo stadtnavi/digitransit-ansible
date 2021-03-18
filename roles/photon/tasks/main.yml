@@ -38,10 +38,10 @@
     - photon-update.timer
     - photon-pelias-adapter.service
 
-- name: Temporarily disable photon-update (re-enable when nominatim is reimported)
-  systemd:
-    name: photon-update.timer
-    state: stopped
+    #- name: Temporarily disable photon-update (re-enable when nominatim is reimported)
+    #systemd:
+      #name: photon-update.timer
+      #state: stopped
 
 - name: Copy photon nginx site conf
   template: src=photon-site.conf dest=/etc/nginx/sites-available/{{ item }}.conf

@@ -4,7 +4,7 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-ExecStart=docker exec photon /usr/local/bin/nominatim-update
+ExecStart=docker exec photon-new /usr/local/bin/nominatim-update
 
 [Install]
 WantedBy=multi-user.target

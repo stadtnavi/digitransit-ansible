@@ -7,6 +7,7 @@ After=docker.service
 Environment=CONTAINER_IMAGE=mfdz/photon:4a574470fbfe7c27943a29bb9a67df27ba4ab9b0
 Environment=CONTAINER_NAME=photon-new
 TimeoutStartSec=0
+RestartSec=15
 Restart=always
 
 Environment=NOMINATIM_DB_HOST=nominatim

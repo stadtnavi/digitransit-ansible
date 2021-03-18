@@ -1,0 +1,5 @@
+---
+- name: Restart photon-new
+  service:
+    name: photon-new
+    state: restarted

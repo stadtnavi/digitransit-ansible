@@ -5,6 +5,7 @@
   become: yes
   roles:
     - geerlingguy.swap
+    - "photon-new"
     - photon
     - tilemaker
     - tileserver

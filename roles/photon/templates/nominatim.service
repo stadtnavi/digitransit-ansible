@@ -18,7 +18,7 @@ ExecStartPre=-docker network create --driver bridge photon
 ExecStartPre=-docker stop ${CONTAINER_NAME}
 ExecStartPre=-docker rm ${CONTAINER_NAME}
 ExecStartPre=-docker pull ${CONTAINER_IMAGE}
-ExecStart=docker run --name ${CONTAINER_NAME} --log-driver=journald --network=photon -e PBF_URL -e REPLICATION_URL -e IMPORT_WIKIPEDIA -e NOMINATIM_PASSWORD -v nominatim-config:/app/src/ -v nominatim-postgres:/var/lib/postgresql/12/main ${CONTAINER_IMAGE}
+ExecStart=docker run --rm --name ${CONTAINER_NAME} --log-driver=journald --network=photon -e PBF_URL -e REPLICATION_URL -e IMPORT_WIKIPEDIA -e NOMINATIM_PASSWORD -v nominatim-config:/app/src/ -v nominatim-postgres:/var/lib/postgresql/12/main ${CONTAINER_IMAGE}
 
 ExecStop=-docker stop ${CONTAINER_NAME}
 

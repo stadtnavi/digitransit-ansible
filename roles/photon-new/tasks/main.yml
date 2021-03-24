@@ -13,8 +13,6 @@
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:
     - photon-new.service
-    - photon-new-update.service
-    - photon-new-update.timer
   notify:
     # photon.service dependens on nominatim.service so it's restarted, too.
     - Restart photon-new
@@ -23,4 +21,3 @@
   systemd: state=started name="{{ item }}" enabled=yes daemon_reload=yes
   with_items:
     - photon-new.service
-    - photon-new-update.timer

@@ -6,5 +6,6 @@
   roles:
     - geerlingguy.swap
     - photon
+    - photon-new
     - tilemaker
     - tileserver

@@ -17,7 +17,7 @@ Environment=AUTOMATIC_UPDATES=true
 
 ExecStart=docker run --rm --name ${CONTAINER_NAME} \
     --log-driver=journald \
-    -v photon-data-034-2:/photon/photon_data:rw \
+    -v photon-data-034-3:/photon/photon_data:rw \
     -p 2322:2322 \
     --network photon \
     -e NOMINATIM_DB_HOST \

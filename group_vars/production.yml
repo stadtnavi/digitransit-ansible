@@ -5,7 +5,7 @@ digitransit_ui:
   - config: hb
     port: 8081
     domain: herrenberg.stadtnavi.de
-    image: stadtnavi/digitransit-ui:052330b5fca5fa35e0a037cbfcb2745c9ff0a80c
+    image: stadtnavi/digitransit-ui:50d699dcd4dbd520ab2f14e0a3ef22dd41aea952
   - config: ludwigsburg
     port: 8082
     domain: ludwigsburg.stadtnavi.eu
@@ -87,4 +87,4 @@ matomo_db_root_password: !vault |
           35396430373233643231323237326330636333663538313830323363643231616634396133643530
           6461636662353639373262666133373239336433646437306264
 
-thingsboard_to_mqtt_version: bd419a8ff412e9b87ff30ea4ab206c82872518eb
+thingsboard_to_mqtt_version: 44523c0d7580462888d9cb676b241b9ba4090d34

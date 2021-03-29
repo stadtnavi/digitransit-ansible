@@ -6,7 +6,7 @@ Wants=network-online.target
 [Service]
 Restart=always
 RestartSec=5
-RuntimeMaxSec=1800
+RuntimeMaxSec=3600
 
 Environment=THINGSBOARD_HOST={{ thingsboard_api_url }}
 Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
@@ -18,7 +18,6 @@ Environment=DOCKER_IMAGE=stadtnavi/thingsboard-to-gtfsrt-mqtt:{{ thingsboard_to_
 Environment=CONTAINER_NAME=thingsboard-to-mqtt
 
 ExecStartPre=docker pull ${DOCKER_IMAGE} --quiet
-ExecStartPre=-docker stop ${CONTAINER_NAME}
 ExecStart=docker run --rm \
     -e THINGSBOARD_HOST \
     -e THINGSBOARD_USERNAME \

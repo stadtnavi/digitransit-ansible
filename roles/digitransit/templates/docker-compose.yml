@@ -67,9 +67,9 @@ services:
     logging:
       driver: journald
     environment:
-      - PARK_API_URL=https://{{ api_hostname }}/parkapi.json
+      - PARK_API_URL=https://{{ api_hostname }}/herrenberg/parking/parkapi.json
       - OTP_URL=opentripplanner:8080/otp/routers/hb/index/graphql
-      - CIFS_URL=https://raw.githubusercontent.com/stadtnavi/tilelive-cifs/main/cifs/herrenberg.cifs.json
+      - CIFS_URL=https://{{ api_hostname }}/herrenberg/road-disruptions/road-disruptions.cifs.json
       - WEATHER_STATIONS_URL=https://data.mfdz.de/hbg/roadweather/weather.geojson
       - CHARGING_STATIONS_URL=https://{{ api_hostname }}/herrenberg/charging-stations/charging-stations.geojson
     logging:

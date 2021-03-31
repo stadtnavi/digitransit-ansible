@@ -8,9 +8,31 @@ Type=oneshot
 Environment=THINGSBOARD_HOST={{ thingsboard_api_url }}
 Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
 Environment=THINGSBOARD_PASSWORD={{ thingsboard_password }}
+
 Environment=TZ={{ timezone }}
 Environment=DOCKER_IMAGE=stadtnavi/thingsboard-json-enhancer
-ExecStart=docker run --rm -v /var/thingsboard/herrenberg/:/out -e THINGSBOARD_HOST -e THINGSBOARD_USERNAME -e THINGSBOARD_PASSWORD -e TZ ${DOCKER_IMAGE} thingsboard-json-enhancer -i templates/charging-stations/ -o /out/charging-stations/
+
+ExecStart=docker run --rm \
+    -v /var/thingsboard/herrenberg/:/out \
+    -e THINGSBOARD_HOST -e THINGSBOARD_USERNAME -e THINGSBOARD_PASSWORD -e TZ \
+    ${DOCKER_IMAGE} \
+    thingsboard-json-enhancer -i templates/charging-stations/ -o /out/charging-stations/
+
+ExecStart=docker run --rm \
+    -v /var/thingsboard/herrenberg/:/out \
+    -e THINGSBOARD_HOST \
+    -e THINGSBOARD_USERNAME="{{ thingsboard_weather_username }}" \
+    -e THINGSBOARD_PASSWORD="{{ thingsboard_weather_password}}" \
+    -e TZ \
+    ${DOCKER_IMAGE} \
+    thingsboard-json-enhancer -i templates/weather/ -o /out/weather/
+
+ExecStart=docker run --rm \
+    -v /var/thingsboard/herrenberg/:/out \
+    -e THINGSBOARD_HOST -e THINGSBOARD_USERNAME -e THINGSBOARD_PASSWORD -e TZ \
+    ${DOCKER_IMAGE} \
+    thingsboard-json-enhancer -i templates/taxi/ -o /out/taxi/
+
 ExecStart=chown -R www-data:www-data /var/thingsboard/herrenberg/
 
 [Install]

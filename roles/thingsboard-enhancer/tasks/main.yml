@@ -9,7 +9,9 @@
   with_items:
     - "charging-stations"
     - "road-disruptions"
-    - "parking"
+    - parking
+    - weather
+    - taxi
 
 - name: Copy CIFS file
   template:

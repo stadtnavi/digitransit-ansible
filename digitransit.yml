@@ -7,7 +7,6 @@
     - base
     - thingsboard-enhancer
     - thingsboard-to-mqtt
-    - thingsboard-to-parkapi
     - digitransit
     - matomo
     - data-builder

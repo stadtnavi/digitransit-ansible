@@ -10,7 +10,7 @@ Group=www-data
 Environment=THINGSBOARD_API_URL={{ thingsboard_api_url }}
 Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
 Environment=THINGSBOARD_PASSWORD={{ thingsboard_password }}
-ExecStart=/usr/local/bin/thingsboard-to-parkapi -g /var/parkapi/parking_lots.geojson -o /var/parkapi/parkapi.json
+ExecStart=/usr/local/bin/thingsboard-to-parkapi -g /var/parkapi/parking_lots.geojson -o /var/thingsboard/herrenberg/parking/parkapi.json
 
 [Install]
 WantedBy=multi-user.target

@@ -8,6 +8,13 @@
     mode: 0775
   with_items:
     - "charging-stations"
+    - "road-disruptions"
+    - "parking"
+
+- name: Copy CIFS file
+  template:
+    src: road-disruptions.cifs.json
+    dest: /var/thingsboard/herrenberg/road-disruptions/
 
 - name: Install systemd files
   template:
@@ -20,6 +27,41 @@
 - name: Start thingsboard timer
   systemd:
     name: thingsboard-enhancer.timer
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+- name: Download thingsboard-to-parkapi script
+  get_url:
+    url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/{{ thingsboard_to_parkapi_commit }}/thingsboard-to-parkapi
+    dest: /usr/local/bin/thingsboard-to-parkapi
+    mode: 711
+
+- name: Creates directory
+  file:
+    path: /var/parkapi/
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
+
+- name: Download static parking_lots.geojson file
+  get_url:
+    url: https://raw.githubusercontent.com/mfdz/thingsboard-to-parkapi/{{ thingsboard_to_parkapi_commit }}/parking_lots.geojson
+    dest: /var/parkapi
+    owner: www-data
+    group: www-data
+    mode: 0775
+
+- name: Install systemd files
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
+    - thingsboard-to-parkapi.service
+    - thingsboard-to-parkapi.timer
+
+- name: Start thingsboard timer
+  systemd:
+    name: thingsboard-to-parkapi.timer
     state: started
     enabled: yes
     daemon_reload: yes

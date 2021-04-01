@@ -10,7 +10,7 @@ Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
 Environment=THINGSBOARD_PASSWORD={{ thingsboard_password }}
 
 Environment=TZ={{ timezone }}
-Environment=DOCKER_IMAGE=stadtnavi/thingsboard-json-enhancer
+Environment=DOCKER_IMAGE=stadtnavi/thingsboard-json-enhancer:{{thingsboard_enhancer_commit}}
 
 ExecStart=docker run --rm \
     -v /var/thingsboard/herrenberg/:/out \

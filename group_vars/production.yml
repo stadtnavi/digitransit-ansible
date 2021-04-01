@@ -15,7 +15,7 @@ digitransit_ui:
     domain: next.stadtnavi.eu
     image: stadtnavi/digitransit-ui:next
 
-data_builder_tag: ci-8581ff532baef42cd37749ec2a73ca7307195ddb
+data_builder_tag: ci-6f52835fd3ac660871c1f12cbc9a54e31bfb52e6
 
 otp_docker_tag: 6b95bc94a5270f526954a26280baa2ec57affecf
 digitransit:

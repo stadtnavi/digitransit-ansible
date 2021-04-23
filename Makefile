@@ -24,6 +24,9 @@ ludwigsburg: galaxy-install
 infrastructure: galaxy-install
 	${PLAYBOOK_CMD} -i infrastructure infrastructure.yml
 
+dev: galaxy-install
+	${PLAYBOOK_CMD} -i dev digitransit-next.yml
+
 # tileserver
 
 tileserver/stuttgart-regbez.osm.pbf:

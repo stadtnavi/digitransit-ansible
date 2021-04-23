@@ -1,0 +1,9 @@
+[Unit]
+Description=Restart digitransit every night
+
+[Timer]
+OnCalendar=*-*-* 02:45:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

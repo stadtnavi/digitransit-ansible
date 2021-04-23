@@ -1,0 +1,5 @@
+---
+- name: Restart digitransit-ui
+  command: restart-digitransit-container digitransit-ui-{{ item }}
+  with_items:
+    - hbnext

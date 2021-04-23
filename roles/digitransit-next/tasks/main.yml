@@ -1,0 +1,82 @@
+---
+- name: Install packages
+  package:
+    name:
+      - pyosmium
+    state: present
+
+- name: Create digitransit config directory
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+  with_items:
+    - /etc/digitransit
+
+- name: Create tile cache directory
+  file:
+    path: /var/cache/nginx
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
+
+- name: Copy container restart script
+  template:
+    src: restart-digitransit-container
+    dest: /usr/local/bin/
+    mode: a+x
+
+- name: Install docker-compose file
+  template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
+  with_items: "{{ digitransit_ui }}"
+  notify: Restart digitransit-ui
+
+- name: Install service file for digitransit-docker-compose
+  template:
+    src: digitransit-docker-compose.service
+    dest: /etc/systemd/system/
+
+- name: Start digitransit
+  systemd:
+    name: digitransit-docker-compose
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+- name: Copy main host nginx site conf
+  template: src=nginx-site.conf dest=/etc/nginx/sites-enabled/{{ item.domain }}.conf
+  with_items: "{{ digitransit_ui }}"
+  notify: Restart nginx
+
+- name: Copy api host nginx site conf
+  template: src=nginx-site-api.conf dest=/etc/nginx/sites-enabled/{{ item }}.conf
+  with_items:
+    - "{{ api_hostname }}"
+  notify: Restart nginx
+
+- name: Remove the old nginx configs
+  file:
+    path: /etc/nginx/sites-enabled/{{ item }}
+    state: absent
+  with_items:
+    - default
+    - digitransit-proxy.conf
+  notify: Restart nginx
+
+- name: Install systemd files for digitransit-restart
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
+    - digitransit-restart.service
+    - digitransit-restart.timer
+
+- name: Start digitransit-restart.timer
+  systemd:
+    name: digitransit-restart.timer
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+

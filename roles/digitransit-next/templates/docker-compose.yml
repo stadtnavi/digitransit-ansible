@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  opentripplanner:
+    image: {{ digitransit["images"]["otp"] }}
+    restart: on-failure:5
+    container_name: opentripplanner
+    logging:
+      driver: journald
+    environment:
+      - ROUTER_NAME=hb
+      - API_URL=https://{{ api_hostname }}/routing/v1/
+      - ENCRYPTION_SECRET_KEY={{ encryption_secret_key }}
+      - JAVA_OPTS=-Xmx8G
+    ports:
+      - {{otp_port}}:8080
+    networks:
+      - digitransit
+
+{% for item in digitransit_ui %}
+  digitransit-ui-{{ item["config"] }}:
+    image: {{ item["image"] }}
+    restart: on-failure
+    container_name: digitransit-ui-{{ item["config"]}}
+    ports:
+      - {{ item["port"] }}:8080
+    networks:
+      - digitransit
+    logging:
+      driver: journald
+    environment:
+      - CONFIG={{ item["config"] }}
+      - GEOCODING_BASE_URL={{ photon_url }}/pelias/v1
+      - API_URL=https://{{ api_hostname }}
+      - MAP_URL={{ map_url }}
+      - SEMI_TRANSPARENT_MAP_URL={{ semi_transparent_map_url }}
+      - NODE_ENV=production
+      - FAHRGEMEINSCHAFT_API_KEY={{ fahrgemeinschaft_api_key }}
+      - FAHRGEMEINSCHAFT_AUTH_KEY={{ fahrgemeinschaft_auth_key }}
+{% endfor %}
+
+  hsl-map-server:
+    image: {{ digitransit["images"]["map_server"] }}
+    container_name: hsl-map-server
+    restart: on-failure:5
+    networks:
+      - digitransit
+    environment:
+      - PARK_API_URL=https://{{ api_hostname }}/herrenberg/parking/parkapi.json
+      - OTP_URL=opentripplanner:8080/otp/routers/hb/index/graphql
+      - CIFS_URL=https://{{ api_hostname }}/herrenberg/road-disruptions/road-disruptions.cifs.json
+      - WEATHER_STATIONS_URL=https://{{ api_hostname }}/herrenberg/weather/weather.geojson
+      - CHARGING_STATIONS_URL=https://{{ api_hostname }}/herrenberg/charging-stations/charging-stations.geojson
+    logging:
+      driver: journald
+
+networks:
+  digitransit:
+    # all default

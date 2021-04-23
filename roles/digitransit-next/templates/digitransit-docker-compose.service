@@ -1,0 +1,30 @@
+[Unit]
+Description=digitransit service with /usr/local/bin/docker-compose
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+
+# disable timeout as it can take a long time to pull images
+TimeoutStartSec=0
+
+WorkingDirectory=/etc/digitransit/
+
+# Remove old containers, images and volumes
+ExecStartPre=-/usr/local/bin/send-to-matrix "🔁 Restarting digitransit on {{ inventory_hostname }}"
+ExecStartPre=/usr/local/bin/docker-compose down -v
+ExecStartPre=/usr/local/bin/docker-compose rm -fv
+#ExecStartPre=-/bin/bash -c 'docker volume ls -qf "name=digitransit_" | xargs docker volume rm'
+ExecStartPre=-/usr/local/bin/docker-compose pull --ignore-pull-failures
+#ExecStartPre=-/bin/bash -c 'docker network ls -qf "name=digitransit_" | xargs docker network rm'
+
+ExecStart=/usr/local/bin/docker-compose up
+
+ExecStop=/usr/local/bin/docker-compose pull --ignore-pull-failures
+# remove untagged digitransit-ui images as they clog up the staging system's disk
+ExecStop=-/bin/bash -c "docker images | grep digitransit-ui | grep '<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rmi"
+ExecStop=/usr/local/bin/docker-compose down -v
+
+[Install]
+WantedBy=multi-user.target

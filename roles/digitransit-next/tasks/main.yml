@@ -14,6 +14,7 @@
     mode: 0775
   with_items:
     - /etc/digitransit
+    - /var/graph-build
 
 - name: Create tile cache directory
   file:
@@ -27,6 +28,12 @@
   template:
     src: restart-digitransit-container
     dest: /usr/local/bin/
+    mode: a+x
+
+- name: Copy build-graph script
+  template:
+    src: build-graph
+    dest: /var/graph-build/
     mode: a+x
 
 - name: Install docker-compose file
@@ -69,14 +76,19 @@
 - name: Install systemd files for digitransit-restart
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:
+    - graph-build.service
+    - graph-build.timer
     - digitransit-restart.service
     - digitransit-restart.timer
 
 - name: Start digitransit-restart.timer
   systemd:
-    name: digitransit-restart.timer
+    name: "{{ item }}"
     state: started
     enabled: yes
     daemon_reload: yes
+  with_items:
+    - digitransit-restart.timer
+    - graph-build.timer
 
 

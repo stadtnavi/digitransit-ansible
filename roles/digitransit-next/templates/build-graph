@@ -1,36 +1,40 @@
 #! /bin/bash -e
 
-PBF_DOWNLOAD_URL={{ graph_builder_pbf_download_url }}
-PBF_FILE=opentripplanner.osm.pbf
-IMAGE_NAME="mfdz/opentripplanner:d0e8e69aaf4e9adbfc55b238d48fe49ef2b857a5"
+PBF_DOWNLOAD_URL="http://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf"
+PBF_FILE="opentripplanner.osm.pbf"
 
-TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles
-TILEMAKER_FINAL_OUTPUT_FILE=tilemaker-output.mbtiles
+GTFS_DOWNLOAD_URL="https://gtfs.mfdz.de/hbg.merged.gtfs.zip"
+
+IMAGE_NAME="mfdz/opentripplanner:{{ otp_docker_tag }}"
+BUILD_DIR=build
+OUTPUT_DIR=latest
+
+mkdir -p build
+cd build
 
 if [ -f "$PBF_FILE" ]; then
   echo "$PBF_FILE exists. Downloading updates."
   pyosmium-up-to-date -v $PBF_FILE || true
 else
-  echo "$PBF_FILE does not exist."
+  echo "$PBF_FILE does not exist. Downloading ..."
   curl --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 fi
 
-rm -f ${TILEMAKER_OUTPUT_FILE}
+curl -L --fail \
+  ${GTFS_DOWNLOAD_URL} \
+  -o gtfs.zip
 
 docker pull ${IMAGE_NAME}
 docker run \
-  -v /var/tilemaker/:/srv \
-  --name tilemaker \
+  -v /var/graph-build/${BUILD_DIR}:/opt/opentripplanner/graph \
+  --name graph-build \
   --rm \
   --cpu-shares 512 \
-  ${IMAGE_NAME} /srv/${PBF_FILE} \
-  --output=/srv/${TILEMAKER_OUTPUT_FILE} \
-  --config=/srv/config-openmaptiles.json \
-  --process=/srv/process-openmaptiles.lua \
+  -e JAVA_OPTS="-Xmx12G" \
+  ${IMAGE_NAME} --build --save graph \
 
-# tilemaker doesn't like it when the output file already exists to we move it
-mv "${TILEMAKER_OUTPUT_FILE}" "${TILEMAKER_FINAL_OUTPUT_FILE}"
+cd ..
+mkdir -p ${OUTPUT_DIR}
+cp ${BUILD_DIR}/graph.obj ${OUTPUT_DIR}/
 
-TIMESTAMP=`osmium fileinfo -g header.option.osmosis_replication_timestamp ${PBF_FILE}`
-
-send-to-matrix "🏗️ mbtiles build complete on {{ inventory_hostname }}. OSM data from ${TIMESTAMP}"
+send-to-matrix "🏗️ OTP graph build complete on {{ inventory_hostname }}"

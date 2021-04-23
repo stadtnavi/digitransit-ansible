@@ -1,0 +1,18 @@
+[Unit]
+Description=Build mbtiles
+Requires=docker.service
+After=docker.service
+
+# Restart once times within 20 minutes so that an intermittent network failures are gracefully handled
+StartLimitIntervalSec=1200
+StartLimitBurst=1
+
+[Service]
+WorkingDirectory=/var/graph-build
+ExecStart=/var/graph-build/build-graph
+Restart=on-failure
+
+ExecStop=-/usr/bin/docker stop tilemaker
+
+[Install]
+WantedBy=multi-user.target

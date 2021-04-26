@@ -12,7 +12,7 @@ WorkingDirectory=/var/graph-build
 ExecStart=/var/graph-build/build-graph
 Restart=on-failure
 
-ExecStop=-/usr/bin/docker stop tilemaker
+ExecStop=-/usr/bin/docker stop graph-build
 
 [Install]
 WantedBy=multi-user.target

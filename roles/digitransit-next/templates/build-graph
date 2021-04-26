@@ -36,6 +36,7 @@ docker run \
 
 cd ..
 mkdir -p ${OUTPUT_DIR}
-cp ${BUILD_DIR}/graph.obj ${OUTPUT_DIR}/
+cp ${BUILD_DIR}/graph.obj  ${OUTPUT_DIR}/
+cp ${BUILD_DIR}/*.json ${OUTPUT_DIR}
 
 send-to-matrix "📦️ OTP graph build complete on {{ inventory_hostname }}"

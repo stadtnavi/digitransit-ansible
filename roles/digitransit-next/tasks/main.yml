@@ -14,7 +14,7 @@
     mode: 0775
   with_items:
     - /etc/digitransit
-    - /var/graph-build
+    - /var/graph-build/build
 
 - name: Create tile cache directory
   file:
@@ -39,7 +39,7 @@
 - name: Copy OTP config
   template:
     src: otp/{{ item }}
-    dest: /var/graph-build/latest/
+    dest: /var/graph-build/build/
   with_items:
     - otp-config.json
     - router-config.json

@@ -7,15 +7,16 @@ services:
     container_name: opentripplanner
     logging:
       driver: journald
-    environment:
-      - ROUTER_NAME=hb
-      - API_URL=https://{{ api_hostname }}/routing/v1/
-      - ENCRYPTION_SECRET_KEY={{ encryption_secret_key }}
-      - JAVA_OPTS=-Xmx8G
     ports:
       - {{otp_port}}:8080
-    networks:
-      - digitransit
+    command: --load --serve graph
+    environment:
+      - ROUTER_NAME=hb
+      - API_URL=https://{{ api_hostname }}/otp/routers/default/
+      - ENCRYPTION_SECRET_KEY={{ encryption_secret_key }}
+      - JAVA_OPTS=-Xmx8G
+    volumes:
+      - /var/graph-build/latest/:/opt/opentripplanner/graph/
 
 {% for item in digitransit_ui %}
   digitransit-ui-{{ item["config"] }}:
@@ -45,12 +46,14 @@ services:
     restart: on-failure:5
     networks:
       - digitransit
+    ports:
+      - {{ map_server_port }}:8080
     environment:
-      - PARK_API_URL=https://{{ api_hostname }}/herrenberg/parking/parkapi.json
-      - OTP_URL=opentripplanner:8080/otp/routers/hb/index/graphql
-      - CIFS_URL=https://{{ api_hostname }}/herrenberg/road-disruptions/road-disruptions.cifs.json
-      - WEATHER_STATIONS_URL=https://{{ api_hostname }}/herrenberg/weather/weather.geojson
-      - CHARGING_STATIONS_URL=https://{{ api_hostname }}/herrenberg/charging-stations/charging-stations.geojson
+      - PARK_API_URL=https://api.stadtnavi.de/herrenberg/parking/parkapi.json
+      - OTP_URL=https://{{ api_hostname }}/otp/routers/default/index/graphql
+      - CIFS_URL=https://api.stadtnavi.de/herrenberg/road-disruptions/road-disruptions.cifs.json
+      - WEATHER_STATIONS_URL=https://api.stadtnavi.de/herrenberg/weather/weather.geojson
+      - CHARGING_STATIONS_URL=https://api.stadtnavi.de/herrenberg/charging-stations/charging-stations.geojson
     logging:
       driver: journald
 

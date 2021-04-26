@@ -1,0 +1,58 @@
+{
+  "routingDefaults": {
+      "walkSpeed": 1.3,
+      "transferSlack": 100,
+      "maxTransfers": 4,
+      "waitReluctance": 0.4,
+      "waitAtBeginningFactor": 0.7,
+      "walkReluctance": 1.75,
+      "stairsReluctance": 1.65,
+      "walkBoardCost": 540,
+      "comment": "Ignore walkOnStreetReluctance as implementation is too simple and causes unexpected detours",
+      "ignored_walkOnStreetReluctance": 1.5,
+      "carParkCarLegWeight": 2,
+      "itineraryFiltering": 1.0
+  },
+  "updaters": [
+    {
+      "type": "stop-time-updater",
+      "frequencySec": 60,
+      "sourceType": "gtfs-http",
+      "url": "http://gtfsr.vvs.de:7788",
+      "feedId": "hbg"
+    },
+    {
+      "type": "real-time-alerts",
+      "frequencySec": 60,
+      "url": "http://gtfsr.vvs.de:7788",
+      "feedId": "hbg"
+    },
+    {
+      "id": "regiorad-bike-rental",
+      "type": "bike-rental",
+      "frequencySec": 60,
+      "sourceType": "gbfs",
+      "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/",
+      "network": "regiorad",
+      "rentalType": "station-based-with-temporary-drop-off"
+    },
+    {
+      "id": "taxi-stands",
+      "type": "bike-rental",
+      "frequencySec": 600,
+      "sourceType": "gbfs",
+      "url": "https://gtfs.mfdz.de/gbfs/taxi_hbg/",
+      "network": "taxi",
+      "routeAsCar": true
+    },
+    {
+      "id": "car-sharing",
+      "type": "bike-rental",
+      "frequencySec": 600,
+      "sourceType": "gbfs",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing/",
+      "network": "car-sharing",
+      "routeAsCar": true
+    }
+  ]
+}

@@ -36,6 +36,14 @@
     dest: /var/graph-build/
     mode: a+x
 
+- name: Copy OTP config
+  template:
+    src: otp/{{ item }}
+    dest: /var/graph-build/latest/
+  with_items:
+    - otp-config.json
+    - router-config.json
+
 - name: Install docker-compose file
   template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
   with_items: "{{ digitransit_ui }}"

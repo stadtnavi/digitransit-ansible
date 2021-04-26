@@ -6,6 +6,7 @@ PBF_FILE="opentripplanner.osm.pbf"
 GTFS_DOWNLOAD_URL="https://gtfs.mfdz.de/hbg.merged.gtfs.zip"
 
 IMAGE_NAME="mfdz/opentripplanner:{{ otp_docker_tag }}"
+
 BUILD_DIR=build
 OUTPUT_DIR=latest
 
@@ -37,4 +38,4 @@ cd ..
 mkdir -p ${OUTPUT_DIR}
 cp ${BUILD_DIR}/graph.obj ${OUTPUT_DIR}/
 
-send-to-matrix "🏗️ OTP graph build complete on {{ inventory_hostname }}"
+send-to-matrix "📦️ OTP graph build complete on {{ inventory_hostname }}"

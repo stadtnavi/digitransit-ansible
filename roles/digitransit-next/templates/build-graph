@@ -5,6 +5,9 @@ PBF_FILE="opentripplanner.osm.pbf"
 
 GTFS_DOWNLOAD_URL="https://gtfs.mfdz.de/hbg.merged.gtfs.zip"
 
+ELEVATION_DOWNLOAD_URL="https://leonard.io/stadtnavi/srtm_38_03.tif"
+ELEVATION_FILE="elevation.tif"
+
 IMAGE_NAME="mfdz/opentripplanner:{{ otp_docker_tag }}"
 
 BUILD_DIR=build
@@ -20,6 +23,14 @@ else
   echo "$PBF_FILE does not exist. Downloading ..."
   curl --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 fi
+
+if [ -f "$ELEVATION_FILE" ]; then
+  echo "$ELEVATION_FILE exists."
+else
+  echo "$ELEVATION_FILE does not exist. Downloading ..."
+  curl --location -s "${ELEVATION_DOWNLOAD_URL}" -o ${ELEVATION_FILE}
+fi
+
 
 curl -L --fail \
   ${GTFS_DOWNLOAD_URL} \

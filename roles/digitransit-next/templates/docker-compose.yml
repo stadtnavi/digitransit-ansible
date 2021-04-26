@@ -57,6 +57,19 @@ services:
     logging:
       driver: journald
 
+  graphiql:
+    image: corykitchens/graphiql:latest
+    container_name: graphiql
+    restart: on-failure:5
+    networks:
+      - digitransit
+    ports:
+      - {{ graphiql_port }}:4000
+    environment:
+      - API_URL=https://api.dev.stadtnavi.eu/routing/v1/router/index/graphql
+    logging:
+      driver: journald
+
 networks:
   digitransit:
     # all default

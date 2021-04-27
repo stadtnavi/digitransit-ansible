@@ -49,11 +49,6 @@
   with_items: "{{ digitransit_ui }}"
   notify: Restart digitransit-ui
 
-- name: Install service file for digitransit-docker-compose
-  template:
-    src: digitransit-docker-compose.service
-    dest: /etc/systemd/system/
-
 - name: Start digitransit
   systemd:
     name: digitransit-docker-compose
@@ -81,9 +76,10 @@
     - digitransit-proxy.conf
   notify: Restart nginx
 
-- name: Install systemd files for digitransit-restart
-  template: src={{ item }} dest=/etc/systemd/system/
+- name: Install systemd files
+  template: src=systemd/{{ item }} dest=/etc/systemd/system/
   with_items:
+    - digitransit-docker-compose.service
     - graph-build.service
     - graph-build.timer
     - digitransit-restart.service

@@ -11,4 +11,5 @@
   with_items:
     - nginx.conf
     - cors.conf
+    - proxy_headers.conf
   notify: Restart nginx

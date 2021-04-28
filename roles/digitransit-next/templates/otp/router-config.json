@@ -13,6 +13,32 @@
       "carParkCarLegWeight": 2,
       "itineraryFiltering": 1.0
   },
+  "vectorTileLayers": [
+    {
+      "name": "stops",
+      "type": "Stop",
+      "mapper": "Digitransit",
+      "maxZoom": 20,
+      "minZoom": 14,
+      "cacheMaxSeconds": 600
+    },
+    {
+      "name": "stations",
+      "type": "Station",
+      "mapper": "Digitransit",
+      "maxZoom": 20,
+      "minZoom": 12,
+      "cacheMaxSeconds": 600
+    },
+    {
+      "name": "citybikes",
+      "type": "BikeRental",
+      "mapper": "Digitransit",
+      "maxZoom": 20,
+      "minZoom": 14,
+      "cacheMaxSeconds": 60
+    }
+  ],
   "updaters": [
     {
       "type": "stop-time-updater",

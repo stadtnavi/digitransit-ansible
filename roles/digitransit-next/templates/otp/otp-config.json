@@ -1,6 +1,7 @@
 {
   "otpFeatures" : {
     "SandboxAPILegacyGraphQLApi": true,
+    "SandboxAPIMapboxVectorTilesApi": true,
     "FlexRouting": true
   }
 }

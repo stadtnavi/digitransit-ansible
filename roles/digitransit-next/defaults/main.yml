@@ -2,3 +2,4 @@
 otp_port: 8080
 map_server_port: 9090
 graphiql_port: 9091
+ticketing_service_port: 9092

@@ -70,6 +70,19 @@ services:
     logging:
       driver: journald
 
+  ticketing-service:
+    image: stadtnavi/ticketing-service:latest
+    container_name: ticketing-service
+    restart: on-failure:5
+    networks:
+      - digitransit
+    ports:
+      - {{ ticketing_service_port }}:3000
+    environment:
+      - API_URL=https://api.dev.stadtnavi.eu/routing/v1/router/index/graphql
+    logging:
+      driver: journald
+
 networks:
   digitransit:
     # all default

@@ -3,7 +3,7 @@
 PBF_DOWNLOAD_URL="http://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf"
 PBF_FILE="opentripplanner.osm.pbf"
 
-GTFS_DOWNLOAD_URL="https://gtfs.mfdz.de/hbg.merged.gtfs.zip"
+GTFS_DOWNLOAD_URL="https://gtfs.mfdz.de/hbg2.merged.gtfs.zip"
 
 ELEVATION_DOWNLOAD_URL="https://leonard.io/stadtnavi/srtm_38_03.tif"
 ELEVATION_FILE="elevation.tif"

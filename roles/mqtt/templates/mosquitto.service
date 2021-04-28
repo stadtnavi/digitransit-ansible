@@ -11,6 +11,7 @@ Environment=IMAGE_NAME=eclipse-mosquitto:2.0.8
 Environment=CONTAINER_NAME=mosquitto
 ExecStartPre=docker pull ${IMAGE_NAME} --quiet
 ExecStart=docker run --name ${CONTAINER_NAME} --rm \
+    -p 1883:1883 \
     -p 1884:1884 \
     -p 8883:8883 \
     -p 8884:8884 \

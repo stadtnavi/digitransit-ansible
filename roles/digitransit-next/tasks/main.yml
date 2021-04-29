@@ -43,6 +43,7 @@
   with_items:
     - otp-config.json
     - router-config.json
+    - build-config.json
 
 - name: Install docker-compose file
   template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml

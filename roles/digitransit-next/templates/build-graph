@@ -37,7 +37,7 @@ docker run \
   --name graph-build \
   --rm \
   --cpu-shares 512 \
-  -e JAVA_OPTS="-Xmx12G" \
+  -e JAVA_OPTS="-Xmx16G" \
   ${IMAGE_NAME} --build --save graph \
 
 cd ..

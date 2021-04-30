@@ -1,6 +1,6 @@
 #! /bin/bash -e
 
-PBF_DOWNLOAD_URL="http://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf"
+PBF_DOWNLOAD_URL="https://gtfs.mfdz.de/bw-buffered.osm.pbf"
 PBF_FILE="opentripplanner.osm.pbf"
 
 GTFS_DOWNLOAD_URL="https://gtfs.mfdz.de/hbg2.merged.gtfs.zip"
@@ -16,13 +16,6 @@ OUTPUT_DIR=latest
 mkdir -p build
 cd build
 
-if [ -f "$PBF_FILE" ]; then
-  echo "$PBF_FILE exists. Downloading updates."
-  pyosmium-up-to-date -v $PBF_FILE || true
-else
-  echo "$PBF_FILE does not exist. Downloading ..."
-  curl --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
-fi
 
 if [ -f "$ELEVATION_FILE" ]; then
   echo "$ELEVATION_FILE exists."
@@ -31,6 +24,8 @@ else
   curl --location -s "${ELEVATION_DOWNLOAD_URL}" -o ${ELEVATION_FILE}
 fi
 
+
+curl --location --fail -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 
 curl -L --fail \
   ${GTFS_DOWNLOAD_URL} \

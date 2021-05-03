@@ -4,6 +4,7 @@ PBF_DOWNLOAD_URL="https://gtfs.mfdz.de/bw-buffered.osm.pbf"
 PBF_FILE="opentripplanner.osm.pbf"
 
 GTFS_DOWNLOAD_URL="https://gtfs.mfdz.de/hbg2.merged.gtfs.zip"
+CARPOOL_GTFS_DOWNLOAD_URL="{{ mfdz_gtfs_url }}"
 
 ELEVATION_DOWNLOAD_URL="https://leonard.io/stadtnavi/srtm_38_03.tif"
 ELEVATION_FILE="elevation.tif"
@@ -26,6 +27,8 @@ fi
 
 
 curl --location --fail -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
+
+curl --location --fail -s "${CARPOOL_GTFS_DOWNLOAD_URL}" -o mfdz.gtfs.zip
 
 curl -L --fail \
   ${GTFS_DOWNLOAD_URL} \

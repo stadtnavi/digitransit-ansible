@@ -1,0 +1,16 @@
+---
+server_name: "qa"
+
+api_hostname: api.qa.stadtnavi.eu
+
+digitransit_ui:
+  - config: hbnext
+    port: 8084
+    domain: herrenberg.qa.stadtnavi.eu
+    image: stadtnavi/digitransit-ui:next
+
+certbot_certs:
+  - domains:
+      - "{{ digitransit_ui[0].domain }}"
+  - domains:
+      - "{{ api_hostname }}"

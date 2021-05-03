@@ -50,12 +50,6 @@
   with_items: "{{ digitransit_ui }}"
   notify: Restart digitransit-ui
 
-- name: Start digitransit
-  systemd:
-    name: digitransit-docker-compose
-    state: started
-    enabled: yes
-    daemon_reload: yes
 
 - name: Copy main host nginx site conf
   template: src=nginx-site.conf dest=/etc/nginx/sites-enabled/{{ item.domain }}.conf
@@ -83,8 +77,16 @@
     - digitransit-docker-compose.service
     - graph-build.service
     - graph-build.timer
+    - digitransit-docker-compose.service
     - digitransit-restart.service
     - digitransit-restart.timer
+
+- name: Start digitransit
+  systemd:
+    name: digitransit-docker-compose
+    state: started
+    enabled: yes
+    daemon_reload: yes
 
 - name: Start digitransit-restart.timer
   systemd:

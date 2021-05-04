@@ -4,6 +4,6 @@
   "osmWayPropertySet": "germany",
   "subwayAccessTime": 0,
   "staticBikeParkAndRide": true,
-  "writeCachedElevations": true,
-  "multiThreadElevationCalculations": true
+  "writeCachedElevations": false,
+  "multiThreadElevationCalculations": false
 }

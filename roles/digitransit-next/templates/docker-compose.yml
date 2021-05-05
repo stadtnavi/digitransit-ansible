@@ -50,7 +50,7 @@ services:
       - {{ map_server_port }}:8080
     environment:
       - PARK_API_URL=https://api.stadtnavi.de/herrenberg/parking/parkapi.json
-      - GRAPHQL_URL=https://{{ api_hostname }}/routing/v1/router/index/graphql
+      - GRAPHQL_URL=https://api.stadtnavi.de/routing/v1/router/index/graphql
       - OTP_URL=https://api.stadtnavi.de/routing/v1/router/index/graphql
       - CIFS_URL=https://api.stadtnavi.de/herrenberg/road-disruptions/road-disruptions.cifs.json
       - WEATHER_STATIONS_URL=https://api.stadtnavi.de/herrenberg/weather/weather.geojson

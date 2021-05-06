@@ -14,6 +14,7 @@
     mode: 0775
   with_items:
     - /etc/digitransit
+    - /var/digitransit
     - /var/graph-build/build
 
 - name: Create tile cache directory
@@ -24,11 +25,14 @@
     group: www-data
     mode: 0775
 
-- name: Copy container restart script
+- name: Copy scripts
   template:
-    src: restart-digitransit-container
+    src: "{{ item }}"
     dest: /usr/local/bin/
     mode: a+x
+  with_items:
+    - restart-digitransit-container
+    - write-digitransit-version-info
 
 - name: Copy build-graph script
   template:

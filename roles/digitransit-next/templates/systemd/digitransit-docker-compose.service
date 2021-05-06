@@ -19,6 +19,8 @@ ExecStartPre=/usr/local/bin/docker-compose rm -fv
 ExecStartPre=-/usr/local/bin/docker-compose pull --ignore-pull-failures
 #ExecStartPre=-/bin/bash -c 'docker network ls -qf "name=digitransit_" | xargs docker network rm'
 
+ExecStartPre=-/usr/local/bin/write-digitransit-version-info
+
 ExecStart=/usr/local/bin/docker-compose up
 
 ExecStop=/usr/local/bin/docker-compose pull --ignore-pull-failures

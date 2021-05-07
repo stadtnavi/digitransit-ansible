@@ -1,0 +1,30 @@
+{
+  "incidents": [
+    {
+      "location": {
+        "direction": "BOTH_DIRECTIONS",
+        "fromStreetnames": "Hildrizhauser Str.",
+        "polyline": "48.59148 8.87785 48.59329 8.87489 48.59343 8.87469 48.59424 8.87361",
+        "street": "Tübinger Straße",
+        "toStreetnames": "Marienstraße/Beethovenstraße"
+      },
+      "creationtime": "2021-03-31T14:29:38+0200",
+      "starttime": "2021-04-06T00:00:00+0200",
+      "endtime": "2021-05-31T00:00:00+0200",
+      "type": "ROAD_CLOSED",
+      "subtype": "ROAD_CLOSED_CONSTRUCTION",
+      "description": "Die Tübinger Straße wird im Bereich nach der Einmündung Hildrizhauser Straße bis einschließlich Kreuzung Beethoven-/Marienstraße umgebaut. Der Umbau erfolgt in zwei Bauabschnitten: Der erste Abschnitt dauert von Dienstag, 6. April, bis voraussichtlich Samstag, 22. Mai, der zweite Abschnitt dann bis voraussichtlich Montag, 31. Mai 2021.",
+      "mode": [
+        "ROAD_CLOSED_PEDESTRIAN",
+        "ROAD_CLOSED_BICYCLE",
+        "ROAD_CLOSED_BUS",
+        "ROAD_CLOSED_CAR",
+        "ROAD_CLOSED_TAXI_RIDESHARE"
+      ],
+      "fromIntersectionClosed": true,
+      "toIntersectionClosed": true,
+      "details_url": "https://www.herrenberg.de/de/Rathaus/Aktuelles-Presse/Stadtnachrichten/Nachricht?view=publish&item=article&id=3081"
+    }
+  ]
+}
+

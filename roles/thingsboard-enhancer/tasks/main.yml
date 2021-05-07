@@ -15,8 +15,11 @@
 
 - name: Copy CIFS file
   template:
-    src: road-disruptions.cifs.json
+    src: "{{ item }}"
     dest: /var/thingsboard/herrenberg/road-disruptions/
+  with_items:
+    - road-disruptions.cifs.json
+    - road-disruptions.corrected.cifs.json
 
 - name: Install systemd files
   template:

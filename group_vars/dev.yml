@@ -15,7 +15,7 @@ digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     map_server: stadtnavi/hsl-map-server:latest
-    ticketing_service: stadtnavi/ticketing-service:latest
+    fares_service: stadtnavi/fares-service:latest
 
 api_hostname: api.dev.stadtnavi.eu
 

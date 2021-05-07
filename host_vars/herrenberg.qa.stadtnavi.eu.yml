@@ -22,3 +22,4 @@ digitransit:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     map_server: stadtnavi/hsl-map-server:755d5aa0e00d9970ada283f5c4db75bd77982cfa
     ticketing_service: stadtnavi/ticketing-service:a19f168f2b7150625fa348d850c4ba021d7d6eb9
+    fares_service: stadtnavi/fares-service:a8c2f4568a1700aaf79c8fc5ab1ba4b816047440

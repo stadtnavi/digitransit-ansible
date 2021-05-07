@@ -71,14 +71,14 @@ services:
     logging:
       driver: journald
 
-  ticketing-service:
-    image: {{ digitransit["images"]["ticketing_service"] }}
-    container_name: ticketing-service
+  fares-service:
+    image: {{ digitransit["images"]["fares_service"] }}
+    container_name: fares-service
     restart: on-failure:5
     networks:
       - digitransit
     ports:
-      - {{ ticketing_service_port }}:3000
+      - {{ fares_service_port }}:3000
     environment:
       - TRIAS_REQUESTOR_REF={{ trias_api_key }}
     logging:

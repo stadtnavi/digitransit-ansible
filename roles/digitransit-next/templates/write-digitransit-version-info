@@ -1,4 +1,3 @@
 #! /bin/bash
 
-cd /etc/digitransit
-docker-compose images > /var/digitransit/version-info.txt
+cat /etc/digitransit/docker-compose.yml | grep image | grep -v ticketing-service | grep -v graphiql | tr -s [:space:] > /var/digitransit/version-info.txt

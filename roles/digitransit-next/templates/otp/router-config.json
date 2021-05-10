@@ -1,17 +1,18 @@
 {
   "routingDefaults": {
-      "walkSpeed": 1.3,
-      "transferSlack": 100,
-      "maxTransfers": 4,
-      "waitReluctance": 0.4,
-      "waitAtBeginningFactor": 0.7,
-      "walkReluctance": 1.75,
-      "stairsReluctance": 1.65,
-      "walkBoardCost": 540,
-      "comment": "Ignore walkOnStreetReluctance as implementation is too simple and causes unexpected detours",
-      "ignored_walkOnStreetReluctance": 1.5,
-      "carParkCarLegWeight": 2,
-      "itineraryFiltering": 1.0
+    "walkSpeed": 1.3,
+    "transferSlack": 100,
+    "maxTransfers": 4,
+    "waitReluctance": 0.4,
+    "waitAtBeginningFactor": 0.7,
+    "walkReluctance": 1.75,
+    "stairsReluctance": 1.65,
+    "walkBoardCost": 540,
+    "comment": "Ignore walkOnStreetReluctance as implementation is too simple and causes unexpected detours",
+    "ignored_walkOnStreetReluctance": 1.5,
+    "carParkCarLegWeight": 2,
+    "itineraryFiltering": 1.0,
+    "allowKeepingRentedBicycleAtDestination": true
   },
   "vectorTileLayers": [
     {
@@ -60,7 +61,8 @@
       "sourceType": "gbfs",
       "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/",
       "network": "regiorad",
-      "rentalType": "station-based-with-temporary-drop-off"
+      "rentalType": "station-based-with-temporary-drop-off",
+      "allowKeepingRentedBicycleAtDestination": true
     },
     {
       "id": "taxi-stands",

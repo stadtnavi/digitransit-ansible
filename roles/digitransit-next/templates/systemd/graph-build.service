@@ -3,7 +3,7 @@ Description=Build OTP graph
 Requires=docker.service
 After=docker.service
 
-# Restart once times within 20 minutes so that an intermittent network failures are gracefully handled
+# Restart once within 20 minutes so that an intermittent network failures are gracefully handled
 StartLimitIntervalSec=1200
 StartLimitBurst=1
 

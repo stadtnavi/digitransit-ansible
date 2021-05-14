@@ -46,13 +46,13 @@
       "frequencySec": 60,
       "sourceType": "gtfs-http",
       "url": "http://gtfsr.vvs.de:7788",
-      "feedId": "1"
+      "feedId": "hbg"
     },
     {
       "type": "real-time-alerts",
       "frequencySec": 60,
       "url": "http://gtfsr.vvs.de:7788",
-      "feedId": "1"
+      "feedId": "hbg"
     },
     {
       "id": "regiorad-bike-rental",

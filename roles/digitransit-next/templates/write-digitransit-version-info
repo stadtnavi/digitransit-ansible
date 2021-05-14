@@ -1,3 +1,8 @@
 #! /bin/bash
 
-cat /etc/digitransit/docker-compose.yml | grep image | grep -v graphiql | tr -s [:space:] > /var/digitransit/version-info.txt
+output_file=/var/digitransit/version-info.txt
+
+cat /etc/digitransit/docker-compose.yml | grep image | grep -v graphiql | tr -s [:space:] > ${output_file}
+
+last_modified=`date +%Y-%m-%dT%H:%M:%S%z -r /etc/digitransit/docker-compose.yml`
+echo "Last version change: ${last_modified}" >> ${output_file}

@@ -15,10 +15,10 @@ certbot_certs:
   - domains:
       - "{{ api_hostname }}"
 
-otp_docker_tag: otp2-3bcf0f41606d3b70f681b2f355064f71d3ace246
+otp_docker_tag: otp2-6907d4986f375bc2174a0b3ed8e2bfda055a54fa
 
 digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
-    map_server: stadtnavi/hsl-map-server:a563129166683c99bfdedb88f00bb9117afff726
-    fares_service: stadtnavi/fares-service:a9d1987be58d86b877699ede204ad537afd0bda1
+    map_server: stadtnavi/hsl-map-server:f386dcbf8ea8d9f99a9e7772e0324bed2e20fb2a
+    fares_service: stadtnavi/fares-service:f23e8caf661f4a60a2436ae3aaf570c5f2993950

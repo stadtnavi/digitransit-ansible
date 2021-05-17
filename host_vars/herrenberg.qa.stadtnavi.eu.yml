@@ -7,7 +7,7 @@ digitransit_ui:
   - config: hbnext
     port: 8084
     domain: herrenberg.qa.stadtnavi.eu
-    image: stadtnavi/digitransit-ui:fa8193fbace646e9f94132cda0732a9d8435c802
+    image: stadtnavi/digitransit-ui:f23e8caf661f4a60a2436ae3aaf570c5f2993950
 
 certbot_certs:
   - domains:
@@ -21,4 +21,4 @@ digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     map_server: stadtnavi/hsl-map-server:f386dcbf8ea8d9f99a9e7772e0324bed2e20fb2a
-    fares_service: stadtnavi/fares-service:f23e8caf661f4a60a2436ae3aaf570c5f2993950
+    fares_service: stadtnavi/fares-service:b80f1ce50fff9b72be5e9f8b02e0b374c7c5c833

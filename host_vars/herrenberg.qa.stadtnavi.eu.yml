@@ -6,7 +6,7 @@ api_hostname: api.qa.stadtnavi.eu
 digitransit_ui:
   - config: hbnext
     port: 8084
-    domain: herrenberg.qa.stadtnavi.eu
+    domain: herrenberg.beta.stadtnavi.eu
     image: stadtnavi/digitransit-ui:b10a74a97df348e1962ffc454571053966332520
 
 certbot_certs:

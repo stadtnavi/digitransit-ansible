@@ -49,12 +49,12 @@ services:
     ports:
       - {{ map_server_port }}:8080
     environment:
-      - PARK_API_URL=https://api.stadtnavi.de/herrenberg/parking/parkapi.json
+      - PARK_API_URL=https://{{ api_hostname }}/herrenberg/parking/parkapi.json
       - GRAPHQL_URL=https://api.stadtnavi.de/routing/v1/router/index/graphql
       - OTP_URL=https://api.stadtnavi.de/routing/v1/router/index/graphql
-      - CIFS_URL=https://api.stadtnavi.de/herrenberg/road-disruptions/road-disruptions.corrected.cifs.json,https://data.mfdz.de/mfdz/cifs_arbeitsstellen_svz_bw/body.json
-      - WEATHER_STATIONS_URL=https://api.stadtnavi.de/herrenberg/weather/weather.geojson
-      - CHARGING_STATIONS_URL=https://api.stadtnavi.de/herrenberg/charging-stations/charging-stations.geojson
+      - CIFS_URL=https://{{ api_hostname }}/herrenberg/road-disruptions/road-disruptions.corrected.cifs.json,https://data.mfdz.de/mfdz/cifs_arbeitsstellen_svz_bw/body.json
+      - WEATHER_STATIONS_URL=https://{{ api_hostname }}/herrenberg/weather/weather.geojson
+      - CHARGING_STATIONS_URL=https://{{ api_hostname }}/herrenberg/charging-stations/charging-stations.geojson
     logging:
       driver: journald
 

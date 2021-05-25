@@ -3,7 +3,7 @@
 PBF_DOWNLOAD_URL="https://gtfs.mfdz.de/bw-buffered.osm.pbf"
 PBF_FILE="opentripplanner.osm.pbf"
 
-GTFS_DOWNLOAD_URL="https://leonard.io/stadtnavi/hbg3-merged.flex.gtfs.zip"
+GTFS_DOWNLOAD_URL="https://gtfs.mfdz.de/hbg2.merged.gtfs.zip"
 CARPOOL_GTFS_DOWNLOAD_URL="{{ mfdz_gtfs_url }}"
 
 ELEVATION_DOWNLOAD_URL="https://leonard.io/stadtnavi/srtm_38_03.tif"

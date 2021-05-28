@@ -81,6 +81,15 @@
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing/",
       "network": "car-sharing",
       "routeAsCar": true
+    },
+    {
+      "id": "guelstein-mobil",
+      "type": "bike-rental",
+      "frequencySec": 600,
+      "sourceType": "gbfs",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/gueltstein-mobil/gbfs.json",
+      "network": "gueltstein-mobil",
+      "allowKeepingRentedBicycleAtDestination": true
     }
   ]
 }

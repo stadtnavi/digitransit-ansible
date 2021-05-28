@@ -18,14 +18,14 @@ staging: galaxy-install
 production: galaxy-install
 	${PLAYBOOK_CMD} -i production digitransit.yml
 
-ludwigsburg: galaxy-install
-	${PLAYBOOK_CMD} -i ludwigsburg digitransit.yml
-
 infrastructure: galaxy-install
 	${PLAYBOOK_CMD} -i infrastructure infrastructure.yml
 
 dev: galaxy-install
 	${PLAYBOOK_CMD} -i dev digitransit-next.yml
+
+beta: galaxy-install
+	${PLAYBOOK_CMD} -i beta digitransit-next.yml
 
 # tileserver
 

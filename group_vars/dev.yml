@@ -51,3 +51,5 @@ mfdz_gtfs_url: !vault |
   31333664663764363161
 
 enable_cargobike: true
+
+gtfs_url: https://leonard.io/stadtnavi/hbg3-merged.flex-duplicate-routes-booking-info.gtfs.zip

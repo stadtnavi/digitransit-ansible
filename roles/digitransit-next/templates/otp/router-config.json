@@ -12,7 +12,8 @@
     "ignored_walkOnStreetReluctance": 1.5,
     "carParkCarLegWeight": 2,
     "itineraryFiltering": 1.0,
-    "allowKeepingRentedBicycleAtDestination": true
+    "allowKeepingRentedBicycleAtDestination": true,
+    "keepingRentedBicycleAtDestinationCost": 180
   },
   "vectorTileLayers": [
     {

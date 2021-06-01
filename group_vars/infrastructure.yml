@@ -30,4 +30,4 @@ tileserver_allowed_referrers:
   - "*.komm.one"
   - "*.swlb.de"
 
-photon_pelias_adapter_tag: bca447189d8fbafbcee4a88115e87c1268f07495
+photon_pelias_adapter_tag: 38e4bf56e11f146f58b97dcdebbf94ac34e10c6d

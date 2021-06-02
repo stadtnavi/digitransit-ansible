@@ -17,7 +17,10 @@
     "itineraryFilters" : {
       "bikeRentalDistanceRatio": 0.5,
       "parkAndRideDurationRatio": 0.6
-    }
+    },
+    "bikeTriangleSafetyFactor": 0.4,
+    "bikeTriangleSlopeFactor": 0.3,
+    "bikeTriangleTimeFactor": 0.3
   },
   "vectorTileLayers": [
     {

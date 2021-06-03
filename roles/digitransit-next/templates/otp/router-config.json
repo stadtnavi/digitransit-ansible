@@ -30,7 +30,8 @@
       "mapper": "Digitransit",
       "maxZoom": 20,
       "minZoom": 14,
-      "cacheMaxSeconds": 600
+      "cacheMaxSeconds": 600,
+      "expansionFactor": 0.5
     },
     {
       "name": "stations",
@@ -38,7 +39,8 @@
       "mapper": "Digitransit",
       "maxZoom": 20,
       "minZoom": 12,
-      "cacheMaxSeconds": 600
+      "cacheMaxSeconds": 600,
+      "expansionFactor": 0.5
     },
     {
       "name": "citybikes",
@@ -46,7 +48,8 @@
       "mapper": "Digitransit",
       "maxZoom": 20,
       "minZoom": 14,
-      "cacheMaxSeconds": 60
+      "cacheMaxSeconds": 60,
+      "expansionFactor": 0.5
     }
   ],
   "updaters": [

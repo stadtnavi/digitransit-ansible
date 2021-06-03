@@ -14,6 +14,7 @@
     "itineraryFiltering": 1.0,
     "allowKeepingRentedBicycleAtDestination": true,
     "keepingRentedBicycleAtDestinationCost": 180,
+    "numItineraries": 25,
     "itineraryFilters" : {
       "bikeRentalDistanceRatio": 0.5,
       "parkAndRideDurationRatio": 0.6

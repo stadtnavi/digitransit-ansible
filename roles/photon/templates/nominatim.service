@@ -5,7 +5,7 @@ Requires=docker.service
 
 [Service]
 
-Environment=CONTAINER_IMAGE=stadtnavi/nominatim:3.6
+Environment=CONTAINER_IMAGE=mediagis/nominatim:3.7-1586885ee06c334d359dbe11596b45aec934bdda
 Environment=CONTAINER_NAME=nominatim
 Environment=PBF_URL=https://download.geofabrik.de/europe/dach-latest.osm.pbf
 Environment=REPLICATION_URL=https://download.geofabrik.de/europe/dach-updates/
@@ -18,7 +18,13 @@ ExecStartPre=-docker network create --driver bridge photon
 ExecStartPre=-docker stop ${CONTAINER_NAME}
 ExecStartPre=-docker rm ${CONTAINER_NAME}
 ExecStartPre=-docker pull ${CONTAINER_IMAGE}
-ExecStart=docker run --rm --name ${CONTAINER_NAME} --log-driver=journald --network=photon -e PBF_URL -e REPLICATION_URL -e IMPORT_WIKIPEDIA -e NOMINATIM_PASSWORD -v nominatim-config:/app/src/ -v nominatim-postgres:/var/lib/postgresql/12/main ${CONTAINER_IMAGE}
+ExecStart=docker run --rm --name ${CONTAINER_NAME} --log-driver=journald --network=photon \
+  -e PBF_URL -e REPLICATION_URL -e IMPORT_WIKIPEDIA -e NOMINATIM_PASSWORD \
+  -e IMPORT_STYLE=extratags \
+  -v /etc/nominatim/import-extratags.style:/usr/local/etc/nominatim/import-extratags.style \
+  -v nominatim-flatnode:/nominatim/flatnode \
+  -v nominatim-postgres:/var/lib/postgresql/12/main \
+  ${CONTAINER_IMAGE}
 
 ExecStop=-docker stop ${CONTAINER_NAME}
 

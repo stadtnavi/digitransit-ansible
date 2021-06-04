@@ -1,4 +1,19 @@
 ---
+- name: Create nominatim config directory
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+  with_items:
+    - /etc/nominatim
+
+- name: Install config files for nominatim
+  template: src={{ item }} dest=/etc/nominatim/
+  with_items:
+    - import-extratags.style
+
 - name: Install base packages
   package:
     name:
@@ -19,7 +34,7 @@
     - photon-update.service
     - photon-update.timer
   notify:
-    # photon.service dependens on nominatim.service so it's restarted, too.
+    # photon.service depends on nominatim.service so it's restarted, too.
     - Restart nominatim
 
 - name: Install systemd files for photon-pelias-adapter

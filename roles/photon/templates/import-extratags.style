@@ -234,6 +234,13 @@
         "" : "skip"
     }
 },
+{   "keys" : ["public_transport"],
+    "values" : {
+       "platform" : "main,fallback,with_name",
+       "stop_position" : "main,fallback,with_name",
+       "station" : "main,fallback,with_name"
+    }
+},
 {
     "keys" : [""],
     "values" : {

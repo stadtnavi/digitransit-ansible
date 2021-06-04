@@ -1,0 +1,4 @@
+#! /bin/bash
+
+curl -fail https://data.mfdz.de/mfdz/nvbw_osm_matches.csv.gz | gunzip > nvbw_osm_matches.csv
+./nominatim_add_ifopt.py -i osm-nvbw-stop-matches.csv

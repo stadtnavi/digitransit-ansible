@@ -1,0 +1,5 @@
+#! /bin/bash
+
+docker exec -it nominatim sudo -u nominatim nominatim replication --project-dir /nominatim --once
+curl -fail https://data.mfdz.de/mfdz/nvbw_osm_matches.csv.gz | gunzip > nvbw_osm_matches.csv
+./nominatim_add_ifopt.py osm-nvbw-stop-matches.csv

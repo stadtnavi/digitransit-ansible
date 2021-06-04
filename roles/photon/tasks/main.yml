@@ -8,11 +8,19 @@
     mode: 0775
   with_items:
     - /etc/nominatim
+    - /var/nominatim
 
 - name: Install config files for nominatim
   template: src={{ item }} dest=/etc/nominatim/
   with_items:
     - import-extratags.style
+
+- name: Install import files for nominatim
+  template: src={{ item }} dest=/var/nominatim/
+  with_items:
+    - nominatim_add_ifopt.py
+    - update-nominatim
+    - initialize-nominatim
 
 - name: Install base packages
   package:
@@ -33,9 +41,6 @@
     - photon.service
     - photon-update.service
     - photon-update.timer
-  notify:
-    # photon.service depends on nominatim.service so it's restarted, too.
-    - Restart nominatim
 
 - name: Install systemd files for photon-pelias-adapter
   template: src={{ item }} dest=/etc/systemd/system/

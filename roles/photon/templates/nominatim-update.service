@@ -4,8 +4,8 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-ExecStartPre=docker exec nominatim sudo -u nominatim /app/src/build/utils/update.php --init-updates
-ExecStart=docker exec nominatim sudo -u nominatim /app/src/build/utils/update.php --import-osmosis --no-index
+WorkingDirectory=/var/nominatim/
+ExecStart=/var/nominatim/update-nominatim
 
 #ExecStopPost=-/usr/local/bin/send-to-matrix "❌ Nominatim update failed on {{ inventory_hostname }}"
 

@@ -1,0 +1,34 @@
+[Unit]
+Description=pull bus positions from Thingsboard, predict delays & positions, send GTFS-RT to MQTT
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Restart=always
+RestartSec=5
+
+Environment=THINGSBOARD_HOST="{{ thingsboard_api_url }}"
+Environment=THINGSBOARD_USERNAME="{{ thingsboard_username }}"
+Environment=THINGSBOARD_PASSWORD="{{ thingsboard_password }}"
+Environment=THINGSBOARD_DEVICE_GROUP="f1740240-7b3f-11eb-970d-837f8b4d738d"
+Environment=MQTT_URI="{{ mqtt_uri }}"
+Environment=PGUSER="{{ todo }}"
+Environment=PGPASSWORD="{{ todo }}"
+Environment=PGDATABASE="{{ todo }}"
+Environment=LOCALE=de-DE
+Environment=TIMEZONE="{{ timezone }}"
+Environment=NODE_ENV=production
+Environment=DOCKER_IMAGE=stadtnavi/delay-prediction-service:{{ delay_prediction_service_version }}
+Environment=CONTAINER_NAME=delay-prediction-service
+
+ExecStart=docker run --rm \
+    -e THINGSBOARD_HOST \
+    -e THINGSBOARD_USERNAME \
+    -e THINGSBOARD_PASSWORD \
+    -e MQTT_URI \
+    --name ${CONTAINER_NAME} \
+    ${DOCKER_IMAGE}
+ExecStop=-docker kill ${CONTAINER_NAME}
+
+[Install]
+WantedBy=multi-user.target

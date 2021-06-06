@@ -15,7 +15,7 @@ certbot_certs:
   - domains:
       - "{{ api_hostname }}"
 
-otp_docker_tag: otp2-089baca9c1cf14183b561ab0484aa8a9729383e3
+otp_docker_tag: otp2-f77132043db5eab109fe91b7c4635176af44bed2
 
 digitransit:
   images:

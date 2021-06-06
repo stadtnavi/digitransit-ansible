@@ -54,6 +54,11 @@
   with_items: "{{ digitransit_ui }}"
   notify: Restart digitransit-ui
 
+- name: Write OTP version file
+  copy:
+    content: "{{ otp_docker_tag }}"
+    dest: /etc/digitransit/otp-version.txt
+  notify: Start graph build
 
 - name: Copy main host nginx site conf
   template: src=nginx-site.conf dest=/etc/nginx/sites-enabled/{{ item.domain }}.conf

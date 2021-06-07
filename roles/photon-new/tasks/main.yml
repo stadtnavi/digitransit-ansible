@@ -26,7 +26,7 @@
 - name: Copy photon nginx site conf
   template:
     src: photon-new-site.conf
-    dest: /etc/nginx/sites-available/{{ item }}.conf
+    dest: /etc/nginx/sites-enabled/{{ item }}.conf
   with_items:
     - "{{ photon_new_hostname }}"
   notify: Restart nginx

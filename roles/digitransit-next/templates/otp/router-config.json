@@ -53,6 +53,21 @@
     }
   ],
   "updaters": [
+    {% if enable_gtfs_rt %}
+    {
+      "type": "stop-time-updater",
+      "frequencySec": 60,
+      "sourceType": "gtfs-http",
+      "url": "http://gtfsr.vvs.de:7788",
+      "feedId": "hbg"
+    },
+    {
+      "type": "real-time-alerts",
+      "frequencySec": 60,
+      "url": "http://gtfsr.vvs.de:7788",
+      "feedId": "hbg"
+    },
+    {% endif %}
     {% if enable_cargobike %}
     {
       "id": "cargo-bike",

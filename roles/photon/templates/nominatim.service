@@ -24,6 +24,7 @@ ExecStart=docker run --rm --name ${CONTAINER_NAME} --log-driver=journald \
   -e IMPORT_WIKIPEDIA \
   -e NOMINATIM_PASSWORD \
   -e IMPORT_STYLE=extratags \
+  --network photon \
   -p 5432:5432 \
   -v /etc/nominatim/import-extratags.style:/usr/local/etc/nominatim/import-extratags.style \
   -v nominatim-flatnode:/nominatim/flatnode \

@@ -13,14 +13,18 @@ Environment=IMPORT_WIKIPEDIA=true
 Environment=NOMINATIM_PASSWORD={{ nominatim_db_password }}
 TimeoutStartSec=0
 Restart=always
+RestartSec=120
 
-ExecStartPre=-docker network create --driver bridge photon
 ExecStartPre=-docker stop ${CONTAINER_NAME}
 ExecStartPre=-docker rm ${CONTAINER_NAME}
 ExecStartPre=-docker pull ${CONTAINER_IMAGE}
-ExecStart=docker run --rm --name ${CONTAINER_NAME} --log-driver=journald --network=photon \
-  -e PBF_URL -e REPLICATION_URL -e IMPORT_WIKIPEDIA -e NOMINATIM_PASSWORD \
+ExecStart=docker run --rm --name ${CONTAINER_NAME} --log-driver=journald \
+  -e PBF_URL \
+  -e REPLICATION_URL \
+  -e IMPORT_WIKIPEDIA \
+  -e NOMINATIM_PASSWORD \
   -e IMPORT_STYLE=extratags \
+  -p 5432:5432 \
   -v /etc/nominatim/import-extratags.style:/usr/local/etc/nominatim/import-extratags.style \
   -v nominatim-flatnode:/nominatim/flatnode \
   -v nominatim-postgres:/var/lib/postgresql/12/main \

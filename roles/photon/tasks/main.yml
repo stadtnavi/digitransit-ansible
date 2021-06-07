@@ -1,4 +1,10 @@
 ---
+- name: Install base packages
+  package:
+    name:
+      - python3-psycopg2
+    state: present
+
 - name: Create nominatim config directory
   file:
     path: "{{ item }}"
@@ -16,7 +22,10 @@
     - import-extratags.style
 
 - name: Install import files for nominatim
-  template: src={{ item }} dest=/var/nominatim/
+  template:
+    src: "{{ item }}"
+    dest: /var/nominatim/
+    mode: "+x"
   with_items:
     - nominatim_add_ifopt.py
     - update-nominatim

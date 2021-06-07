@@ -48,7 +48,7 @@ def connect(args):
     """ Create a connection from the given command line arguments.
     """
     conn = psycopg2.connect(dbname=args.database, user=args.username,
-                            host=args.host, port=args.port)
+                            host=args.host, port=args.port, password=args.password)
 
     psycopg2.extras.register_hstore(conn)
 
@@ -74,6 +74,8 @@ def get_parser():
                        help='Database server host name or socket location')
     group.add_argument('-P', '--port', metavar='PORT',
                        help='Database server port')
+    group.add_argument('-p', '--password', metavar='PASSWORD',
+                       help='Database password')
 
     parser.add_argument('infile', metavar='FILE',
                         help='CSV file with IFOPT data')

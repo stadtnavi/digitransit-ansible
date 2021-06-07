@@ -1,4 +1,4 @@
 #! /bin/bash
 
-curl -fail https://data.mfdz.de/mfdz/nvbw_osm_matches.csv.gz | gunzip > nvbw_osm_matches.csv
-./nominatim_add_ifopt.py -i osm-nvbw-stop-matches.csv
+curl -o - https://data.mfdz.de/mfdz/nvbw_osm_matches.csv.gz | gunzip > nvbw_osm_matches.csv
+./nominatim_add_ifopt.py --username nominatim -h localhost -u nominatim --port 5432 --password {{ nominatim_db_password }} -i osm-nvbw-stop-matches.csv

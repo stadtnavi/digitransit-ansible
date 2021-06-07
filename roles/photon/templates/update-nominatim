@@ -1,5 +1,12 @@
 #! /bin/bash -e
 
-docker exec -it nominatim sudo -u nominatim nominatim replication --project-dir /nominatim --once
-curl -o - -fail https://data.mfdz.de/mfdz/nvbw_osm_matches.csv.gz | gunzip > nvbw_osm_matches.csv
-./nominatim_add_ifopt.py osm-nvbw-stop-matches.csv
+docker exec -i nominatim sudo -u nominatim nominatim replication --project-dir /nominatim --once --no-index
+
+OUTPUT_FILE=nvbw_osm_matches.csv
+
+curl -o - https://data.mfdz.de/mfdz/nvbw_osm_matches.csv.gz | gunzip > ${OUTPUT_FILE}
+echo "Downloaded station matches to ${OUTPUT_FILE}"
+
+echo "Re-adding IFOPTs"
+echo "...finished"
+./nominatim_add_ifopt.py --username nominatim --host localhost --port 5432 --password {{ nominatim_db_password }} ${OUTPUT_FILE}

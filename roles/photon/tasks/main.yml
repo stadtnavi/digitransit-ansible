@@ -73,18 +73,7 @@
     state: stopped
 
 - name: Copy photon nginx site conf
-  template: src=photon-site.conf dest=/etc/nginx/sites-available/{{ item }}.conf
+  template: src=photon-site.conf dest=/etc/nginx/sites-enabled/{{ item }}.conf
   with_items:
     - "{{ photon_hostname }}"
   notify: Restart nginx
-
-- name: Symlink to sites-available
-  file:
-    src: /etc/nginx/sites-available/{{ item }}.conf
-    dest: /etc/nginx/sites-enabled/{{ item }}.conf
-    state: link
-  with_items:
-    - "{{ photon_hostname }}"
-  notify: Restart nginx
-
-

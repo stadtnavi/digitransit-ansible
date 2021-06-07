@@ -13,15 +13,20 @@
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:
     - photon-new.service
-  notify:
-    # photon.service dependens on nominatim.service so it's restarted, too.
-    - Restart photon-new
 
 - name: Start photon-new service
   systemd:
-    state: stopped
+    state: started
     name: "{{ item }}"
     enabled: yes
     daemon_reload: yes
   with_items:
     - photon-new.service
+
+- name: Copy photon nginx site conf
+  template:
+    src: photon-new-site.conf
+    dest: /etc/nginx/sites-available/{{ item }}.conf
+  with_items:
+    - "{{ photon_new_hostname }}"
+  notify: Restart nginx

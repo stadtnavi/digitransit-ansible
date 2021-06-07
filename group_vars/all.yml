@@ -73,6 +73,7 @@ matomo_port: 9000
 digitransit_port: 8080
 
 photon_hostname: photon.stadtnavi.eu
+photon_new_hostname: photon-new.stadtnavi.eu
 photon_url: https://{{ photon_hostname }}
 
 # one week

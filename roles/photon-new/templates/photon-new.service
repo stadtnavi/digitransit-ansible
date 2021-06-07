@@ -4,22 +4,22 @@ After=docker.service
 
 [Service]
 
-Environment=CONTAINER_IMAGE=mfdz/photon:4a574470fbfe7c27943a29bb9a67df27ba4ab9b0
+Environment=CONTAINER_IMAGE=mfdz/photon:ea112920d33ebba2763ea6d59397b1e1e8df5fcf
 Environment=CONTAINER_NAME=photon-new
 TimeoutStartSec=0
 RestartSec=15
 Restart=always
 
-Environment=NOMINATIM_DB_HOST=nominatim
+Environment=NOMINATIM_DB_HOST=localhost
 Environment=NOMINATIM_DB_PASSWORD={{ nominatim_db_password }}
 
 Environment=AUTOMATIC_UPDATES=true
 
 ExecStart=docker run --rm --name ${CONTAINER_NAME} \
     --log-driver=journald \
-    -v photon-data-034-3:/photon/photon_data:rw \
-    -p 2323:2322 \
-    --network photon \
+    --network="host" \
+    -v photon-data-2021-06-07:/photon/photon_data:rw \
+    -p {{ photon_new_port }}:2322 \
     -e NOMINATIM_DB_HOST \
     -e NOMINATIM_DB_PASSWORD \
     -e AUTOMATIC_UPDATES ${CONTAINER_IMAGE}

@@ -9,6 +9,8 @@ certbot_certs:
     - "{{ tiles_hostname }}"
   - domains:
     - "{{ photon_hostname }}"
+  - domains:
+    - "{{ photon_new_hostname }}"
 
 nominatim_db_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256

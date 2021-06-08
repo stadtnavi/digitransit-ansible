@@ -1,0 +1,18 @@
+---
+- name: Install systemd files
+  template:
+    src: '{{ item }}'
+    dest: /etc/systemd/system/
+  with_items:
+    - delay-prediction-service.service
+  notify: Restart delay-prediction-service
+
+- todo: create PostgreSQL database
+- todo: run build script
+
+- name: Start mosquitto
+  systemd:
+    name: delay-prediction-service.service
+    state: started
+    enabled: yes
+    daemon_reload: yes

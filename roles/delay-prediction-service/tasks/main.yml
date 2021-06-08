@@ -1,18 +1,29 @@
 ---
+- name: Install base packages
+  package:
+    name:
+      - python-docker
+    state: present
+
+- name: Create photon network
+  docker_network:
+    name: delay
+
 - name: Install systemd files
   template:
     src: '{{ item }}'
     dest: /etc/systemd/system/
   with_items:
-    - delay-prediction-service.service
+    - delay-postgis.service
+    - delay-prediction.service
   notify: Restart delay-prediction-service
 
-- todo: create PostgreSQL database
-- todo: run build script
-
-- name: Start mosquitto
+- name: Start service
   systemd:
-    name: delay-prediction-service.service
+    name: "{{ item }}"
     state: started
     enabled: yes
     daemon_reload: yes
+  with_items:
+    - delay-postgis.service
+    - delay-prediction.service

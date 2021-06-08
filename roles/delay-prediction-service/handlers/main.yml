@@ -1,5 +1,5 @@
 ---
 - name: Restart delay-prediction-service
   service:
-    name: delay-prediction-service
+    name: delay-prediction
     state: restarted

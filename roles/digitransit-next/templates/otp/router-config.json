@@ -74,7 +74,7 @@
       "type": "bike-rental",
       "frequencySec": 600,
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/cargo-bike/gbfs.json",
+      "url": "https://backend.openbikebox.next-site.de/api/gbfs/2.2/2/gbfs.json",
       "network": "cargo-bike",
       "allowKeepingRentedBicycleAtDestination": true
     },

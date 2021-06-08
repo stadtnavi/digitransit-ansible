@@ -15,6 +15,7 @@
   with_items:
     - /etc/nominatim
     - /var/nominatim
+    - /var/photon
 
 - name: Install config files for nominatim
   template: src={{ item }} dest=/etc/nominatim/
@@ -30,6 +31,13 @@
     - nominatim_add_ifopt.py
     - update-nominatim
     - initialize-nominatim
+
+- name: Install synonym files for photon
+  template:
+    src: "{{ item }}"
+    dest: /var/photon/
+  with_items:
+    - synonyms.csv
 
 - name: Install base packages
   package:

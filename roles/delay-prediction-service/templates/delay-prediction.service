@@ -9,28 +9,7 @@ StartLimitIntervalSec=300
 Restart=always
 RestartSec=15
 
-Environment=THINGSBOARD_HOST="{{ thingsboard_api_url }}"
-Environment=THINGSBOARD_USERNAME="{{ thingsboard_username }}"
-Environment=THINGSBOARD_PASSWORD="{{ thingsboard_password }}"
-Environment=THINGSBOARD_DEVICE_GROUP="f1740240-7b3f-11eb-970d-837f8b4d738d"
-Environment=MQTT_URI="{{ mqtt_uri }}"
-Environment=LOCALE=de-DE
-Environment=TIMEZONE="{{ timezone }}"
-Environment=NODE_ENV=production
-Environment=DOCKER_IMAGE=stadtnavi/delay-prediction-service:{{ delay_prediction_service_version }}
-Environment=CONTAINER_NAME=delay-prediction-service
-
-ExecStart=docker run --rm \
-    --network delay \
-    -e THINGSBOARD_HOST \
-    -e THINGSBOARD_USERNAME \
-    -e THINGSBOARD_PASSWORD \
-    -e PGUSER="{{ delay_postgres_user }}" \
-    -e PGPASSWORD="{{ delay_postgres_password }}" \
-    -e PGDATABASE="{{ delay_postgres_db }}" \
-    -e MQTT_URI \
-    --name ${CONTAINER_NAME} \
-    ${DOCKER_IMAGE}
+ExecStart=/var/delay-prediction/delay-prediction-service
 
 [Install]
 WantedBy=multi-user.target

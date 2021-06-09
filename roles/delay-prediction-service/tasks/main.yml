@@ -1,4 +1,22 @@
 ---
+- name: Create folder
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+  with_items:
+    - /var/delay-prediction
+
+- name: Install script file
+  template:
+    src: "{{ item }}"
+    dest: /var/delay-prediction/
+    mode: "+x"
+  with_items:
+    - delay-prediction-service
+
 - name: Install base packages
   package:
     name:

@@ -17,6 +17,8 @@ digitransit:
     map_server: stadtnavi/hsl-map-server:latest
     fares_service: stadtnavi/fares-service:latest
 
+delay_prediction_service_version: latest
+
 api_hostname: api.dev.stadtnavi.eu
 
 certbot_certs:

@@ -7,7 +7,7 @@ digitransit_ui:
   - config: hbnext
     port: 8084
     domain: herrenberg.beta.stadtnavi.eu
-    image: stadtnavi/digitransit-ui:ba8ff7d69af0b54ff54fa863e20053e4adfde1d0
+    image: stadtnavi/digitransit-ui:ca5246b22e9da5283d99a34a9117f04b5c008cda
 
 certbot_certs:
   - domains:
@@ -15,7 +15,7 @@ certbot_certs:
   - domains:
       - "{{ api_hostname }}"
 
-otp_docker_tag: otp2-f77132043db5eab109fe91b7c4635176af44bed2
+otp_docker_tag: otp2-a0c0ea9082ac93f3b3e62bdb23c9c8da1622e632
 
 digitransit:
   images:

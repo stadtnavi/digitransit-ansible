@@ -9,7 +9,7 @@ StartLimitIntervalSec=300
 Restart=always
 RestartSec=15
 
-ExecStart=/var/delay-prediction/delay-prediction-service
+ExecStart=/var/delay-prediction/delay-prediction-service delay-prediction-service
 
 [Install]
 WantedBy=multi-user.target

@@ -1,12 +1,15 @@
 #! /bin/bash -e
 
 DOCKER_IMAGE=stadtnavi/delay-prediction-service:{{ delay_prediction_service_version }}
-CONTAINER_NAME=delay-prediction-service
+CONTAINER_NAME=$1
+
+shift
 
 docker pull ${DOCKER_IMAGE}
-docker run --rm \
+docker run --rm -i \
     --network delay \
     -v bus-trajectories:/app/trajectories \
+    -v /var/delay-prediction/current_gtfs_id:/app/current_gtfs_id \
     -e TIMEZONE=Europe/Berlin \
     -e LOCALE=de-DE \
     -e THINGSBOARD_URL={{ thingsboard_api_url }} \

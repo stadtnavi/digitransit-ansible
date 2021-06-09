@@ -3,13 +3,14 @@ Description=pull bus positions from Thingsboard, predict delays & positions, sen
 After=network-online.target
 Wants=network-online.target
 StartLimitBurst=5
-StartLimitIntervalSec=300
+StartLimitIntervalSec=180
 
 [Service]
 Restart=always
-RestartSec=15
+RestartSec=30
 
 ExecStart=/var/delay-prediction/delay-prediction-service service
+ExecStop=-docker stop delay-prediction-service
 
 [Install]
 WantedBy=multi-user.target

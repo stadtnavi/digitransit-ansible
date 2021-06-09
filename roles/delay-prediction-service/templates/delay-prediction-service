@@ -23,6 +23,7 @@ docker run --rm -i \
     -e PGUSER="{{ delay_postgres_user }}" \
     -e PGPASSWORD="{{ delay_postgres_password }}" \
     -e PGDATABASE="{{ delay_postgres_db }}" \
+    -e LOG_LEVEL=debug \
     --name ${CONTAINER_NAME} \
     ${DOCKER_IMAGE} \
     $@

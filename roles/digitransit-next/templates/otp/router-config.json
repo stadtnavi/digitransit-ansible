@@ -15,14 +15,14 @@
     "allowKeepingRentedBicycleAtDestination": true,
     "keepingRentedBicycleAtDestinationCost": 180,
     "numItineraries": 10,
-    "itineraryFilters" : {
-      "bikeRentalDistanceRatio": 0.5,
-      "parkAndRideDurationRatio": 0.6
-    },
     "bikeTriangleSafetyFactor": 0.4,
     "bikeTriangleSlopeFactor": 0.3,
     "bikeTriangleTimeFactor": 0.3,
-    "bannedBikeRentalNetworks": ["car-sharing", "taxi"]
+    "bannedBikeRentalNetworks": ["car-sharing", "taxi"],
+    "itineraryFilters" : {
+      "bikeRentalDistanceRatio": 0.5,
+      "parkAndRideDurationRatio": 0.6
+    }
   },
   "vectorTileLayers": [
     {

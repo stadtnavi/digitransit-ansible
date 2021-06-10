@@ -3,3 +3,8 @@
   service:
     name: photon-new
     state: restarted
+
+- name: Restart photon-pelias-adapter-new
+  service:
+    name: photon-pelias-adapter-new
+    state: restarted

@@ -9,11 +9,16 @@
   docker_network:
     name: photon-network
 
-- name: Install systemd files for nominatim-update
+- name: Install systemd files for photon
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:
     - photon-new.service
+
+- name: Install systemd files for pelias-adapter
+  template: src={{ item }} dest=/etc/systemd/system/
+  with_items:
     - photon-pelias-adapter-new.service
+  notify: Restart photon-pelias-adapter-new
 
 - name: Start photon-new service
   systemd:
@@ -23,7 +28,6 @@
     daemon_reload: yes
   with_items:
     - photon-new.service
-    - photon-pelias-adapter-new.service
 
 - name: Copy photon nginx site conf
   template:

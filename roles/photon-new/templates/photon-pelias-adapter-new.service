@@ -1,0 +1,22 @@
+[Unit]
+Description=Photon Pelias Adapter
+After=docker.service
+
+[Service]
+
+Environment=CONTAINER_IMAGE=mfdz/photon-pelias-adapter:8207e8960d2227a47cb15a45881e134b8cf4fa02
+Environment=CONTAINER_NAME=photon-pelias-adapter-new
+TimeoutStartSec=0
+Restart=always
+
+Environment=PHOTON_URL=https://photon-new.stadtnavi.eu
+
+ExecStartPre=-docker pull ${CONTAINER_IMAGE}
+ExecStartPre=-docker stop ${CONTAINER_NAME}
+ExecStartPre=-docker rm ${CONTAINER_NAME}
+ExecStart=docker run --name ${CONTAINER_NAME} --log-driver=journald -p {{ pelias_adapter_new_port }}:8080 -e PHOTON_URL ${CONTAINER_IMAGE}
+
+ExecStop=-docker stop ${CONTAINER_NAME}
+
+[Install]
+WantedBy=multi-user.target

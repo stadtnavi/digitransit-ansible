@@ -13,6 +13,7 @@
   template: src={{ item }} dest=/etc/systemd/system/
   with_items:
     - photon-new.service
+    - photon-pelias-adapter-new.service
 
 - name: Start photon-new service
   systemd:
@@ -22,6 +23,7 @@
     daemon_reload: yes
   with_items:
     - photon-new.service
+    - photon-pelias-adapter-new.service
 
 - name: Copy photon nginx site conf
   template:

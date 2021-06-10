@@ -52,4 +52,4 @@ mfdz_gtfs_url: !vault |
 gtfs_url: https://gtfs.mfdz.de/hbg3.merged.with_flex.gtfs.zip
 
 enable_gtfs_rt: true
-enable_cargobike: false
+enable_cargobike: true

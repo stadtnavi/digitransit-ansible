@@ -8,8 +8,7 @@ shift
 docker pull ${DOCKER_IMAGE}
 docker run --rm -i \
     --network delay \
-    -v bus-trajectories:/app/trajectories \
-    -v /var/delay-prediction/current_gtfs_id:/app/current_gtfs_id \
+    -v delay-prediction-service-data:/app/data \
     -e TIMEZONE=Europe/Berlin \
     -e LOCALE=de-DE \
     -e THINGSBOARD_URL={{ thingsboard_api_url }} \

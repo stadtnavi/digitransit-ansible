@@ -76,6 +76,8 @@ photon_hostname: photon.stadtnavi.eu
 photon_new_hostname: photon-new.stadtnavi.eu
 photon_url: https://{{ photon_hostname }}
 
+additional_users: []
+
 # one week
 docker_prune_max_age: 168h
 

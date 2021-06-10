@@ -67,3 +67,19 @@
   notify: Restart systemd-journald
 
 
+- name: Create login users
+  user:
+    name: "{{ item }}"
+    groups:
+      - docker
+      - sudo
+      - systemd-journal
+    state: present
+  with_items: "{{ additional_users }}"
+
+- name: Set authorized keys
+  ansible.posix.authorized_key:
+    user: "{{ item }}"
+    state: present
+    key: "{{ lookup('template', item + '.pub') }}"
+  with_items: "{{ additional_users }}"

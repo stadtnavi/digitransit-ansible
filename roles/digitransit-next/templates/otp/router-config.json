@@ -18,7 +18,7 @@
     "bikeTriangleSafetyFactor": 0.4,
     "bikeTriangleSlopeFactor": 0.3,
     "bikeTriangleTimeFactor": 0.3,
-    "bannedBikeRentalNetworks": ["car-sharing", "taxi"],
+    "bannedBikeRentalNetworks": ["car-sharing", "taxi", "cargo-bike"],
     "itineraryFilters" : {
       "bikeRentalDistanceRatio": 0.5,
       "parkAndRideDurationRatio": 0.6
@@ -76,8 +76,31 @@
       "frequencySec": 600,
       "sourceType": "gbfs",
       "url": "https://backend.openbikebox.next-site.de/api/gbfs/2.2/2/gbfs.json",
-      "network": "cargo-bike",
-      "allowKeepingRentedBicycleAtDestination": true
+      "network": "cargo-bike"
+    },
+    {
+      "id": "alf",
+      "type": "bike-rental",
+      "frequencySec": 900,
+      "sourceType": "gbfs",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/alf/gbfs.json",
+      "network": "cargo-bike"
+    },
+    {
+      "id": "bananologen",
+      "type": "bike-rental",
+      "frequencySec": 900,
+      "sourceType": "gbfs",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/bananologen/gbfs.json",
+      "network": "cargo-bike"
+    },
+    {
+      "id": "gueltstein-mobil",
+      "type": "bike-rental",
+      "frequencySec": 900,
+      "sourceType": "gbfs",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/gueltstein-mobil/gbfs.json",
+      "network": "cargo-bike"
     },
     {% endif %}
     {

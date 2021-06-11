@@ -51,6 +51,15 @@
       "minZoom": 14,
       "cacheMaxSeconds": 60,
       "expansionFactor": 0.5
+    },
+    {
+      "name": "parking",
+      "type": "VehicleParking",
+      "mapper": "Digitransit",
+      "maxZoom": 20,
+      "minZoom": 14,
+      "cacheMaxSeconds": 60,
+      "expansionFactor": 0.5
     }
   ],
   "updaters": [

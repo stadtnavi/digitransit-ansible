@@ -75,6 +75,7 @@
       - sudo
       - systemd-journal
     state: present
+    shell: /bin/bash
   with_items: "{{ additional_users }}"
 
 - name: Set authorized keys

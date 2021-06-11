@@ -4,7 +4,7 @@ After=docker.service
 
 [Service]
 
-Environment=CONTAINER_IMAGE=mfdz/photon-pelias-adapter:1f7612dd5de91351c9be1f9ed7555f81cdfa1f8a
+Environment=CONTAINER_IMAGE=mfdz/photon-pelias-adapter:d23fc2be2c5a6ef23c4389c0ff8717764fc5e8a4
 Environment=CONTAINER_NAME=photon-pelias-adapter-new
 TimeoutStartSec=0
 Restart=always

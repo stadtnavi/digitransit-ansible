@@ -20,7 +20,6 @@ digitransit:
 delay_prediction_service_version: latest
 
 api_hostname: api.dev.stadtnavi.eu
-photon_url: "https://photon-new.stadtnavi.eu"
 
 certbot_certs:
   - domains:

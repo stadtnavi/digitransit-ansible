@@ -22,7 +22,7 @@
 
 - name: Start photon-new service
   systemd:
-    state: started
+    state: stopped
     name: "{{ item }}"
     enabled: yes
     daemon_reload: yes

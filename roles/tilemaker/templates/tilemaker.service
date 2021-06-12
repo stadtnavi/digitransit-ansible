@@ -12,7 +12,7 @@ WorkingDirectory=/var/tilemaker
 ExecStart=/var/tilemaker/build-mbtiles
 Restart=on-failure
 
-ExecStop=-/usr/bin/docker stop tilemaker
+ExecStopPost=/bin/sh -c 'if [ ! "$$EXIT_STATUS" = 0 ]; then send-to-matrix "tilemaker failled on {{ inventory_hostname }}" fi'
 
 [Install]
 WantedBy=multi-user.target

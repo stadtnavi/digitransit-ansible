@@ -15,7 +15,9 @@ certbot_certs:
   - domains:
       - "{{ api_hostname }}"
 
-otp_docker_tag: otp2-a0c0ea9082ac93f3b3e62bdb23c9c8da1622e632
+otp_docker_tag: otp2-ce61495b20305c6121a68a68d082127be36fb43b
+
+matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
 
 digitransit:
   images:

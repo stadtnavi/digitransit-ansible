@@ -144,15 +144,8 @@
       "type": "vehicle-parking",
       "sourceType": "park-api",
       "frequencySec": 60,
-      "feedId": "PAPI",
+      "feedId": "park-api",
       "url": "https://api.stadtnavi.de/herrenberg/parking/parkapi.json"
-    },
-    {
-      "type": "vehicle-parking",
-      "sourceType": "open-bike-box",
-      "frequencySec": 60,
-      "feedId": "OBB",
-      "url": "https://backend.openbikebox.next-site.de/api/v1/locations?format=list"
     }
   ]
 }

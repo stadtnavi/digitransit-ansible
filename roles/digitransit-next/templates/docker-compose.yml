@@ -39,6 +39,7 @@ services:
       - FAHRGEMEINSCHAFT_API_KEY={{ fahrgemeinschaft_api_key }}
       - FAHRGEMEINSCHAFT_AUTH_KEY={{ fahrgemeinschaft_auth_key }}
       - CARGO_BIKES_ENABLED={{ enable_cargobike | to_json}}
+      - MATOMO_URL={{ matomo_url }}
 {% endfor %}
 
   hsl-map-server:

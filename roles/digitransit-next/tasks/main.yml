@@ -49,6 +49,14 @@
     - router-config.json
     - build-config.json
 
+- name: Copy maintenance page
+  template:
+    src: maintenance.html
+    dest: /var/digitransit/
+    owner: www-data
+    group: www-data
+    mode: 0775
+
 - name: Install docker-compose file
   template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
   with_items: "{{ digitransit_ui }}"

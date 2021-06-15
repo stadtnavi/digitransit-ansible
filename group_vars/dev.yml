@@ -54,7 +54,6 @@ mfdz_gtfs_url: !vault |
   35353234643030663933393831643538356633653331343838623739383936363530616466323463
   31333664663764363161
 
-enable_cargobike: true
 enable_gtfs_rt: true
 
 gtfs_url: https://gtfs.mfdz.de/hbg3.merged.with_flex.gtfs.zip

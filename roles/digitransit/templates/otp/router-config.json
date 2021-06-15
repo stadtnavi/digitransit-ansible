@@ -78,7 +78,6 @@
       "feedId": "hbg"
     },
     {% endif %}
-    {% if enable_cargobike %}
     {
       "id": "cargo-bike",
       "type": "bike-rental",
@@ -111,7 +110,6 @@
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/gueltstein-mobil/gbfs.json",
       "network": "cargo-bike"
     },
-    {% endif %}
     {
       "id": "regiorad-bike-rental",
       "type": "bike-rental",

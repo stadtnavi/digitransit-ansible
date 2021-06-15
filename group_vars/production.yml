@@ -68,6 +68,5 @@ matomo_db_root_password: !vault |
           35396430373233643231323237326330636333663538313830323363643231616634396133643530
           6461636662353639373262666133373239336433646437306264
 
-enable_cargobike: true
 enable_gtfs_rt: true
 gtfs_url: https://gtfs.mfdz.de/hbg3.merged.with_flex.gtfs.zip

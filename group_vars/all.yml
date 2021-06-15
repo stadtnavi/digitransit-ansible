@@ -256,3 +256,4 @@ matomo_db_root_password: !vault |
   6138626538356638663630303966353739316135656162613465
 
 enable_maintenance_page: false
+enable_prediction_service: false

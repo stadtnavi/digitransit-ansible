@@ -45,3 +45,15 @@
   with_items:
     - delay-postgis.service
     - delay-prediction.service
+  when: enable_prediction_service
+
+- name: Stop service
+  systemd:
+    name: "{{ item }}"
+    state: stopped
+    enabled: yes
+    daemon_reload: yes
+  with_items:
+    - delay-postgis.service
+    - delay-prediction.service
+  when: enable_prediction_service == false

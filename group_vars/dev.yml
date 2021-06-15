@@ -62,4 +62,4 @@ gtfs_url: https://gtfs.mfdz.de/hbg3.merged.with_flex.gtfs.zip
 additional_users:
   - jannis
 
-enable_maintenance_page: true
+enable_prediction_service: true

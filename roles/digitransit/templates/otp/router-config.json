@@ -84,7 +84,7 @@
       "type": "bike-rental",
       "frequencySec": 600,
       "sourceType": "gbfs",
-      "url": "https://backend.openbikebox.next-site.de/api/gbfs/2.2/2/gbfs.json",
+      "url": "https://backend.open-booking.eu/api/gbfs/2.2/1/station_information.json",
       "network": "cargo-bike"
     },
     {

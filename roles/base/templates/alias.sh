@@ -1,7 +1,4 @@
 alias ll='ls -lah --color'
 alias digitransit-logs='sudo journalctl -u digitransit-docker-compose -f'
-alias data-builder-logs='sudo journalctl -u data-builder -f'
-alias start-data-builder='sudo nohup systemctl start data-builder >/dev/null 2>&1 &'
 alias start-graph-build='sudo systemctl start graph-build.service'
-alias start-gtfs-hub='sudo nohup systemctl start data-builder >/dev/null 2>&1 &'
 alias digitransit-docker-compose='docker-compose -f /etc/digitransit/docker-compose.yml'

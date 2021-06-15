@@ -1,5 +1,0 @@
----
-- name: Restart data-builder
-  systemd:
-    name: data-builder.service
-    enabled: true

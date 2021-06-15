@@ -59,20 +59,9 @@ Fri 2020-05-15 02:15:00 CEST  13h left      Thu 2020-05-14 02:15:02 CEST  10h ag
 
 ### Automatic graph builds
 
-The docker container `data-builder` builds a new graph every night at 11 o'clock.
-This is controlled by the systemd timer `data-builder` and if you want to modify
-this, then edit `data-builder.timer` and `data-builder.service`.
-
-The original script also uploads data to dockerhub but since mfdz's version contains
-personally identifiable information we cannot do that. This means that the graph
-build needs to happen on the same machine as digitransit runs.
-
-The `data-builder` then tags the built image as `mfdz/opentripplanner-data-container-hb:test`
-`mfdz/opentripplanner-data-container-hb:local`. The `local` tag is what
-digitransit uses.
-
-Since the `data-container` containers are quite large, the `docker-prune` timer
-removes every night containers that have not been used for 3 days.
+The script `build-graph` builds a new graph every night at 1 o'clock.
+This is controlled by the systemd timer `graph-build` and if you want to modify
+this, then edit `graph-build.timer` and `graph-build.service`.
 
 ### Common tasks
 

@@ -16,7 +16,7 @@ staging: galaxy-install
 	${PLAYBOOK_CMD} -i staging digitransit.yml
 
 production: galaxy-install
-	${PLAYBOOK_CMD} -i production digitransit.yml
+	${PLAYBOOK_CMD} -i production digitransit-next.yml
 
 infrastructure: galaxy-install
 	${PLAYBOOK_CMD} -i infrastructure infrastructure.yml

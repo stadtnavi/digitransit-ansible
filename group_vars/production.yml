@@ -2,28 +2,22 @@
 server_name: production
 
 digitransit_ui:
-  - config: hb
+  - config: hbnext
     port: 8081
     domain: herrenberg.stadtnavi.de
-    image: stadtnavi/digitransit-ui:aa86fc8006a2af2217f5ca38717df71aa2d2a029
+    image: stadtnavi/digitransit-ui:23feea153e2aebaf4ea073d3840e51ff13d2fa86
   - config: ludwigsburg
     port: 8082
     domain: ludwigsburg.stadtnavi.eu
     image: stadtnavi/digitransit-ui:latest
-  - config: hbnext
-    port: 8083
-    domain: next.stadtnavi.eu
-    image: stadtnavi/digitransit-ui:9e636990a7e925d40f788e98315ca00e73f9b167
 
-data_builder_tag: ci-6f52835fd3ac660871c1f12cbc9a54e31bfb52e6
+otp_docker_tag: otp2-ce61495b20305c6121a68a68d082127be36fb43b
 
-otp_docker_tag: 6b95bc94a5270f526954a26280baa2ec57affecf
 digitransit:
   images:
-    proxy: stadtnavi/digitransit-proxy:c2d5ca0da5e5abe5b8e156dfc25e66e44bf76079
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
-    data_container: mfdz/opentripplanner-data-container-hb:local
-    map_server: stadtnavi/hsl-map-server:923077ee5175d9fb90c766746997eb47f1b20ecc
+    map_server: stadtnavi/hsl-map-server:f386dcbf8ea8d9f99a9e7772e0324bed2e20fb2a
+    fares_service: stadtnavi/fares-service:6af73d1f1b27aa379596b4b270a24514eed6d95d
 
 api_hostname: api.stadtnavi.de
 matomo_hostname: track.stadtnavi.de
@@ -34,8 +28,6 @@ certbot_certs:
   - domains:
     - "{{ digitransit_ui[1].domain }}"
   - domains:
-    - "{{ digitransit_ui[2].domain }}"
-  - domains:
     - "{{ api_hostname }}"
   - domains:
     - "{{ matomo_hostname }}"
@@ -43,7 +35,6 @@ certbot_certs:
 certbot_admin_email: mail@leonard.io
 
 matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
-
 
 encryption_secret_key: !vault |
           $ANSIBLE_VAULT;1.1;AES256
@@ -77,4 +68,6 @@ matomo_db_root_password: !vault |
           35396430373233643231323237326330636333663538313830323363643231616634396133643530
           6461636662353639373262666133373239336433646437306264
 
-enable_maintenance_page: true
+enable_cargobike: true
+enable_gtfs_rt: true
+gtfs_url: https://gtfs.mfdz.de/hbg3.merged.with_flex.gtfs.zip

@@ -1,9 +1,0 @@
-[Unit]
-Description=Restart container every night
-
-[Timer]
-OnCalendar=*-*-* 04:45:00
-Persistent=true
-
-[Install]
-WantedBy=timers.target

@@ -7,6 +7,14 @@ IMAGE_NAME="stadtnavi/tilemaker:d0e8e69aaf4e9adbfc55b238d48fe49ef2b857a5"
 TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles
 TILEMAKER_FINAL_OUTPUT_FILE=tilemaker-output.mbtiles
 
+
+# deleting the pbf every Friday in order to not be forever blocked when an update
+# messes up the file
+if [[ $(date +%u) -eq 5 ]]; then
+  send-to-matrix "Tilemaker: deleting PBF and redownloading"
+  rm ${PBF_FILE}
+fi
+
 if [ -f "$PBF_FILE" ]; then
   echo "$PBF_FILE exists. Downloading updates."
   pyosmium-up-to-date -v $PBF_FILE || true

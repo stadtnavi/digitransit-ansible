@@ -57,7 +57,7 @@ mfdz_gtfs_url: !vault |
 enable_gtfs_rt: true
 enable_fares: true
 
-gtfs_url: https://gtfs.mfdz.de/hbg3.merged.with_flex.gtfs.zip
+gtfs_url: https://leonard.io/stadtnavi/hbg3-merged.flex-duplicate-stoptimes.gtfs.zip
 
 additional_users:
   - jannis

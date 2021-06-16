@@ -23,6 +23,7 @@ docker run --rm -i \
     -e PGPASSWORD="{{ delay_postgres_password }}" \
     -e PGDATABASE="{{ delay_postgres_db }}" \
     -e LOG_LEVEL=debug \
+    -p {{ delay_prediction_service_port }}:3000
     --name ${CONTAINER_NAME} \
     ${DOCKER_IMAGE} \
     $@

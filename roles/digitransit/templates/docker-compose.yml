@@ -38,7 +38,7 @@ services:
       - NODE_ENV=production
       - FAHRGEMEINSCHAFT_API_KEY={{ fahrgemeinschaft_api_key }}
       - FAHRGEMEINSCHAFT_AUTH_KEY={{ fahrgemeinschaft_auth_key }}
-      - CARGO_BIKES_ENABLED=true
+      - SHOW_TICKETS={{ enable_fares | to_json }}
       - MATOMO_URL={{ matomo_url }}
 {% endfor %}
 

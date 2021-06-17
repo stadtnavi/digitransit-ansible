@@ -20,9 +20,9 @@
     "bikeTriangleTimeFactor": 0.3,
     "bannedBikeRentalNetworks": ["car-sharing", "taxi", "cargo-bike"],
     "itineraryFilters" : {
+      "flexOnlyToDestination": true,
       "bikeRentalDistanceRatio": 0.5,
-      "parkAndRideDurationRatio": 0.6,
-      "flexOnlyToDestination": true"
+      "parkAndRideDurationRatio": 0.6
     }
   },
   "vectorTileLayers": [

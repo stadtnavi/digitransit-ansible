@@ -43,6 +43,8 @@ docker run \
   -e JAVA_OPTS="-Xmx20G" \
   ${IMAGE_NAME} --build --save graph \
 
+echo "${IMAGE_NAME}" > otp-image-version
+
 cd ..
 mkdir -p ${OUTPUT_DIR}
 cp ${BUILD_DIR}/graph.obj  ${OUTPUT_DIR}/

@@ -21,7 +21,8 @@
     "bannedBikeRentalNetworks": ["car-sharing", "taxi", "cargo-bike"],
     "itineraryFilters" : {
       "bikeRentalDistanceRatio": 0.5,
-      "parkAndRideDurationRatio": 0.6
+      "parkAndRideDurationRatio": 0.6,
+      "flexOnlyToDestination": true"
     }
   },
   "vectorTileLayers": [

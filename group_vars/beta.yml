@@ -7,7 +7,7 @@ digitransit_ui:
   - config: hbnext
     port: 8084
     domain: herrenberg.beta.stadtnavi.eu
-    image: stadtnavi/digitransit-ui:544f802385b89436a73d2950726539278f77326c
+    image: stadtnavi/digitransit-ui:1bddb645a308b67d96ca78397197034d7818799a
 
 certbot_certs:
   - domains:
@@ -15,7 +15,7 @@ certbot_certs:
   - domains:
       - "{{ api_hostname }}"
 
-otp_docker_tag: otp2-f8d1949254ef731f02fc6a278e7128005cb521aa
+otp_docker_tag: otp2-247b47a8fac8881022426c5de68c88e660ee1840
 
 matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
 
@@ -54,3 +54,4 @@ mfdz_gtfs_url: !vault |
 gtfs_url: https://gtfs.mfdz.de/hbg3.merged.with_flex.gtfs.zip
 
 enable_gtfs_rt: true
+enable_fares: true

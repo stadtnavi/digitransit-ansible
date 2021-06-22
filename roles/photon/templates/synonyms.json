@@ -1,8 +1,7 @@
 {
   "search_synonyms": [
     "edeka,neukauf",
-    "krankenhaus,klinik,klinikum,kreiskrankenhaus",
-    "bahnhof,bf,bhf,hbf,hauptbahnhof"
+    "krankenhaus,klinik,klinikum,kreiskrankenhaus"
   ],
   "classification_terms": [
     {

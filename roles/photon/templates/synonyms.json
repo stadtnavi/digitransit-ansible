@@ -1,0 +1,199 @@
+{
+  "search_synonyms": [
+    "edeka,neukauf",
+    "krankenhaus,klinik,klinikum,kreiskrankenhaus",
+    "bahnhof,bf,bhf,hbf,hauptbahnhof"
+  ],
+  "classification_terms": [
+    {
+      "key": "aerialway",
+      "value": "gondola",
+      "terms": ["seilbahn"]
+    },
+    {
+      "key": "aerialway",
+      "value": "chair_lift",
+      "terms": ["sesselbahn", "sessellift"]
+    },
+    {
+      "key": "aeroway",
+      "value": "aerodrome",
+      "terms": ["flughafen", "flugplatz"]
+    },
+    {
+      "key": "amenity",
+      "value": "bank",
+      "terms": ["bank"]
+    },
+    {
+      "key": "amenity",
+      "value": "biergarten",
+      "terms": ["biergarten"]
+    },
+    {
+      "key": "amenity",
+      "value": "bus_station",
+      "terms": ["busbahnhof", "zob"]
+    },
+    {
+      "key": "amenity",
+      "value": "cafe",
+      "terms": ["cafe", "kaffee"]
+    },
+    {
+      "key": "amenity",
+      "value": "car_rental",
+      "terms": ["autovermietung"]
+    },
+    {
+      "key": "amenity",
+      "value": "cinema",
+      "terms": ["kino"]
+    },
+    {
+      "key": "amenity",
+      "value": "courthouse",
+      "terms": ["gericht"]
+    },
+    {
+      "key": "amenity",
+      "value": "fire_station",
+      "terms": ["feuerwehr"]
+    },
+    {
+      "key": "amenity",
+      "value": "fuel",
+      "terms": ["tankstelle"]
+    },
+    {
+      "key": "amenity",
+      "value": "grave_yard",
+      "terms": ["friedhof"]
+    },
+    {
+      "key": "amenity",
+      "value": "kindergarten",
+      "terms": ["kindergarten", "kita"]
+    },
+    {
+      "key": "amenity",
+      "value": "library",
+      "terms": ["bibliothek", "bücherei"]
+    },
+    {
+      "key": "amenity",
+      "value": "parking",
+      "terms": ["parkplatz"]
+    },
+    {
+      "key": "amenity",
+      "value": "pharmacy",
+      "terms": ["apotheke"]
+    },
+    {
+      "key": "amenity",
+      "value": "police",
+      "terms": ["polizei"]
+    },
+    {
+      "key": "amenity",
+      "value": "post_office",
+      "terms": ["post", "postamt"]
+    },
+    {
+      "key": "amenity",
+      "value": "place_of_worship",
+      "terms": ["kirche"]
+    },
+    {
+      "key": "amenity",
+      "value": "restaurant",
+      "terms": ["restaurant", "gasthaus", "gaststätte"]
+    },
+    {
+      "key": "amenity",
+      "value": "school",
+      "terms": ["schule"]
+    },
+    {
+      "key": "amenity",
+      "value": "theatre",
+      "terms": ["theater"]
+    },
+    {
+      "key": "amenity",
+      "value": "townhall",
+      "terms": ["rathaus"]
+    },
+    {
+      "key": "amenity",
+      "value": "university",
+      "terms": ["uni", "universität"]
+    },
+    {
+      "key": "highway",
+      "value": "bus_stop",
+      "terms": ["bus", "haltestelle"]
+    },
+    {
+      "key": "public_transport",
+      "value": "stop_position",
+      "terms": ["haltestelle"]
+    },
+    {
+      "key": "railway",
+      "value": "station",
+      "terms": ["bahnhof", "bf", "hauptbahnhof", "hbf"]
+    },
+    {
+      "key": "shop",
+      "value": "hairdresser",
+      "terms": ["friseur", "frisör"]
+    },
+    {
+      "key": "shop",
+      "value": "bakery",
+      "terms": ["bäcker", "bäckerei"]
+    },
+    {
+      "key": "shop",
+      "value": "butcher",
+      "terms": ["fleischer", "fleischerei"]
+    },
+    {
+      "key": "shop",
+      "value": "supermarket",
+      "terms": ["supermarkt"]
+    },
+    {
+      "key": "tourism",
+      "value": "camp_site",
+      "terms": ["zeltplatz"]
+    },
+    {
+      "key": "tourism",
+      "value": "guest_house",
+      "terms": ["pension"]
+    },
+    {
+      "key": "tourism",
+      "value": "hostel",
+      "terms": ["hostel", "jugendherberge"]
+    },
+    {
+      "key": "tourism",
+      "value": "hotel",
+      "terms": ["hotel", "pension"]
+    },
+    {
+      "key": "tourism",
+      "value": "museum",
+      "terms": ["museum"]
+    },
+    {
+      "key": "tourism",
+      "value": "zoo",
+      "terms": ["zoo", "tierpark"]
+    }
+  ]
+}

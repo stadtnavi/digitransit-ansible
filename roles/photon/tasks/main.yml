@@ -38,6 +38,7 @@
     dest: /var/photon/
   with_items:
     - synonyms.csv
+    - synonyms.json
 
 - name: Install base packages
   package:

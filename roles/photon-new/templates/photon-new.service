@@ -4,7 +4,7 @@ After=docker.service
 
 [Service]
 
-Environment=CONTAINER_IMAGE=mfdz/photon:a266d8888686101f1bea697a5c0536ff77731008
+Environment=CONTAINER_IMAGE=mfdz/photon:7b15bbd83b72851dc865b5f453858950ce64557a
 Environment=CONTAINER_NAME=photon-new
 TimeoutStartSec=0
 RestartSec=15
@@ -16,13 +16,13 @@ Environment=NOMINATIM_DB_PASSWORD={{ nominatim_db_password }}
 ExecStart=docker run --rm --name ${CONTAINER_NAME} \
     --log-driver=journald \
     --network photon \
-    -v photon-data-2021-06-07:/photon/photon_data:rw \
-    -v /var/photon/synonyms.csv:/synonyms.csv \
+    -v photon-data-2021-06-22:/photon/photon_data:rw \
+    -v /var/photon/synonyms.json:/synonyms.json \
     -p {{ photon_new_port }}:2322 \
     -e NOMINATIM_DB_HOST \
     -e NOMINATIM_DB_PASSWORD \
     -e AUTOMATIC_UPDATES=true \
-    ${CONTAINER_IMAGE} photon -synonym-file /synonyms.csv
+    ${CONTAINER_IMAGE} photon -synonym-file /synonyms.json
 
 ExecStop=-docker stop ${CONTAINER_NAME}
 

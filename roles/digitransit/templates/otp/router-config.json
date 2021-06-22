@@ -12,7 +12,7 @@
     "itineraryFiltering": 1.0,
     "allowKeepingRentedBicycleAtDestination": true,
     "keepingRentedBicycleAtDestinationCost": 180,
-    "numItineraries": 10,
+    "numItineraries": 5,
     "bikeTriangleSafetyFactor": 0.4,
     "bikeTriangleSlopeFactor": 0.3,
     "bikeTriangleTimeFactor": 0.3,

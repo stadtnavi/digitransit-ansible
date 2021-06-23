@@ -1,6 +1,6 @@
 #! /bin/bash -e
 
-PBF_DOWNLOAD_URL="https://gtfs.mfdz.de/bw-buffered.osm.pbf"
+PBF_DOWNLOAD_URL="{{ osm_url }}"
 PBF_FILE="opentripplanner.osm.pbf"
 
 GTFS_DOWNLOAD_URL="{{ gtfs_url }}"

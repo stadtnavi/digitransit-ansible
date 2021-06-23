@@ -63,3 +63,5 @@ additional_users:
   - jannis
 
 enable_prediction_service: true
+
+osm_url: https://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf

@@ -22,7 +22,8 @@
     "itineraryFilters" : {
       "flexOnlyToDestination": true,
       "bikeRentalDistanceRatio": 0.75,
-      "parkAndRideDurationRatio": 0.6
+      "parkAndRideDurationRatio": 0.6,
+      "minBikeParkingDistance": 500
     },
     "transit": {
       "searchThreadPoolSize": 4

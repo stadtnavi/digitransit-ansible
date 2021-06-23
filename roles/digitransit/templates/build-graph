@@ -10,13 +10,15 @@ ELEVATION_DOWNLOAD_URL="https://leonard.io/stadtnavi/srtm_38_03.tif"
 ELEVATION_FILE="elevation.tif"
 
 IMAGE_NAME="mfdz/opentripplanner:{{ otp_docker_tag }}"
+CONTAINER_NAME="graph-build"
 
 BUILD_DIR=build
 OUTPUT_DIR=latest
 
+docker stop $CONTAINER_NAME || true
+
 mkdir -p build
 cd build
-
 
 if [ -f "$ELEVATION_FILE" ]; then
   echo "$ELEVATION_FILE exists."
@@ -24,7 +26,6 @@ else
   echo "$ELEVATION_FILE does not exist. Downloading ..."
   curl --location -s "${ELEVATION_DOWNLOAD_URL}" -o ${ELEVATION_FILE}
 fi
-
 
 curl --location --fail -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 
@@ -37,7 +38,7 @@ curl -L --fail \
 docker pull ${IMAGE_NAME}
 docker run \
   -v /var/graph-build/${BUILD_DIR}:/opt/opentripplanner/graph \
-  --name graph-build \
+  --name ${CONTAINER_NAME} \
   --rm \
   --cpu-shares 512 \
   -e JAVA_OPTS="-Xmx20G" \

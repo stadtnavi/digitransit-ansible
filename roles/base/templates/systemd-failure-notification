@@ -1,5 +1,5 @@
 #!/bin/bash
 
 if [ "$EXIT_STATUS" != "0" ]; then
-  send-to-matrix "graph-build failed on {{ inventory_hostname }}. EXIT_STATUS:$EXIT_STATUS, SERVICE_RESULT:$SERVICE_RESULT, EXIT_CODE:$EXIT_CODE";
+  send-to-matrix "$1 failed on {{ inventory_hostname }}. EXIT_STATUS:$EXIT_STATUS, SERVICE_RESULT:$SERVICE_RESULT, EXIT_CODE:$EXIT_CODE";
 fi

@@ -11,7 +11,7 @@ StartLimitBurst=2
 WorkingDirectory=/var/graph-build
 ExecStart=/var/graph-build/build-graph
 
-ExecStopPost=/bin/sh -c 'if [ "$$EXIT_STATUS" != "0" ]; then send-to-matrix "graph-build failed on {{ inventory_hostname }}. EXIT_STATUS:$$EXIT_STATUS, SERVICE_RESULT:$$SERVICE_RESULT, EXIT_CODE:$$EXIT_CODE"; fi'
+ExecStopPost=systemd-failure-notification "Graph build"
 
 Restart=on-failure
 

@@ -256,7 +256,9 @@ matomo_db_root_password: !vault |
   6138626538356638663630303966353739316135656162613465
 
 enable_maintenance_page: false
+
 enable_prediction_service: false
-enable_fares: false
+enable_fares: true
+enable_gtfs_rt: true
 
 osm_url: https://gtfs.mfdz.de/bw-buffered.osm.pbf

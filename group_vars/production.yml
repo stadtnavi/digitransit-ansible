@@ -5,13 +5,13 @@ digitransit_ui:
   - config: hbnext
     port: 8081
     domain: herrenberg.stadtnavi.de
-    image: stadtnavi/digitransit-ui:7ceebc1d6e5694934ab5517f5097ea5a4fd2480c
+    image: stadtnavi/digitransit-ui:29ea85f8b4a19d3470146bf7aae9920c94df8b9d
   - config: ludwigsburg
     port: 8082
     domain: ludwigsburg.stadtnavi.eu
     image: stadtnavi/digitransit-ui:latest
 
-otp_docker_tag: otp2-fae6b998871ae8f899f62169fdcc6bf85ee4a10a
+otp_docker_tag: otp2-a076cb6110592c62640675b0fdcdb990614bbcf7
 
 digitransit:
   images:

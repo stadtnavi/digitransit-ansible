@@ -9,7 +9,7 @@ Environment=CONTAINER_NAME=photon-pelias-adapter
 TimeoutStartSec=0
 Restart=always
 
-Environment=PHOTON_URL=https://{{photon_hostname}}
+Environment=PHOTON_URL=https://photon-new.stadtnavi.eu
 
 ExecStartPre=-docker pull ${CONTAINER_IMAGE}
 ExecStartPre=-docker stop ${CONTAINER_NAME}

@@ -23,7 +23,7 @@ digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     map_server: stadtnavi/hsl-map-server:f386dcbf8ea8d9f99a9e7772e0324bed2e20fb2a
-    fares_service: stadtnavi/fares-service:6af73d1f1b27aa379596b4b270a24514eed6d95d
+    fares_service: stadtnavi/fares-service:9b3e65dfd90e0c950e9335ebdc86cc0dda9dffb2
 
 
 encryption_secret_key: !vault |

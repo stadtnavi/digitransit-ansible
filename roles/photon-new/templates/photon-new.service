@@ -13,6 +13,10 @@ Restart=always
 Environment=NOMINATIM_DB_HOST=nominatim
 Environment=NOMINATIM_DB_PASSWORD={{ nominatim_db_password }}
 
+Environment=SYNONYMS_URL=https://raw.githubusercontent.com/stadtnavi/digitransit-ansible/master/roles/photon/templates/synonyms.json
+
+# in order to not place an error response as the synonyms file, we first we check if the download returned with a 200 and then move the file
+ExecStartPre=-curl -f -LI ${SYNONYMS_URL} > /var/photon/synonyms.tmp.json && mv /var/photon/synonyms.tmp.json /var/photon/synonyms.json
 ExecStart=docker run --rm --name ${CONTAINER_NAME} \
     --log-driver=journald \
     --network photon \

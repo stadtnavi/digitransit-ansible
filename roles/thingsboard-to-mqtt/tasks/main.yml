@@ -7,11 +7,16 @@
     - thingsboard-to-mqtt.service
   notify: Restart thingsboard-to-mqtt
 
-- name: Start mosquitto
+- name: Start thingsboard-to-mqtt
   systemd:
     name: thingsboard-to-mqtt.service
     state: started
-    enabled: yes
     daemon_reload: yes
+  when: enable_prediction_service == false
 
-
+- name: Stop thingsboard-to-mqtt
+  systemd:
+    name: thingsboard-to-mqtt.service
+    state: stopped
+    daemon_reload: yes
+  when: enable_prediction_service

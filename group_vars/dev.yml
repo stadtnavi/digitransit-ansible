@@ -5,7 +5,7 @@ digitransit_ui:
   - config: hbnext
     port: 8084
     domain: dev.stadtnavi.eu
-    image: stadtnavi/digitransit-ui:next-bus-positions
+    image: stadtnavi/digitransit-ui:next
 
 data_builder_tag: latest
 

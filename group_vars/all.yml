@@ -84,7 +84,8 @@ docker_prune_max_age: 168h
 thingsboard_to_parkapi_commit: 3865b3c636bbe5feaa04cd4787e784d9e7205491
 thingsboard_enhancer_commit: 70724e0b4add91a6e99e283d45e11de3a98a2803
 thingsboard_to_mqtt_version: abfbca97df0bcaa1c14a89cbe9dbdebcde7b3816
-delay_prediction_service_version:
+
+delay_prediction_service_version: 811a07736f3ab2bd1aaab7513610fbeaa37a5f52
 
 delay_postgres_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256

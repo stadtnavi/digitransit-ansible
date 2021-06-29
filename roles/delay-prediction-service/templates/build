@@ -1,0 +1,20 @@
+#! /bin/bash -e
+
+DOCKER_IMAGE=stadtnavi/delay-prediction-service:{{ delay_prediction_service_version }}
+
+docker pull ${DOCKER_IMAGE}
+docker run --rm -i \
+    --network delay \
+    -v delay-prediction-service-data:/app/data \
+    -e TIMEZONE=Europe/Berlin \
+    -e LOCALE=de-DE \
+    -e GTFS_NAME=vvs \
+    -e GTFS_URL='https://www.openvvs.de/dataset/e66f03e4-79f2-41d0-90f1-166ca609e491/resource/bfbb59c7-767c-4bca-bbb2-d8d32a3e0378/download/google_transit.zip' \
+    -e PGHOST="delay-postgis" \
+    -e PGUSER="{{ delay_postgres_user }}" \
+    -e PGPASSWORD="{{ delay_postgres_password }}" \
+    -e PGDATABASE="{{ delay_postgres_db }}" \
+    -e LOG_LEVEL=debug \
+    --name delay-prediction-service-build \
+    ${DOCKER_IMAGE} \
+    ./scripts/build.sh

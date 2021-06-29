@@ -1,9 +1,6 @@
 #! /bin/bash -e
 
 DOCKER_IMAGE=stadtnavi/delay-prediction-service:{{ delay_prediction_service_version }}
-CONTAINER_NAME=delay-prediction-$1
-
-shift
 
 docker pull ${DOCKER_IMAGE}
 docker run --rm -i \
@@ -16,14 +13,11 @@ docker run --rm -i \
     -e THINGSBOARD_PASSWORD="{{ thingsboard_password }}" \
     -e THINGSBOARD_DEVICE_GROUP="f1740240-7b3f-11eb-970d-837f8b4d738d" \
     -e MQTT_URI="{{ mqtt_uri }}" \
-    -e GTFS_NAME=vvs \
-    -e GTFS_URL='https://www.openvvs.de/dataset/e66f03e4-79f2-41d0-90f1-166ca609e491/resource/bfbb59c7-767c-4bca-bbb2-d8d32a3e0378/download/google_transit.zip' \
     -e PGHOST="delay-postgis" \
     -e PGUSER="{{ delay_postgres_user }}" \
     -e PGPASSWORD="{{ delay_postgres_password }}" \
     -e PGDATABASE="{{ delay_postgres_db }}" \
     -e LOG_LEVEL=debug \
     -p {{ delay_prediction_service_port }}:3000 \
-    --name ${CONTAINER_NAME} \
-    ${DOCKER_IMAGE} \
-    $@
+    --name delay-prediction-service \
+    ${DOCKER_IMAGE}

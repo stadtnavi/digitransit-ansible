@@ -9,8 +9,8 @@ StartLimitIntervalSec=180
 Restart=always
 RestartSec=30
 
-ExecStart=/var/delay-prediction/delay-prediction-service service
-ExecStop=-docker stop delay-prediction-service
+ExecStart=/var/delay-prediction/start
+ExecStop=/var/delay-prediction/stop
 
 [Install]
 WantedBy=multi-user.target

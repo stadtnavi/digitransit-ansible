@@ -19,6 +19,15 @@ fi
 if [ -f "$PBF_FILE" ]; then
   echo "$PBF_FILE exists. Downloading updates."
   pyosmium-up-to-date -v $PBF_FILE || true
+
+  # sometimes the update process results in a file with nodes missing from ways
+  if osmium check-refs ${PBF_FILE}; then
+    echo "OSM file has the correct referential integrity"
+  else
+    rm $PBF_FILE
+    send-to-matrix "tilemaker referential integrity check failed. Redownloading pbf file..."
+    curl --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
+  fi
 else
   echo "$PBF_FILE does not exist."
   curl --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}

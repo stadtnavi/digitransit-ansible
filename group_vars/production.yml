@@ -11,7 +11,7 @@ digitransit_ui:
     domain: ludwigsburg.stadtnavi.eu
     image: stadtnavi/digitransit-ui:latest
 
-otp_docker_tag: otp2-a076cb6110592c62640675b0fdcdb990614bbcf7
+otp_docker_tag: otp2-1823dae15fcd94a85148afa6586cfb20c2945659
 
 digitransit:
   images:
@@ -68,4 +68,3 @@ matomo_db_root_password: !vault |
           35396430373233643231323237326330636333663538313830323363643231616634396133643530
           6461636662353639373262666133373239336433646437306264
 
-gtfs_url: https://gtfs.mfdz.de/hbg3.merged.with_flex.gtfs.zip

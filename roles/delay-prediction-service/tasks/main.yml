@@ -16,6 +16,7 @@
     mode: "+x"
   with_items:
     - delay-prediction-service
+  notify: Restart delay-prediction-service
 
 - name: Install base packages
   package:

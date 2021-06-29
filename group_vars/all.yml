@@ -85,7 +85,7 @@ thingsboard_to_parkapi_commit: 3865b3c636bbe5feaa04cd4787e784d9e7205491
 thingsboard_enhancer_commit: 70724e0b4add91a6e99e283d45e11de3a98a2803
 thingsboard_to_mqtt_version: abfbca97df0bcaa1c14a89cbe9dbdebcde7b3816
 
-delay_prediction_service_version: 811a07736f3ab2bd1aaab7513610fbeaa37a5f52
+delay_prediction_service_version: fdad78efcc02ad7db6f549c18ca776678b988143
 
 delay_postgres_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256
@@ -258,8 +258,9 @@ matomo_db_root_password: !vault |
 
 enable_maintenance_page: false
 
-enable_prediction_service: false
+enable_prediction_service: true
 enable_fares: true
 enable_gtfs_rt: true
 
 osm_url: https://gtfs.mfdz.de/bw-buffered.osm.pbf
+gtfs_url: https://gtfs.mfdz.de/hbg5.merged.with_flex.gtfs.zip

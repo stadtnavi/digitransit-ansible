@@ -1,10 +1,12 @@
 ---
 - name: Install packages
-  package:
+  apt:
+    state: latest
+    default_release: buster-backports
     name:
       - pyosmium
+      - osmium-tool
       - curl
-    state: present
 
 - name: Create data directory
   file:

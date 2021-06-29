@@ -2,6 +2,7 @@
 
 PBF_DOWNLOAD_URL={{ tilemaker_pbf_download_url }}
 PBF_FILE=tilemaker-input.osm.pbf
+PREVIOUS_PBF_FILE=tilemaker-input.previous.osm.pbf
 IMAGE_NAME="stadtnavi/tilemaker:d0e8e69aaf4e9adbfc55b238d48fe49ef2b857a5"
 CONTAINER_NAME="tilemaker"
 
@@ -9,16 +10,10 @@ TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles
 TILEMAKER_FINAL_OUTPUT_FILE=tilemaker-output.mbtiles
 
 
-# deleting the pbf every Friday in order to not be forever blocked when an update
-# messes up the file
-if [[ $(date +%u) -eq 5 ]]; then
-  send-to-matrix "Tilemaker: deleting PBF and redownloading"
-  rm ${PBF_FILE}
-fi
-
 if [ -f "$PBF_FILE" ]; then
+  cp ${PBF_FILE} ${PREVIOUS_PBF_FILE}
   echo "$PBF_FILE exists. Downloading updates."
-  pyosmium-up-to-date -v $PBF_FILE || true
+  pyosmium-up-to-date -v $PBF_FILE
 
   # sometimes the update process results in a file with nodes missing from ways
   if osmium check-refs ${PBF_FILE}; then

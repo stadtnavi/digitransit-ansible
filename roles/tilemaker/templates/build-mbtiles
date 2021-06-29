@@ -3,6 +3,7 @@
 PBF_DOWNLOAD_URL={{ tilemaker_pbf_download_url }}
 PBF_FILE=tilemaker-input.osm.pbf
 IMAGE_NAME="stadtnavi/tilemaker:d0e8e69aaf4e9adbfc55b238d48fe49ef2b857a5"
+CONTAINER_NAME="tilemaker"
 
 TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles
 TILEMAKER_FINAL_OUTPUT_FILE=tilemaker-output.mbtiles
@@ -26,9 +27,10 @@ fi
 rm -f ${TILEMAKER_OUTPUT_FILE}
 
 docker pull ${IMAGE_NAME}
+docker stop ${CONTAINER_NAME} || true
 docker run \
   -v /var/tilemaker/:/srv \
-  --name tilemaker \
+  --name ${CONTAINER_NAME} \
   --rm \
   --cpu-shares 512 \
   ${IMAGE_NAME} /srv/${PBF_FILE} \

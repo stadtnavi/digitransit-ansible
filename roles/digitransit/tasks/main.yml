@@ -1,10 +1,4 @@
 ---
-- name: Install packages
-  package:
-    name:
-      - pyosmium
-    state: present
-
 - name: Create digitransit config directory
   file:
     path: "{{ item }}"

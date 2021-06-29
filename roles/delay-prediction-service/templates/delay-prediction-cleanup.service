@@ -1,0 +1,17 @@
+[Unit]
+Description=delete old delay-prediction-service data
+Requires=docker.service
+After=docker.service
+
+# restart once within 20m to handle an intermittent network failure gracefully
+StartLimitIntervalSec=1200
+StartLimitBurst=1
+
+[Service]
+ExecStart=/var/delay-prediction/cleanup
+Restart=on-failure
+
+ExecStopPost=/bin/sh -c 'if [ "$$EXIT_STATUS" != "0" ]; then send-to-matrix "delay-prediction-cleanup failed on {{ inventory_hostname }}. EXIT_STATUS:$$EXIT_STATUS, SERVICE_RESULT:$$SERVICE_RESULT, EXIT_CODE:$$EXIT_CODE"; fi'
+
+[Install]
+WantedBy=multi-user.target

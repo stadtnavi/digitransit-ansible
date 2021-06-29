@@ -18,6 +18,7 @@
     - build
     - start
     - stop
+    - cleanup
 
 - name: Install base packages
   package:

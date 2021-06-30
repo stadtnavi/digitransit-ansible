@@ -1,9 +1,11 @@
 ## digitransit-ansible
 
-Install mfdz's digitransit with ansible
+Install stadtnavi's digitransit with ansible
 
-- `make vagrant`: starts a Vagrant VM and applies the digitransit playbook
-- `make staging`: connects to the staging host and applies the playbook there
+- `make dev`: connects to the dev host and applies the playbook there
+- `make beta`
+- `make production`
+- `make infrastructure`
 
 ### Vault 
 
@@ -13,6 +15,21 @@ you need to place a file called `vault-password` into the root of the repository
 
 Please get in touch with @leonardehrenfried to get the decryption key to paste
 into this file.
+
+#### Encrypting 
+
+In order to add a new encrpted variable, use the following command:
+
+```
+ansible-vault encrypt_string --vault-password-file vault-password super-secure-text --name=my_secret_var
+```
+
+This prints an encrypted variable in ansible's yml syntax which you can paste into one of the vars files.
+
+#### Decrypting
+
+The easiest way is to look at the decrypted value is to view it on a host where it has been deployed
+to, where it is stored in plain text.
 
 ### Digitransit target host requirements
 
@@ -82,15 +99,16 @@ is important because `hsl-map-server` cannot be stopped and restarted.
 **Viewing logs**
 
 All logs are sent to `journald` for storage and automatic deletion. Here is
-a list of common `journalctl`.
+a list of common `journalctl` commands.
 
 - Viewing *all* digitransit logs: `journalctl -u digitransit-docker-compose.service`
-- Viewing digitransit-ui logs: `journalctl CONTAINER_NAME=digitransit-ui`
+- Viewing digitransit-ui logs: `journalctl CONTAINER_NAME=digitransit-ui-hbnext`
 - Viewing opentripplanner logs: `journalctl CONTAINER_NAME=opentripplanner`
+- Viewing graph-build logs: `journalctl -u graph-build`
 
 **Triggering a rebuild of the OTP graph**
 
-`systemctl restart data-builder`
+`systemctl start graph-build`
 
 A build is run every night but sometimes you want to trigger it manually.
 

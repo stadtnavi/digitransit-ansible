@@ -145,6 +145,11 @@
       "terms": ["bahnhof", "bf", "hauptbahnhof", "hbf"]
     },
     {
+      "key": "railway",
+      "value": "halt",
+      "terms": ["bahnhof", "bf"]
+    },
+    {
       "key": "shop",
       "value": "hairdresser",
       "terms": ["friseur", "frisör"]

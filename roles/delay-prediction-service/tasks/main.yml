@@ -24,7 +24,7 @@
       - python-docker
     state: present
 
-- name: Create photon network
+- name: Create delay network
   docker_network:
     name: delay
 

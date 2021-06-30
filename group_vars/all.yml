@@ -85,7 +85,7 @@ thingsboard_to_parkapi_commit: 3865b3c636bbe5feaa04cd4787e784d9e7205491
 thingsboard_enhancer_commit: 70724e0b4add91a6e99e283d45e11de3a98a2803
 thingsboard_to_mqtt_version: abfbca97df0bcaa1c14a89cbe9dbdebcde7b3816
 
-delay_prediction_service_version: fdad78efcc02ad7db6f549c18ca776678b988143
+delay_prediction_service_version: 517c0f8f57224b08317c3904b4370a3d577be87f
 
 delay_postgres_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256

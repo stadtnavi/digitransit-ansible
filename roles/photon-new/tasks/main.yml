@@ -20,9 +20,9 @@
     - photon-pelias-adapter-new.service
   notify: Restart photon-pelias-adapter-new
 
-- name: Start photon-new service
+- name: Set state of photon-new service
   systemd:
-    state: started
+    state: stopped
     name: "{{ item }}"
     enabled: yes
     daemon_reload: yes

@@ -3,7 +3,7 @@ Description=Photon
 After=docker.service
 
 [Service]
-Environment=CONTAINER_IMAGE=mfdz/photon:7b15bbd83b72851dc865b5f453858950ce64557a
+Environment=CONTAINER_IMAGE=mfdz/photon:93fd251b2de0791fa10237f9a2f46d8f4820dd67
 Environment=CONTAINER_NAME=photon
 TimeoutStartSec=0
 RestartSec=15
@@ -19,7 +19,7 @@ ExecStartPre=-curl -f -LI ${SYNONYMS_URL} > /var/photon/synonyms.tmp.json && mv 
 ExecStart=docker run --rm --name ${CONTAINER_NAME} \
     --log-driver=journald \
     --network photon \
-    -v photon-data-2021-06-22:/photon/photon_data:rw \
+    -v photon-data-2021-06-29:/photon/photon_data:rw \
     -v /var/photon/synonyms.json:/synonyms.json \
     -p {{ photon_port }}:2322 \
     -e NOMINATIM_DB_HOST \

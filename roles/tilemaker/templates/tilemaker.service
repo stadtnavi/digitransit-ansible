@@ -12,7 +12,7 @@ WorkingDirectory=/var/tilemaker
 ExecStart=/var/tilemaker/build-mbtiles
 Restart=on-failure
 
-ExecStopPost=/bin/sh -c 'if [ "$$EXIT_STATUS" != "0" ]; then send-to-matrix "tilemaker failed on {{ inventory_hostname }}. EXIT_STATUS:$$EXIT_STATUS, SERVICE_RESULT:$$SERVICE_RESULT, EXIT_CODE:$$EXIT_CODE"; fi'
+ExecStopPost=systemd-failure-notification "tilemaker"
 
 [Install]
 WantedBy=multi-user.target

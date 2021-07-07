@@ -1,4 +1,10 @@
 ---
+- name: Install base packages
+  package:
+    name:
+      - mariadb-client
+    state: present
+
 - name: Create matomo config directory
   file:
     path: /etc/matomo
@@ -6,6 +12,12 @@
     owner: root
     group: root
     mode: 0775
+
+- name: Copy dump script
+  template:
+    src: backup-matomo-db
+    dest: /usr/local/bin
+    mode: '+x'
 
 - name: Install config files
   template: src={{ item }} dest=/etc/matomo/
@@ -16,8 +28,23 @@
   notify: Restart matomo docker-compose
 
 - name: Install service file for matomo-docker-compose
-  template: src=matomo-docker-compose.service dest=/etc/systemd/system/
+  template:
+    src: "systemd/{{ item }}"
+    dest: /etc/systemd/system/
+  with_items:
+    - matomo-docker-compose.service
+    - matomo-backup.service
+    - matomo-backup.timer
   notify: Restart matomo docker-compose
+
+- name: Start backup timer
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+    daemon_reload: yes
+  with_items:
+    - matomo-backup.timer
 
 - name: Start matomo
   systemd:

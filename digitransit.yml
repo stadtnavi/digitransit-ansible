@@ -5,6 +5,7 @@
   become: yes
   roles:
     - base
+    - matomo
     - delay-prediction-service
     - digitransit
     - thingsboard-enhancer

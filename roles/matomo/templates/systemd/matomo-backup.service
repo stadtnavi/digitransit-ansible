@@ -1,0 +1,7 @@
+[Unit]
+Description=matomo-backup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/backup-matomo-db
+ExecStopPost=systemd-failure-notification "matomo backup"

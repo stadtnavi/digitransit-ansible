@@ -26,6 +26,24 @@
     group: root
     mode: 0775
 
+- name: Download and unzip fonts
+  ansible.builtin.unarchive:
+    src: https://github.com/klokantech/klokantech-gl-fonts/archive/refs/tags/v1.0.0.zip
+    dest: /var/tileserver/
+    remote_src: yes
+    creates: /var/tileserver/klokantech-gl-fonts-1.0.0
+
+- name: Copy sprites
+  ansible.builtin.copy:
+    src: sprites
+    dest: /var/tileserver/
+
+- name: Symlink fonts
+  ansible.builtin.file:
+    dest: /var/tileserver/fonts
+    src: klokantech-gl-fonts-1.0.0
+    state: link
+
 - name: Install config and script files
   template: src={{ item }} dest=/var/tileserver/
   with_items:
@@ -35,7 +53,9 @@
   notify: Restart tileserver
 
 - name: Install systemd files
-  template: src={{ item }} dest=/etc/systemd/system/
+  template:
+    src: "systemd/{{ item }}"
+    dest: /etc/systemd/system/
   with_items:
     - tileserver.service
     - tileserver-restart.service

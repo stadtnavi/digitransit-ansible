@@ -11,6 +11,8 @@
       - autojump
       - jq
       - zsh
+      - unzip
+      - tar
     state: present
 
 - name: Install global aliases

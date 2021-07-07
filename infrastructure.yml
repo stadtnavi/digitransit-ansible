@@ -4,8 +4,8 @@
   hosts: all
   become: yes
   roles:
-    - geerlingguy.swap
-    - photon-new
-    - photon
-    - tilemaker
+    #- geerlingguy.swap
+    #- photon-new
+    #- photon
+    #- tilemaker
     - tileserver

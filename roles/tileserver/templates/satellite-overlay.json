@@ -4,7 +4,7 @@
     8.92404205758453,
     48.500052582940924
   ],
-  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=4ozqNJlDSL9qUPcbw8tC",
+  "glyphs": "https://tiles.stadtnavi.eu/tiles/openmaptiles/fonts/{fontstack}/{range}.pbf",
   "id": "ffa4d49e-c68c-46c8-ab3f-60543337cecb",
   "layers": [
     {
@@ -3974,8 +3974,7 @@
         "symbol-placement": "line",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Roboto Regular",
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-max-width": 5,
         "text-size": 12,
@@ -4010,8 +4009,7 @@
       "layout": {
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Roboto Regular",
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-max-width": 5,
         "text-size": 12,
@@ -4047,8 +4045,7 @@
       "layout": {
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Roboto Regular",
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-max-width": 5,
         "text-size": 12,
@@ -4088,8 +4085,7 @@
         "text-anchor": "left",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Roboto Condensed Italic",
-          "Noto Sans Italic"
+          "KlokanTech Noto Sans Italic"
         ],
         "text-max-width": 9,
         "text-offset": [
@@ -4221,8 +4217,7 @@
         "text-anchor": "center",
         "text-field": "{name:latin} {name:nonlatin}",
         "text-font": [
-          "Roboto Regular",
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-offset": [
           0,
@@ -4295,7 +4290,7 @@
         "symbol-spacing": 200,
         "text-field": "{ref}",
         "text-font": [
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-rotation-alignment": "viewport",
         "text-size": 10
@@ -4353,7 +4348,7 @@
         "symbol-spacing": 200,
         "text-field": "{ref}",
         "text-font": [
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-rotation-alignment": "viewport",
         "text-size": 9
@@ -4408,7 +4403,7 @@
         "symbol-spacing": 200,
         "text-field": "{ref}",
         "text-font": [
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-rotation-alignment": "viewport",
         "text-size": 9
@@ -4436,7 +4431,7 @@
         "text-anchor": "top",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-max-width": 9,
         "text-offset": [
@@ -4476,8 +4471,7 @@
       "layout": {
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Roboto Condensed Italic",
-          "Noto Sans Italic"
+          "KlokanTech Noto Sans Italic"
         ],
         "text-letter-spacing": 0.1,
         "text-max-width": 9,
@@ -4520,8 +4514,7 @@
       "layout": {
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Roboto Regular",
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-max-width": 8,
         "text-size": {
@@ -4575,8 +4568,7 @@
         "text-anchor": "bottom",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Roboto Regular",
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-max-width": 8,
         "text-offset": [
@@ -4636,8 +4628,7 @@
         "text-anchor": "bottom",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Roboto Medium",
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-max-width": 8,
         "text-offset": [
@@ -4682,8 +4673,7 @@
       "layout": {
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Roboto Medium",
-          "Noto Sans Regular"
+          "KlokanTech Noto Sans Regular"
         ],
         "text-letter-spacing": 0.1,
         "text-padding": 2,
@@ -4729,8 +4719,7 @@
       "layout": {
         "text-field": "{name:latin}",
         "text-font": [
-          "Roboto Condensed Italic",
-          "Noto Sans Italic"
+          "KlokanTech Noto Sans Italic"
         ],
         "text-max-width": 6.25,
         "text-size": {
@@ -4780,8 +4769,7 @@
       "layout": {
         "text-field": "{name:latin}",
         "text-font": [
-          "Roboto Condensed Italic",
-          "Noto Sans Italic"
+          "KlokanTech Noto Sans Italic"
         ],
         "text-max-width": 6.25,
         "text-size": {
@@ -4831,8 +4819,7 @@
       "layout": {
         "text-field": "{name:latin}",
         "text-font": [
-          "Roboto Condensed Italic",
-          "Noto Sans Italic"
+          "KlokanTech Noto Sans Italic"
         ],
         "text-max-width": 6.25,
         "text-size": {
@@ -4882,8 +4869,7 @@
       "layout": {
         "text-field": "{name:latin}",
         "text-font": [
-          "Roboto Condensed Italic",
-          "Noto Sans Italic"
+          "KlokanTech Noto Sans Italic"
         ],
         "text-max-width": 6.25,
         "text-size": {
@@ -4924,8 +4910,7 @@
       "layout": {
         "text-field": "{name:latin}",
         "text-font": [
-          "Roboto Condensed Italic",
-          "Noto Sans Italic"
+          "KlokanTech Noto Sans Italic"
         ],
         "text-justify": "center",
         "text-size": 13,
@@ -4955,7 +4940,7 @@
       "url":"mbtiles://{v3}"
     }
   },
-  "sprite": "https://cloud.maptiler.com/api/sprites/53061fbd-c3bf-4c0d-a1e2-84413aa16fec",
+  "sprite": "{style}",
   "version": 8,
   "zoom": 13.175171121592362
 }

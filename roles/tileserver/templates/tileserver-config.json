@@ -2,15 +2,18 @@
   "options": {
     "paths": {
       "root": "/usr/src/app/node_modules/tileserver-gl-styles",
-      "fonts": "fonts",
+      "sprites": "/data/sprites",
+      "fonts": "/data/fonts",
       "styles": "/data",
       "mbtiles": "/data"
     },
+    "serveAllFonts": true,
     "tileMargin": 50
   },
   "styles": {
     "streets": {
       "style": "streets.json",
+      "serve_data": true,
       "tilejson": {
         "bounds": [
           7.372216,
@@ -22,6 +25,7 @@
     },
     "satellite-overlay": {
       "style": "satellite-overlay.json",
+      "serve_data": true,
       "tilejson": {
         "bounds": [
           7.372216,

@@ -56,9 +56,7 @@ semi_transparent_map_url: "https://tiles.stadtnavi.eu/satellite-overlay/{z}/{x}/
 
 # the docker tag/sha used to build containers and run OTP itself in the digitransit docker-compose
 # cluster
-otp_docker_tag: latest
-
-data_builder_tag: latest
+otp_docker_tag: otp2-latest
 
 # default images - override in staging/production.yml if you want to use fixed tags
 digitransit:
@@ -208,8 +206,6 @@ matrix_bot_token: !vault |
           32326565633830373134616562323834663863396530646232356438623638323833333338306632
           66626564333430663433373436623935363631313364383463313065383731396536363863323864
           3334623061363831383633396437653131626233323764613733
-
-a_star_statistics: "false"
 
 mqtt_publisher_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256

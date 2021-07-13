@@ -17,7 +17,7 @@ digitransit_ui:
 
 data_builder_tag: latest
 
-otp_docker_tag: latest
+otp_docker_tag: otp2-latest
 digitransit:
   images:
     proxy: stadtnavi/digitransit-proxy:latest

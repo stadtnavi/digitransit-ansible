@@ -7,7 +7,7 @@ digitransit_ui:
     domain: dev.stadtnavi.eu
     image: stadtnavi/digitransit-ui:next
 
-otp_docker_tag: otp2-latest
+otp_docker_tag: latest
 
 digitransit:
   images:

@@ -9,6 +9,6 @@ echo "Dumping mysql file to ${file}"
 mysqldump -u matomo --protocol=TCP --port 3306 --databases matomo | bzip2 > $file
 
 echo "Sending file to off-site storage"
-curl --progress-bar -T ${file} -u 'stadtnavi-backup:{{ stadtnavi_backup_password }}' "https://nx9239.your-storageshare.de/remote.php/dav/files/stadtnavi-backup/stadtnavi/"
+curl --progress-bar -T ${file} -u 'stadtnavi-backup:{{ stadtnavi_backup_password }}' "https://nx9239.your-storageshare.de/remote.php/dav/files/stadtnavi-backup/stadtnavi/{{ server_name }}/"
 
 rm $file

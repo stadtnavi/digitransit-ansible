@@ -3,6 +3,7 @@
   package:
     name:
       - mariadb-client
+      - bzip2
     state: present
 
 - name: Create matomo config directory

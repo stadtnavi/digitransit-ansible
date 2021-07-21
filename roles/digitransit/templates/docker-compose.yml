@@ -12,7 +12,7 @@ services:
     command: --load --serve graph
     environment:
       - ROUTER_NAME=hb
-      - API_URL=https://{{ api_hostname }}/otp/routers/default/
+      - API_URL=https://{{ api_hostname }}/otp/
       - ENCRYPTION_SECRET_KEY={{ encryption_secret_key }}
       - JAVA_OPTS=-Xmx12G
     volumes:

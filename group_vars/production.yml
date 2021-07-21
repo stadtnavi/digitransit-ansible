@@ -11,7 +11,7 @@ digitransit_ui:
     domain: ludwigsburg.stadtnavi.eu
     image: stadtnavi/digitransit-ui:latest
 
-otp_docker_tag: 6e2ef7b57ed03a69c0ca2ccd8377518c4dffbb30
+otp_docker_tag: 10b79b270e280db7690f09656392f75372046c22
 
 digitransit:
   images:

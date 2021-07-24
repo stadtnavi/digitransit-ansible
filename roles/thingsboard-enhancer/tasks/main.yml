@@ -21,6 +21,13 @@
     - road-disruptions.cifs.json
     - road-disruptions.corrected.cifs.json
 
+- name: Copy OBB ParkAPI file
+  template:
+    src: "{{ item }}"
+    dest: /var/thingsboard/herrenberg/parking/
+  with_items:
+    - open-bike-box.json
+
 - name: Install systemd files
   template:
     src: "{{ item }}"

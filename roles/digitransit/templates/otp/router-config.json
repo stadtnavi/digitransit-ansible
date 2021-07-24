@@ -149,6 +149,14 @@
       "frequencySec": 60,
       "feedId": "park-api",
       "url": "https://api.stadtnavi.de/herrenberg/parking/parkapi.json"
+    },
+    {
+      "type": "vehicle-parking",
+      "sourceType": "bicycle-park-api",
+      "frequencySec": 600,
+      "feedId": "open-bike-box",
+      "url": "https://api.dev.stadtnavi.eu/herrenberg/parking/open-bike-box.json",
+      "tags": ["bike-locker"]
     }
   ]
 }

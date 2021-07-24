@@ -1,0 +1,20 @@
+{
+  "last_downloaded": "2021-07-23T19:50:29.232107",
+  "last_updated": "2021-07-23T19:50:29.232107",
+  "lots": [
+    {
+      "id": "bahnhof-herrenberg",
+      "lot_type": "OpenBikeBox",
+      "address": "Bahnhof Herrenberg",
+      "name": "OpenBikeBox am Bahnhof Herrenberg",
+      "forecast": false,
+      "state": "nodata",
+      "coords": {
+        "lat": 48.59368,
+        "lng": 8.86243
+      },
+      "total": 4,
+      "notes": {}
+    }
+  ]
+}

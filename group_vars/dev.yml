@@ -58,3 +58,4 @@ mfdz_gtfs_url: !vault |
 additional_users:
   - jannis
 
+enable_fake_bike_box: true

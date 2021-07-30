@@ -143,13 +143,7 @@
       "network": "car-sharing",
       "routeAsCar": true
     },
-    {
-      "type": "vehicle-parking",
-      "sourceType": "park-api",
-      "frequencySec": 60,
-      "feedId": "park-api",
-      "url": "https://api.stadtnavi.de/herrenberg/parking/parkapi.json"
-    },
+    {% if enable_fake_bike_box -%}
     {
       "type": "vehicle-parking",
       "sourceType": "bicycle-park-api",
@@ -157,6 +151,14 @@
       "feedId": "open-bike-box",
       "url": "https://api.dev.stadtnavi.eu/herrenberg/parking/open-bike-box.json",
       "tags": ["bike-locker"]
+    },
+    {% endif %}
+    {
+      "type": "vehicle-parking",
+      "sourceType": "park-api",
+      "frequencySec": 60,
+      "feedId": "park-api",
+      "url": "https://api.stadtnavi.de/herrenberg/parking/parkapi.json"
     }
   ]
 }

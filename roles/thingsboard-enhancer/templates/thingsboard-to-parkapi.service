@@ -10,7 +10,7 @@ Group=www-data
 Environment=THINGSBOARD_API_URL={{ thingsboard_api_url }}
 Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
 Environment=THINGSBOARD_PASSWORD={{ thingsboard_password }}
-ExecStart=/usr/local/bin/thingsboard-to-parkapi -g /var/parkapi/parking_lots.geojson -o /var/thingsboard/herrenberg/parking/parkapi.json
+ExecStart=/usr/local/bin/thingsboard-to-parkapi --realtime -c "https://docs.google.com/spreadsheets/d/e/2PACX-1vSR33H_M8stQ5bhrVN0huYZkMhGONymIWKNRNvam2VYnBBUElUwsI5Fa8wK9mOYO0ZPg69RYH49h3ho/pub?gid=0&single=true&output=csv" -s https://www.herrenberg.de/de/Stadtleben/Erlebnis-Herrenberg/Service/Parkplaetze -o /var/thingsboard/herrenberg/parking/parkapi.json
 
 [Install]
 WantedBy=multi-user.target

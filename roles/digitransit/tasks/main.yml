@@ -46,7 +46,7 @@
   notify: Start graph build
 
 - name: Copy maintenance page
-  template:
+  ansible.builtin.template:
     src: maintenance.html
     dest: /var/digitransit/
     owner: www-data
@@ -54,19 +54,19 @@
     mode: 0775
 
 - name: Install docker-compose file
-  template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
+  ansible.builtin.template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
   with_items: "{{ digitransit_ui }}"
   notify: Restart digitransit-ui
 
 - name: Copy main host nginx site conf
-  template:
+  ansible.builtin.template:
     src: nginx/nginx-site.conf
     dest: /etc/nginx/sites-enabled/{{ item.domain }}.conf
   with_items: "{{ digitransit_ui }}"
   notify: Restart nginx
 
 - name: Copy api host nginx site conf
-  template:
+  ansible.builtin.template:
     src: nginx/nginx-site-api.conf
     dest: /etc/nginx/sites-enabled/{{ item }}.conf
   with_items:
@@ -83,7 +83,7 @@
   notify: Restart nginx
 
 - name: Install systemd files
-  template: src=systemd/{{ item }} dest=/etc/systemd/system/
+  ansible.builtin.template: src=systemd/{{ item }} dest=/etc/systemd/system/
   with_items:
     - digitransit-docker-compose.service
     - graph-build.service

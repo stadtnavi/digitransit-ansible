@@ -25,10 +25,10 @@ do
   :
   zipfile="${i}.zip"
   tiffile="${i}.tif"
-  if [ -f "$zipfile" ]; then
+  if [ -f "$tiffile" ]; then
     echo "$zipfile exists."
   else
-    echo "$zipfile does not exist. Downloading ..."
+    echo "$tiffile does not exist. Downloading ..."
     curl --fail --location -s "${ELEVATION_BASE_URL}{$zipfile}" -o ${zipfile}
     unzip ${zipfile} ${tiffile}
     rm ${zipfile}

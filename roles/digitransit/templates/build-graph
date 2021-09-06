@@ -6,8 +6,8 @@ PBF_FILE="opentripplanner.osm.pbf"
 GTFS_DOWNLOAD_URL="{{ gtfs_url }}"
 CARPOOL_GTFS_DOWNLOAD_URL="{{ mfdz_gtfs_url }}"
 
-ELEVATION_DOWNLOAD_URL="https://leonard.io/stadtnavi/srtm_38_03.tif"
-ELEVATION_FILE="elevation.tif"
+ELEVATION_BASE_URL="https://srtm.csi.cgiar.org/wp-content/uploads/files/srtm_5x5/TIFF/"
+ELEVATION_FILES=("srtm_38_03" "srtm_39_03")
 
 IMAGE_NAME="mfdz/opentripplanner:{{ otp_docker_tag }}"
 CONTAINER_NAME="graph-build"
@@ -20,12 +20,21 @@ docker stop $CONTAINER_NAME || true
 mkdir -p build
 cd build
 
-if [ -f "$ELEVATION_FILE" ]; then
-  echo "$ELEVATION_FILE exists."
-else
-  echo "$ELEVATION_FILE does not exist. Downloading ..."
-  curl --location -s "${ELEVATION_DOWNLOAD_URL}" -o ${ELEVATION_FILE}
-fi
+for i in "${ELEVATION_FILES[@]}"
+do
+  :
+  zipfile="${i}.zip"
+  tiffile="${i}.tif"
+  if [ -f "$zipfile" ]; then
+    echo "$zipfile exists."
+  else
+    echo "$zipfile does not exist. Downloading ..."
+    curl --fail --location -s "${ELEVATION_BASE_URL}{$zipfile}" -o ${zipfile}
+    unzip ${zipfile} ${tiffile}
+    rm ${zipfile}
+  fi
+done
+
 
 curl --location --fail -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 

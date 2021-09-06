@@ -122,8 +122,17 @@
       "sourceType": "gbfs",
       "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/",
       "network": "regiorad",
-      "rentalType": "station-based-with-temporary-drop-off",
       "allowKeepingRentedBicycleAtDestination": true
+    },
+    {
+      "type": "bike-rental",
+      "frequencySec": 60,
+      "sourceType": "gbfs",
+      "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/",
+      "network": "tier-reutlingen",
+      "headers": {
+        "x-api-key": "{{ tier_reutlingen_api_key }}"
+      }
     },
     {
       "id": "taxi-stands",

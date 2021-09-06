@@ -3,14 +3,19 @@ server_name: dev
 
 digitransit_ui:
   - config: hbnext
-    port: 8084
     domain: dev.stadtnavi.eu
-    image: stadtnavi/digitransit-ui:next
+  - config: landstadtmobil
+    domain: landstadtmobil.dev.landstadtmobil.de
+  - config: muensingen
+    domain: muensingen.dev.landstadtmobil.de
+  - config: engstingen
+    domain: engstingen.dev.landstadtmobil.de
 
 otp_docker_tag: latest
 
 digitransit:
   images:
+    ui: stadtnavi/digitransit-ui:next
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
     map_server: stadtnavi/hsl-map-server:latest
     fares_service: stadtnavi/fares-service:latest
@@ -25,6 +30,12 @@ matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
 certbot_certs:
   - domains:
     - "{{ digitransit_ui[0].domain }}"
+  - domains:
+    - "{{ digitransit_ui[1].domain }}"
+  - domains:
+    - "{{ digitransit_ui[2].domain }}"
+  - domains:
+    - "{{ digitransit_ui[3].domain }}"
   - domains:
     - "{{ api_hostname }}"
   - domains:

@@ -18,13 +18,12 @@ services:
     volumes:
       - /var/graph-build/latest/:/opt/opentripplanner/graph/
 
-{% for item in digitransit_ui %}
-  digitransit-ui-{{ item["config"] }}:
-    image: {{ item["image"] }}
+  digitransit-ui:
+    image: {{ digitransit["images"]["ui"] }}
     restart: on-failure
-    container_name: digitransit-ui-{{ item["config"]}}
+    container_name: digitransit-ui
     ports:
-      - {{ item["port"] }}:8080
+      - {{ digitransit_ui_port }}:8080
     networks:
       - digitransit
     logging:
@@ -39,7 +38,6 @@ services:
       - FAHRGEMEINSCHAFT_AUTH_KEY={{ fahrgemeinschaft_auth_key }}
       - SHOW_TICKETS={{ enable_fares | to_json }}
       - MATOMO_URL={{ matomo_url }}
-{% endfor %}
 
   hsl-map-server:
     image: {{ digitransit["images"]["map_server"] }}

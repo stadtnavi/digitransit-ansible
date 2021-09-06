@@ -59,3 +59,5 @@ additional_users:
   - jannis
 
 enable_fake_bike_box: true
+gtfs_url: https://gtfs.mfdz.de/hbg6.merged.with_flex.gtfs.zip
+

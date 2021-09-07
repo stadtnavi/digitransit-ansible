@@ -7,7 +7,7 @@ GTFS_DOWNLOAD_URL="{{ gtfs_url }}"
 CARPOOL_GTFS_DOWNLOAD_URL="{{ mfdz_gtfs_url }}"
 
 ELEVATION_BASE_URL="https://srtm.csi.cgiar.org/wp-content/uploads/files/srtm_5x5/TIFF/"
-ELEVATION_FILES=("srtm_38_03" "srtm_39_03")
+ELEVATION_FILES=("srtm_38_03" "srtm_39_03" "srtm_38_02" "srtm_39_02")
 
 IMAGE_NAME="mfdz/opentripplanner:{{ otp_docker_tag }}"
 CONTAINER_NAME="graph-build"

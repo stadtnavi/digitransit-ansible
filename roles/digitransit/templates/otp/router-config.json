@@ -128,7 +128,7 @@
       "type": "bike-rental",
       "frequencySec": 60,
       "sourceType": "gbfs",
-      "url": "https://platform.tier-services.io/data-sharing/tier_REUTLINGEN/gbfs/geofencing-zones",
+      "url": "https://platform.tier-services.io/data-sharing/tier_REUTLINGEN/gbfs",
       "network": "tier-reutlingen",
       "headers": {
         "x-api-key": "{{ tier_reutlingen_api_key }}"

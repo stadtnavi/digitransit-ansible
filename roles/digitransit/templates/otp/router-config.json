@@ -152,6 +152,15 @@
       "network": "car-sharing",
       "routeAsCar": true
     },
+    {
+      "id": "car-sharing-teilauto-neckar-alb",
+      "type": "bike-rental",
+      "frequencySec": 600,
+      "sourceType": "gbfs",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-teilauto-neckar-alb/",
+      "network": "car-sharing-teilauto-neckar-alb",
+      "routeAsCar": true
+    },
     {% if enable_fake_bike_box -%}
     {
       "type": "vehicle-parking",

@@ -50,7 +50,7 @@
     },
     {
       "name": "citybikes",
-      "type": "BikeRental",
+      "type": "VehicleRental",
       "mapper": "Digitransit",
       "maxZoom": 20,
       "minZoom": 14,
@@ -128,7 +128,7 @@
       "type": "bike-rental",
       "frequencySec": 60,
       "sourceType": "gbfs",
-      "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/",
+      "url": "https://platform.tier-services.io/data-sharing/tier_REUTLINGEN/gbfs/geofencing-zones",
       "network": "tier-reutlingen",
       "headers": {
         "x-api-key": "{{ tier_reutlingen_api_key }}"

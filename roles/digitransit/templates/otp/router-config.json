@@ -168,6 +168,13 @@
       "frequencySec": 60,
       "feedId": "park-api",
       "url": "https://api.stadtnavi.de/herrenberg/parking/parkapi.json"
+    },
+    {
+      "type": "vehicle-parking",
+      "sourceType": "park-api",
+      "frequencySec": 600,
+      "feedId": "park-api",
+      "url": "https://api.stadtnavi.de/kreis_reutlingen/parking/parkapi.json"
     }
   ]
 }

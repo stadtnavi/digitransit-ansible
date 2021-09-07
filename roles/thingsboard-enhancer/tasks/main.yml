@@ -1,5 +1,5 @@
 ---
-- name: Creates directory
+- name: Create Herrenberg directory
   file:
     path: /var/thingsboard/herrenberg/{{ item }}/
     state: directory
@@ -12,6 +12,16 @@
     - parking
     - weather
     - taxi
+    -
+- name: Create Reutlingen directory
+  file:
+    path: /var/thingsboard/kreis_reutlingen/{{ item }}/
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
+  with_items:
+    - parking
 
 - name: Copy CIFS file
   template:

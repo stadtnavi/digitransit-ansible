@@ -158,7 +158,7 @@
       "frequencySec": 600,
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-teilauto-neckar-alb/",
-      "network": "car-sharing-teilauto-neckar-alb",
+      "network": "car-sharing",
       "routeAsCar": true
     },
     {% if enable_fake_bike_box -%}

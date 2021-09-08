@@ -10,13 +10,15 @@ digitransit_ui:
     domain: muensingen.landstadtmobil.de
   - config: engstingen
     domain: engstingen.landstadtmobil.de
+  - config: ludwigsburg
+    domain: ludwigsburg.stadtnavi.eu
 
 otp_docker_tag: 74dbdf3a55522e2e81a4d4b74d00e9e9b17d0a67
 
 digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
-    ui: stadtnavi/digitransit-ui:b981bb95abc4e8b6c13140c75afc69b71b6e53b8
+    ui: stadtnavi/digitransit-ui:b64f2e7cd15353057365cd7178ea3b283951cf8d
     map_server: stadtnavi/hsl-map-server:f386dcbf8ea8d9f99a9e7772e0324bed2e20fb2a
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874
 
@@ -32,6 +34,8 @@ certbot_certs:
     - "{{ digitransit_ui[2].domain }}"
   - domains:
     - "{{ digitransit_ui[3].domain }}"
+  - domains:
+    - "{{ digitransit_ui[4].domain }}"
   - domains:
     - "{{ api_hostname }}"
   - domains:

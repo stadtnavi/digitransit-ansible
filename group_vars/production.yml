@@ -3,19 +3,20 @@ server_name: production
 
 digitransit_ui:
   - config: hbnext
-    port: 8081
     domain: herrenberg.stadtnavi.de
-    image: stadtnavi/digitransit-ui:386dc0bf94690a7b476a56f6ed4ce6c8b07f47ba
-  - config: ludwigsburg
-    port: 8082
-    domain: ludwigsburg.stadtnavi.eu
-    image: stadtnavi/digitransit-ui:latest
+  - config: landstadtmobil
+    domain: landstadtmobil.de
+  - config: muensingen
+    domain: muensingen.landstadtmobil.de
+  - config: engstingen
+    domain: engstingen.landstadtmobil.de
 
-otp_docker_tag: 10b79b270e280db7690f09656392f75372046c22
+otp_docker_tag: 74dbdf3a55522e2e81a4d4b74d00e9e9b17d0a67
 
 digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
+    ui: stadtnavi/digitransit-ui:b981bb95abc4e8b6c13140c75afc69b71b6e53b8
     map_server: stadtnavi/hsl-map-server:f386dcbf8ea8d9f99a9e7772e0324bed2e20fb2a
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874
 
@@ -27,6 +28,10 @@ certbot_certs:
     - "{{ digitransit_ui[0].domain }}"
   - domains:
     - "{{ digitransit_ui[1].domain }}"
+  - domains:
+    - "{{ digitransit_ui[2].domain }}"
+  - domains:
+    - "{{ digitransit_ui[3].domain }}"
   - domains:
     - "{{ api_hostname }}"
   - domains:

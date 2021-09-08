@@ -54,8 +54,9 @@
     mode: 0775
 
 - name: Install docker-compose file
-  ansible.builtin.template: src=docker-compose.yml dest=/etc/digitransit/docker-compose.yml
-  with_items: "{{ digitransit_ui }}"
+  ansible.builtin.template:
+    src: docker-compose.yml
+    dest: /etc/digitransit/docker-compose.yml
   notify: Restart digitransit-ui
 
 - name: Copy main host nginx site conf

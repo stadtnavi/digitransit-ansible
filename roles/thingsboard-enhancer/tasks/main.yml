@@ -12,7 +12,7 @@
     - parking
     - weather
     - taxi
-    -
+
 - name: Create Reutlingen directory
   file:
     path: /var/thingsboard/kreis_reutlingen/{{ item }}/

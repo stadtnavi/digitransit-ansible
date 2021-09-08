@@ -1,8 +1,6 @@
 ---
 - name: Restart digitransit-ui
-  command: restart-digitransit-container digitransit-ui-{{ item }}
-  with_items:
-    - hbnext
+  command: restart-digitransit-container digitransit-ui
 
 - name: Start graph build
   systemd:

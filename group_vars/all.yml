@@ -277,4 +277,4 @@ enable_gtfs_rt: true
 enable_fake_bike_box: false
 
 osm_url: https://gtfs.mfdz.de/bw-buffered.osm.pbf
-gtfs_url: https://gtfs.mfdz.de/hbg5.merged.with_flex.gtfs.zip
+gtfs_url: https://gtfs.mfdz.de/hbg6.merged.with_flex.gtfs.zip

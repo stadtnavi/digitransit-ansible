@@ -20,7 +20,7 @@ otp_docker_tag: db7af244d468389f97cd3bb34eab89cd3effe878
 digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
-    ui: stadtnavi/digitransit-ui:0c44a00cc049e09cae567ed6e208df224e5f28f0
+    ui: stadtnavi/digitransit-ui:6cd6fd98b75b5d1c3d308132a6d44259a238cb3e
     map_server: stadtnavi/hsl-map-server:f386dcbf8ea8d9f99a9e7772e0324bed2e20fb2a
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874
 

@@ -27,6 +27,9 @@ ZRES11 = 76.4
 ZRES12 = 38.2
 ZRES13 = 19.1
 
+-- The height of one floor, in meters
+BUILDING_FLOOR_HEIGHT = 3.66
+
 -- Process node/way tags
 aerodromeValues = Set { "international", "public", "regional", "military", "private" }
 
@@ -64,10 +67,13 @@ function node_function(node)
 		local mz = 13
 		local pop = tonumber(node:Find("population")) or 0
 
-		if     place == "continent"     then mz=2
-		elseif place == "country"       then mz=3; rank=1
-		elseif place == "state"         then mz=4; rank=2
-		elseif place == "city"          then mz=5; rank=3
+		if     place == "continent"     then mz=0
+		elseif place == "country"       then
+			if     pop>50000000 then rank=1; mz=1
+			elseif pop>20000000 then rank=2; mz=2
+			else                     rank=3; mz=3 end
+		elseif place == "state"         then mz=4
+		elseif place == "city"          then mz=5
 		elseif place == "town" and pop>8000 then mz=7
 		elseif place == "town"          then mz=8
 		elseif place == "village" and pop>2000 then mz=9
@@ -82,6 +88,7 @@ function node_function(node)
 		node:Attribute("class", place)
 		node:MinZoom(mz)
 		if rank then node:AttributeNumeric("rank", rank) end
+		if place=="country" then node:Attribute("iso_a2", node:Find("ISO3166-1:alpha2")) end
 		SetNameAttributes(node)
 		return
 	end
@@ -185,6 +192,7 @@ waterwayClasses = Set { "stream", "river", "canal", "drain", "ditch" }
 
 
 function way_function(way)
+	local route    = way:Find("route")
 	local highway  = way:Find("highway")
 	local waterway = way:Find("waterway")
 	local water    = way:Find("water")
@@ -196,10 +204,12 @@ function way_function(way)
 	local amenity  = way:Find("amenity")
 	local aeroway  = way:Find("aeroway")
 	local railway  = way:Find("railway")
+	local service  = way:Find("service")
 	local sport    = way:Find("sport")
 	local shop     = way:Find("shop")
 	local tourism  = way:Find("tourism")
 	local man_made = way:Find("man_made")
+	local boundary = way:Find("boundary")
 	local isClosed = way:IsClosed()
 	local housenumber = way:Find("addr:housenumber")
 	local write_name = false
@@ -207,70 +217,118 @@ function way_function(way)
 
 	-- Miscellaneous preprocessing
 	if way:Find("disused") == "yes" then return end
+	if boundary~="" and way:Find("protection_title")=="National Forest" and way:Find("operator")=="United States Forest Service" then return end
 	if highway == "proposed" then return end
 	if aerowayBuildings[aeroway] then building="yes"; aeroway="" end
 	if landuse == "field" then landuse = "farmland" end
 	if landuse == "meadow" and way:Find("meadow")=="agricultural" then landuse="farmland" end
 
+	-- Boundaries
+	if boundary~="" then
+		local admin_level = tonumber(way:Find("admin_level")) or 11
+		local mz = 0
+		if     admin_level>=3 and admin_level<5 then mz=4
+		elseif admin_level>=5 and admin_level<7 then mz=8
+		elseif admin_level==7 then mz=10
+		elseif admin_level>=8 then mz=12
+		end
+		if boundary~="" and way:Find("disputed")=="yes" then
+			-- disputed boundaries
+			way:Layer("boundary",false)
+			way:AttributeNumeric("disputed", 1)
+		elseif boundary=="administrative" and not (way:Find("maritime")=="yes") then
+			-- administrative boundaries
+			way:Layer("boundary",false)
+			way:AttributeNumeric("admin_level", admin_level)
+			way:MinZoom(mz)
+		end
+	end
+
 	-- Roads ('transportation' and 'transportation_name', plus 'transportation_name_detail')
 	if highway~="" then
+		local access = way:Find("access")
+		if access=="private" or access=="no" then return end
+
 		local h = highway
-		local layer = "transportation_detail"
-		if majorRoadValues[highway] then              layer="transportation" end
-		if mainRoadValues[highway]  then              layer="transportation_main" end
-		if midRoadValues[highway]   then              layer="transportation_mid" end
-		if minorRoadValues[highway] then h = "minor"; layer="transportation_mid" end
-		if trackValues[highway]     then h = "track"; layer="transportation_detail" end
-		if pathValues[highway]      then h = "path" ; layer="transportation_detail" end
-		if h=="service"             then              layer="transportation_detail" end
-		way:Layer(layer, false)
-		way:Attribute("class", h)
-		SetBrunnelAttributes(way)
+		local minzoom = 99
+		local layer = "transportation"
+		if majorRoadValues[highway] then              minzoom = 4 end
+		if highway == "trunk"       then              minzoom = 5
+		elseif highway == "primary" then              minzoom = 7 end
+		if mainRoadValues[highway]  then              minzoom = 9 end
+		if midRoadValues[highway]   then              minzoom = 11 end
+		if minorRoadValues[highway] then h = "minor"; minzoom = 12 end
+		if trackValues[highway]     then h = "track"; minzoom = 14 end
+		if pathValues[highway]      then h = "path" ; minzoom = 14 end
+		if h=="service"             then              minzoom = 12 end
+
+		-- Links (ramp)
+		local ramp=false
+		if linkValues[highway] then
+			splitHighway = split(highway, "_")
+			highway = splitHighway[1]; h = highway
+			ramp = true
+			minzoom = 11
+		end
 
 		-- Construction
 		if highway == "construction" then
 			if constructionValues[construction] then
-				way:Attribute("class", construction .. "_construction")
+				h = construction .. "_construction"
+				if construction ~= "service" and construction ~= "track" then
+					minzoom = 11
+				else
+					minzoom = 12
+				end
 			else
-				way:Attribute("class", "minor_construction")
+				h = "minor_construction"
+				minzoom = 14
 			end
 		end
 
-		-- Service
-		local service = way:Find("service")
-		if highway == "service" and service ~="" then way:Attribute("service", service) end
+		-- Write to layer
+		if minzoom <= 14 then
+			way:Layer(layer, false)
+			way:MinZoom(minzoom)
+			SetZOrder(way)
+			way:Attribute("class", h)
+			SetBrunnelAttributes(way)
+			if ramp then way:AttributeNumeric("ramp",1) end
 
-		-- Links (ramp)
-		if linkValues[highway] then
-			splitHighway = split(highway, "_")
-			highway = splitHighway[1]
-			way:AttributeNumeric("ramp",1)
-		end
+			-- Service
+			if highway == "service" and service ~="" then way:Attribute("service", service) end
 
-		local oneway = way:Find("oneway")
-		if oneway == "yes" or oneway == "1" then
-			way:AttributeNumeric("oneway",1)
-		end
-		if oneway == "-1" then
-			-- **** TODO
-		end
+			local oneway = way:Find("oneway")
+			if oneway == "yes" or oneway == "1" then
+				way:AttributeNumeric("oneway",1)
+			end
+			if oneway == "-1" then
+				-- **** TODO
+			end
 
-		-- Write names
-		if layer == "motorway" or layer == "trunk" then
-			way:Layer("transportation_name", false)
-		elseif h == "minor" or h == "track" or h == "path" or h == "service" then
-			way:Layer("transportation_name_detail", false)
-		else
-			way:Layer("transportation_name_mid", false)
-		end
-		SetNameAttributes(way)
-		way:Attribute("class",h)
-		way:Attribute("network","road") -- **** needs fixing
-		if h~=highway then way:Attribute("subclass",highway) end
-		local ref = way:Find("ref")
-		if ref~="" then
-			way:Attribute("ref",ref)
-			way:AttributeNumeric("ref_length",ref:len())
+			-- Write names
+			if minzoom < 8 then
+				minzoom = 8
+			end
+			if highway == "motorway" or highway == "trunk" then
+				way:Layer("transportation_name", false)
+				way:MinZoom(minzoom)
+			elseif h == "minor" or h == "track" or h == "path" or h == "service" then
+				way:Layer("transportation_name_detail", false)
+				way:MinZoom(minzoom)
+			else
+				way:Layer("transportation_name_mid", false)
+				way:MinZoom(minzoom)
+			end
+			SetNameAttributes(way)
+			way:Attribute("class",h)
+			way:Attribute("network","road") -- **** could also be us-interstate, us-highway, us-state
+			if h~=highway then way:Attribute("subclass",highway) end
+			local ref = way:Find("ref")
+			if ref~="" then
+				way:Attribute("ref",ref)
+				way:AttributeNumeric("ref_length",ref:len())
+			end
 		end
 	end
 
@@ -278,11 +336,41 @@ function way_function(way)
 	if railway~="" then
 		way:Layer("transportation", false)
 		way:Attribute("class", railway)
+		SetZOrder(way)
+		SetBrunnelAttributes(way)
+		if service~="" then
+			way:Attribute("service", service)
+			way:MinZoom(12)
+		else
+			way:MinZoom(9)
+		end
 
 		way:Layer("transportation_name", false)
 		SetNameAttributes(way)
 		way:MinZoom(14)
 		way:Attribute("class", "rail")
+	end
+
+	-- Pier
+	if man_made=="pier" then
+		way:Layer("transportation", isClosed)
+		SetZOrder(way)
+		way:Attribute("class", "pier")
+		SetMinZoomByArea(way)
+	end
+
+	-- 'Ferry'
+	if route=="ferry" then
+		way:Layer("transportation", false)
+		way:Attribute("class", "ferry")
+		SetZOrder(way)
+		way:MinZoom(9)
+		SetBrunnelAttributes(way)
+
+		way:Layer("transportation_name", false)
+		SetNameAttributes(way)
+		way:MinZoom(12)
+		way:Attribute("class", "ferry")
 	end
 
 	-- 'Aeroway'
@@ -318,9 +406,9 @@ function way_function(way)
 		way:Attribute("class", waterway)
 		SetNameAttributes(way)
 		SetBrunnelAttributes(way)
-	elseif waterway == "boatyard"  then way:Layer("landuse", isClosed); way:Attribute("class", "industrial")
+	elseif waterway == "boatyard"  then way:Layer("landuse", isClosed); way:Attribute("class", "industrial"); way:MinZoom(12)
 	elseif waterway == "dam"       then way:Layer("building",isClosed)
-	elseif waterway == "fuel"      then way:Layer("landuse", isClosed); way:Attribute("class", "industrial")
+	elseif waterway == "fuel"      then way:Layer("landuse", isClosed); way:Attribute("class", "industrial"); way:MinZoom(14)
 	end
 	-- Set names on rivers
 	if waterwayClasses[waterway] and not isClosed then
@@ -337,6 +425,7 @@ function way_function(way)
 	-- Set 'building' and associated
 	if building~="" then
 		way:Layer("building", true)
+		SetBuildingHeightAttributes(way)
 		SetMinZoomByArea(way)
 	end
 
@@ -350,6 +439,8 @@ function way_function(way)
 	if natural=="water" or natural=="bay" or leisure=="swimming_pool" or landuse=="reservoir" or landuse=="basin" or waterClasses[waterway] then
 		if way:Find("covered")=="yes" or not isClosed then return end
 		local class="lake"; if natural=="bay" then class="ocean" elseif waterway~="" then class="river" end
+		if class=="lake" and way:Find("wikidata")=="Q192770" then return end
+		if class=="ocean" and isClosed and (way:AreaIntersecting("ocean")/way:Area() > 0.98) then return end
 		way:Layer("water",true)
 		SetMinZoomByArea(way)
 		way:Attribute("class",class)
@@ -390,6 +481,10 @@ function way_function(way)
 		if landuseKeys[l] then
 			way:Layer("landuse", true)
 			way:Attribute("class", l)
+			if l=="residential" then
+				if way:Area()<ZRES8^2 then way:MinZoom(8)
+				else SetMinZoomByArea(way) end
+			else way:MinZoom(11) end
 			write_name = true
 		end
 	end
@@ -413,8 +508,16 @@ function way_function(way)
 end
 
 -- Remap coastlines
-function attribute_function(attr)
-	return { class="ocean" }
+function attribute_function(attr,layer)
+	if attr["featurecla"]=="Glaciated areas" then
+		return { subclass="glacier" }
+	elseif attr["featurecla"]=="Antarctic Ice Shelf" then
+		return { subclass="ice_shelf" }
+	elseif attr["featurecla"]=="Urban area" then
+		return { class="residential" }
+	else
+		return { class="ocean" }
+	end
 end
 
 -- ==========================================================
@@ -490,6 +593,70 @@ function GetPOIRank(obj)
 
 	-- Nothing found
 	return nil,nil,nil
+end
+
+function SetBuildingHeightAttributes(way)
+	local height = tonumber(way:Find("height"), 10)
+	local minHeight = tonumber(way:Find("min_height"), 10)
+	local levels = tonumber(way:Find("building:levels"), 10)
+	local minLevel = tonumber(way:Find("building:min_level"), 10)
+
+	local renderHeight = BUILDING_FLOOR_HEIGHT
+	if height or levels then
+		renderHeight = height or (levels * BUILDING_FLOOR_HEIGHT)
+	end
+	local renderMinHeight = 0
+	if minHeight or minLevel then
+		renderMinHeight = minHeight or (minLevel * BUILDING_FLOOR_HEIGHT)
+	end
+
+	-- Fix upside-down buildings
+	if renderHeight < renderMinHeight then
+		renderHeight = renderHeight + renderMinHeight
+	end
+
+	way:AttributeNumeric("render_height", renderHeight)
+	way:AttributeNumeric("render_min_height", renderMinHeight)
+end
+
+-- Implement z_order as calculated by Imposm
+-- See https://imposm.org/docs/imposm3/latest/mapping.html#wayzorder for details.
+function SetZOrder(way)
+	local highway = way:Find("highway")
+	local layer = tonumber(way:Find("layer"))
+	local bridge = way:Find("bridge")
+	local tunnel = way:Find("tunnel")
+	local zOrder = 0
+	if bridge ~= "" and bridge ~= "no" then
+		zOrder = zOrder + 10
+	elseif tunnel ~= "" and tunnel ~= "no" then
+		zOrder = zOrder - 10
+	end
+	if not (layer == nil) then
+		if layer > 7 then
+			layer = 7
+		elseif layer < -7 then
+			layer = -7
+		end
+		zOrder = zOrder + layer * 10
+	end
+	local hwClass = 0
+	-- See https://github.com/omniscale/imposm3/blob/53bb80726ca9456e4a0857b38803f9ccfe8e33fd/mapping/columns.go#L251
+	if highway == "motorway" then
+		hwClass = 9
+	elseif highway == "trunk" then
+		hwClass = 8
+	elseif highway == "primary" then
+		hwClass = 6
+	elseif highway == "secondary" then
+		hwClass = 5
+	elseif highway == "tertiary" then
+		hwClass = 4
+	else
+		hwClass = 3
+	end
+	zOrder = zOrder + hwClass
+	way:ZOrder(zOrder)
 end
 
 -- ==========================================================

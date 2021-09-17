@@ -39,7 +39,7 @@ if [[ $(date +"%u") -eq 1 ]]; then
   rm -rf ${OCEAN_SHAPEFILE_FINAL_FOLDER}
 fi
 
-if [ ! -f "${OCEAN_SHAPEFILE_FINAL_FOLDER}" ]; then
+if [ ! -d "${OCEAN_SHAPEFILE_FINAL_FOLDER}" ]; then
   curl --fail ${OCEAN_SHAPEFILE_URL} -o ${OCEAN_SHAPEFILE_ZIP}
   unzip ${OCEAN_SHAPEFILE_ZIP}
   mv ${OCEAN_SHAPEFILE_FOLDER} ${OCEAN_SHAPEFILE_FINAL_FOLDER}

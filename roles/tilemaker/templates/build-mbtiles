@@ -9,12 +9,17 @@ CONTAINER_NAME="tilemaker"
 TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles
 TILEMAKER_FINAL_OUTPUT_FILE=tilemaker-output.mbtiles
 
+OCEAN_SHAPEFILE_URL=https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
+OCEAN_SHAPEFILE_FOLDER=water-polygons-split-4326
+OCEAN_SHAPEFILE_ZIP=${OCEAN_SHAPEFILE_FOLDER}.zip
+OCEAN_SHAPEFILE_FINAL_FOLDER=coastline
 
 if [ -f "$PBF_FILE" ]; then
   cp ${PBF_FILE} ${PREVIOUS_PBF_FILE}
   echo "$PBF_FILE exists. Downloading updates."
   pyosmium-up-to-date -v $PBF_FILE
 
+  echo "Checking referential integrity of ${PBF_FILE}"
   # sometimes the update process results in a file with nodes missing from ways
   if osmium check-refs ${PBF_FILE}; then
     echo "OSM file has the correct referential integrity"
@@ -28,12 +33,27 @@ else
   curl --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 fi
 
+# every Monday we delete the coastline shapefiles and re-download them
+if [[ $(date +"%u") -eq 1 ]]; then
+  echo "Deleting coastline shapefiles"
+  rm -rf ${OCEAN_SHAPEFILE_FINAL_FOLDER}
+fi
+
+if [ ! -f "${OCEAN_SHAPEFILE_FINAL_FOLDER}" ]; then
+  curl --fail ${OCEAN_SHAPEFILE_URL} -o ${OCEAN_SHAPEFILE_ZIP}
+  unzip ${OCEAN_SHAPEFILE_ZIP}
+  mv ${OCEAN_SHAPEFILE_FOLDER} ${OCEAN_SHAPEFILE_FINAL_FOLDER}
+  rm ${OCEAN_SHAPEFILE_ZIP}
+fi
+
 rm -f ${TILEMAKER_OUTPUT_FILE}
 
 docker pull ${IMAGE_NAME}
 docker stop ${CONTAINER_NAME} || true
+# coastlines need to be placed into the root folder - not where the OSM pbf is!
 docker run \
   -v /var/tilemaker/:/srv \
+  -v /var/tilemaker/coastline:/coastline \
   --name ${CONTAINER_NAME} \
   --rm \
   --cpu-shares 512 \

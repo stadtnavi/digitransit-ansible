@@ -24,7 +24,9 @@
     - process-openmaptiles.lua
 
 - name: Make script executable
-  file: dest=/var/tilemaker/build-mbtiles mode=a+x
+  file:
+    dest: /var/tilemaker/build-mbtiles
+    mode: a+x
 
 - name: Install systemd files
   template: src={{ item }} dest=/etc/systemd/system/

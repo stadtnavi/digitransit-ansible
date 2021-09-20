@@ -33,7 +33,7 @@ enable_gtfs_rt: false
 enable_fake_bike_box: false
 
 osm_url: https://gtfs.mfdz.de/hh-buffered.osm.pbf
-gtfs_url: https://gtfs.mfdz.de/hh.merged.zip
+gtfs_url: https://gtfs.mfdz.de/hh.merged.gtfs.zip
 
 
 encryption_secret_key: !vault |

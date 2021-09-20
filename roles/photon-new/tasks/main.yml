@@ -2,7 +2,7 @@
 - name: Install base packages
   package:
     name:
-      - python-docker
+      - python3-docker
     state: present
 
 - name: Create photon network

@@ -1,5 +1,5 @@
 ---
-server_name: production_north
+server_name: productionnorth
 
 digitransit_ui:
   - config: hamburg

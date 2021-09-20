@@ -23,6 +23,8 @@ nominatim_db_password: !vault |
 tileserver_allowed_referrers:
   - .localhost
   - "*.stadtnavi.eu"
+  - "*.bike-and-ride.de"
+  - "*.bbnavi.de"
   - "*.stadtnavi.de"
   - .mih.mitfahren-bw.de
   - .herrenberg.stadtnavi.de

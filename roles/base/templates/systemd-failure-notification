@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$EXIT_STATUS" == "TERM" ] && [ "$SERVICE_RESULT" == "success"] && [ "$EXIT_CODE" == "killed" ]; then
+if [ "$EXIT_STATUS" == "TERM" ] && [ "$SERVICE_RESULT" == "success" ] && [ "$EXIT_CODE" == "killed" ]; then
   send-to-matrix "$1 stopped by user on {{ inventory_hostname }}";
 fi
 

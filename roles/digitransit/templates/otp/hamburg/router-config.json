@@ -10,8 +10,6 @@
     "walkBoardCost": 540,
     "carParkCarLegWeight": 2,
     "itineraryFiltering": 1.0,
-    "allowKeepingRentedBicycleAtDestination": true,
-    "keepingRentedBicycleAtDestinationCost": 180,
     "numItineraries": 5,
     "bikeTriangleSafetyFactor": 0.4,
     "bikeTriangleSlopeFactor": 0.3,
@@ -26,6 +24,10 @@
     },
     "transit": {
       "searchThreadPoolSize": 4
+    },
+    "maxAccessEgressDurationSecondsForMode": {
+      "BIKE_TO_PARK": 1200,
+      "CAR_TO_PARK": 1200
     }
   },
   "vectorTileLayers": [

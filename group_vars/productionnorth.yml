@@ -13,7 +13,7 @@ otp_router_config: hamburg/router-config.json
 digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
-    ui: stadtnavi/digitransit-ui:4fac2790c7b3ff0dfc56f861ac8a6fda5abadeac
+    ui: stadtnavi/digitransit-ui:5f735ff52153880cd2c310fe5a579b28f4c149b5
 
 api_hostname: api.bike-and-ride.de
 matomo_hostname: track.bike-and-ride.de

@@ -12,6 +12,7 @@ digitransit_ui:
     domain: engstingen.dev.landstadtmobil.de
 
 otp_docker_tag: latest
+otp_router_config: herrenberg/router-config.json
 
 digitransit:
   images:

@@ -41,7 +41,7 @@
     dest: /var/graph-build/build/
   with_items:
     - otp-config.json
-    - router-config.json
+    - "{{ otp_router_config }}"
     - build-config.json
   notify: Start graph build
 

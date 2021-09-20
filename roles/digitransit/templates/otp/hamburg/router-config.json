@@ -1,0 +1,79 @@
+{
+  "routingDefaults": {
+    "walkSpeed": 1.3,
+    "transferSlack": 100,
+    "maxTransfers": 4,
+    "waitReluctance": 0.4,
+    "waitAtBeginningFactor": 0.7,
+    "walkReluctance": 1.75,
+    "stairsReluctance": 1.65,
+    "walkBoardCost": 540,
+    "carParkCarLegWeight": 2,
+    "itineraryFiltering": 1.0,
+    "allowKeepingRentedBicycleAtDestination": true,
+    "keepingRentedBicycleAtDestinationCost": 180,
+    "numItineraries": 5,
+    "bikeTriangleSafetyFactor": 0.4,
+    "bikeTriangleSlopeFactor": 0.3,
+    "bikeTriangleTimeFactor": 0.3,
+    "bikeRentalPickupTime": 180,
+    "bikeRentalPickupCost": 850,
+    "itineraryFilters" : {
+      "flexOnlyToDestination": true,
+      "bikeRentalDistanceRatio": 0.75,
+      "parkAndRideDurationRatio": 0.6,
+      "minBikeParkingDistance": 500
+    },
+    "transit": {
+      "searchThreadPoolSize": 4
+    }
+  },
+  "vectorTileLayers": [
+    {
+      "name": "stops",
+      "type": "Stop",
+      "mapper": "Digitransit",
+      "maxZoom": 20,
+      "minZoom": 14,
+      "cacheMaxSeconds": 600,
+      "expansionFactor": 0.5
+    },
+    {
+      "name": "stations",
+      "type": "Station",
+      "mapper": "Digitransit",
+      "maxZoom": 20,
+      "minZoom": 12,
+      "cacheMaxSeconds": 600,
+      "expansionFactor": 0.5
+    },
+    {
+      "name": "citybikes",
+      "type": "VehicleRental",
+      "mapper": "Digitransit",
+      "maxZoom": 20,
+      "minZoom": 14,
+      "cacheMaxSeconds": 60,
+      "expansionFactor": 0.5
+    },
+    {
+      "name": "parking",
+      "type": "VehicleParking",
+      "mapper": "Digitransit",
+      "maxZoom": 20,
+      "minZoom": 14,
+      "cacheMaxSeconds": 60,
+      "expansionFactor": 0.5
+    }
+  ],
+  "updaters": [
+    {
+      "id": "cargo-bike",
+      "type": "bike-rental",
+      "frequencySec": 600,
+      "sourceType": "gbfs",
+      "url": "https://gtfs.mfdz.de/gbfs/stadtrad_hh/gbfs.json",
+      "network": "stadtrad"
+    }
+  ]
+}

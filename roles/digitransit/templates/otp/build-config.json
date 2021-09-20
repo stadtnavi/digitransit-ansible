@@ -5,7 +5,5 @@
   "subwayAccessTime": 0,
   "staticBikeParkAndRide": true,
   "writeCachedElevations": false,
-  "multiThreadElevationCalculations": false,
-  "dataImportReport": true,
-  "buildReportDir": "build-report"
+  "multiThreadElevationCalculations": false
 }

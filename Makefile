@@ -8,6 +8,9 @@ PLAYBOOK_CMD:=ANSIBLE_PIPELINING=true ansible-playbook --vault-password-file vau
 galaxy-install:
 	ansible-galaxy install -r requirements.yml
 
+galaxy-install-force:
+	ansible-galaxy install --force -r requirements.yml
+
 vagrant: galaxy-install
 	vagrant up
 	vagrant provision

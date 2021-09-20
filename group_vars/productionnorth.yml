@@ -10,7 +10,7 @@ otp_docker_tag: db7af244d468389f97cd3bb34eab89cd3effe878
 digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
-    ui: stadtnavi/digitransit-ui:0c44a00cc049e09cae567ed6e208df224e5f28f0
+    ui: stadtnavi/digitransit-ui:4fac2790c7b3ff0dfc56f861ac8a6fda5abadeac
 
 api_hostname: api.bike-and-ride.de
 matomo_hostname: track.bike-and-ride.de

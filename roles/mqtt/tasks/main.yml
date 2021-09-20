@@ -28,5 +28,13 @@
     state: started
     enabled: yes
     daemon_reload: yes
+  when: enable_mosquitto
 
 
+- name: Stop mosquitto
+  systemd:
+    name: mosquitto.service
+    state: stopped
+    enabled: yes
+    daemon_reload: yes
+  when: enable_mosquitto == false

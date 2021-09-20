@@ -32,6 +32,7 @@ certbot_admin_email: holger.bruch@systect.de
 matomo_url: https://track.bike-and-ride.de/js/container_uzMuZE7B.js
 
 enable_prediction_service: false
+enable_mosquitto: false
 enable_fares: false
 enable_gtfs_rt: false
 enable_fake_bike_box: false

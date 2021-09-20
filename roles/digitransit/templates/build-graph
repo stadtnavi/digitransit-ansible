@@ -7,7 +7,7 @@ GTFS_DOWNLOAD_URL="{{ gtfs_url }}"
 CARPOOL_GTFS_DOWNLOAD_URL="{{ mfdz_gtfs_url }}"
 
 ELEVATION_BASE_URL="https://srtm.csi.cgiar.org/wp-content/uploads/files/srtm_5x5/TIFF/"
-ELEVATION_FILES=("srtm_38_03" "srtm_39_03" "srtm_38_02" "srtm_39_02")
+ELEVATION_FILES=("srtm_38_01" "srtm_38_03" "srtm_39_03" "srtm_38_02" "srtm_39_01" "srtm_39_02")
 
 IMAGE_NAME="mfdz/opentripplanner:{{ otp_docker_tag }}"
 CONTAINER_NAME="graph-build"
@@ -38,7 +38,11 @@ done
 
 curl --location --fail -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 
-curl --location --fail -s "${CARPOOL_GTFS_DOWNLOAD_URL}" -o mfdz.gtfs.zip
+if [ -z "${CARPOOL_GTFS_DOWNLOAD_URL}" ]; then
+  echo "No download URL for carpool. Not downloading."
+else
+  curl --location --fail -s "${CARPOOL_GTFS_DOWNLOAD_URL}" -o mfdz.gtfs.zip
+fi
 
 curl -L --fail \
   ${GTFS_DOWNLOAD_URL} \
@@ -50,7 +54,7 @@ docker run \
   --name ${CONTAINER_NAME} \
   --rm \
   --cpu-shares 512 \
-  -e JAVA_OPTS="-Xmx20G" \
+  -e JAVA_OPTS="-Xmx30G" \
   ${IMAGE_NAME} --build --save graph \
 
 echo "${IMAGE_NAME}" > otp-image-version

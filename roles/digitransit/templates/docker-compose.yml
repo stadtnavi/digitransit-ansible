@@ -39,6 +39,7 @@ services:
       - SHOW_TICKETS={{ enable_fares | to_json }}
       - MATOMO_URL={{ matomo_url }}
 
+{% if digitransit["images"]["map_server"] is defined %}
   hsl-map-server:
     image: {{ digitransit["images"]["map_server"] }}
     container_name: hsl-map-server
@@ -56,6 +57,7 @@ services:
       - CHARGING_STATIONS_URL=https://{{ api_hostname }}/herrenberg/charging-stations/charging-stations.geojson
     logging:
       driver: journald
+{% endif %}
 
   graphiql:
     image: corykitchens/graphiql:latest
@@ -70,6 +72,7 @@ services:
     logging:
       driver: journald
 
+{% if digitransit["images"]["fares_service"] is defined %}
   fares-service:
     image: {{ digitransit["images"]["fares_service"] }}
     container_name: fares-service
@@ -82,6 +85,7 @@ services:
       - TRIAS_REQUESTOR_REF={{ trias_api_key }}
     logging:
       driver: journald
+{% endif %}
 
 networks:
   digitransit:

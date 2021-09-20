@@ -54,7 +54,7 @@ docker run \
   --name ${CONTAINER_NAME} \
   --rm \
   --cpu-shares 512 \
-  -e JAVA_OPTS="-Xmx30G" \
+  -e JAVA_OPTS="-Xmx20G" \
   ${IMAGE_NAME} --build --save graph \
 
 echo "${IMAGE_NAME}" > otp-image-version

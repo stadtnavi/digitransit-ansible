@@ -127,7 +127,7 @@
       "type": "bike-rental",
       "frequencySec": 600,
       "sourceType": "gbfs",
-      "url": "https://api.stadtnavi.de/herrenberg/taxi/gbfs.json",
+      "url": "https://{{ api_hostname }}/herrenberg/taxi/gbfs.json",
       "routeAsCar": true
     },
     {

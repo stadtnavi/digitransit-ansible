@@ -84,44 +84,34 @@
     },
     {% endif %}
     {
-      "id": "cargo-bike",
       "type": "bike-rental",
       "frequencySec": 600,
       "sourceType": "gbfs",
-      "url": "https://backend.open-booking.eu/api/gbfs/2.2/1/gbfs.json",
-      "network": "cargo-bike"
+      "url": "https://backend.open-booking.eu/api/gbfs/2.2/1/gbfs.json"
     },
     {
-      "id": "alf",
       "type": "bike-rental",
       "frequencySec": 900,
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/alf/gbfs.json",
-      "network": "cargo-bike"
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/alf/gbfs.json"
     },
     {
-      "id": "bananologen",
       "type": "bike-rental",
       "frequencySec": 900,
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/bananologen/gbfs.json",
-      "network": "cargo-bike"
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/bananologen/gbfs.json"
     },
     {
-      "id": "gueltstein-mobil",
       "type": "bike-rental",
       "frequencySec": 900,
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/gueltstein-mobil/gbfs.json",
-      "network": "cargo-bike"
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/gueltstein-mobil/gbfs.json"
     },
     {
-      "id": "regiorad-bike-rental",
       "type": "bike-rental",
       "frequencySec": 60,
       "sourceType": "gbfs",
-      "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/",
-      "network": "regiorad",
+      "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/gbfs.json",
       "allowKeepingRentedBicycleAtDestination": true
     },
     {
@@ -129,36 +119,29 @@
       "frequencySec": 60,
       "sourceType": "gbfs",
       "url": "https://platform.tier-services.io/data-sharing/tier_REUTLINGEN/gbfs",
-      "network": "tier-reutlingen",
       "headers": {
         "x-api-key": "{{ tier_reutlingen_api_key }}"
       }
     },
     {
-      "id": "taxi-stands",
       "type": "bike-rental",
       "frequencySec": 600,
       "sourceType": "gbfs",
-      "url": "https://api.stadtnavi.de/herrenberg/taxi/",
-      "network": "taxi",
+      "url": "https://api.stadtnavi.de/herrenberg/taxi/gbfs.json",
       "routeAsCar": true
     },
     {
-      "id": "car-sharing",
       "type": "bike-rental",
       "frequencySec": 600,
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing/",
-      "network": "car-sharing",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing/gbfs.json",
       "routeAsCar": true
     },
     {
-      "id": "car-sharing-teilauto-neckar-alb",
       "type": "bike-rental",
       "frequencySec": 600,
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-teilauto-neckar-alb/",
-      "network": "car-sharing",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-teilauto-neckar-alb/gbfs.json",
       "routeAsCar": true
     },
     {% if enable_fake_bike_box -%}

@@ -70,13 +70,20 @@
     }
   ],
   "updaters": [
+    {% if enable_gtfs_rt %}
     {
-      "id": "cargo-bike",
+      "type": "stop-time-updater",
+      "frequencySec": 60,
+      "sourceType": "gtfs-http",
+      "url": "http://gtfsr.vbn.de/gtfsr_connect.bin",
+      "feedId": "hh"
+    },
+    {% endif %}
+    {
       "type": "bike-rental",
       "frequencySec": 600,
       "sourceType": "gbfs",
-      "url": "https://gtfs.mfdz.de/gbfs/stadtrad_hh/gbfs.json",
-      "network": "stadtrad"
+      "url": "https://gtfs.mfdz.de/gbfs/stadtrad_hh/gbfs.json"
     }
   ]
 }

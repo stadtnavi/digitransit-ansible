@@ -35,7 +35,7 @@ matomo_url: https://track.bike-and-ride.de/js/container_uzMuZE7B.js
 enable_prediction_service: false
 enable_mosquitto: false
 enable_fares: false
-enable_gtfs_rt: false
+enable_gtfs_rt: true
 enable_fake_bike_box: false
 
 osm_url: https://gtfs.mfdz.de/hh-buffered.osm.pbf

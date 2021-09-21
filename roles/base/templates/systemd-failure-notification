@@ -2,6 +2,6 @@
 
 if [ "$EXIT_STATUS" == "TERM" ] && [ "$SERVICE_RESULT" == "success" ] && [ "$EXIT_CODE" == "killed" ]; then
   send-to-matrix "$1 stopped by user on {{ inventory_hostname }}";
-elif [ "$EXIT_STATUS" != "0" ]
+elif [ "$EXIT_STATUS" != "0" ]; then
   send-to-matrix "$1 failed on {{ inventory_hostname }}. EXIT_STATUS:$EXIT_STATUS, SERVICE_RESULT:$SERVICE_RESULT, EXIT_CODE:$EXIT_CODE";
 fi

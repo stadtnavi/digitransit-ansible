@@ -28,6 +28,7 @@
     "maxAccessEgressDurationSecondsForMode": {
       "BIKE_TO_PARK": 1200,
       "CAR_TO_PARK": 1200,
+      "BIKE_RENTAL": 1200,
       "BIKE": 1200
     }
   },

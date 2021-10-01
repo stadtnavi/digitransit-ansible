@@ -4,7 +4,7 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-Environment=CONTAINER_IMAGE=stadtnavi/tileserver-gl:2.6.0
+Environment=CONTAINER_IMAGE=maptiler/tileserver-gl:v3.1.1
 Environment=CONTAINER_NAME=tileserver
 Environment=MEM_LIMIT=4096m
 TimeoutStartSec=0
@@ -23,7 +23,7 @@ ExecStart=docker run --rm \
             --name ${CONTAINER_NAME} \
             -v /var/tileserver/:/data \
             --memory="${MEM_LIMIT}" \
-            -p 5000:80 ${CONTAINER_IMAGE} \
+            -p 5000:8080 ${CONTAINER_IMAGE} \
             -u https://tiles.stadtnavi.eu/tiles/openmaptiles/ \
             --config tileserver-config.json
 

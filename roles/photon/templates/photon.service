@@ -19,7 +19,7 @@ ExecStartPre=-curl -f -LI ${SYNONYMS_URL} > /var/photon/synonyms.tmp.json && mv 
 ExecStart=docker run --rm --name ${CONTAINER_NAME} \
     --log-driver=journald \
     --network photon \
-    -v photon-data-2021-06-29:/photon/photon_data:rw \
+    -v photon-data-2021-10-01:/photon/photon_data:rw \
     -v /var/photon/synonyms.json:/synonyms.json \
     -p {{ photon_port }}:2322 \
     -e NOMINATIM_DB_HOST \

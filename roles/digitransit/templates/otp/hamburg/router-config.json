@@ -82,7 +82,7 @@
     {% endif %}
     {
       "type": "bike-rental",
-      "frequencySec": 600,
+      "frequencySec": 30,
       "sourceType": "gbfs",
       "url": "https://gtfs.mfdz.de/gbfs/stadtrad_hh/gbfs.json"
     }

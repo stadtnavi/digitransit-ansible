@@ -71,4 +71,9 @@ mkdir -p ${OUTPUT_DIR}
 cp ${BUILD_DIR}/graph.obj  ${OUTPUT_DIR}/
 cp ${BUILD_DIR}/*.json ${OUTPUT_DIR}
 
+if [ -d "${BUILD_DIR}/report" ]; then
+  cp -r "${BUILD_DIR}/report/" "${OUTPUT_DIR}"
+fi
+
+
 send-to-matrix "📦️ OTP graph build complete on {{ inventory_hostname }}"

@@ -38,10 +38,11 @@ enable_fares: false
 enable_gtfs_rt: true
 enable_fake_bike_box: false
 
-osm_url: https://gtfs.mfdz.de/hh-buffered.osm.pbf
+osm_url: https://gtfs.mfdz.de/hh-buffered.patched.osm.pbf
 gtfs_urls:
   - https://gtfs.mfdz.de/HVV.with_bikes_allowed.gtfs.zip
   - https://gtfs.mfdz.de/NAH.SH.raw.gtfs.zip
+  - https://gtfs.mfdz.de/NDS.raw.gtfs.zip
 mfdz_gtfs_url: ""
 
 

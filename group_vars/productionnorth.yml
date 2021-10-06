@@ -7,7 +7,7 @@ digitransit_ui:
     redirects:
       - bike-and-ride.de
 
-otp_docker_tag: c0489ad34b97e3ca83e3f7b99f1190c60bc514bb
+otp_docker_tag: 30ffac81a6a195421dd5e15a4532f023bc0d1a65
 otp_router_config: hamburg/router-config.json
 
 digitransit:

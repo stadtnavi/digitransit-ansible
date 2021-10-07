@@ -21,7 +21,7 @@
       "flexOnlyToDestination": true,
       "bikeRentalDistanceRatio": 0.75,
       "parkAndRideDurationRatio": 0.6,
-      "minBikeParkingDistance": 500
+      "minBikeParkingDistance": 100
     },
     "transit": {
       "searchThreadPoolSize": 4
@@ -79,6 +79,16 @@
       "sourceType": "gtfs-http",
       "url": "http://gtfsr.vbn.de/gtfsr_connect.bin",
       "feedId": "hh"
+    },
+    {% endif %}
+    {% if enable_fake_bike_box -%}
+    {
+      "type": "vehicle-parking",
+      "sourceType": "bicycle-park-api",
+      "frequencySec": 600,
+      "feedId": "open-bike-box",
+      "url": "https://api.dev.stadtnavi.eu/herrenberg/parking/open-bike-box.json",
+      "tags": ["bike-locker"]
     },
     {% endif %}
     {

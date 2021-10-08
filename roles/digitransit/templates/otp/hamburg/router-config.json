@@ -85,10 +85,10 @@
     {
       "type": "vehicle-parking",
       "sourceType": "bicycle-park-api",
-      "frequencySec": 600,
+      "frequencySec": 60,
       "feedId": "open-bike-box",
-      "url": "https://api.dev.stadtnavi.eu/herrenberg/parking/open-bike-box.json",
-      "tags": ["bike-locker", "osm:bicyle_parking=lockers"]
+      "url": "https://backend.open-booking.eu/api/park-api/1.0/2",
+      "tags": ["open-bike-box", "osm:bicyle_parking=lockers"]
     },
     {% endif %}
     {

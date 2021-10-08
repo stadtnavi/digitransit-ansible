@@ -88,7 +88,7 @@
       "frequencySec": 60,
       "feedId": "open-bike-box",
       "url": "https://backend.open-booking.eu/api/park-api/1.0/2",
-      "tags": ["open-bike-box", "osm:bicyle_parking=lockers"]
+      "tags": ["open-bike-box", "osm:bicycle_parking=lockers"]
     },
     {% endif %}
     {

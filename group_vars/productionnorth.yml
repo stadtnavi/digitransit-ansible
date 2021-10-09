@@ -7,13 +7,13 @@ digitransit_ui:
     redirects:
       - bike-and-ride.de
 
-otp_docker_tag: 5f7be3d88fb46136296d758f9e3f6c3480f02843
+otp_docker_tag: d49a019e94303635f3208f0e2cff81cbb471de26
 otp_router_config: hamburg/router-config.json
 
 digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
-    ui: stadtnavi/digitransit-ui:0d7c1facc4140b6e22509d5fb0aae5849fe9aa04
+    ui: stadtnavi/digitransit-ui:b722fb43e84eb2a3a56950551df546fcce0a5260
 
 api_hostname: api.bike-and-ride.de
 matomo_hostname: track.bike-and-ride.de

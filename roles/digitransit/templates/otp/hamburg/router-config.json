@@ -14,14 +14,14 @@
     "bikeTriangleSafetyFactor": 0.4,
     "bikeTriangleSlopeFactor": 0.3,
     "bikeTriangleTimeFactor": 0.3,
-    "bikeRentalPickupTime": 120,
+    "bikeRentalPickupTime": 30,
     "bikeRentalPickupCost": 0,
     "dataImportReport" : true,
     "itineraryFilters" : {
       "flexOnlyToDestination": true,
       "bikeRentalDistanceRatio": 0.75,
       "parkAndRideDurationRatio": 0.6,
-      "minBikeParkingDistance": 100
+      "minBikeParkingDistance": 10
     },
     "transit": {
       "searchThreadPoolSize": 4
@@ -58,7 +58,7 @@
       "mapper": "Digitransit",
       "maxZoom": 20,
       "minZoom": 14,
-      "cacheMaxSeconds": 60,
+      "cacheMaxSeconds": 15,
       "expansionFactor": 0.5
     },
     {
@@ -67,7 +67,7 @@
       "mapper": "Digitransit",
       "maxZoom": 20,
       "minZoom": 14,
-      "cacheMaxSeconds": 60,
+      "cacheMaxSeconds": 15,
       "expansionFactor": 0.5
     }
   ],

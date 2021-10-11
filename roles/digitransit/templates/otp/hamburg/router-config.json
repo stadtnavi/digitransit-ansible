@@ -15,7 +15,7 @@
     "bikeTriangleSlopeFactor": 0.3,
     "bikeTriangleTimeFactor": 0.3,
     "bikeRentalPickupTime": 120,
-    "bikeRentalPickupCost": 120,
+    "bikeRentalPickupCost": 0,
     "dataImportReport" : true,
     "itineraryFilters" : {
       "flexOnlyToDestination": true,

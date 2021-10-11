@@ -85,10 +85,10 @@
     {
       "type": "vehicle-parking",
       "sourceType": "bicycle-park-api",
-      "frequencySec": 60,
+      "frequencySec": 10,
       "feedId": "open-bike-box",
       "url": "https://backend.open-booking.eu/api/park-api/1.0/2",
-      "tags": ["open-bike-box", "osm:bicycle_parking=lockers"]
+      "tags": ["open-bike-box", "osm:bicycle_parking=lockers", "osm:fee=yes"]
     },
     {% endif %}
     {

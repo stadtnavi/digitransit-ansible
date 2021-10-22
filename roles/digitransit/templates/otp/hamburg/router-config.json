@@ -78,7 +78,7 @@
       "frequencySec": 60,
       "sourceType": "gtfs-http",
       "url": "http://gtfsr.vbn.de/gtfsr_connect.bin",
-      "feedId": "hh"
+      "feedId": "nds"
     },
     {% endif %}
     {% if enable_fake_bike_box -%}

@@ -80,6 +80,13 @@
       "url": "http://gtfsr.vbn.de/gtfsr_connect.bin",
       "feedId": "nds"
     },
+    {
+      "type": "stop-time-updater",
+      "frequencySec": 60,
+      "sourceType": "gtfs-http",
+      "url": "https://v0.hamburg-gtfs-rt.transport.rest/feed",
+      "feedId": "hvv"
+    },  
     {% endif %}
     {% if enable_fake_bike_box -%}
     {

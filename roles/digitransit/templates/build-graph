@@ -4,7 +4,6 @@ PBF_DOWNLOAD_URL="{{ osm_url }}"
 PBF_FILE="opentripplanner.osm.pbf"
 
 GTFS_DOWNLOAD_URLS=({% for url in gtfs_urls %} "{{ url }}"  {% endfor %})
-CARPOOL_GTFS_DOWNLOAD_URL="{{ mfdz_gtfs_url }}"
 
 ELEVATION_BASE_URL="https://srtm.csi.cgiar.org/wp-content/uploads/files/srtm_5x5/TIFF/"
 ELEVATION_FILES=("srtm_38_01" "srtm_38_03" "srtm_39_03" "srtm_38_02" "srtm_39_01" "srtm_39_02")
@@ -20,6 +19,7 @@ docker stop $CONTAINER_NAME || true
 mkdir -p build
 cd build
 
+# extract elevation zip files
 for i in "${ELEVATION_FILES[@]}"
 do
   :
@@ -41,17 +41,12 @@ curl --location --fail -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 rm -rf gtfs.zip
 rm -rf *.gtfs.zip
 
-if [ -z "${CARPOOL_GTFS_DOWNLOAD_URL}" ]; then
-  echo "No download URL for carpool. Not downloading."
-else
-  curl --location --fail -s "${CARPOOL_GTFS_DOWNLOAD_URL}" -o mfdz.gtfs.zip
-fi
-
 for i in "${GTFS_DOWNLOAD_URLS[@]}"
 do
   :
   hash=`cksum <<< "${i}"s | cut -f 1 -d ' '`
-  output="${hash}.gtfs.zip"
+  filename=`basename ${i}`
+  output="${filename}.${hash}.gtfs.zip"
   curl -L --fail ${i} -o ${output}
 done
 

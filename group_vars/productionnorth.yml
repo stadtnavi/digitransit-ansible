@@ -43,8 +43,6 @@ gtfs_urls:
   - https://gtfs.mfdz.de/HVV.with_bikes_allowed.gtfs.zip
   - https://gtfs.mfdz.de/NAH.SH.with_shapes.gtfs.zip
   - https://gtfs.mfdz.de/NDS.with_shapes.gtfs.zip
-mfdz_gtfs_url: ""
-
 
 encryption_secret_key: !vault |
           $ANSIBLE_VAULT;1.1;AES256

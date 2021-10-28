@@ -82,6 +82,13 @@
       "url": "http://gtfsr.vvs.de:7788",
       "feedId": "hbg"
     },
+    {
+      "type": "stop-time-updater",
+      "frequencySec": 60,
+      "sourceType": "gtfs-http",
+      "url": "{{ kvv_gtfs_rt_url }}",
+      "feedId": "kvv"
+    },
     {% endif %}
     {
       "type": "bike-rental",

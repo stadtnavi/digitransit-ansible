@@ -2,7 +2,7 @@
 server_name: dev
 
 digitransit_ui:
-  - config: hbnext
+  - config: hamburg
     domain: dev.stadtnavi.eu
   - config: landstadtmobil
     domain: landstadtmobil.dev.landstadtmobil.de
@@ -72,3 +72,6 @@ additional_users:
 
 enable_fake_bike_box: true
 
+osm_url: https://gtfs.mfdz.de/hh-buffered.patched.osm.pbf
+gtfs_urls:
+  - https://gtfs.mfdz.de/NAH.SH.with_fares.gtfs.zip

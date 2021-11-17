@@ -1,8 +1,9 @@
 #! /bin/bash -e
 
-PBF_DOWNLOAD_URL={{ tilemaker_pbf_download_url }}
-PBF_FILE=tilemaker-input.osm.pbf
-PREVIOUS_PBF_FILE=tilemaker-input.previous.osm.pbf
+PBF_DOWNLOAD_URL=https://download.geofabrik.de/europe-latest.osm.pbf
+PBF_FILE=europe.osm.pbf
+PBF_EXTRACT_FILE=tilemaker-input.osm.pbf
+
 IMAGE_NAME="stadtnavi/tilemaker:2f617ccb1aa49ecda2685a4721361a479f0b6b81"
 CONTAINER_NAME="tilemaker"
 
@@ -15,7 +16,6 @@ OCEAN_SHAPEFILE_ZIP=${OCEAN_SHAPEFILE_FOLDER}.zip
 OCEAN_SHAPEFILE_FINAL_FOLDER=coastline
 
 if [ -f "$PBF_FILE" ]; then
-  cp ${PBF_FILE} ${PREVIOUS_PBF_FILE}
   echo "$PBF_FILE exists. Downloading updates."
   pyosmium-up-to-date -v $PBF_FILE
 
@@ -40,16 +40,21 @@ if [[ $(date +"%u") -eq 1 ]]; then
 fi
 
 if [ ! -d "${OCEAN_SHAPEFILE_FINAL_FOLDER}" ]; then
+  echo "Downloading coastline shapefiles"
   curl --fail ${OCEAN_SHAPEFILE_URL} -o ${OCEAN_SHAPEFILE_ZIP}
   unzip ${OCEAN_SHAPEFILE_ZIP}
   mv ${OCEAN_SHAPEFILE_FOLDER} ${OCEAN_SHAPEFILE_FINAL_FOLDER}
   rm ${OCEAN_SHAPEFILE_ZIP}
 fi
 
+echo "Generating extract into ${PBF_EXTRACT_FILE}"
+osmium extract ${PBF_FILE} --polygon germany-and-around.geojson -o ${PBF_EXTRACT_FILE}
+
 rm -f ${TILEMAKER_OUTPUT_FILE}
 
 docker pull ${IMAGE_NAME}
 docker stop ${CONTAINER_NAME} || true
+
 # coastlines need to be placed into the root folder - not where the OSM pbf is!
 docker run \
   -v /var/tilemaker/:/srv \
@@ -57,7 +62,7 @@ docker run \
   --name ${CONTAINER_NAME} \
   --rm \
   --cpu-shares 512 \
-  ${IMAGE_NAME} /srv/${PBF_FILE} \
+  ${IMAGE_NAME} /srv/${PBF_EXTRACT_FILE} \
   --output=/srv/${TILEMAKER_OUTPUT_FILE} \
   --config=/srv/config-openmaptiles.json \
   --process=/srv/process-openmaptiles.lua \

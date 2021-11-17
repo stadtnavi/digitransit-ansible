@@ -22,6 +22,7 @@
     - build-mbtiles
     - config-openmaptiles.json
     - process-openmaptiles.lua
+    - germany-and-around.geojson
 
 - name: Make script executable
   file:

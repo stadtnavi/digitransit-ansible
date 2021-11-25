@@ -68,6 +68,11 @@
     - journald.conf
   notify: Restart systemd-journald
 
+- name: Set authorized keys taken from url
+  ansible.posix.authorized_key:
+    user: lenni
+    state: present
+    key: https://github.com/leonardehrenfried.keys
 
 - name: Create login users
   user:

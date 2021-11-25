@@ -48,7 +48,7 @@ if [ ! -d "${OCEAN_SHAPEFILE_FINAL_FOLDER}" ]; then
 fi
 
 echo "Generating extract into ${PBF_EXTRACT_FILE}"
-osmium extract ${PBF_FILE} --polygon germany-and-around.geojson -o ${PBF_EXTRACT_FILE} --overwrite --strategy=smart -S complete-partial-relations=80
+osmium extract ${PBF_FILE} --polygon germany-and-around.geojson -o ${PBF_EXTRACT_FILE} --overwrite --strategy=smart -S complete-partial-relations=80 -S types=multipolygon,boundary
 
 rm -f ${TILEMAKER_OUTPUT_FILE}
 

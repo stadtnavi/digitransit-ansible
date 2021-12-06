@@ -100,7 +100,7 @@
     enabled: yes
     daemon_reload: yes
 
-- name: Start digitransit-restart.timer
+- name: Start timers
   systemd:
     name: "{{ item }}"
     state: started

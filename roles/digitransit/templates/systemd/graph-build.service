@@ -11,6 +11,9 @@ StartLimitBurst=2
 WorkingDirectory=/var/graph-build
 ExecStart=/var/graph-build/build-graph
 
+# force stop after 6 hours
+RuntimeMaxSec=21600
+
 ExecStopPost=systemd-failure-notification "Graph build"
 
 Restart=on-failure

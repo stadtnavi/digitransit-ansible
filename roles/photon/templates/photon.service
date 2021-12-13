@@ -3,7 +3,7 @@ Description=Photon
 After=docker.service
 
 [Service]
-Environment=CONTAINER_IMAGE=mfdz/photon:93fd251b2de0791fa10237f9a2f46d8f4820dd67
+Environment=CONTAINER_IMAGE=mfdz/photon:70a02a2098cdb2e6734e2f7c1ec0fae7a3cfff41
 Environment=CONTAINER_NAME=photon
 TimeoutStartSec=0
 RestartSec=15

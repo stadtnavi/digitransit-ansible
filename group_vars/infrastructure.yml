@@ -35,5 +35,6 @@ tileserver_allowed_referrers:
   - "*.swlb.de"
   - landstadtmobil.de
   - "*.landstadtmobil.de"
+  - "10.70.190.201"
 
 photon_pelias_adapter_tag: c0988abdc5723699fa624aab876cebaa8f16db22

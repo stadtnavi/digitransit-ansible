@@ -132,6 +132,24 @@
     },
     {
       "type": "bike-rental",
+      "frequencySec": 60,
+      "sourceType": "gbfs",
+      "url": "https://platform.tier-services.io/data-sharing/tier_LUDWIGSBURG/gbfs",
+      "headers": {
+        "x-api-key": "{{ tier_ludwigsburg_api_key }}"
+      }
+    },
+    {
+      "type": "bike-rental",
+      "frequencySec": 60,
+      "sourceType": "gbfs",
+      "url": "https://platform.tier-services.io/data-sharing/tier_MUNSINGEN/gbfs",
+      "headers": {
+        "x-api-key": "{{ tier_munsingen_api_key }}"
+      }
+    },
+    {
+      "type": "bike-rental",
       "frequencySec": 600,
       "sourceType": "gbfs",
       "url": "https://{{ api_hostname }}/herrenberg/taxi/gbfs.json",
@@ -172,8 +190,23 @@
       "type": "vehicle-parking",
       "sourceType": "park-api",
       "frequencySec": 600,
-      "feedId": "park-api",
+      "feedId": "park-api-rt",
       "url": "https://{{ api_hostname }}/kreis_reutlingen/parking/parkapi.json"
+    },
+    ,
+    {
+      "type": "vehicle-parking",
+      "sourceType": "park-api",
+      "frequencySec": 60,
+      "feedId": "park-api-lbg",
+      "url": "https://node21-iot.apps.okd.swlb.de/parkapi.json"
+    },
+    {
+      "type": "vehicle-parking",
+      "sourceType": "park-api",
+      "frequencySec": 600,
+      "feedId": "park-api-lbg-bf",
+      "url": "https://node21-iot.apps.okd.swlb.de/parkapi_barrierefrei.json"
     }
   ]
 }

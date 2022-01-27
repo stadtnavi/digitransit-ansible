@@ -35,7 +35,6 @@ services:
       - SEMI_TRANSPARENT_MAP_URL={{ semi_transparent_map_url }}
       - NODE_ENV=production
       - FAHRGEMEINSCHAFT_API_KEY={{ fahrgemeinschaft_api_key }}
-      - FAHRGEMEINSCHAFT_AUTH_KEY={{ fahrgemeinschaft_auth_key }}
       - SHOW_TICKETS={{ enable_fares | to_json }}
       - MATOMO_URL={{ matomo_url }}
 

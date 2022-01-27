@@ -21,7 +21,7 @@ otp_router_config: herrenberg/router-config.json
 digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
-    ui: stadtnavi/digitransit-ui:282b6e6f80b5a9e1f34da71c4cac6a020fa2ba33
+    ui: stadtnavi/digitransit-ui:e89ad4d26b0940134ea0e796bc574e2a834436ed
     map_server: stadtnavi/hsl-map-server:f386dcbf8ea8d9f99a9e7772e0324bed2e20fb2a
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874
 

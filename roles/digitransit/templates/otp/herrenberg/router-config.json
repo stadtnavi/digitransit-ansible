@@ -193,7 +193,6 @@
       "feedId": "park-api-rt",
       "url": "https://{{ api_hostname }}/kreis_reutlingen/parking/parkapi.json"
     },
-    ,
     {
       "type": "vehicle-parking",
       "sourceType": "park-api",

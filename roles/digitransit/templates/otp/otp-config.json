@@ -3,6 +3,7 @@
     "SandboxAPILegacyGraphQLApi": true,
     "SandboxAPIMapboxVectorTilesApi": true,
     "FlexRouting": true,
-    "FloatingBike": true
+    "FloatingBike": true,
+    "ParallelRouting": true
   }
 }

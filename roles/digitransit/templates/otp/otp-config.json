@@ -4,6 +4,7 @@
     "SandboxAPIMapboxVectorTilesApi": true,
     "FlexRouting": true,
     "FloatingBike": true,
-    "ParallelRouting": true
+    "ParallelRouting": true,
+    "VehicleToStopHeuristics": true
   }
 }

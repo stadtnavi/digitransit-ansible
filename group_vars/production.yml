@@ -15,7 +15,7 @@ digitransit_ui:
   - config: ludwigsburg
     domain: ludwigsburg.stadtnavi.eu
 
-otp_docker_tag: 33f23df705f42a1e2c55ade2da3223a843b4b531
+otp_docker_tag: dc0e947eb0e3eaa6f008e3bc86b1d6633940265a
 otp_router_config: herrenberg/router-config.json
 
 digitransit:

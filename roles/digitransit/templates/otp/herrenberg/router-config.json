@@ -6,7 +6,7 @@
     "waitReluctance": 0.4,
     "waitAtBeginningFactor": 0.7,
     "walkReluctance": 1.75,
-    "stairsReluctance": 1.65,
+    "stairsReluctance": 5,
     "walkBoardCost": 540,
     "carParkCarLegWeight": 2,
     "itineraryFiltering": 1.0,

@@ -6,5 +6,5 @@
   "staticBikeParkAndRide": true,
   "writeCachedElevations": false,
   "multiThreadElevationCalculations": false,
-  "dataImportReport": true
+  "dataImportReport": false
 }

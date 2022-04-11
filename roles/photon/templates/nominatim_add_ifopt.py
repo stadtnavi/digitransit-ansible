@@ -138,14 +138,14 @@ def update_artificial(conn, node_id, names, address, extratags, lon, lat):
 
 def insert_artificial(conn, node_id, names, address, extratags, lon, lat):
     """ Insert the given CSV row as an artificial node of type
-        public_transport=platform into the Nominatim database.
+        public_transport=stop into the Nominatim database.
     """
     with conn.cursor() as cur:
         cur.execute("""INSERT INTO placex (place_id, osm_type, osm_id,
                                            class, type, name, address, extratags,
                                            geometry)
                        VALUES (nextval('seq_place'), 'N', %s,
-                               'public_transport', 'platform', %s, %s, %s,
+                               'public_transport', 'stop', %s, %s, %s,
                                'SRID=4326;POINT(%s %s)')
                     """, (node_id, names, address, extratags, lon, lat))
 

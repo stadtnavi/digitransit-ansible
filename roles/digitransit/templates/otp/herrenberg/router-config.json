@@ -162,6 +162,13 @@
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-teilauto-neckar-alb/gbfs.json",
       "routeAsCar": true
     },
+    {
+      "type": "bike-rental",
+      "frequencySec": 600,
+      "sourceType": "gbfs",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-stadtmobil-pforzheim/gbfs.json",
+      "routeAsCar": true
+    },
     {% if enable_fake_bike_box -%}
     {
       "type": "vehicle-parking",

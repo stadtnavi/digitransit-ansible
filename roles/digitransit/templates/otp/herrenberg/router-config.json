@@ -66,13 +66,13 @@
       "type": "stop-time-updater",
       "frequencySec": 60,
       "sourceType": "gtfs-http",
-      "url": "http://gtfsr.vvs.de:7788",
+      "url": "https://gtfsr-tripupdate.vvs.de/",
       "feedId": "hbg"
     },
     {
       "type": "real-time-alerts",
       "frequencySec": 60,
-      "url": "http://gtfsr.vvs.de:7788",
+      "url": "https://gtfsr-tripupdate.vvs.de/",
       "feedId": "hbg"
     },
     {

@@ -22,6 +22,14 @@
       "minBikeParkingDistance": 500
     }
   },
+  "transit": {
+    "maxNumberOfTransfers" : 6,
+    "dynamicSearchWindow" : {
+      "minTransitTimeCoefficient" : 3,
+      "minWinTimeMinutes" : 300,
+      "maxWinTimeMinutes" : 1080
+    }
+  },
   "vectorTileLayers": [
     {
       "name": "stops",

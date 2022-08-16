@@ -79,5 +79,6 @@ copy-upstream:
 	cp roles/tilemaker/templates/process-openmaptiles.lua ../tilemaker/resources/
 
 copy-cyclo:
-	jq '. | .sources.openmaptiles.url="mbtiles://{v3}" | .glyph="https://tiles.stadtnavi.eu/tiles/openmaptiles/fonts/{fontstack}/{range}.pbf"' ../../cyclo-bright-gl-style/style.json > roles/tileserver/templates/bicycle.json
+	jq '. | .sources.openmaptiles.url="mbtiles://{v3}" | .glyphs="https://tiles.stadtnavi.eu/tiles/openmaptiles/fonts/{fontstack}/{range}.pbf"' ../../cyclo-bright-gl-style/style.json > roles/tileserver/templates/bicycle.json
+	cp ../../cyclo-bright-gl-style/tilemaker/process-openmaptiles.lua roles/tilemaker/templates/process-openmaptiles.lua
 

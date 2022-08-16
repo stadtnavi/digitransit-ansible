@@ -134,7 +134,7 @@ mainRoadValues  = Set { "secondary", "motorway_link", "trunk_link", "primary_lin
 midRoadValues   = Set { "tertiary", "tertiary_link" }
 minorRoadValues = Set { "unclassified", "residential", "road", "living_street" }
 trackValues     = Set { "cycleway", "byway", "bridleway", "track" }
-pathValues      = Set { "footway", "path", "steps" }
+pathValues      = Set { "footway", "path", "steps", "pedestrian" }
 linkValues      = Set { "motorway_link", "trunk_link", "primary_link", "secondary_link", "tertiary_link" }
 constructionValues = Set { "primary", "secondary", "tertiary", "motorway", "service", "trunk", "track" }
 
@@ -151,7 +151,7 @@ landcoverKeys   = { wood="wood", forest="wood",
 
 -- POI key/value pairs: based on https://github.com/openmaptiles/openmaptiles/blob/master/layers/poi/mapping.yaml
 poiTags         = { aerialway = Set { "station" },
-					amenity = Set { "arts_centre", "bank", "bar", "bbq", "bicycle_parking", "bicycle_rental", "biergarten", "bus_station", "cafe", "cinema", "clinic", "college", "community_centre", "courthouse", "dentist", "doctors", "embassy", "fast_food", "ferry_terminal", "fire_station", "food_court", "fuel", "grave_yard", "hospital", "ice_cream", "kindergarten", "library", "marketplace", "motorcycle_parking", "nightclub", "nursing_home", "parking", "pharmacy", "place_of_worship", "police", "post_box", "post_office", "prison", "pub", "public_building", "recycling", "restaurant", "school", "shelter", "swimming_pool", "taxi", "telephone", "theatre", "toilets", "townhall", "university", "veterinary", "waste_basket" },
+					amenity = Set { "arts_centre", "bank", "bar", "bbq", "bicycle_parking", "bicycle_rental", "bicycle_repair_station", "biergarten", "bus_station", "cafe", "cinema", "clinic", "college", "community_centre", "courthouse", "dentist", "doctors", "embassy", "fast_food", "ferry_terminal", "fire_station", "food_court", "fuel", "grave_yard", "hospital", "ice_cream", "kindergarten", "library", "marketplace", "motorcycle_parking", "nightclub", "nursing_home", "parking", "pharmacy", "place_of_worship", "police", "post_box", "post_office", "prison", "pub", "public_building", "recycling", "restaurant", "school", "shelter", "swimming_pool", "taxi", "telephone", "theatre", "toilets", "townhall", "university", "veterinary", "waste_basket" },
 					barrier = Set { "bollard", "border_control", "cycle_barrier", "gate", "lift_gate", "sally_port", "stile", "toll_booth" },
 					building = Set { "dormitory" },
 					highway = Set { "bus_stop" },
@@ -199,10 +199,48 @@ poiClassRanks   = { hospital=1, railway=2, bus=3, attraction=4, harbor=5, colleg
 					school=7, stadium=8, zoo=9, town_hall=10, campsite=11, cemetery=12,
 					park=13, library=14, police=15, post=16, golf=17, shop=18, grocery=19,
 					fast_food=20, clothing_store=21, bar=22 }
-poiKeys         = Set { "amenity", "sport", "tourism", "office", "historic", "leisure", "landuse", "information" }
 waterClasses    = Set { "river", "riverbank", "stream", "canal", "drain", "ditch", "dock" }
 waterwayClasses = Set { "stream", "river", "canal", "drain", "ditch" }
 
+-- Scan relations for use in ways
+
+function relation_scan_function(relation)
+	if relation:Find("type")=="boundary" and relation:Find("boundary")=="administrative" then
+		relation:Accept()
+	end
+	if relation:Find("type")=="route" and relation:Find("route")=="bicycle" then
+		relation:Accept()
+	end
+end
+
+
+function relation_function(relation)
+	if relation:Find("type")=="route" and relation:Find("route")=="bicycle" then
+		relation:Layer("transportation", false)
+		relation:Attribute("class", "bicycle_route")
+		relation:Attribute("ref", relation:Find("ref"))
+
+		local ref = relation:Find("ref")
+		if ref~="" then
+			relation:Attribute("ref",ref)
+			relation:AttributeNumeric("ref_length", ref:len())
+		end
+		relation:Attribute("name", relation:Find("name"))
+
+		local networks = {
+			["lcn"] = "local",
+			["rcn"] = "local",
+			["ncn"] = "national"
+		}
+
+		local network = relation:Find("network")
+		local n = networks[network]
+		if n~=nil then
+			relation:Attribute("network", n)
+		end
+	end
+end
+-- Process way tags
 
 function way_function(way)
 	local route    = way:Find("route")
@@ -236,9 +274,25 @@ function way_function(way)
 	if landuse == "field" then landuse = "farmland" end
 	if landuse == "meadow" and way:Find("meadow")=="agricultural" then landuse="farmland" end
 
-	-- Boundaries
-	if boundary~="" then
-		local admin_level = tonumber(way:Find("admin_level")) or 11
+	-- Boundaries within relations
+	local admin_level = 11
+	local isBoundary = false
+	while true do
+		local rel = way:NextRelation()
+		if not rel then break end
+		isBoundary = true
+		admin_level = math.min(admin_level, tonumber(way:FindInRelation("admin_level")) or 11)
+	end
+
+	-- Boundaries in ways
+	if boundary=="administrative" then
+		admin_level = math.min(admin_level, tonumber(way:Find("admin_level")) or 11)
+		isBoundary = true
+	end
+
+	-- Administrative boundaries
+	-- https://openmaptiles.org/schema/#boundary
+	if isBoundary and not (way:Find("maritime")=="yes") then
 		local mz = 0
 		if     admin_level>=3 and admin_level<5 then mz=4
 		elseif admin_level>=5 and admin_level<7 then mz=8
@@ -246,19 +300,15 @@ function way_function(way)
 		elseif admin_level>=8 then mz=12
 		end
 
-		-- administrative boundaries
-		-- https://openmaptiles.org/schema/#boundary
-		if boundary=="administrative" and not (way:Find("maritime")=="yes") then
-			way:Layer("boundary",false)
-			way:AttributeNumeric("admin_level", admin_level)
-			way:MinZoom(mz)
-			-- disputed status (0 or 1). some styles need to have the 0 to show it.
-			local disputed = way:Find("disputed")
-			if disputed=="yes" then
-				way:AttributeNumeric("disputed", 1)
-			else
-				way:AttributeNumeric("disputed", 0)
-			end
+		way:Layer("boundary",false)
+		way:AttributeNumeric("admin_level", admin_level)
+		way:MinZoom(mz)
+		-- disputed status (0 or 1). some styles need to have the 0 to show it.
+		local disputed = way:Find("disputed")
+		if disputed=="yes" then
+			way:AttributeNumeric("disputed", 1)
+		else
+			way:AttributeNumeric("disputed", 0)
 		end
 	end
 
@@ -313,6 +363,7 @@ function way_function(way)
 			SetBrunnelAttributes(way)
 			if ramp then way:AttributeNumeric("ramp",1) end
 
+
 			-- Service
 			if highway == "service" and service ~="" then way:Attribute("service", service) end
 
@@ -322,6 +373,11 @@ function way_function(way)
 			end
 			if oneway == "-1" then
 				-- **** TODO
+			end
+
+			local has_cycleway = has_thruthy_tag(way, "cycleway") or has_thruthy_tag(way, "cycleway:left") or has_thruthy_tag(way, "cycleway:right")
+			if has_cycleway or highway == "cycleway" then
+				way:AttributeNumeric("cycleway", 1)
 			end
 
 			-- Write names
@@ -401,16 +457,16 @@ function way_function(way)
 
 	-- 'aerodrome_label'
 	if aeroway=="aerodrome" then
-	 	way:LayerAsCentroid("aerodrome_label")
-	 	SetNameAttributes(way)
-	 	way:Attribute("iata", way:Find("iata"))
-  		SetEleAttributes(way)
- 	 	way:Attribute("icao", way:Find("icao"))
+		way:LayerAsCentroid("aerodrome_label")
+		SetNameAttributes(way)
+		way:Attribute("iata", way:Find("iata"))
+			SetEleAttributes(way)
+		way:Attribute("icao", way:Find("icao"))
 
- 	 	local aerodrome = way:Find(aeroway)
- 	 	local class
- 	 	if aerodromeValues[aerodrome] then class = aerodrome else class = "other" end
- 	 	way:Attribute("class", class)
+		local aerodrome = way:Find(aeroway)
+		local class
+		if aerodromeValues[aerodrome] then class = aerodrome else class = "other" end
+		way:Attribute("class", class)
 	end
 
 	-- Set 'waterway' and associated
@@ -538,6 +594,12 @@ function attribute_function(attr,layer)
 	end
 end
 
+function has_thruthy_tag(item, tag)
+	return item:Holds(tag) and item:Find(tag)~="no"
+end
+
+
+
 -- ==========================================================
 -- Common functions
 
@@ -550,6 +612,22 @@ function WritePOI(obj,class,subclass,rank)
 	obj:AttributeNumeric("rank", rank)
 	obj:Attribute("class", class)
 	obj:Attribute("subclass", subclass)
+
+	if subclass=="bicycle_parking" then
+		local access = obj:Find("access")
+
+		if obj:Find("access")=="customers" and obj:Find("fee")=="yes" and obj:Holds("operator") and obj:Find("operator"):startswith("Bane") then
+       obj:Attribute("type", "shed")
+		elseif obj:Find("bicycle_parking")=="lockers" then
+ 			obj:Attribute("type", "lockers")
+		elseif obj:Find("covered")=="yes" then
+			obj:Attribute("type", "covered")
+ 		end
+
+    if access=="private" or access=="customers" or access=="no" then
+			obj:AttributeNumeric("private", 1)
+		end
+	end
 end
 
 -- Set name attributes on any object
@@ -707,5 +785,10 @@ function split(inputstr, sep) -- https://stackoverflow.com/a/7615129/4288232
 	end
 	return t
 end
+
+function string:startswith(start)
+  return self:sub(1, #start) == start
+end
+
 
 -- vim: tabstop=2 shiftwidth=2 noexpandtab

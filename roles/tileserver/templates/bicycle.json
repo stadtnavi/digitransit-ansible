@@ -52,7 +52,7 @@
     }
   },
   "sprite": "https://byvekstavtale.leonard.io/tiles/bicycle//sprite",
-  "glyphs": "https://byvekstavtale.leonard.io/fonts/{fontstack}/{range}.pbf",
+  "glyphs": "https://tiles.stadtnavi.eu/tiles/openmaptiles/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",

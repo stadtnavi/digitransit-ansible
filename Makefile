@@ -75,6 +75,10 @@ tileserver-szeged: tileserver/hungary.osm.pbf
 	cp tileserver/szeged.mbtiles tileserver/input.mbtiles
 	docker run --rm --name tileserver -v $(PWD)/tileserver:/data -p 8080:80 maptiler/tileserver-gl:latest --config tileserver-config.json
 
-
 copy-upstream:
 	cp roles/tilemaker/templates/process-openmaptiles.lua ../tilemaker/resources/
+
+copy-cyclo:
+	cp ../../cyclo-bright-gl-style/style.json roles/tileserver/templates/bicycle.json
+
+

@@ -34,6 +34,18 @@
           49.794564
         ]
       }
+    },
+    "bicycle": {
+      "style": "bicycle.json",
+      "serve_data": true,
+      "tilejson": {
+        "bounds": [
+          7.372216,
+          47.18741,
+          10.514946,
+          49.794564
+        ]
+      }
     }
   },
   "data": {

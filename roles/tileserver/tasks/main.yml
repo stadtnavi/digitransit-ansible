@@ -49,6 +49,7 @@
   with_items:
     - streets.json
     - satellite-overlay.json
+    - bicycle.json
     - tileserver-config.json
   notify: Restart tileserver
 

@@ -51,7 +51,7 @@
       "url": "mbtiles://{v3}"
     }
   },
-  "sprite": "https://byvekstavtale.leonard.io/tiles/bicycle//sprite",
+  "sprite": "{style}",
   "glyphs": "https://tiles.stadtnavi.eu/tiles/openmaptiles/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {

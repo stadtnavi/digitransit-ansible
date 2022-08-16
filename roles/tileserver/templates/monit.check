@@ -5,4 +5,4 @@ check host tileserver with address {{ tiles_hostname }}
         port 443 protocol https and request "/tiles/openmaptiles/styles/streets/9/268/176.png"
         status = 200
         with timeout 30 seconds
-    then restart
+    for 2 cycles then restart

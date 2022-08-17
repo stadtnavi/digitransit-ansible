@@ -67,7 +67,6 @@ docker run \
   --output=/srv/${TILEMAKER_OUTPUT_FILE} \
   --config=/srv/config-openmaptiles.json \
   --process=/srv/process-openmaptiles.lua \
-  --verbose \
 
 # tilemaker doesn't like it when the output file already exists to we move it
 mv "${TILEMAKER_OUTPUT_FILE}" "${TILEMAKER_FINAL_OUTPUT_FILE}"

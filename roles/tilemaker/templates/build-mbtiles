@@ -15,6 +15,8 @@ OCEAN_SHAPEFILE_FOLDER=water-polygons-split-4326
 OCEAN_SHAPEFILE_ZIP=${OCEAN_SHAPEFILE_FOLDER}.zip
 OCEAN_SHAPEFILE_FINAL_FOLDER=coastline
 
+docker stop ${CONTAINER_NAME} || true
+
 if [ -f "$PBF_FILE" ]; then
   echo "$PBF_FILE exists. Downloading updates."
   pyosmium-up-to-date -v $PBF_FILE
@@ -53,7 +55,6 @@ osmium extract ${PBF_FILE} --polygon germany-and-around.geojson -o ${PBF_EXTRACT
 rm -f ${TILEMAKER_OUTPUT_FILE}
 
 docker pull ${IMAGE_NAME}
-docker stop ${CONTAINER_NAME} || true
 
 # coastlines need to be placed into the root folder - not where the OSM pbf is!
 docker run \
@@ -66,6 +67,7 @@ docker run \
   --output=/srv/${TILEMAKER_OUTPUT_FILE} \
   --config=/srv/config-openmaptiles.json \
   --process=/srv/process-openmaptiles.lua \
+  --verbose \
 
 # tilemaker doesn't like it when the output file already exists to we move it
 mv "${TILEMAKER_OUTPUT_FILE}" "${TILEMAKER_FINAL_OUTPUT_FILE}"

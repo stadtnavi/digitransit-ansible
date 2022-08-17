@@ -53,6 +53,7 @@ certbot_auto_renew_hour: "0"
 
 map_url: "https://tiles.stadtnavi.eu/streets/{z}/{x}/{y}{r}.png"
 semi_transparent_map_url: "https://tiles.stadtnavi.eu/satellite-overlay/{z}/{x}/{y}{r}.png"
+bike_map_url: "https://tiles.stadtnavi.eu/bicycle/{z}/{x}/{y}{r}.png"
 
 # the docker tag/sha used to build containers and run OTP itself in the digitransit docker-compose
 # cluster

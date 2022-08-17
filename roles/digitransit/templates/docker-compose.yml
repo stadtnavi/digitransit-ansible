@@ -33,6 +33,7 @@ services:
       - API_URL=https://{{ api_hostname }}
       - MAP_URL={{ map_url }}
       - SEMI_TRANSPARENT_MAP_URL={{ semi_transparent_map_url }}
+      - BIKE_MAP_URL={{ bike_map_url }}
       - NODE_ENV=production
       - FAHRGEMEINSCHAFT_API_KEY={{ fahrgemeinschaft_api_key }}
       - SHOW_TICKETS={{ enable_fares | to_json }}

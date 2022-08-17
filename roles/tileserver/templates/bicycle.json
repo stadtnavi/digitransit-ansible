@@ -4342,6 +4342,7 @@
       ],
       "layout": {
         "line-join": "round",
+        "line-cap": "round",
         "visibility": "visible"
       },
       "maxzoom": 14,
@@ -4360,7 +4361,11 @@
               2
             ]
           ]
-        }
+        },
+        "line-dasharray": [
+          0,
+          2
+        ]
       }
     },
     {
@@ -4383,17 +4388,18 @@
       ],
       "layout": {
         "line-join": "round",
+        "line-cap": "round",
         "visibility": "visible"
       },
       "maxzoom": 14,
-      "minzoom": 9,
+      "minzoom": 8,
       "paint": {
         "line-color": "#34978b",
         "line-width": {
           "base": 1.2,
           "stops": [
             [
-              7,
+              8,
               1.5
             ],
             [
@@ -4401,7 +4407,11 @@
               3
             ]
           ]
-        }
+        },
+        "line-dasharray": [
+          0,
+          2
+        ]
       }
     },
     {
@@ -6085,6 +6095,7 @@
         "class",
         "town"
       ],
+      "minzoom": 10,
       "layout": {
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [

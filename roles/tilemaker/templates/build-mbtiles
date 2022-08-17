@@ -4,7 +4,7 @@ PBF_DOWNLOAD_URL=https://download.geofabrik.de/europe-latest.osm.pbf
 PBF_FILE=europe.osm.pbf
 PBF_EXTRACT_FILE=tilemaker-input.osm.pbf
 
-IMAGE_NAME="stadtnavi/tilemaker:a3c70afb7685cb642da8424eba9863ca37bbc32c"
+IMAGE_NAME="stadtnavi/tilemaker:523fb9b2cfa0d85cd8e0948bf97d02e2040e8144"
 CONTAINER_NAME="tilemaker"
 
 TILEMAKER_OUTPUT_FILE=tilemaker-output.inprocess.mbtiles

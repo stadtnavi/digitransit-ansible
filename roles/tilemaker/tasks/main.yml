@@ -23,6 +23,7 @@
     - config-openmaptiles.json
     - process-openmaptiles.lua
     - germany-and-around.geojson
+  notify: Restart tilemaker
 
 - name: Make script executable
   file:

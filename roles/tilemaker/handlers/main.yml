@@ -1,0 +1,5 @@
+---
+- name: Restart tilemaker
+  service:
+    name: tilemaker
+    state: restarted

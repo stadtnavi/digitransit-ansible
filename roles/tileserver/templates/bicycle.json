@@ -907,7 +907,7 @@
       }
     },
     {
-      "id": "bicycle-route-local-background",
+      "id": "bicycle-route-local-regional-background",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -919,9 +919,10 @@
           "bicycle_route"
         ],
         [
-          "==",
+          "in",
           "network",
-          "local"
+          "local",
+          "regional"
         ]
       ],
       "layout": {
@@ -4344,10 +4345,63 @@
         "visibility": "visible"
       },
       "maxzoom": 14,
-      "minzoom": 10,
+      "minzoom": 11,
       "paint": {
         "line-color": "#34978b",
-        "line-width": 2
+        "line-width": {
+          "base": 1.1,
+          "stops": [
+            [
+              7,
+              1.5
+            ],
+            [
+              14,
+              2
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "bicycle-route-regional-overlay",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "bicycle_route"
+        ],
+        [
+          "==",
+          "network",
+          "regional"
+        ]
+      ],
+      "layout": {
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "maxzoom": 14,
+      "minzoom": 9,
+      "paint": {
+        "line-color": "#34978b",
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [
+              7,
+              1.5
+            ],
+            [
+              14,
+              3
+            ]
+          ]
+        }
       }
     },
     {

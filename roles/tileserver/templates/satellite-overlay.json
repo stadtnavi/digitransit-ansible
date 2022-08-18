@@ -4266,6 +4266,11 @@
           "us-interstate",
           "us-highway",
           "us-state"
+        ],
+        [
+          "!in",
+          "class",
+          "bicycle_route"
         ]
       ],
       "id": "highway-shield",

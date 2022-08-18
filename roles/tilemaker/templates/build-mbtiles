@@ -49,8 +49,10 @@ if [ ! -d "${OCEAN_SHAPEFILE_FINAL_FOLDER}" ]; then
   rm ${OCEAN_SHAPEFILE_ZIP}
 fi
 
-echo "Generating extract into ${PBF_EXTRACT_FILE}"
-osmium extract ${PBF_FILE} --polygon germany-and-around.geojson -o ${PBF_EXTRACT_FILE} --overwrite --strategy=smart -S complete-partial-relations=80 -S types=multipolygon,boundary
+if [[ ${PBF_FILE} -nt ${PBF_EXTRACT_FILE} ]]; then
+  echo "Europe file has been updated. Generating extract into ${PBF_EXTRACT_FILE}"
+  osmium extract ${PBF_FILE} --polygon germany-and-around.geojson -o ${PBF_EXTRACT_FILE} --overwrite --strategy=smart -S complete-partial-relations=80 -S types=multipolygon,boundary
+fi
 
 rm -f ${TILEMAKER_OUTPUT_FILE}
 

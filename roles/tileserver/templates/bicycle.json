@@ -4323,7 +4323,7 @@
       }
     },
     {
-      "id": "bicycle-route-overlay-local",
+      "id": "bicycle-route-overlay-local-regional",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -4335,9 +4335,10 @@
           "bicycle_route"
         ],
         [
-          "==",
+          "in",
           "network",
-          "local"
+          "local",
+          "regional"
         ]
       ],
       "layout": {
@@ -4391,7 +4392,7 @@
         "line-cap": "round",
         "visibility": "visible"
       },
-      "maxzoom": 14,
+      "maxzoom": 12,
       "minzoom": 8,
       "paint": {
         "line-color": "#34978b",
@@ -5855,7 +5856,7 @@
       "id": "bicycle-route-name-local",
       "type": "symbol",
       "source": "openmaptiles",
-      "source-layer": "transportation",
+      "source-layer": "transportation_name",
       "minzoom": 14,
       "filter": [
         "all",
@@ -5908,7 +5909,7 @@
       "id": "bicycle-route-name-national",
       "type": "symbol",
       "source": "openmaptiles",
-      "source-layer": "transportation",
+      "source-layer": "transportation_name",
       "minzoom": 12,
       "filter": [
         "all",

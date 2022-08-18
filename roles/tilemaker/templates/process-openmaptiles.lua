@@ -216,7 +216,7 @@ end
 
 function relation_function(relation)
 	if relation:Find("type")=="route" and relation:Find("route")=="bicycle" then
-		relation:Layer("transportation", false)
+		relation:Layer("transportation_name", false)
 		relation:Attribute("class", "bicycle_route")
 		relation:Attribute("ref", relation:Find("ref"))
 
@@ -227,18 +227,21 @@ function relation_function(relation)
 		end
 		relation:Attribute("name", relation:Find("name"))
 
-		local networks = {
+
+		local network = to_route_network(relation:Find("network"))
+		if network~=nil then
+			relation:Attribute("network", network)
+		end
+	end
+end
+
+function to_route_network(tag)
+	local networks = {
 			["lcn"] = "local",
 			["rcn"] = "regional",
 			["ncn"] = "national"
 		}
-
-		local network = relation:Find("network")
-		local n = networks[network]
-		if n~=nil then
-			relation:Attribute("network", n)
-		end
-	end
+	return networks[tag]
 end
 -- Process way tags
 
@@ -273,6 +276,31 @@ function way_function(way)
 	if aerowayBuildings[aeroway] then building="yes"; aeroway="" end
 	if landuse == "field" then landuse = "farmland" end
 	if landuse == "meadow" and way:Find("meadow")=="agricultural" then landuse="farmland" end
+
+	-- Bicycle routes
+	local networks = {};
+	while true do
+		local rel = way:NextRelation()
+		if not rel then break end
+		local n = way:FindInRelation("network")
+		local network = to_route_network(n)
+		if network ~= nil then
+			networks[network] = true;
+		end
+	end
+
+	if next(networks) then
+		way:Layer("transportation", false)
+		way:Attribute("class", "bicycle_route")
+
+		if networks["national"] then
+			way:Attribute("network", "national")
+		elseif networks["regional"] then
+			way:Attribute("network", "regional")
+		elseif networks["local"] then
+			way:Attribute("network", "local")
+		end
+	end
 
 	-- Boundaries within relations
 	local admin_level = 11

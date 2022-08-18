@@ -6055,7 +6055,7 @@
         "class",
         "village"
       ],
-      "minzoom": 13,
+      "minzoom": 9,
       "layout": {
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
@@ -6096,7 +6096,7 @@
         "class",
         "town"
       ],
-      "minzoom": 13,
+      "minzoom": 8,
       "layout": {
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [

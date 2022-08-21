@@ -239,7 +239,8 @@ function to_route_network(tag)
 	local networks = {
 			["lcn"] = "local",
 			["rcn"] = "regional",
-			["ncn"] = "national"
+			["ncn"] = "national",
+			["icn"] = "national"
 		}
 	return networks[tag]
 end

@@ -404,7 +404,7 @@ function way_function(way)
 				-- **** TODO
 			end
 
-			local has_cycleway = has_thruthy_tag(way, "cycleway") or has_thruthy_tag(way, "cycleway:left") or has_thruthy_tag(way, "cycleway:right")
+			local has_cycleway = has_thruthy_tag(way, "cycleway") or has_thruthy_tag(way, "cycleway:left") or has_thruthy_tag(way, "cycleway:right") or has_thruthy_tag(way, "cycleway:both")
 			if has_cycleway or highway == "cycleway" then
 				way:AttributeNumeric("cycleway", 1)
 			end

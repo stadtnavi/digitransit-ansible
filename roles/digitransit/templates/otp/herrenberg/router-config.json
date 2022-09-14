@@ -90,6 +90,13 @@
       "url": "{{ kvv_gtfs_rt_url }}",
       "feedId": "kvv"
     },
+    {
+      "type": "stop-time-updater",
+      "frequencySec": 60,
+      "sourceType": "gtfs-http",
+      "url": "{{ mfdz_gtfsrt_url }}",
+      "feedId": "mfdz"
+    },
     {% endif %}
     {
       "type": "bike-rental",

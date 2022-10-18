@@ -7,8 +7,8 @@ Requires=docker.service
 
 Environment=CONTAINER_IMAGE=mediagis/nominatim:3.7-1586885ee06c334d359dbe11596b45aec934bdda
 Environment=CONTAINER_NAME=nominatim
-Environment=PBF_URL=http://download.geofabrik.de/europe/germany/baden-wuerttemberg/stuttgart-regbez-latest.osm.pbf
-Environment=REPLICATION_URL=https://download.geofabrik.de/europe/germany/baden-wuerttemberg/stuttgart-regbez-updates/
+Environment=PBF_URL={{ geofabric_url }}{{ osm_data_set }}-latest.osm.pbf
+Environment=REPLICATION_URL={{ geofabric_url }}{{ osm_data_set }}-updates/
 Environment=IMPORT_WIKIPEDIA=false
 Environment=NOMINATIM_PASSWORD={{ nominatim_db_password }}
 TimeoutStartSec=0

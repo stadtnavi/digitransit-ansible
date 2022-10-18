@@ -1,2 +1,4 @@
 ---
 nominatim_db_password: "123456" #"{{ nominatim_db_password }}"
+geofabric_url: "http://download.geofabrik.de/"
+osm_data_set: "europe/germany/baden-wuerttemberg/stuttgart-regbez"

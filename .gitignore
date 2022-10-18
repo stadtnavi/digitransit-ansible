@@ -1,3 +1,8 @@
 .vagrant
 vault-password
 /tileserver
+
+## ride2go/fahrgemeinschaft
+.ipynb_checkpoints
+venv
+ansible-

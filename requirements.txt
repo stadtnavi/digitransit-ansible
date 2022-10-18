@@ -1,0 +1,4 @@
+jupyterlab
+ansible-kernel
+ansible
+ansible-runner

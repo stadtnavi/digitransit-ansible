@@ -1,0 +1,2 @@
+---
+nominatim_db_password: "123456" #"{{ nominatim_db_password }}"

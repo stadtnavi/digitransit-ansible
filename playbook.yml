@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: yes
+  pre_tasks:
+  - name: Gathering Facts
+    setup:
+  roles:
+    - role: geerlingguy.docker
+    - role: photon

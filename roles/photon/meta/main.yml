@@ -1,4 +1,4 @@
 ---
-dependencies:
-  - role: geerlingguy.docker
-  - role: nginx
+# dependencies:
+#   - role: geerlingguy.docker
+#   - role: nginx

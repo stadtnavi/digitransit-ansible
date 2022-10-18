@@ -22,5 +22,11 @@ Might change later.
 ## Run the playbook
 
 ```bash
+make photon
+```
+
+OR:
+
+```bash
 ansible-playbook photon-playbook.yml
 ```

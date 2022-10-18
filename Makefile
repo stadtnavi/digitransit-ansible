@@ -84,3 +84,6 @@ copy-cyclo:
 	rename sprite bicycle roles/tileserver/files/sprites/* -v
 	cp ../../cyclo-bright-gl-style/tilemaker/process-openmaptiles.lua roles/tilemaker/templates/process-openmaptiles.lua
 
+photon:
+	. venv/bin/activate
+	ansible-playbook photon-playbook.yml

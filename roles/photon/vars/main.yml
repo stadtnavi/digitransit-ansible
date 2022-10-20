@@ -9,3 +9,4 @@ nominatim_db_password: !vault |
 
 geofabric_url: "http://download.geofabrik.de/"
 osm_data_set: "europe/germany/baden-wuerttemberg/stuttgart-regbez"
+#osm_data_set: "europe/dach"

@@ -1,0 +1,4 @@
+all:
+  hosts:
+    photon-vm:
+      ansible_host: photon # set ~/.ssh/config with ProxyJump

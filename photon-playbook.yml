@@ -2,6 +2,7 @@
 
 - hosts: photon-vm
   gather_facts: yes
+  become: yes
   pre_tasks:
   - name: Gathering Facts
     setup:

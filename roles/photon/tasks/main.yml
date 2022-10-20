@@ -3,6 +3,7 @@
   package:
     name:
       - python3-psycopg2
+      - curl
     state: present
 
 - name: Create nominatim config directory
@@ -72,9 +73,9 @@
   systemd: state=started name="{{ item }}" enabled=yes daemon_reload=yes
   with_items:
     - nominatim.service
-    - nominatim-update.timer
-    - photon.service
-    - photon-update.timer
+    # - nominatim-update.timer
+    # - photon.service # if started together, it wont read nominatim data
+    # - photon-update.timer
     # - photon-pelias-adapter.service # not used in ride2go
 
 # not used in ride2go

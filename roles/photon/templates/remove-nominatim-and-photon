@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Stops services, removes docker
+
+sudo service photon stop
+sudo service nominatim stop
+sudo service docker stop
+sudo apt purge -y docker* 
+sudo systemctl restart systemd-journald
+sudo rm -rf /var/lib/docker/

@@ -15,9 +15,13 @@ ansible --help
 Some tasks are commented out for now:
 - nginx
 - pelias adapter
- 
- 
+
 Might change later.
+
+### Normal user should be able to un sudo commands
+ 
+https://phpraxis.wordpress.com/2016/09/27/enable-sudo-without-password-in-ubuntudebian/
+
 
 ## Run the playbook
 
@@ -30,3 +34,7 @@ OR:
 ```bash
 ansible-playbook photon-playbook.yml
 ```
+
+## Reset installation
+
+see: `./roles/photon/templates/remove-nominatim-and-photon`

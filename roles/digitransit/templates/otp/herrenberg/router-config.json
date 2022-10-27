@@ -25,8 +25,8 @@
   "transit": {
     "maxNumberOfTransfers" : 6,
     "dynamicSearchWindow" : {
-      "minTransitTimeCoefficient" : 3,
-      "minWinTimeMinutes" : 300,
+      "minTransitTimeCoefficient" : 0.5,
+      "minWinTimeMinutes" : 30,
       "maxWinTimeMinutes" : 1080
     }
   },

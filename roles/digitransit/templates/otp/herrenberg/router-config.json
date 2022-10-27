@@ -20,6 +20,12 @@
       "bikeRentalDistanceRatio": 0.75,
       "parkAndRideDurationRatio": 0.6,
       "minBikeParkingDistance": 500
+    },
+    "maxAccessEgressDurationForMode": {
+      "CAR_TO_PARK": "30m",
+      "BIKE_RENTAL": "30m",
+      "BIKE": "30m",
+      "WALK": "30m"
     }
   },
   "transit": {

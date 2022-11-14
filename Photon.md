@@ -77,7 +77,7 @@ After photon has read the nominatim data and you see this line:
 You can call the api with:
 
 ```bash
-curl "http://localhost:2322/api/?q=munchen&lang=ede"
+curl "http://localhost:2322/api/?q=munchen&lang=de"
 ```
 
 
@@ -85,3 +85,35 @@ curl "http://localhost:2322/api/?q=munchen&lang=ede"
 ## Reset installation
 
 see: `./roles/photon/templates/remove-nominatim-and-photon`
+
+---
+
+# Photon remote on m900
+
+* Append your `~/.ssh/config` file with the following configurations:
+```
+Host m900
+    HostName 192.168.1.5
+    User admin
+    Port 22
+        
+Host photon-vm-m900
+    ProxyJump m900
+    HostName 192.168.122.212
+    User ph
+    Port 22
+```
+* Run `ssh-copy-id photon-vm-m900` then login and logout
+* Next you will need to build the image for photon on the vmn
+```
+rm -rf /tmp/photon-files
+mkdir /tmp/photon-files
+cd /tmp/photon-files
+git clone https://github.com/mfdz/photon.git
+scp -r /tmp/photon-files photon-vm-m900:/tmp/
+ssh photon-vm-m900
+cd /tmp/photon-files/photon
+sudo docker build -t photon-customized:1.0 .
+```
+* Logout from the vm and build nominatim database with `make photon-remote`
+* After the image is built just run the `sudo service photon start` command on the vm

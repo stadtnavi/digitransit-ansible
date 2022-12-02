@@ -46,6 +46,9 @@ su # enter root password here
 /sbin/usermod -aG docker $username
 ```
 
+## Add all needed languages
+All needed languages is now set in the `roles/photon/templates/photon.service` file as an environment variable called PHOTN_LANGUAGES.
+
 ## Run the playbook
 
 If you have a local VM, you can run the follwoing make command.
@@ -88,7 +91,7 @@ see: `./roles/photon/templates/remove-nominatim-and-photon`
 
 ---
 
-# Photon remote on m900
+## Run the remotely on m900
 
 * Append your `~/.ssh/config` file with the following configurations:
 ```

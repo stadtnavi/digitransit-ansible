@@ -46,6 +46,9 @@ su # enter root password here
 /sbin/usermod -aG docker $username
 ```
 
+## Add all needed languages
+All needed languages is now set in the `roles/photon/templates/photon.service` file as an environment variable called PHOTN_LANGUAGES.
+
 ## Run the playbook
 
 If you have a local VM, you can run the follwoing make command.
@@ -77,7 +80,7 @@ After photon has read the nominatim data and you see this line:
 You can call the api with:
 
 ```bash
-curl "http://localhost:2322/api/?q=munchen&lang=ede"
+curl "http://localhost:2322/api/?q=munchen&lang=de"
 ```
 
 
@@ -85,3 +88,24 @@ curl "http://localhost:2322/api/?q=munchen&lang=ede"
 ## Reset installation
 
 see: `./roles/photon/templates/remove-nominatim-and-photon`
+
+---
+
+## Run the remotely on m900
+
+* Append your `~/.ssh/config` file with the following configurations:
+```
+Host m900
+    HostName 192.168.1.5
+    User admin
+    Port 22
+        
+Host photon-vm-m900
+    ProxyJump m900
+    HostName 192.168.122.212
+    User ph
+    Port 22
+```
+* Run `ssh-copy-id photon-vm-m900` then login and logout
+* Build nominatim database with `make photon-remote`
+* Then run the `sudo service photon start` command on the vm

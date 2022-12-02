@@ -3,12 +3,13 @@ Description=Photon
 After=docker.service
 
 [Service]
-Environment=CONTAINER_IMAGE=photon-customized:1.0
+Environment=CONTAINER_IMAGE=mfdz/photon:70a02a2098cdb2e6734e2f7c1ec0fae7a3cfff41
 Environment=CONTAINER_NAME=photon
 TimeoutStartSec=0
 RestartSec=15
 Restart=always
 
+Environment=PHOTON_LANGUAGES=de,en,fr,hu,ru,ua
 Environment=NOMINATIM_DB_HOST=nominatim
 Environment=NOMINATIM_DB_PASSWORD={{ nominatim_db_password }}
 
@@ -22,6 +23,7 @@ ExecStart=docker run --rm --name ${CONTAINER_NAME} \
     -v photon-data-2021-10-04:/photon/photon_data:rw \
     -v /var/photon/synonyms.json:/synonyms.json \
     -p {{ photon_port }}:2322 \
+    -e PHOTON_LANGUAGES \
     -e NOMINATIM_DB_HOST \
     -e NOMINATIM_DB_PASSWORD \
     -e AUTOMATIC_UPDATES=true \

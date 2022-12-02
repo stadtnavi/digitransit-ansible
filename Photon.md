@@ -104,16 +104,5 @@ Host photon-vm-m900
     Port 22
 ```
 * Run `ssh-copy-id photon-vm-m900` then login and logout
-* Next you will need to build the image for photon on the vmn
-```
-rm -rf /tmp/photon-files
-mkdir /tmp/photon-files
-cd /tmp/photon-files
-git clone https://github.com/mfdz/photon.git
-scp -r /tmp/photon-files photon-vm-m900:/tmp/
-ssh photon-vm-m900
-cd /tmp/photon-files/photon
-sudo docker build -t photon-customized:1.0 .
-```
-* Logout from the vm and build nominatim database with `make photon-remote`
-* After the image is built just run the `sudo service photon start` command on the vm
+* Build nominatim database with `make photon-remote`
+* Then run the `sudo service photon start` command on the vm

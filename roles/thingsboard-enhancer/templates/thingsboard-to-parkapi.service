@@ -7,6 +7,10 @@ Wants=network-online.target
 Type=oneshot
 User=www-data
 Group=www-data
+
+# forcibly restart after 2 minutes
+RuntimeMaxSec=120
+
 Environment=THINGSBOARD_API_URL={{ thingsboard_api_url }}
 Environment=THINGSBOARD_USERNAME={{ thingsboard_username }}
 Environment=THINGSBOARD_PASSWORD={{ thingsboard_password }}

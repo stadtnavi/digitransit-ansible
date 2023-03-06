@@ -73,8 +73,13 @@
     - nominatim.service
     - nominatim-update.timer
     - photon.service
-    - photon-update.timer
+    #- photon-update.timer
     - photon-pelias-adapter.service
+
+- name: Disable photon-update
+  systemd: state=stopped name="{{ item }}" enabled=yes daemon_reload=yes
+  with_items:
+    - photon-update.timer
 
 - name: Copy photon nginx site conf
   template: src=photon-site.conf dest=/etc/nginx/sites-enabled/{{ item }}.conf

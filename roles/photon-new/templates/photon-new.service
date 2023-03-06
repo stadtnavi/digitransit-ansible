@@ -26,7 +26,7 @@ ExecStart=docker run --rm --name ${CONTAINER_NAME} \
     -e NOMINATIM_DB_HOST \
     -e NOMINATIM_DB_PASSWORD \
     -e AUTOMATIC_UPDATES=true \
-    ${CONTAINER_IMAGE} photon -synonym-file /synonyms.json
+    ${CONTAINER_IMAGE} photon -synonym-file /synonyms.json -languages de,en,fr,pl
 
 ExecStop=-docker stop ${CONTAINER_NAME}
 

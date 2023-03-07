@@ -5,7 +5,7 @@ Requires=docker.service
 
 [Service]
 
-Environment=CONTAINER_IMAGE=mediagis/nominatim:3.7-1586885ee06c334d359dbe11596b45aec934bdda
+Environment=CONTAINER_IMAGE=mediagis/nominatim:4.2-6276787e309f4a7c8053e6fa78c4acc2fea4d393
 Environment=CONTAINER_NAME=nominatim
 Environment=PBF_URL=https://download.geofabrik.de/europe/dach-latest.osm.pbf
 Environment=REPLICATION_URL=https://download.geofabrik.de/europe/dach-updates/
@@ -19,13 +19,14 @@ ExecStartPre=-docker stop ${CONTAINER_NAME}
 ExecStartPre=-docker rm ${CONTAINER_NAME}
 ExecStartPre=-docker pull ${CONTAINER_IMAGE}
 ExecStart=docker run --rm --name ${CONTAINER_NAME} \
-  --shm-size=1g \
+  --shm-size=2g \
   --log-driver=journald \
   -e PBF_URL \
   -e REPLICATION_URL \
   -e IMPORT_WIKIPEDIA \
   -e NOMINATIM_PASSWORD \
   -e IMPORT_STYLE=extratags \
+  -e USER_AGENT='stadtnavi(mail@leonard.io)' \
   --network photon \
   -p 5432:5432 \
   -v /etc/nominatim/import-extratags.style:/usr/local/etc/nominatim/import-extratags.style \

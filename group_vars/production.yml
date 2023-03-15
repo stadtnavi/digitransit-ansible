@@ -22,7 +22,7 @@ otp_max_mem: 32G
 digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
-    ui: stadtnavi/digitransit-ui:e93b8eb679d3ee22db1bf315f65de5eb0e5b8ccf 
+    ui: stadtnavi/digitransit-ui:f9fd24790c01e4829df0f283c2caa167ea7f04ae 
     map_server: stadtnavi/hsl-map-server:95b2b9fa2e748c839d8cb4bfaf0b6ef7fdbad1d8
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874
 

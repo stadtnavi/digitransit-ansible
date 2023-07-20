@@ -65,10 +65,37 @@
       "cacheMaxSeconds": 60,
       "expansionFactor": 0.5
     },
+    // just free-floating vehicles
+    {
+      "name": "rentalVehicles",
+      "type": "VehicleRentalVehicle",
+      "mapper": "DigitransitRealtime",
+      "maxZoom": 20,
+      "minZoom": 14,
+      "cacheMaxSeconds": 60
+    },
+    // just rental stations
+    {
+      "name": "rentalStations",
+      "type": "VehicleRentalStation",
+      "mapper": "Digitransit",
+      "maxZoom": 20,
+      "minZoom": 14,
+      "cacheMaxSeconds": 600
+    },
+    // Contains just stations and realtime information for them
+    {
+      "name": "realtimeRentalStations",
+      "type": "VehicleRentalStation",
+      "mapper": "DigitransitRealtime",
+      "maxZoom": 20,
+      "minZoom": 14,
+      "cacheMaxSeconds": 60
+    },
     {
       "name": "parking",
       "type": "VehicleParking",
-      "mapper": "Digitransit",
+      "mapper": "Stadtnavi",
       "maxZoom": 20,
       "minZoom": 14,
       "cacheMaxSeconds": 60,

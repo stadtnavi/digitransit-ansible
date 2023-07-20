@@ -8,7 +8,7 @@ GTFS_DOWNLOAD_URLS=({% for url in gtfs_urls %} "{{ url }}"  {% endfor %})
 ELEVATION_BASE_URL="https://srtm.csi.cgiar.org/wp-content/uploads/files/srtm_5x5/TIFF/"
 ELEVATION_FILES=("srtm_38_01" "srtm_38_03" "srtm_39_03" "srtm_38_02" "srtm_39_01" "srtm_39_02")
 
-IMAGE_NAME="mfdz/opentripplanner:{{ otp_docker_tag }}"
+IMAGE_NAME="{{ digitransit['images']['otp'] }}"
 CONTAINER_NAME="graph-build"
 
 BUILD_DIR=build
@@ -57,7 +57,7 @@ docker run \
   --rm \
   --cpu-shares 512 \
   -e JAVA_OPTS="-Xmx24G" \
-  ${IMAGE_NAME} --build --save graph \
+  ${IMAGE_NAME} --build --save
 
 echo "${IMAGE_NAME}" > otp-image-version
 

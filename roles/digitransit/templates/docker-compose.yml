@@ -9,14 +9,14 @@ services:
       driver: journald
     ports:
       - {{otp_port}}:8080
-    command: --load --serve graph
+    command: --load --serve
     environment:
       - ROUTER_NAME=hb
       - API_URL=https://{{ api_hostname }}/otp/
       - ENCRYPTION_SECRET_KEY={{ encryption_secret_key }}
-      - JAVA_OPTS=-Xmx{{ otp_max_mem }} -XX:+FlightRecorder
+      - JAVA_OPTS=-Xmx{{ otp_max_mem }}
     volumes:
-      - /var/graph-build/latest/:/opt/opentripplanner/graph/
+      - /var/graph-build/latest/:/var/opentripplanner/
 
   digitransit-ui:
     image: {{ digitransit["images"]["ui"] }}

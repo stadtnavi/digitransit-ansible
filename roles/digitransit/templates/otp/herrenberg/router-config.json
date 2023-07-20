@@ -13,7 +13,7 @@
       "pickupTime": 180,
       "pickupCost": 850,
       "bannedNetworks": ["car-sharing", "taxi", "cargo-bike"],
-      "keepingRentedVehicleAtDestinationCost": 180,
+      "keepingAtDestinationCost": 180,
       "allowKeepingAtDestination": true
     },
     "carReluctance": 2,

@@ -78,27 +78,23 @@
     {% if enable_gtfs_rt %}
     {
       "type": "stop-time-updater",
-      "frequencySec": 60,
       "sourceType": "gtfs-http",
       "url": "https://gtfsr-tripupdate.vvs.de/",
       "feedId": "hbg"
     },
     {
       "type": "real-time-alerts",
-      "frequencySec": 60,
       "url": "https://gtfsr-tripupdate.vvs.de/",
       "feedId": "hbg"
     },
     {
       "type": "stop-time-updater",
-      "frequencySec": 60,
       "sourceType": "gtfs-http",
       "url": "{{ kvv_gtfs_rt_url }}",
       "feedId": "kvv"
     },
     {
       "type": "stop-time-updater",
-      "frequencySec": 60,
       "sourceType": "gtfs-http",
       "url": "{{ mfdz_gtfsrt_url }}",
       "feedId": "mfdz"
@@ -106,38 +102,36 @@
     {% endif %}
     {
       "type": "bike-rental",
-      "frequencySec": 600,
+      "frequency": "10m",
       "sourceType": "gbfs",
       "url": "https://backend.open-booking.eu/api/gbfs/2.2/1/gbfs.json"
     },
     {
       "type": "bike-rental",
-      "frequencySec": 900,
+      "frequency": "15m",
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/alf/gbfs.json"
     },
     {
       "type": "bike-rental",
-      "frequencySec": 900,
+      "frequency": "15m",
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/bananologen/gbfs.json"
     },
     {
       "type": "bike-rental",
-      "frequencySec": 900,
+      "frequency": "15m",
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/gueltstein-mobil/gbfs.json"
     },
     {
       "type": "bike-rental",
-      "frequencySec": 60,
       "sourceType": "gbfs",
       "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/gbfs.json",
       "allowKeepingRentedBicycleAtDestination": true
     },
     {
       "type": "bike-rental",
-      "frequencySec": 60,
       "sourceType": "gbfs",
       "url": "https://platform.tier-services.io/data-sharing/tier_REUTLINGEN/gbfs",
       "headers": {
@@ -146,7 +140,6 @@
     },
     {
       "type": "bike-rental",
-      "frequencySec": 60,
       "sourceType": "gbfs",
       "url": "https://platform.tier-services.io/data-sharing/tier_LUDWIGSBURG/gbfs",
       "headers": {
@@ -155,7 +148,6 @@
     },
     {
       "type": "bike-rental",
-      "frequencySec": 60,
       "sourceType": "gbfs",
       "url": "https://platform.tier-services.io/data-sharing/tier_MUNSINGEN/gbfs",
       "headers": {
@@ -164,35 +156,34 @@
     },
     {
       "type": "bike-rental",
-      "frequencySec": 600,
       "sourceType": "gbfs",
       "url": "https://{{ api_hostname }}/herrenberg/taxi/gbfs.json",
       "routeAsCar": true
     },
     {
       "type": "bike-rental",
-      "frequencySec": 600,
+      "frequency": "10m",
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing/gbfs.json",
       "routeAsCar": true
     },
     {
       "type": "bike-rental",
-      "frequencySec": 600,
+      "frequency": "10m",
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-teilauto-neckar-alb/gbfs.json",
       "routeAsCar": true
     },
     {
       "type": "bike-rental",
-      "frequencySec": 600,
+      "frequency": "10m",
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-stadtmobil-pforzheim/gbfs.json",
       "routeAsCar": true
     },
     {
       "type": "bike-rental",
-      "frequencySec": 600,
+      "frequency": "10m",
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-renningen/gbfs.json",
       "routeAsCar": true
@@ -201,7 +192,7 @@
     {
       "type": "vehicle-parking",
       "sourceType": "bicycle-park-api",
-      "frequencySec": 600,
+      "frequency": "10m",
       "feedId": "open-bike-box",
       "url": "https://api.dev.stadtnavi.eu/herrenberg/parking/open-bike-box.json",
       "tags": ["bike-locker"]
@@ -210,28 +201,27 @@
     {
       "type": "vehicle-parking",
       "sourceType": "park-api",
-      "frequencySec": 60,
       "feedId": "park-api",
       "url": "https://{{ api_hostname }}/herrenberg/parking/parkapi.json"
     },
     {
       "type": "vehicle-parking",
       "sourceType": "park-api",
-      "frequencySec": 600,
+      "frequency": "10m",
       "feedId": "park-api-rt",
       "url": "https://{{ api_hostname }}/kreis_reutlingen/parking/parkapi.json"
     },
     {
       "type": "vehicle-parking",
       "sourceType": "park-api",
-      "frequencySec": 60,
+      "frequency": "10m",
       "feedId": "park-api-lbg",
       "url": "https://node21-iot.apps.okd.swlb.de/parkapi.json"
     },
     {
       "type": "vehicle-parking",
       "sourceType": "park-api",
-      "frequencySec": 600,
+      "frequency": "10m",
       "feedId": "park-api-lbg-bf",
       "url": "https://node21-iot.apps.okd.swlb.de/parkapi_barrierefrei.json"
     }

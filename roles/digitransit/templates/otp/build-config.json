@@ -1,7 +1,8 @@
 {
   "areaVisibility": true,
-  "parentStopLinking": true,
-  "osmWayPropertySet": "germany",
+  "osmDefaults": {
+    "osmTagMapping": "germany"
+  },
   "subwayAccessTime": 0,
   "staticBikeParkAndRide": true,
   "writeCachedElevations": false,

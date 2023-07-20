@@ -5,18 +5,19 @@
     "walkReluctance": 4,
     "stairsReluctance": 5,
     "walkBoardCost": 540,
-    "allowKeepingRentedVehicleAtDestination": true,
-    "KeepingRentedVehicleAtDestinationCost": 180,
     "numItineraries": 5,
     "bikeTriangleSafetyFactor": 0.4,
     "bikeTriangleSlopeFactor": 0.3,
     "bikeTriangleTimeFactor": 0.3,
-    "bikeRentalPickupTime": 180,
-    "bikeRentalPickupCost": 850,
+    "vehicleRental" : {
+      "pickupTime": 180,
+      "pickupCost": 850,
+      "bannedNetworks": ["car-sharing", "taxi", "cargo-bike"],
+      "keepingRentedVehicleAtDestinationCost": 180,
+      "allowKeepingAtDestination": true
+    },
     "carReluctance": 2,
-    "bannedVehicleRentalNetworks": ["car-sharing", "taxi", "cargo-bike"],
     "itineraryFilters" : {
-      "flexOnlyToDestination": true,
       "bikeRentalDistanceRatio": 0.75,
       "parkAndRideDurationRatio": 0.6,
       "minBikeParkingDistance": 500
@@ -159,7 +160,7 @@
     {
       "type": "bike-rental",
       "sourceType": "gbfs",
-      "url": "https://{{ api_hostname }}/herrenberg/taxi/gbfs.json",
+      "url": "https://{{ api_hostname }}/herrenberg/taxi/gbfs.json"
     },
     {
       "type": "bike-rental",

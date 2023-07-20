@@ -52,7 +52,7 @@ done
 
 docker pull ${IMAGE_NAME}
 docker run \
-  -v /var/graph-build/${BUILD_DIR}:/opt/opentripplanner/graph \
+  -v /var/graph-build/${BUILD_DIR}:/var/opentripplanner/ \
   --name ${CONTAINER_NAME} \
   --rm \
   --cpu-shares 512 \

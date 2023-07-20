@@ -5,8 +5,8 @@
     "walkReluctance": 4,
     "stairsReluctance": 5,
     "walkBoardCost": 540,
-    "allowKeepingRentedBicycleAtDestination": true,
-    "keepingRentedBicycleAtDestinationCost": 180,
+    "allowKeepingRentedVehicleAtDestination": true,
+    "KeepingRentedVehicleAtDestinationCost": 180,
     "numItineraries": 5,
     "bikeTriangleSafetyFactor": 0.4,
     "bikeTriangleSlopeFactor": 0.3,
@@ -32,8 +32,8 @@
     "maxNumberOfTransfers" : 6,
     "dynamicSearchWindow" : {
       "minTransitTimeCoefficient" : 0.5,
-      "minWinTimeMinutes" : 30,
-      "maxWinTimeMinutes" : 1080
+      "minWindow" : "30m",
+      "maxWindow" : "18h"
     }
   },
   "vectorTileLayers": [
@@ -78,24 +78,26 @@
     {% if enable_gtfs_rt %}
     {
       "type": "stop-time-updater",
-      "sourceType": "gtfs-http",
       "url": "https://gtfsr-tripupdate.vvs.de/",
       "feedId": "hbg"
     },
     {
       "type": "real-time-alerts",
-      "url": "https://gtfsr-tripupdate.vvs.de/",
+      "url": "https://gtfsr-servicealerts.vvs.de/",
+      "feedId": "hbg"
+    },
+    {
+      "type": "vehicle-positions",
+      "url": "https://gtfsr-vehpos.vvs.de/",
       "feedId": "hbg"
     },
     {
       "type": "stop-time-updater",
-      "sourceType": "gtfs-http",
       "url": "{{ kvv_gtfs_rt_url }}",
       "feedId": "kvv"
     },
     {
       "type": "stop-time-updater",
-      "sourceType": "gtfs-http",
       "url": "{{ mfdz_gtfsrt_url }}",
       "feedId": "mfdz"
     },
@@ -128,7 +130,7 @@
       "type": "bike-rental",
       "sourceType": "gbfs",
       "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/gbfs.json",
-      "allowKeepingRentedBicycleAtDestination": true
+      "allowKeepingRentedVehicleAtDestination": true
     },
     {
       "type": "bike-rental",
@@ -158,35 +160,30 @@
       "type": "bike-rental",
       "sourceType": "gbfs",
       "url": "https://{{ api_hostname }}/herrenberg/taxi/gbfs.json",
-      "routeAsCar": true
     },
     {
       "type": "bike-rental",
       "frequency": "10m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing/gbfs.json",
-      "routeAsCar": true
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing/gbfs.json"
     },
     {
       "type": "bike-rental",
       "frequency": "10m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-teilauto-neckar-alb/gbfs.json",
-      "routeAsCar": true
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-teilauto-neckar-alb/gbfs.json"
     },
     {
       "type": "bike-rental",
       "frequency": "10m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-stadtmobil-pforzheim/gbfs.json",
-      "routeAsCar": true
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-stadtmobil-pforzheim/gbfs.json"
     },
     {
       "type": "bike-rental",
       "frequency": "10m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-renningen/gbfs.json",
-      "routeAsCar": true
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-renningen/gbfs.json"
     },
     {% if enable_fake_bike_box -%}
     {

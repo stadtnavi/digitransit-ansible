@@ -151,12 +151,6 @@
       "type": "bike-rental",
       "frequency": "15m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/bananologen/gbfs.json"
-    },
-    {
-      "type": "bike-rental",
-      "frequency": "15m",
-      "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/gueltstein-mobil/gbfs.json"
     },
     {

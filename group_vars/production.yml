@@ -2,7 +2,7 @@
 server_name: production
 
 digitransit_ui:
-  - config: hbnext
+  - config: herrenberg
     domain: herrenberg.stadtnavi.de
   - config: landstadtmobil
     domain: landstadtmobil.de

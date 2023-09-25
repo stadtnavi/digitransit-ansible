@@ -7,5 +7,6 @@
   "staticBikeParkAndRide": true,
   "writeCachedElevations": false,
   "multiThreadElevationCalculations": false,
-  "dataImportReport": false
+  "dataImportReport": false,
+  "boardingLocationTags": ["ref:IFOPT"]
 }

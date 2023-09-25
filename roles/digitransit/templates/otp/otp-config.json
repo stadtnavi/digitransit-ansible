@@ -4,7 +4,6 @@
     "FlexRouting": true,
     "FloatingBike": true,
     "ParallelRouting": true,
-    "VehicleToStopHeuristics": true,
     "TransferConstraints": false
   }
 }

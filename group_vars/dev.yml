@@ -25,6 +25,7 @@ digitransit:
 delay_prediction_service_version: latest
 
 api_hostname: api.dev.stadtnavi.eu
+dt_api_hostname: "{{api_hostname}}"
 
 matomo_hostname: track.dev.stadtnavi.eu
 matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js

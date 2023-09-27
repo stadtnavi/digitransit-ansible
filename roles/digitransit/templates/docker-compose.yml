@@ -30,7 +30,7 @@ services:
       driver: journald
     environment:
       - GEOCODING_BASE_URL={{ photon_url }}/pelias/v1
-      - API_URL=https://{{ api_hostname }}
+      - API_URL=https://{{ dt_api_hostname }}
       - MAP_URL={{ map_url }}
       - SEMI_TRANSPARENT_MAP_URL={{ semi_transparent_map_url }}
       - BIKE_MAP_URL={{ bike_map_url }}

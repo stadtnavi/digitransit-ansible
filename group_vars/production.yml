@@ -22,11 +22,13 @@ otp_max_mem: 32G
 digitransit:
   images:
     otp: mfdz/opentripplanner:{{ otp_docker_tag }}
-    ui: stadtnavi/digitransit-ui:f9fd24790c01e4829df0f283c2caa167ea7f04ae 
+    ui: stadtnavi/digitransit-ui:2023-09-16T10.08.06-016a909 
     map_server: stadtnavi/hsl-map-server:95b2b9fa2e748c839d8cb4bfaf0b6ef7fdbad1d8
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874
 
 api_hostname: api.stadtnavi.de
+# to allow smooth transition for apps and third-party frontends
+dt_api_hostname: "api.dev.stadtnavi.eu"
 matomo_hostname: track.stadtnavi.de
 
 certbot_certs:

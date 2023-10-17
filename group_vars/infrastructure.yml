@@ -38,5 +38,6 @@ tileserver_allowed_referrers:
   - "10.70.190.201"
   - "*.vpe.de"
   - "*.bbnavi.vk256.eu"
+  - "*.parkendd.de"
 
 photon_pelias_adapter_tag: c0988abdc5723699fa624aab876cebaa8f16db22

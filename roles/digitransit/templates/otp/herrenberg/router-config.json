@@ -219,35 +219,41 @@
       "frequency": "10m",
       "feedId": "open-bike-box",
       "url": "https://api.dev.stadtnavi.eu/herrenberg/parking/open-bike-box.json",
-      "tags": ["bike-locker"]
+      "tags": ["bike-locker"],
+      "timeZone": "Europe/Berlin"
     },
     {% endif %}
     {
       "type": "vehicle-parking",
       "sourceType": "park-api",
       "feedId": "park-api",
-      "url": "https://{{ api_hostname }}/herrenberg/parking/parkapi.json"
+      "url": "https://{{ api_hostname }}/herrenberg/parking/parkapi.json",
+      "timeZone": "Europe/Berlin"
     },
     {
       "type": "vehicle-parking",
       "sourceType": "park-api",
       "frequency": "10m",
       "feedId": "park-api-rt",
-      "url": "https://{{ api_hostname }}/kreis_reutlingen/parking/parkapi.json"
+      "url": "https://{{ api_hostname }}/kreis_reutlingen/parking/parkapi.json",
+      "timeZone": "Europe/Berlin"
+      "time"
     },
     {
       "type": "vehicle-parking",
       "sourceType": "park-api",
       "frequency": "10m",
       "feedId": "park-api-lbg",
-      "url": "https://node21-iot.apps.okd.swlb.de/parkapi.json"
+      "url": "https://node21-iot.apps.okd.swlb.de/parkapi.json",
+      "timeZone": "Europe/Berlin"
     },
     {
       "type": "vehicle-parking",
       "sourceType": "park-api",
       "frequency": "10m",
       "feedId": "park-api-lbg-bf",
-      "url": "https://node21-iot.apps.okd.swlb.de/parkapi_barrierefrei.json"
+      "url": "https://node21-iot.apps.okd.swlb.de/parkapi_barrierefrei.json",
+      "timeZone": "Europe/Berlin"
     }
   ]
 }

@@ -237,7 +237,6 @@
       "feedId": "park-api-rt",
       "url": "https://{{ api_hostname }}/kreis_reutlingen/parking/parkapi.json",
       "timeZone": "Europe/Berlin"
-      "time"
     },
     {
       "type": "vehicle-parking",

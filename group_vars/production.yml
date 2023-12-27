@@ -4,14 +4,11 @@ server_name: production
 digitransit_ui:
   - config: herrenberg
     domain: herrenberg.stadtnavi.de
-  - config: landstadtmobil
-    domain: landstadtmobil.de
     redirects:
+      - landstadtmobil.de
       -  www.landstadtmobil.de
-  - config: muensingen
-    domain: muensingen.landstadtmobil.de
-  - config: engstingen
-    domain: engstingen.landstadtmobil.de
+      - muensingen.landstadtmobil.de
+      - engstingen.landstadtmobil.de
   - config: ludwigsburg
     domain: ludwigsburg.stadtnavi.eu
 
@@ -37,13 +34,13 @@ certbot_certs:
   - domains:
     - "{{ digitransit_ui[1].domain }}"
   - domains:
-    - "{{ digitransit_ui[1].redirects[0] }}"
+    - "{{ digitransit_ui[0].redirects[0] }}"
   - domains:
-    - "{{ digitransit_ui[2].domain }}"
+    - "{{ digitransit_ui[0].redirects[1] }}"
   - domains:
-    - "{{ digitransit_ui[3].domain }}"
+    - "{{ digitransit_ui[0].redirects[2] }}"
   - domains:
-    - "{{ digitransit_ui[4].domain }}"
+    - "{{ digitransit_ui[0].redirects[3] }}"
   - domains:
     - "{{ api_hostname }}"
   - domains:

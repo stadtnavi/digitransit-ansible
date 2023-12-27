@@ -6,7 +6,7 @@ digitransit_ui:
     domain: herrenberg.stadtnavi.de
     redirects:
       - landstadtmobil.de
-      -  www.landstadtmobil.de
+      - www.landstadtmobil.de
       - muensingen.landstadtmobil.de
       - engstingen.landstadtmobil.de
   - config: ludwigsburg
@@ -18,8 +18,8 @@ otp_max_mem: 32G
 
 digitransit:
   images:
-    ui: stadtnavi/digitransit-ui:2023-09-16T10.08.06-016a909 
     otp: opentripplanner/opentripplanner:{{ otp_docker_tag }}
+    ui: stadtnavi/digitransit-ui:2023-12-15T10.32.45-a0f1834
     map_server: stadtnavi/hsl-map-server:95b2b9fa2e748c839d8cb4bfaf0b6ef7fdbad1d8
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874
 

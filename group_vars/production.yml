@@ -24,8 +24,7 @@ digitransit:
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874
 
 api_hostname: api.stadtnavi.de
-# to allow smooth transition for apps and third-party frontends
-dt_api_hostname: "api.dev.stadtnavi.eu"
+dt_api_hostname: "{{api_hostname}}"
 matomo_hostname: track.stadtnavi.de
 
 certbot_certs:

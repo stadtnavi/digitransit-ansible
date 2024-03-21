@@ -8,5 +8,6 @@
   "writeCachedElevations": false,
   "multiThreadElevationCalculations": false,
   "dataImportReport": false,
-  "boardingLocationTags": ["ref:IFOPT"]
+  "boardingLocationTags": ["ref:IFOPT"],
+  "maxStopToShapeSnapDistance": 500
 }

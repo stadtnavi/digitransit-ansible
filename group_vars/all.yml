@@ -167,6 +167,8 @@ osm_pbf_url: http://download.geofabrik.de/europe/dach-latest.osm.pbf
 osm_updates_url: http://download.geofabrik.de/europe/dach-updates/
 nominatim_import_wikipedia: "true"
 
+matrix_room_address: "!UXrSFkkJoppiEZEfgC:matrix.org"
+
 matrix_bot_token: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           35353764626465333062623964663963646634326631346430333861333033323035366230396230

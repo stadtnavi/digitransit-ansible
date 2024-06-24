@@ -5,6 +5,8 @@ collections:
   version: 5.2.0
 - name: community.docker
   version: 3.7.0
+- name: leonardehrenfried.baseline
+  version: 1.7.0
 
 roles:
 - src: geerlingguy.docker

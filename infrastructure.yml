@@ -1,11 +1,12 @@
 ---
 
-- name: Setup infrastructure pieces
-  hosts: all
+- name: Apply infra stack
+  hosts:
+    - infrastructure
+  # use this user if you don't have an account yet
+  #user: root
   become: yes
   roles:
-    - geerlingguy.swap
-    - photon-new
-    - photon
-    - tilemaker
-    - tileserver
+    - leonardehrenfried.baseline.base
+    - leonardehrenfried.baseline.tilemaker
+    - leonardehrenfried.baseline.tileserver

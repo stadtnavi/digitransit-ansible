@@ -27,7 +27,7 @@ productionnorth: galaxy-install
 	${PLAYBOOK_CMD} -i productionnorth digitransit.yml
 
 infrastructure: galaxy-install
-	${PLAYBOOK_CMD} -i infrastructure infrastructure.yml
+	${PLAYBOOK_CMD} -i hosts.ini infrastructure.yml
 
 dev: galaxy-install
 	${PLAYBOOK_CMD} -i dev digitransit.yml

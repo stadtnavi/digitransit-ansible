@@ -1,44 +1,32 @@
 ---
+matrix_room_address: "!UXrSFkkJoppiEZEfgC:matrix.org"
 
-server_name: infrastructure
+# ssh hardening
+network_ipv6_enable: true
+ssh_allow_agent_forwarding: true
+ssh_permit_tunnel: true
+ssh_allow_tcp_forwarding: 'yes'
+sftp_enabled: true
+sftp_chroot: true
 
-tiles_hostname: tiles.stadtnavi.eu
+firewall_allowed_tcp_ports:
+  - "22"
+  - "80"
+  - "443"
 
-certbot_certs:
-  - domains:
-    - "{{ tiles_hostname }}"
-  - domains:
-    - "{{ photon_hostname }}"
-  - domains:
-    - "{{ photon_new_hostname }}"
+timezone: Europe/Berlin
 
-nominatim_db_password: !vault |
-          $ANSIBLE_VAULT;1.1;AES256
-          39626238653563323332376238386437323663616166303237383166303037613632626338313230
-          3034653339333737663564353461666536313766373038650a306436343932376635376537316462
-          64616335643161346262306161343463323934646233343030343562333463376665323236356130
-          3336303163643939300a623536623830663836383130343335376130653136353166613037383833
-          62396334356466613436323663373237623138626663656233323731656233366330
+users:
+  - name: lenni
+    keys_url: https://github.com/leonardehrenfried.keys
+  - name: hbruch
+    keys_file: keys/hbruch.key
 
-tileserver_allowed_referrers:
-  - .localhost
-  - "*.stadtnavi.eu"
-  - "*.bike-and-ride.de"
-  - "*.bbnavi.de"
-  - "*.stadtnavi.de"
-  - .mih.mitfahren-bw.de
-  - .herrenberg.stadtnavi.de
-  - .stadtnavi.github.io
-  - .digitransit-next.leonard.io
-  - "*.service-bw.de"
-  - "*.komm.one"
-  - "*.swlb.de"
-  - landstadtmobil.de
-  - "*.landstadtmobil.de"
-  - "10.70.190.201"
-  - "*.vpe.de"
-  - "*.bbnavi.vk256.eu"
-  - "*.parkendd.de"
-  - "*.mobidata-bw.de"
+server_name: photon-eu.stadtnavi.eu
+podman_prune_users:
+  - root
+tilemaker_create_extract: false
+tilemaker_bounding_box: "-21.4,35.1,40.9,72.4"
+tilemaker_check_referential_integrity: false
 
-photon_pelias_adapter_tag: c0988abdc5723699fa624aab876cebaa8f16db22
+tileserver_domain: "{{ server_name }}"

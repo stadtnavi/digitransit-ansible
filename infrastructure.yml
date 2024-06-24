@@ -8,5 +8,7 @@
   become: yes
   roles:
     - leonardehrenfried.baseline.base
+    - geerlingguy.firewall
     - leonardehrenfried.baseline.tilemaker
     - leonardehrenfried.baseline.tileserver
+    - leonardehrenfried.baseline.nominatim

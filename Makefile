@@ -6,6 +6,7 @@
 PLAYBOOK_CMD:=ANSIBLE_PIPELINING=true ansible-playbook --vault-password-file vault-password
 
 galaxy-install:
+	rm -rf ~/.ansible/collections/ansible_collections/leonardehrenfried/
 	ansible-galaxy collection install -r requirements.yml
 	ansible-galaxy install -r requirements.yml
 

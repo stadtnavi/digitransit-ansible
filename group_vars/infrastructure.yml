@@ -1,4 +1,6 @@
 ---
+server_name: photon-eu.stadtnavi.eu
+
 matrix_room_address: "!UXrSFkkJoppiEZEfgC:matrix.org"
 
 # ssh hardening
@@ -22,7 +24,6 @@ users:
   - name: hbruch
     keys_file: keys/hbruch.key
 
-server_name: photon-eu.stadtnavi.eu
 podman_prune_users:
   - root
 tilemaker_create_extract: false

@@ -35,8 +35,8 @@ tilemaker_check_referential_integrity: false
 tileserver_domain: "tiles-eu.stadtnavi.eu"
 
 nominatim_image: "docker.io/mediagis/nominatim:4.4-2024-04-19T11-30"
-nominatim_pbf_url: "https://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf"
-nominatim_replication_url: "http://download.geofabrik.de/europe/germany/berlin-updates/"
+nominatim_pbf_url: "https://download.geofabrik.de/europe-latest.osm.pbf"
+nominatim_replication_url: "https://download.geofabrik.de/europe-updates/"
 nominatim_db_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   38633562326466626635646331313566653134393539616331633163373662353062356235303837

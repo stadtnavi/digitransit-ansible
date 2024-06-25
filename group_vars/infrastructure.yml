@@ -11,8 +11,10 @@ ssh_allow_tcp_forwarding: 'yes'
 sftp_enabled: true
 sftp_chroot: true
 
+firewall_state: stopped
 firewall_allowed_tcp_ports:
   - "22"
+  - "53"
   - "80"
   - "443"
 
@@ -43,3 +45,11 @@ nominatim_db_password: !vault |
   6565656533643338330a356533353630333562366131363965373432623963663836353562323666
   38363966633565323936343434616336666566656661396434373034333333396365
 
+photon_image: "ghcr.io/leonardehrenfried/photon:0.5.0-2024-06-24T19-43"
+photon_languages:
+  - de
+  - en
+  - fr
+  - pl
+  - nl
+photon_domain: "photon-eu.stadtnavi.eu"

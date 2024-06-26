@@ -33,6 +33,24 @@ tilemaker_bounding_box: "-21.4,35.1,40.9,72.4"
 tilemaker_check_referential_integrity: false
 
 tileserver_domain: "tiles-eu.stadtnavi.eu"
+tileserver_allowed_referrers:
+  - "{{ tileserver_domain }}"
+  - .mih.mitfahren-bw.de
+  - .herrenberg.stadtnavi.de
+  - .stadtnavi.github.io
+  - .digitransit-next.leonard.io
+  - "*.service-bw.de"
+  - "*.komm.one"
+  - "*.swlb.de"
+  - landstadtmobil.de
+  - "*.landstadtmobil.de"
+  - "10.70.190.201"
+  - "*.vpe.de"
+  - "*.bbnavi.vk256.eu"
+  - "*.parkendd.de"
+  - "*.mobidata-bw.de"
+  - "aachen.stadtnavi.eu"
+  - "aachen-sb.stadtnavi.eu"
 
 nominatim_image: "docker.io/mediagis/nominatim:4.4-2024-04-19T11-30"
 nominatim_pbf_url: "https://download.geofabrik.de/europe-latest.osm.pbf"

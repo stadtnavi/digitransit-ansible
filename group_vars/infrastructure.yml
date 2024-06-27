@@ -35,6 +35,7 @@ tilemaker_check_referential_integrity: false
 tileserver_domain: "tiles-eu.stadtnavi.eu"
 tileserver_allowed_referrers:
   - "{{ tileserver_domain }}"
+  - localhost
   - .mih.mitfahren-bw.de
   - .herrenberg.stadtnavi.de
   - .stadtnavi.github.io

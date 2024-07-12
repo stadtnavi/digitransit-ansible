@@ -1,0 +1,4 @@
+services.stadtnavi.eu {
+  reverse_proxy /* localhost:{{ services_port }}
+
+}

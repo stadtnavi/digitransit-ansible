@@ -1,0 +1,30 @@
+---
+- name: Install base packages
+  package:
+    name:
+      - dnsmasq # for some reason outgoing traffic to port 53 (DNS) is blocked and we need to use this package to fake a local DNS server
+      - nginx
+    state: present
+
+- name: Caddyfile
+  ansible.builtin.template:
+    src: templates/services.caddy
+    dest: /etc/caddy/
+    owner: caddy
+    group: caddy
+    mode: 0660
+  notify: Restart caddy
+
+- name: Create tile cache directory
+  file:
+    path: /var/cache/nginx
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
+
+- name: Copy nginx site conf
+  template:
+    src: nginx-site.conf
+    dest: /etc/nginx/sites-enabled/services.conf
+  notify: Restart nginx

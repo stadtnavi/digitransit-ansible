@@ -11,5 +11,6 @@
     - geerlingguy.firewall
     - leonardehrenfried.baseline.tilemaker
     - leonardehrenfried.baseline.tileserver
+    - services
     - leonardehrenfried.baseline.nominatim
     - leonardehrenfried.baseline.photon

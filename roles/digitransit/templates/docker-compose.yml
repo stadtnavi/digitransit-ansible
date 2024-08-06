@@ -38,6 +38,7 @@ services:
       - FAHRGEMEINSCHAFT_API_KEY={{ fahrgemeinschaft_api_key }}
       - SHOW_TICKETS={{ enable_fares | to_json }}
       - MATOMO_URL={{ matomo_url }}
+      - STATIC_MESSAGE_URL={{ digitransit_static_message_url }}
 
 {% if digitransit["images"]["map_server"] is defined %}
   hsl-map-server:

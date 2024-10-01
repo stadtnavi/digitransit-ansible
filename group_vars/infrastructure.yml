@@ -32,8 +32,9 @@ tilemaker_create_extract: false
 tilemaker_bounding_box: "-21.4,35.1,40.9,72.4"
 tilemaker_check_referential_integrity: false
 
+tileserver_version: "v3.1.1"
 tileserver_domain: "tiles-eu.stadtnavi.eu"
-tileserver_tile_margin: 100
+tileserver_tile_margin: 25
 tileserver_allowed_referrers:
   - "{{ tileserver_domain }}"
   - localhost

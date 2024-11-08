@@ -5,7 +5,6 @@
   become: yes
   roles:
     - base
-    - delay-prediction-service
     - digitransit
     - thingsboard-enhancer
     - thingsboard-to-mqtt

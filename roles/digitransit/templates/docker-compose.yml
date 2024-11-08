@@ -60,19 +60,6 @@ services:
       driver: journald
 {% endif %}
 
-  graphiql:
-    image: corykitchens/graphiql:latest
-    container_name: graphiql
-    restart: on-failure:5
-    networks:
-      - digitransit
-    ports:
-      - {{ graphiql_port }}:4000
-    environment:
-      - API_URL=https://api.dev.stadtnavi.eu/routing/v1/router/index/graphql
-    logging:
-      driver: journald
-
 {% if digitransit["images"]["fares_service"] is defined %}
   fares-service:
     image: {{ digitransit["images"]["fares_service"] }}

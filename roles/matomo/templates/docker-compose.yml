@@ -18,7 +18,7 @@ services:
       - 3306:3306
 
   app:
-    image: matomo:4.3-fpm-alpine
+    image: matomo:{{ matomo_version }}-fpm-alpine
     restart: always
     links:
       - db

@@ -4,6 +4,7 @@
     "FlexRouting": true,
     "FloatingBike": true,
     "ParallelRouting": true,
-    "TransferConstraints": false
+    "TransferConstraints": false,
+    "Co2Emissions": true
   }
 }

@@ -3,14 +3,6 @@ server_name: photon-eu.stadtnavi.eu
 
 matrix_room_address: "!UXrSFkkJoppiEZEfgC:matrix.org"
 
-# ssh hardening
-network_ipv6_enable: true
-ssh_allow_agent_forwarding: true
-ssh_permit_tunnel: "yes"
-ssh_allow_tcp_forwarding: "yes"
-sftp_enabled: true
-sftp_chroot: true
-
 firewall_state: stopped
 firewall_allowed_tcp_ports:
   - "22"

@@ -1,5 +1,5 @@
 ---
 dependencies:
   - role: geerlingguy.firewall
-  - role: dev-sec.ssh-hardening
   - role: geerlingguy.docker
+  - role: devsec.hardening.ssh_hardening

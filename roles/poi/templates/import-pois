@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#
+#  Download or update OSM data from Geofabrik
+#
+
+#OSMDATA=https://download.geofabrik.de/europe/germany-latest.osm.pbf
+OSMDATA=https://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf
+
+set -euo pipefail
+
+DIR=/tmp
+
+if [[ -e "$DIR/osm-data.osm.pbf" ]]; then
+    pyosmium-up-to-date "$DIR/osm-data.osm.pbf"
+else
+    curl --silent -o "$DIR/osm-data.osm.pbf" $OSMDATA
+fi

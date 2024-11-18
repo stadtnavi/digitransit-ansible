@@ -1,5 +1,5 @@
 ---
 - name: Restart poi service
   service:
-    name: poi
+    name: "podman-kube@-var-poi-poi.yml.service"
     state: restarted

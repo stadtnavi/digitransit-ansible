@@ -27,14 +27,14 @@ spec:
           exec:
             command: [ "psql", "-c", "CREATE EXTENSION IF NOT EXISTS hstore;"]
   volumes:
-    - name: postgres-storage
+    - name: poi-postgres-storage
       persistentVolumeClaim:
-        claimName: postgres-pvc
+        claimName: poi-postgres-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: postgres-pvc
+  name: poi-postgres-pvc
 spec:
   accessModes:
     - ReadWriteOnce

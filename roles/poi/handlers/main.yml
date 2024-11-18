@@ -1,0 +1,5 @@
+---
+- name: Restart poi service
+  service:
+    name: poi
+    state: restarted

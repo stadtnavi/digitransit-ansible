@@ -1,0 +1,16 @@
+
+[Unit]
+Description=Podman Kubernetes Pod
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/podman play kube /var/poi/poi.yml
+ExecStop=/usr/bin/podman pod stop -t 10 poi
+ExecStopPost=/usr/bin/podman pod rm poi
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

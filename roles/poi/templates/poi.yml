@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgresql-pod
+  labels:
+    app: postgresql
+spec:
+  containers:
+    - name: poi-postgresql
+      image: docker.io/postgis/postgis:17-3.5
+      ports:
+        - containerPort: 5432
+          name: postgres
+          protocol: TCP
+      env:
+        - name: POSTGRES_DB
+          value: poi
+        - name: POSTGRES_USER
+          value: poi
+        - name: POSTGRES_PASSWORD
+          value: {{ poi_postgres_password }}
+      volumeMounts:
+        - name: poi-postgres-storage
+          mountPath: /var/lib/postgresql/data
+      lifecycle:
+        postStart:
+          exec:
+            command: [ "psql", "-c", "CREATE EXTENSION IF NOT EXISTS hstore;"]
+  volumes:
+    - name: postgres-storage
+      persistentVolumeClaim:
+        claimName: postgres-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi

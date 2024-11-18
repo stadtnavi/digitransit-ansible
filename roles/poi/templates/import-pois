@@ -3,6 +3,9 @@
 set -euo pipefail
 
 CURL_OPTS="--location --fail -s --show-error -#"
+WORKDIR=/var/poi/
+POI_FILE="$WORKDIR/osm-pois.osm.pbf"
+
 PBF_URL={{ poi_pbf_download_url }}
 TMP_BUILD_DB="poi_next"
 
@@ -11,7 +14,6 @@ STADTNAVI_CONFIG_URL='https://docs.google.com/spreadsheets/d/1-iKEeaits4W1EPoMzI
 #  Download or update OSM data from Geofabrik
 #
 
-WORKDIR=/var/poi/
 
 if [[ -e "$WORKDIR/osm-data.osm.pbf" ]]; then
     pyosmium-up-to-date "$WORKDIR/osm-data.osm.pbf"
@@ -19,7 +21,7 @@ else
     curl $CURL_OPTS -o "$WORKDIR/osm-data.osm.pbf" $PBF_URL
 fi
 
-osmium tags-filter --remove-tags --overwrite -o "$WORKDIR/osm-pois.osm.pbf" \
+osmium tags-filter --remove-tags --overwrite -o $POI_FILE \
     "$WORKDIR/osm-data.osm.pbf" \
     amenity leisure office shop tourism landuse=cemetery natural=spring
 
@@ -32,4 +34,10 @@ curl --silent -o "$STADTNAVI_CONFIG" "$STADTNAVI_CONFIG_URL"
 
 export LUA_PATH="$PROJECT_DIR/osm2pgsql-themepark/lua/?.lua;;"
 
-osm2pgsql -d $TMP_BUILD_DB -O flex -S stadtnavi.lua "$DIR/osm-pois.osm.pbf"
+osm2pgsql -d $TMP_BUILD_DB \
+  --port {{ poi_postgres_port }} \
+  --user poi \
+  --password {{ poi_postgres_password }} \
+  -O flex \
+  -S stadtnavi.lua \
+  $POI_FILE

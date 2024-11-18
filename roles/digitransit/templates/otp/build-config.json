@@ -9,5 +9,10 @@
   "multiThreadElevationCalculations": false,
   "dataImportReport": false,
   "boardingLocationTags": ["ref:IFOPT"],
-  "maxStopToShapeSnapDistance": 500
+  "maxStopToShapeSnapDistance": 500,
+  "osmNaming": "sidewalks",
+  "emissions" : {
+    "carAvgCo2PerKm" : 175,
+    "carAvgOccupancy" : 1.4
+  }
 }

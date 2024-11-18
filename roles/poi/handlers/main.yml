@@ -3,3 +3,8 @@
   service:
     name: "podman-kube@-var-poi-poi.yml.service"
     state: restarted
+
+- name: Restart import-pois
+  service:
+    name: "import-pois.service"
+    state: restarted

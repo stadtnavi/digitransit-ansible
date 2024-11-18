@@ -10,6 +10,7 @@ spec:
       image: docker.io/postgis/postgis:17-3.5
       ports:
         - containerPort: 5432
+          hostPort: {{ poi_postgres_port }}
           name: postgres
           protocol: TCP
       env:
@@ -26,18 +27,9 @@ spec:
         postStart:
           exec:
             command: [ "psql", "-c", "CREATE EXTENSION IF NOT EXISTS hstore;"]
+
   volumes:
     - name: poi-postgres-storage
-      persistentVolumeClaim:
-        claimName: poi-postgres-pvc
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: poi-postgres-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
+      hostPath:
+        path: poi-postgres
+        type: DirectoryOrCreate

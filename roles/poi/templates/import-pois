@@ -1,18 +1,35 @@
 #!/bin/bash
 
+set -euo pipefail
+
+CURL_OPTS="--location --fail -s --show-error -#"
+PBF_URL={{ poi_pbf_download_url }}
+TMP_BUILD_DB="poi_next"
+
+STADTNAVI_CONFIG_URL='https://docs.google.com/spreadsheets/d/1-iKEeaits4W1EPoMzI29uazZRZJ9s2GJGUPnkO9GzKM/gviz/tq?tqx=out:csv&sheet=Layer'
 #
 #  Download or update OSM data from Geofabrik
 #
 
-#OSMDATA=https://download.geofabrik.de/europe/germany-latest.osm.pbf
-OSMDATA=https://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf
+WORKDIR=/var/poi/
 
-set -euo pipefail
+if [[ -e "$WORKDIR/osm-data.osm.pbf" ]]; then
+    pyosmium-up-to-date "$WORKDIR/osm-data.osm.pbf"
+else
+    curl $CURL_OPTS -o "$WORKDIR/osm-data.osm.pbf" $PBF_URL
+fi
+
+osmium tags-filter --remove-tags --overwrite -o "$WORKDIR/osm-pois.osm.pbf" \
+    "$WORKDIR/osm-data.osm.pbf" \
+    amenity leisure office shop tourism landuse=cemetery natural=spring
 
 DIR=/tmp
 
-if [[ -e "$DIR/osm-data.osm.pbf" ]]; then
-    pyosmium-up-to-date "$DIR/osm-data.osm.pbf"
-else
-    curl --silent -o "$DIR/osm-data.osm.pbf" $OSMDATA
-fi
+# This env var is read by osm2pgsql config to find the file
+export STADTNAVI_CONFIG="$WORKDIR/stadtnavi-config.csv"
+
+curl --silent -o "$STADTNAVI_CONFIG" "$STADTNAVI_CONFIG_URL"
+
+export LUA_PATH="$PROJECT_DIR/osm2pgsql-themepark/lua/?.lua;;"
+
+osm2pgsql -d $TMP_BUILD_DB -O flex -S stadtnavi.lua "$DIR/osm-pois.osm.pbf"

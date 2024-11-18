@@ -6,10 +6,10 @@ WORKDIR=/var/poi
 
 CURL_OPTS="--location --fail -s --show-error -#"
 
-PBF_URL={{ poi_pbf_download_url }}
+PBF_URL="{{ poi_pbf_download_url }}"
 POI_FILE="$WORKDIR/osm-pois.osm.pbf"
 
-STADTNAVI_CONFIG_URL={{ poi_layers_url }}
+STADTNAVI_CONFIG_URL="{{ poi_layers_url }}"
 
 TMP_BUILD_DB="poi"
 
@@ -32,7 +32,7 @@ osmium tags-filter --remove-tags --overwrite -o $POI_FILE \
 # This env var is read by osm2pgsql config to find the file
 export STADTNAVI_CONFIG="$WORKDIR/stadtnavi-config.csv"
 
-curl --silent -o "$STADTNAVI_CONFIG" "$STADTNAVI_CONFIG_URL"
+curl $CURL_OPTS -o "$STADTNAVI_CONFIG" "$STADTNAVI_CONFIG_URL"
 
 export LUA_PATH="$WORKDIR/osm2pgsql-themepark/lua/?.lua;;"
 
@@ -44,3 +44,5 @@ PGPASSWORD={{ poi_postgres_password }} osm2pgsql -d $TMP_BUILD_DB \
   -O flex \
   -S stadtnavi.lua \
   $POI_FILE
+
+send-to-matrix "⛯ Imported POIs on {{ inventory_hostname }}"

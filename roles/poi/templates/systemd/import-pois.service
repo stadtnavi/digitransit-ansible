@@ -7,11 +7,11 @@ StartLimitBurst=2
 
 [Service]
 Type=simple
-ExecStart=/var/poi/import-pois
 WorkingDirectory=/var/poi
+ExecStart=/var/poi/import-pois
 Restart=on-failure
 
-ExecStopPost=systemd-failure-notification "%s"
+ExecStopPost=systemd-failure-notification "%n"
 RestartSec=10s
 
 [Install]

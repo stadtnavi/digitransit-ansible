@@ -13,6 +13,7 @@
       - osm2pgsql
       - osmium-tool
       - curl
+      - git
 
 - name: Create data directory
   file:
@@ -45,5 +46,21 @@
   template: src={{ item }} dest=/var/poi/
   with_items:
     - import-pois
+    - stadtnavi.lua
   notify: Restart import-pois
 
+- name: Clone osm2pgsql-themepark
+  git:
+    repo: "https://github.com/osm2pgsql-dev/osm2pgsql-themepark.git"
+    dest: "/var/poi/osm2pgsql-themepark"
+    version: "60ebeb886f6aaf11c55ea7d393320d153d2b573f"
+    force: yes
+  notify: Restart import-pois
+
+- name: Copy entire templates folder to server
+  copy:
+    src: themes
+    dest: /var/poi/
+    owner: root
+    group: root
+    mode: '0755'

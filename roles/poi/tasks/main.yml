@@ -74,3 +74,18 @@
     group: root
     mode: '0755'
   notify: Restart import-pois
+
+- name: Caddyfile
+  ansible.builtin.template:
+    src: templates/poi.caddy
+    dest: /etc/caddy/
+    owner: caddy
+    group: caddy
+    mode: 0660
+  notify: Restart caddy
+
+- name: Install nginx config
+  template:
+    src: "nginx/poi-cache.conf"
+    dest: /etc/nginx/sites-enabled/
+  notify: "Restart nginx"

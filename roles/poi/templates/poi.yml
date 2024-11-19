@@ -29,15 +29,18 @@ spec:
       image: docker.io/pramsey/pg_tileserv:20240614
       ports:
         - containerPort: 7800
-          hostPort: {{ poi_pg_tileserve_port }}
+          hostPort: {{ poi_pg_tileserv_port }}
           name: pg-tileserve
           protocol: TCP
       env:
         - name: DATABASE_URL
-          value: postgresql://poi:{{ poi_postgres_password }}@poi-postgresql/poi
-
+          value: postgresql://poi:{{ poi_postgres_password }}@poi-poi-postgresql/poi
+        - name: TS_DEFAULTMINZOOM
+          value: "10"
+        - name: TS_ENABLEMETRICS
+          value: "10"
   volumes:
     - name: poi-postgres-storage
       hostPath:
         path: poi-postgres
-        type: DirectoryOrCreate
+        type: Directory

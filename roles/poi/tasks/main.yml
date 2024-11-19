@@ -49,7 +49,14 @@
     dest: /etc/systemd/system/
   with_items:
     - import-pois.service
+    - import-pois.timer
   notify: Restart import-pois
+
+- name: Enable and start import-pois.timer
+  ansible.builtin.systemd:
+    name: import-pois.timer
+    enabled: yes
+    state: started
 
 - name: Install config and script files
   template: src={{ item }} dest=/var/poi/

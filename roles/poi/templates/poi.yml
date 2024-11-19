@@ -1,9 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: postgresql-pod
-  labels:
-    app: postgresql
+  name: poi
 spec:
   containers:
     - name: poi-postgresql
@@ -27,6 +25,16 @@ spec:
         postStart:
           exec:
             command: [ "psql", "-c", "CREATE EXTENSION IF NOT EXISTS hstore;"]
+    - name: pg-tileserv
+      image: docker.io/pramsey/pg_tileserv:20240614
+      ports:
+        - containerPort: 7800
+          hostPort: {{ poi_pg_tileserve_port }}
+          name: pg-tileserve
+          protocol: TCP
+      env:
+        - name: DATABASE_URL
+          value: postgresql://poi:{{ poi_postgres_password }}@poi-postgresql/poi
 
   volumes:
     - name: poi-postgres-storage

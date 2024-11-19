@@ -2,7 +2,7 @@
 Description=Import POIs Service
 After=network.target
 
-StartLimitIntervalSec=30m
+StartLimitIntervalSec=1h
 StartLimitBurst=2
 
 [Service]
@@ -12,7 +12,7 @@ ExecStart=/var/poi/import-pois
 Restart=on-failure
 
 ExecStopPost=systemd-failure-notification "%n"
-RestartSec=10s
+RestartSec=5m
 
 [Install]
 WantedBy=multi-user.target

@@ -14,12 +14,14 @@
       - osmium-tool
       - curl
       - git
+      - liblua5.3-dev
+      - lua5.3
       - luarocks
 
 - name: Install lua-csv package using LuaRocks
   ansible.builtin.command:
-    cmd: luarocks install lua-csv
-    creates: "/usr/local/share/lua/5.1/lua-csv/"
+    cmd: luarocks-5.3 install lua-csv
+    creates: "/usr/local/share/lua/5.3/lua-csv/"
   become: yes
 
 - name: Create data directory

@@ -34,9 +34,9 @@ themepark:add_table{
 }
 
 local map_columns = {
-    Oberkategorie = 'category1',
-    Kategorie = 'category2',
-    Unterkategorie = 'category3',
+    ['Oberkategorie Code'] = 'category1',
+    ['Kategorie Code'] = 'category2',
+    ['Unterkategorie Code'] = 'category3',
     ['OSM-Filter'] = 'condition',
     Eigenschaften = 'attributes',
 }

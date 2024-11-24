@@ -1,4 +1,5 @@
 ---
 dependencies:
-  - role: base
   - role: leonardehrenfried.baseline.podman
+  - role: leonardehrenfried.baseline.caddyfile
+  - role: leonardehrenfried.baseline.nginx_cache

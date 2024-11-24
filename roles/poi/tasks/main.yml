@@ -1,13 +1,28 @@
 ---
+- apt_repository:
+    repo: "deb http://deb.debian.org/debian bookworm-backports main contrib non-free"
+    state: present
+    update_cache: yes
+
 - name: Install packages
   apt:
     state: latest
-    default_release: buster-backports
+    default_release: bookworm-backports
     name:
       - pyosmium
       - osm2pgsql
       - osmium-tool
       - curl
+      - git
+      - liblua5.3-dev
+      - lua5.3
+      - luarocks
+
+- name: Install lua-csv package using LuaRocks
+  ansible.builtin.command:
+    cmd: luarocks-5.3 install lua-csv
+    creates: "/usr/local/share/lua/5.3/lua-csv/"
+  become: yes
 
 - name: Create data directory
   file:
@@ -20,15 +35,64 @@
 - name: Install config and script files
   template: src={{ item }} dest=/var/poi/
   with_items:
-    - build-mbtiles
-    - config-openmaptiles.json
-    - process-openmaptiles.lua
-    - germany-and-around.geojson
-  notify: Restart poi
+    - poi.yml
+  notify: Restart poi service
+
+- name: Make script executable
+  file:
+    dest: /var/poi/import-pois
+    mode: "a+x"
 
 - name: Install systemd files
-  template: src={{ item }} dest=/etc/systemd/system/
+  ansible.builtin.template:
+    src: systemd/{{ item }}
+    dest: /etc/systemd/system/
   with_items:
-    - poi.service
-  notify: Restart poi
+    - import-pois.service
+    - import-pois.timer
+  notify: Restart import-pois
 
+- name: Enable and start import-pois.timer
+  ansible.builtin.systemd:
+    name: import-pois.timer
+    enabled: yes
+    state: started
+
+- name: Install config and script files
+  template: src={{ item }} dest=/var/poi/
+  with_items:
+    - import-pois
+    - stadtnavi.lua
+  notify: Restart import-pois
+
+- name: Clone osm2pgsql-themepark
+  git:
+    repo: "https://github.com/osm2pgsql-dev/osm2pgsql-themepark.git"
+    dest: "/var/poi/osm2pgsql-themepark"
+    version: "60ebeb886f6aaf11c55ea7d393320d153d2b573f"
+    force: yes
+  notify: Restart import-pois
+
+- name: Copy entire templates folder to server
+  copy:
+    src: themes
+    dest: /var/poi/
+    owner: root
+    group: root
+    mode: '0755'
+  notify: Restart import-pois
+
+- name: Caddyfile
+  ansible.builtin.template:
+    src: templates/poi.caddy
+    dest: /etc/caddy/
+    owner: caddy
+    group: caddy
+    mode: 0660
+  notify: Restart caddy
+
+- name: Install nginx config
+  template:
+    src: "nginx/poi-cache.conf"
+    dest: /etc/nginx/sites-enabled/
+  notify: "Restart nginx"

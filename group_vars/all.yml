@@ -24,11 +24,12 @@ firewall_allowed_tcp_ports:
 firewall_state: started
 firewall_enabled_at_boot: true
 firewall_flush_rules_and_chains: false
+
 # ssh hardening
 network_ipv6_enable: true
 ssh_allow_agent_forwarding: true
-ssh_permit_tunnel: true
-ssh_allow_tcp_forwarding: 'yes'
+ssh_permit_tunnel: "yes"
+ssh_allow_tcp_forwarding: "yes"
 sftp_enabled: true
 sftp_chroot: true
 

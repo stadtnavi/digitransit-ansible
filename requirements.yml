@@ -5,12 +5,14 @@ collections:
   version: 5.2.0
 - name: community.docker
   version: 3.7.0
+- name: devsec.hardening
+  version: 10.1.0
 
 # directory containing the collection
 #- source: ../../ansible-baseline
 #  type: dir
 - name: leonardehrenfried.baseline
-  version: 1.7.19
+  version: 1.7.24
 
 roles:
 - src: geerlingguy.docker
@@ -21,5 +23,3 @@ roles:
   version: 1.0.1
 - src: geerlingguy.firewall
   version: 2.5.0
-- src: dev-sec.ssh-hardening
-  version: 9.7.0

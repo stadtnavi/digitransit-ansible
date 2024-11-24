@@ -1,15 +1,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: postgresql-pod
-  labels:
-    app: postgresql
+  name: poi
 spec:
   containers:
     - name: poi-postgresql
       image: docker.io/postgis/postgis:17-3.5
       ports:
         - containerPort: 5432
+          hostPort: {{ poi_postgres_port }}
           name: postgres
           protocol: TCP
       env:
@@ -26,18 +25,22 @@ spec:
         postStart:
           exec:
             command: [ "psql", "-c", "CREATE EXTENSION IF NOT EXISTS hstore;"]
+    - name: pg-tileserv
+      image: docker.io/pramsey/pg_tileserv:20240614
+      ports:
+        - containerPort: 7800
+          hostPort: {{ poi_pg_tileserv_port }}
+          name: pg-tileserve
+          protocol: TCP
+      env:
+        - name: DATABASE_URL
+          value: postgresql://poi:{{ poi_postgres_password }}@poi-poi-postgresql/poi
+        - name: TS_DEFAULTMINZOOM
+          value: "10"
+        - name: TS_ENABLEMETRICS
+          value: "10"
   volumes:
-    - name: postgres-storage
-      persistentVolumeClaim:
-        claimName: postgres-pvc
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: postgres-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
+    - name: poi-postgres-storage
+      hostPath:
+        path: poi-postgres
+        type: Directory

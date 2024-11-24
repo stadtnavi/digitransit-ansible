@@ -1,0 +1,48 @@
+#!/bin/bash
+
+set -euo pipefail
+
+WORKDIR=/var/poi
+
+CURL_OPTS="--location --fail -s --show-error -#"
+
+PBF_URL="{{ poi_pbf_download_url }}"
+POI_FILE="$WORKDIR/osm-pois.osm.pbf"
+
+STADTNAVI_CONFIG_URL="{{ poi_layers_url }}"
+
+TMP_BUILD_DB="poi"
+
+#
+#  Download or update OSM data from Geofabrik
+#
+
+if [[ -e "$WORKDIR/osm-data.osm.pbf" ]]; then
+  echo "OSM file already exists, checking for updates..."
+  pyosmium-up-to-date "$WORKDIR/osm-data.osm.pbf"
+else
+  curl $CURL_OPTS -o "$WORKDIR/osm-data.osm.pbf" $PBF_URL
+fi
+
+echo "Extracting POIs from all OSM data..."
+osmium tags-filter --remove-tags --overwrite -o $POI_FILE \
+    "$WORKDIR/osm-data.osm.pbf" \
+    amenity leisure office shop tourism landuse=cemetery natural=spring
+
+# This env var is read by osm2pgsql config to find the file
+export STADTNAVI_CONFIG="$WORKDIR/stadtnavi-config.csv"
+
+curl $CURL_OPTS -o "$STADTNAVI_CONFIG" "$STADTNAVI_CONFIG_URL"
+
+export LUA_PATH="$WORKDIR/osm2pgsql-themepark/lua/?.lua;;"
+
+echo "Importing into Postgres database..."
+PGPASSWORD={{ poi_postgres_password }} osm2pgsql -d $TMP_BUILD_DB \
+  --host localhost \
+  --port {{ poi_postgres_port }} \
+  --user poi \
+  -O flex \
+  -S stadtnavi.lua \
+  $POI_FILE
+
+send-to-matrix "⛯ Imported POIs on {{ inventory_hostname }}"

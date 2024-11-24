@@ -1,2 +1,6 @@
 ---
-poi_pbf_download_url: http://download.geofabrik.de/europe/germany-latest.osm.pbf
+poi_pbf_download_url: https://download.geofabrik.de/europe/germany-latest.osm.pbf
+poi_postgres_port: 6432
+poi_layers_url: "https://docs.google.com/spreadsheets/d/1-iKEeaits4W1EPoMzI29uazZRZJ9s2GJGUPnkO9GzKM/gviz/tq?tqx=out:csv&sheet=Layer"
+poi_pg_tileserv_port: 7800
+poi_cache_port: 7801

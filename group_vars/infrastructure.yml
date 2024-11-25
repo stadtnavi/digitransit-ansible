@@ -67,6 +67,8 @@ photon_languages:
 photon_domain: "photon-eu.stadtnavi.eu"
 photon_enable_updates: false
 
+photon_new_domain: "photon-new.stadtnavi.leonard.io"
+
 poi_postgres_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   64376438333432666530336462363031376638323263363434346138656538373965363932343338

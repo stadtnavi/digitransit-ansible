@@ -47,7 +47,6 @@ tileserver_allowed_referrers:
   - "*.stadtnavi.eu"
   - "*.aachen.de"
 
-nominatim_image: "docker.io/mediagis/nominatim:4.4-2024-04-19T11-30"
 nominatim_pbf_url: "https://download.geofabrik.de/europe-latest.osm.pbf"
 nominatim_replication_url: "https://download.geofabrik.de/europe-updates/"
 nominatim_db_password: !vault |
@@ -66,6 +65,7 @@ photon_languages:
   - pl
   - nl
 photon_domain: "photon-eu.stadtnavi.eu"
+photon_enable_updates: false
 
 poi_postgres_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256

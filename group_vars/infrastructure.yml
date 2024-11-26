@@ -64,7 +64,7 @@ photon_languages:
   - pl
   - nl
 photon_domain: "photon-eu.stadtnavi.eu"
-photon_enable_updates: false
+photon_enable_updates: true
 photon_volume_name: "photon-data-2023-11-25"
 
 #photon_new_domain: "photon-new.stadtnavi.leonard.io"

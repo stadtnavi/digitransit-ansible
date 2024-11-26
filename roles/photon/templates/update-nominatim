@@ -1,12 +1,14 @@
 #! /bin/bash -e
 
-docker exec -i nominatim sudo -u nominatim nominatim replication --project-dir /nominatim --once --no-index
+docker exec -i nominatim sudo -u nominatim nominatim replication --project-dir /nominatim --once
 
-OUTPUT_FILE=nvbw_osm_matches.csv
+OUTPUT_FILE=nvbw_osm_matches.csv.gz
 
-curl -o - https://data.mfdz.de/mfdz/nvbw_osm_matches.csv.gz | gunzip > ${OUTPUT_FILE}
+curl -o ${OUTPUT_FILE} https://data.mfdz.de/mfdz/nvbw_osm_matches.csv.gz
 echo "Downloaded station matches to ${OUTPUT_FILE}"
 
 echo "Re-adding IFOPTs"
 echo "...finished"
 ./nominatim_add_ifopt.py --username nominatim --host localhost --port 5432 --password {{ nominatim_db_password }} ${OUTPUT_FILE}
+
+docker exec -i nominatim sudo -u nominatim nominatim index

@@ -2,7 +2,7 @@
 - name: Install base packages
   package:
     name:
-      - python3-psycopg2
+      - python3-psycopg
     state: present
 
 - name: Create nominatim config directory

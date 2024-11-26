@@ -126,8 +126,11 @@
     },
     {
       "type": "real-time-alerts",
-      "url": "https://gtfsr-servicealerts.vvs.de/",
-      "feedId": "hbg"
+      "url": "https://data.mfdz.de/vvs_gtfsrt_alerts_herrenberg/body.pbf",
+      "feedId": "hbg",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
     },
     {
       "type": "vehicle-positions",

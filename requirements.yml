@@ -9,10 +9,10 @@ collections:
   version: 10.1.0
 
 # directory containing the collection
-#- source: ../../ansible-baseline
-#  type: dir
-- name: leonardehrenfried.baseline
-  version: 1.8.3
+- source: ../../ansible-baseline
+  type: dir
+#- name: leonardehrenfried.baseline
+#  version: 1.8.3
 
 roles:
 - src: geerlingguy.docker

@@ -64,10 +64,10 @@ photon_languages:
   - pl
   - nl
 photon_domain: "photon-eu.stadtnavi.eu"
-photon_enable_updates: true
+photon_enable_updates: false
 photon_volume_name: "photon-data-2023-11-25"
 
-#photon_new_domain: "photon-new.stadtnavi.leonard.io"
+photon_new_domain: "photon-new.stadtnavi.leonard.io"
 
 poi_postgres_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256

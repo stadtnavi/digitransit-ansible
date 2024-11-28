@@ -15,4 +15,4 @@
     - services
     - leonardehrenfried.baseline.nominatim
     - leonardehrenfried.baseline.photon
-    - leonardehrenfried.baseline.photon_new
+    #- leonardehrenfried.baseline.photon_new

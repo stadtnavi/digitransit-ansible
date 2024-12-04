@@ -1,0 +1,13 @@
+[Unit]
+Description=Import weather stations to Postgres
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/var/poi
+ExecStart=/var/poi/import-weather-stations
+ExecStopPost=systemd-failure-notification "%n"
+
+[Install]
+WantedBy=multi-user.target

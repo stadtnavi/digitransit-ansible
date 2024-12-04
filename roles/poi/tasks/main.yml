@@ -17,6 +17,7 @@
       - liblua5.3-dev
       - lua5.3
       - luarocks
+      - gdal-bin
 
 - name: Install lua-csv package using LuaRocks
   ansible.builtin.command:
@@ -38,11 +39,6 @@
     - poi.yml
   notify: Restart poi service
 
-- name: Make script executable
-  file:
-    dest: /var/poi/import-pois
-    mode: "a+x"
-
 - name: Install systemd files
   ansible.builtin.template:
     src: systemd/{{ item }}
@@ -52,11 +48,22 @@
     - import-pois.timer
   notify: Restart import-pois
 
+- name: Install systemd files
+  ansible.builtin.template:
+    src: systemd/{{ item }}
+    dest: /etc/systemd/system/
+  with_items:
+    - import-weather-stations.service
+    - import-weather-stations.timer
+
 - name: Enable and start import-pois.timer
   ansible.builtin.systemd:
-    name: import-pois.timer
+    name: "{{ item }}"
     enabled: yes
     state: started
+  with_items:
+      - import-pois.timer
+      - import-weather-stations.timer
 
 - name: Install config and script files
   template: src={{ item }} dest=/var/poi/
@@ -64,6 +71,19 @@
     - import-pois
     - stadtnavi.lua
   notify: Restart import-pois
+
+- name: Install script files
+  template: src={{ item }} dest=/var/poi/
+  with_items:
+    - import-weather-stations
+
+- name: Make scripts executable
+  file:
+    dest: /var/poi/{{ item }}
+    mode: "a+x"
+  with_items:
+    - import-pois
+    - import-weather-stations
 
 - name: Clone osm2pgsql-themepark
   git:

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -euo pipefail
+
+WORKDIR=/var/poi
+
+CURL_OPTS="--location --fail -s --show-error -#"
+
+GEOJSON_URL="https://{{ api_hostname }}/herrenberg/weather/weather.geojson"
+GEOJSON_FILE="$WORKDIR/weather-stations.geojson"
+
+curl $CURL_OPTS "$GEOJSON_URL" -o "$GEOJSON_FILE"
+
+echo "Importing into Postgres database..."
+ogr2ogr -f "PostgreSQL" PG:"host=localhost dbname=poi user=poi port={{ poi_postgres_port }} password={{ poi_postgres_password }}" "${GEOJSON_FILE}" -nln weather_stations -append
+
+#send-to-matrix "⛯ Imported weather stations on {{ inventory_hostname }}"

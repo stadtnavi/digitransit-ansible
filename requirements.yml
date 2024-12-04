@@ -2,7 +2,7 @@
 collections:
 - ansible.posix
 - name: community.general
-  version: 5.2.0
+  version: 10.0.1
 - name: community.docker
   version: 3.7.0
 - name: devsec.hardening
@@ -12,7 +12,7 @@ collections:
 #- source: ../../ansible-baseline
 #  type: dir
 - name: leonardehrenfried.baseline
-  version: 1.7.24
+  version: 1.8.6
 
 roles:
 - src: geerlingguy.docker

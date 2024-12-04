@@ -47,7 +47,6 @@ tileserver_allowed_referrers:
   - "*.stadtnavi.eu"
   - "*.aachen.de"
 
-nominatim_image: "docker.io/mediagis/nominatim:4.4-2024-04-19T11-30"
 nominatim_pbf_url: "https://download.geofabrik.de/europe-latest.osm.pbf"
 nominatim_replication_url: "https://download.geofabrik.de/europe-updates/"
 nominatim_db_password: !vault |
@@ -58,7 +57,6 @@ nominatim_db_password: !vault |
   6565656533643338330a356533353630333562366131363965373432623963663836353562323666
   38363966633565323936343434616336666566656661396434373034333333396365
 
-photon_image: "ghcr.io/leonardehrenfried/photon:0.5.0-2024-06-24T19-43"
 photon_languages:
   - de
   - en
@@ -66,6 +64,14 @@ photon_languages:
   - pl
   - nl
 photon_domain: "photon-eu.stadtnavi.eu"
+photon_enable_updates: true
+photon_volume_name: "photon-data-2024-11-30"
+photon_image: "ghcr.io/leonardehrenfried/photon:0.6.0-2024-11-30T08-02"
+
+photon_new_enabled: false
+photon_new_domain: "photon-new.stadtnavi.leonard.io"
+photon_new_volume_name: "photon-data-2024-12-01"
+photon_new_image: "ghcr.io/leonardehrenfried/photon:0.6.0-2024-11-30T08-02"
 
 poi_postgres_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256

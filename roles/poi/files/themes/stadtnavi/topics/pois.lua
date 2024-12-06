@@ -15,6 +15,7 @@ local csv = require('lua-csv/csv')
 
 -- Map column names from the one used in the config to the internal one.
 local map_columns = {
+    ['Layer-Typ']           = 'layer_type',
     ['Oberkategorie Code']  = 'category1',
     ['Kategorie Code']      = 'category2',
     ['Unterkategorie Code'] = 'category3',
@@ -29,7 +30,7 @@ local attribute_columns = {
     brand          = { class = 'brand' },
     changing_table = { class = 'changing_table' },
     cuisine        = { class = 'cuisine' },
-    drinking_water = { class = 'contact', type = 'boolean' },
+    drinking_water = { class = 'drinking_water', type = 'boolean' },
     email          = { class = 'contact' },
     fee            = { class = 'fee', type = 'boolean' },
     name           = { class = 'name' },
@@ -195,24 +196,26 @@ local line = 1 -- start at 1 because first line had column headers
 for _, d in ipairs(poi_config) do
     line = line + 1
 
-    local status, match = pcall(parser.parse, d.condition)
-    if status then
-        d.match = match
+    if d.layer_type == 'poi_layer' then
+        local status, match = pcall(parser.parse, d.condition)
+        if status then
+            d.match = match
 
-        local attribute_list = osm2pgsql.split_string(d.attributes, ',')
-        d.attributes = {}
-        d.attribute_classes = {}
-        for _, a in ipairs(attribute_list) do
-            if a:match("^[a-z_]+$") then
-                d.attribute_classes[a] = true
-                d.attributes[#d.attributes + 1] = a
-            else
-                print("WARNING: Ignored invalid attribute class in line " .. line .. ": '" .. a .. "'")
+            local attribute_list = osm2pgsql.split_string(d.attributes, ',')
+            d.attributes = {}
+            d.attribute_classes = {}
+            for _, a in ipairs(attribute_list) do
+                if a:match("^[a-z_]+$") then
+                    d.attribute_classes[a] = true
+                    d.attributes[#d.attributes + 1] = a
+                else
+                    print("WARNING: Ignored invalid attribute class in line " .. line .. ": '" .. a .. "'")
+                end
             end
+            table.sort(d.attributes)
+        else
+            print("Ignoring category in line " .. line .. ": " .. match)
         end
-        table.sort(d.attributes)
-    else
-        print("Ignoring category in line " .. line .. ": " .. match)
     end
 end
 

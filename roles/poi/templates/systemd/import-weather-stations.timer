@@ -1,0 +1,13 @@
+[Unit]
+Description=Import weather stations every minute
+
+[Timer]
+# every 15 seconds
+#OnCalendar=*:*:0/15
+#
+# every minute
+OnCalendar=*:0/1
+Persistent=true
+
+[Install]
+WantedBy=timers.target

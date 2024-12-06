@@ -83,3 +83,5 @@ poi_postgres_password: !vault |
   6539316338353964333762366332383338626532616137653036
 
 poi_domain: "features.stadtnavi.eu"
+
+api_hostname: "api.dev.stadtnavi.eu"

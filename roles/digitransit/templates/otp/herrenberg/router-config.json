@@ -1,12 +1,11 @@
 {
   "routingDefaults": {
     "numItineraries": 5,
-    "transferSlack": 100,
+    "transferSlack": "1m",
     "waitReluctance": 2,
     "walk": {
-      "reluctance": 4,
-      "stairsReluctance": 5,
-      "boardCost": 540
+      "reluctance": 3,
+      "stairsReluctance": 5
     },
     "bicycle": {
       "triangle": {

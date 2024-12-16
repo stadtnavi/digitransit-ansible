@@ -83,5 +83,17 @@ poi_postgres_password: !vault |
   6539316338353964333762366332383338626532616137653036
 
 poi_domain: "features.stadtnavi.eu"
-
 api_hostname: "api.dev.stadtnavi.eu"
+
+### GTFS-RT VP to MQTT bridge
+
+# domain for the Websocket endpoint that the Digitransit instances connect to
+mqtt_domain: "vehiclepositions.stadtnavi.eu"
+# domain of the OTP instance where the GTFS-RT to MQTT bridge gets route color information from
+# you probably want to set it to prod when we deploy to that
+mqtt_otp_domain: "api.dev.stadtnavi.eu"
+# the feed where the GTFS-RT VP data is polled from
+mqtt_vehicle_position_feed: "https://gtfsr-vehpos.vvs.de/gtfsr-vehpos/vp"
+# the feed ID to be used to construct the MQTT topic
+# this must also match Digitransit config
+mqtt_feed_id: hbg

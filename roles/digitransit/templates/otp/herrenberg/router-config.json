@@ -2,10 +2,11 @@
   "routingDefaults": {
     "numItineraries": 5,
     "transferSlack": "1m",
-    "waitReluctance": 2,
+    "waitReluctance": 1.2,
     "walk": {
       "reluctance": 3,
-      "stairsReluctance": 1.1
+      "stairsReluctance": 1.1,
+      "boardCost": 180
     },
     "bicycle": {
       "triangle": {
@@ -29,7 +30,7 @@
       "parkAndRideDurationRatio": 0.6,
       "minBikeParkingDistance": 500,
       "transitGeneralizedCostLimit": {
-        "costLimitFunction": "10m + 1.5x"
+        "costLimitFunction": "10m + 1.2x"
       }
     },
     "accessEgress": {

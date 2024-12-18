@@ -11,7 +11,7 @@ digitransit_ui:
   - config: herrenberg
     domain: engstingen.dev.landstadtmobil.de
 
-otp_docker_tag: 2.7.0_2024-12-13T13-51
+otp_docker_tag: 2.7.0_2024-12-17T12-00
 otp_router_config: herrenberg/router-config.json
 otp_max_mem: 24G
 

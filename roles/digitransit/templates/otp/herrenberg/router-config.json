@@ -30,7 +30,7 @@
       "parkAndRideDurationRatio": 0.6,
       "minBikeParkingDistance": 500,
       "transitGeneralizedCostLimit": {
-        "costLimitFunction": "10m + 1.2x"
+        "costLimitFunction": "10m + 1.4x"
       }
     },
     "accessEgress": {

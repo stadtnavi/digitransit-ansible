@@ -30,8 +30,6 @@ tileserver_tile_margin: 25
 tileserver_allowed_referrers:
   - "{{ tileserver_domain }}"
   - localhost
-  - .mih.mitfahren-bw.de
-  - .herrenberg.stadtnavi.de
   - .stadtnavi.github.io
   - .digitransit-next.leonard.io
   - "*.service-bw.de"
@@ -41,9 +39,10 @@ tileserver_allowed_referrers:
   - "*.landstadtmobil.de"
   - "10.70.190.201"
   - "*.vpe.de"
-  - "*.bbnavi.vk256.eu"
+  - "*.mitfahren-bw.de"
   - "*.parkendd.de"
   - "*.mobidata-bw.de"
+  - "*.stadtnavi.de"
   - "*.stadtnavi.eu"
   - "*.aachen.de"
 

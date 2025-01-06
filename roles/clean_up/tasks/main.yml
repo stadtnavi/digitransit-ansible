@@ -7,6 +7,8 @@
   with_items:
     - mosquitto
     - thingsboard-to-mqtt
+    - delay-prediction
+    - delay-postgis
   ignore_errors: true
 
 - name: Remove systemd files
@@ -16,6 +18,8 @@
   with_items:
     - mosquitto.service
     - thingsboard-to-mqtt.service
+    - delay-prediction.service
+    - delay-postgis.service
 
 - name: Remove folders
   ansible.builtin.file:

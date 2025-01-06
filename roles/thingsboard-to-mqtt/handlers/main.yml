@@ -1,5 +1,0 @@
----
-- name: Restart thingsboard-to-mqtt
-  service:
-    name: thingsboard-to-mqtt
-    state: restarted

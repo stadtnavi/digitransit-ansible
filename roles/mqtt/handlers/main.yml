@@ -1,6 +1,0 @@
----
-- name: Restart mosquitto service
-  service:
-    name: mosquitto
-    state: restarted
-  listen: "Restart mosquitto"

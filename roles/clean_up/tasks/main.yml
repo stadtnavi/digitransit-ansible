@@ -1,0 +1,27 @@
+---
+- name: Stop unused services
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    state: stopped
+    daemon_reload: true
+  with_items:
+    - mosquitto
+    - thingsboard-to-mqtt
+  ignore_errors: true
+
+- name: Remove systemd files
+  ansible.builtin.file:
+    dest: /etc/systemd/system/{{ item }}
+    state: absent
+  with_items:
+    - mosquitto.service
+    - thingsboard-to-mqtt.service
+
+- name: Remove folders
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+      - /etc/mosquitto/
+      - /var/graph-builder/
+      - /var/delay-prediction/

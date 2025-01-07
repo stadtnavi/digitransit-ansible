@@ -39,6 +39,16 @@ spec:
           value: "10"
         - name: TS_ENABLEMETRICS
           value: "10"
+    - name: pg-featureserv
+      image: docker.io/pramsey/pg_featureserv:20250103
+      ports:
+        - containerPort: 9000
+          hostPort: {{ poi_pg_featureserv_port }}
+          name: pg-tileserve
+          protocol: TCP
+      env:
+        - name: DATABASE_URL
+          value: postgresql://poi:{{ poi_postgres_password }}@poi-poi-postgresql/poi
   volumes:
     - name: poi-postgres-storage
       hostPath:

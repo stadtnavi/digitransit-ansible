@@ -5,7 +5,7 @@
   become: yes
   roles:
     - base
+    - clean_up
     - digitransit
     - thingsboard-enhancer
-    - thingsboard-to-mqtt
     - matomo

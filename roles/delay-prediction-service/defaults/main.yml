@@ -1,4 +1,0 @@
----
-delay_postgres_user: delay
-delay_postgres_db: delay
-mqtt_uri: mqtts://publisher:{{ mqtt_publisher_password }}@{{ api_hostname }}:8883

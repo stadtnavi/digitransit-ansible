@@ -16,9 +16,6 @@ firewall_allowed_tcp_ports:
   - "22"
   - "80"
   - "443"
-  - "1883" # mqtt
-  - "1884" # mqtt-over-websockets
-  - "8883" # mqtts
 
 # firewall
 firewall_state: started

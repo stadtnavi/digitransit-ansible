@@ -3,15 +3,5 @@
 }
 
 {{ poi_featureserv_domain }} {
-  # enable cors
-  header {
-    Access-Control-Allow-Headers *
-    Access-Control-Allow-Methods *
-    Access-Control-Allow-Origin *
-  }
-  @options {
-    method OPTIONS
-  }
-  respond @options 204
   reverse_proxy localhost:{{ poi_pg_featureserv_port }}
 }

@@ -3,6 +3,7 @@
     "numItineraries": 5,
     "transferSlack": "1m",
     "waitReluctance": 1.2,
+    "subwayAccessTime": 0,
     "walk": {
       "reluctance": 3,
       "stairsReluctance": 1.1,

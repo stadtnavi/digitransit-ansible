@@ -1,0 +1,9 @@
+---
+- name: Prometheus config file
+  ansible.builtin.template:
+    src: templates/prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+    owner: root
+    group: root
+    mode: 0640
+  notify: restart prometheus

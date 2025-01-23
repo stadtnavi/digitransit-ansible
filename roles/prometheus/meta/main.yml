@@ -1,0 +1,5 @@
+---
+collections:
+
+dependencies:
+  - fahcsim.grafana_stack.prometheus

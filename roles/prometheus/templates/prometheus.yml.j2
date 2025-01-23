@@ -1,0 +1,10 @@
+global:
+  scrape_interval:     15s # By default, scrape targets every 15 seconds.
+scrape_configs:
+  {% for host in otp_scrape_hosts %}
+- job_name: '{{ host}}'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['{{ host}}']
+    metrics_path: /otp/actuators/prometheus
+  {% endfor %}

@@ -1,0 +1,14 @@
+[Unit]
+Description=Node.js Service to Parse Layers Sheet
+After=network.target
+
+StartLimitIntervalSec=30m
+StartLimitBurst=2
+
+[Service]
+ExecStart=/usr/bin/node /path/to/parse-layers-sheet.js
+WorkingDirectory=/path/to
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

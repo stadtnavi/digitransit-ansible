@@ -1,0 +1,7 @@
+{% for item in digitransit_ui %}
+
+{{ item.domain }} {
+  reverse_proxy localhost:{{ digitransit_ui_port }}
+}
+
+{% endfor %}

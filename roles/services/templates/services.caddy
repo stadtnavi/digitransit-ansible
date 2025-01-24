@@ -1,4 +1,11 @@
 services.stadtnavi.eu {
-  reverse_proxy /* localhost:{{ services_port }}
+  
+  handle_path /layer-categories/* {
+    file_server browse
+    root * /var/layer-categories/
+  }
 
+  handle /* {
+    reverse_proxy localhost:{{ services_port }}
+  }
 }

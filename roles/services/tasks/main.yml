@@ -23,11 +23,28 @@
 
 - name: Create /var/layer-categories directory
   file:
-    path: /var/layer-categories
+    path: /var/layer-categories/{{ item }}
     state: directory
     owner: root
     group: root
     mode: 0755
+  with_items:
+    - herrenberg
+
+- name: Deploy layer-categories.service
+  ansible.builtin.template:
+    src: "systemd/{{ item }}"
+    dest: /etc/systemd/system/
+  with_items:
+    - layer-categories.timer
+    - layer-categories.service
+
+- name: Enable and start layer-categories.timer
+  ansible.builtin.systemd:
+    name: layer-categories.timer
+    enabled: true
+    state: started
+    daemon_reload: yes
 
 - name: Caddyfile
   ansible.builtin.template:

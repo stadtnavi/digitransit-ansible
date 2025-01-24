@@ -7,6 +7,8 @@ collections:
   version: 3.7.0
 - name: devsec.hardening
   version: 10.1.0
+- name: fahcsim.grafana_stack
+  version: 1.4.1
 
 # directory containing the collection
 #- source: ../../ansible-baseline

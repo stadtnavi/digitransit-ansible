@@ -3,7 +3,48 @@
   package:
     name:
       - nginx
+      - npm
+      - nodejs
+      - node-axios
     state: present
+
+- name: Globally install csv-parser npm package
+  npm:
+    name: csv-parser
+    global: true
+  
+- name: Copy parse-layers-sheet.js script
+  ansible.builtin.template:
+    src: templates/parse-layers-sheet.js
+    dest: /usr/local/bin/parse-layers-sheet.js
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Create /var/layer-categories directory
+  file:
+    path: /var/layer-categories/{{ item }}
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  with_items:
+    - herrenberg
+
+- name: Deploy layer-categories.service
+  ansible.builtin.template:
+    src: "systemd/{{ item }}"
+    dest: /etc/systemd/system/
+  with_items:
+    - layer-categories-hbg.timer
+    - layer-categories-hbg.service
+
+- name: Enable and start layer-categories.timer
+  ansible.builtin.systemd:
+    name: layer-categories-hbg.timer
+    enabled: true
+    state: started
+    daemon_reload: yes
 
 - name: Caddyfile
   ansible.builtin.template:

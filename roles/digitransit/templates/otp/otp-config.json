@@ -5,6 +5,7 @@
     "FloatingBike": true,
     "ParallelRouting": true,
     "TransferConstraints": false,
-    "Co2Emissions": true
+    "Co2Emissions": true,
+    "ActuatorApi": true
   }
 }

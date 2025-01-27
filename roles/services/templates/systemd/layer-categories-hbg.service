@@ -1,0 +1,15 @@
+[Unit]
+Description=Node.js Service to Parse Layers Sheet
+After=network.target
+
+StartLimitIntervalSec=30m
+StartLimitBurst=2
+
+[Service]
+WorkingDirectory=/var/layer-categories/herrenberg/
+Environment=NODE_PATH=/usr/local/lib/node_modules
+ExecStart=/bin/bash -c '/usr/bin/node /usr/local/bin/parse-layers-sheet.js "https://docs.google.com/spreadsheets/d/1-iKEeaits4W1EPoMzI29uazZRZJ9s2GJGUPnkO9GzKM/gviz/tq?tqx=out:csv&sheet=layer"'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

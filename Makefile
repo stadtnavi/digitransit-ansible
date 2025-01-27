@@ -30,6 +30,9 @@ productionnorth: galaxy-install
 infrastructure: galaxy-install
 	${PLAYBOOK_CMD} -i hosts.ini infrastructure.yml
 
+monitoring: galaxy-install
+	${PLAYBOOK_CMD} -i hosts.ini monitoring.yml
+
 dev: galaxy-install
 	${PLAYBOOK_CMD} -i dev digitransit.yml
 

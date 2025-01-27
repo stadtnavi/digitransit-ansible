@@ -1,0 +1,13 @@
+---
+- name: Apply the monitoring stack
+  hosts: monitoring
+  # use this user if you don't have an account yet
+  #user: root
+  become: yes
+  roles:
+    - leonardehrenfried.baseline.base
+    - leonardehrenfried.baseline.journald
+    - devsec.hardening.ssh_hardening
+    - prometheus
+    - leonardehrenfried.baseline.grafana_caddy
+    - leonardehrenfried.baseline.grafana_backup

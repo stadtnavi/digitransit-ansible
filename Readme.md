@@ -3,9 +3,14 @@
 Install stadtnavi's digitransit with ansible
 
 - `make dev`: connects to the dev host and applies the playbook there
-- `make beta`
 - `make production`
 - `make infrastructure`
+- `make monitoring`
+
+### Monitoring
+
+OTP is monitored by Prometheus and Grafana on https://monitoring.stadtnavi.eu. Please ask
+@hbruch or @leonardehrenfried for access.
 
 ### Vault 
 
@@ -33,7 +38,7 @@ to, where it is stored in plain text.
 
 ### Digitransit target host requirements
 
-This playbook has been tested with a Debian Buster (10) target only.
+This playbook has been tested with a Debian Buster (11) target only.
 
 In order to execute the ansible playbook you need a user on the target host and `sudo`
 must be installed (which is not the case when using the Debian minimal base image).
@@ -122,3 +127,5 @@ To see the complete list of useful aliases check out [`alias.sh`](roles/base/tem
 ## Subtopics
 
 - [Adding another digitransit-ui instance](./docs/adding-a-ui-instance.md)
+- [Upgrade Matomo](./docs/upgrade-matomo.md)
+- [Vehicle Positions](./docs/vehicle-positions.md)

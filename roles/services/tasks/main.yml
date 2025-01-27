@@ -36,12 +36,12 @@
     src: "systemd/{{ item }}"
     dest: /etc/systemd/system/
   with_items:
-    - layer-categories.timer
-    - layer-categories.service
+    - layer-categories-hbg.timer
+    - layer-categories-hbg.service
 
 - name: Enable and start layer-categories.timer
   ansible.builtin.systemd:
-    name: layer-categories.timer
+    name: layer-categories-hbg.timer
     enabled: true
     state: started
     daemon_reload: yes

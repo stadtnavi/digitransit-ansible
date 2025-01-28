@@ -68,9 +68,11 @@ axios
                   url: row['Url'],
                   priority: parseInt(row['Priorisierung bei Überlappung'], 10),
                   min_zoom: parseInt(row['Minimales Zoomlevel'], 10),
+                  enabled_per_default: row['Layer per default angezeigt']=='ja',
                 },
                 icon: {
                   svg: row['Icon .svg'],
+                  svg_menu: row['Icon menu .svg'],
                   origin: row['Herkunft Symbol'],
                   background_color: row['Icon: Farbe Hintergrund_Code'],
                   color: row['Icon: Farbe Symbol'],
@@ -84,10 +86,6 @@ axios
                   wiki: row['OSM-Wiki-Seite'],
                   overpass_query: row['Overpass Query'],
                 },
-                misc: {
-                  comment: row['Kommentar'],
-                  origin: row['Herkunft'],
-                },
               },
             });
           } else {
@@ -97,9 +95,11 @@ axios
                 url: row['Url'],
                 priority: parseInt(row['Priorisierung bei Überlappung'], 10),
                 min_zoom: parseInt(row['Minimales Zoomlevel'], 10),
+                enabled_per_default: row['Layer per default angezeigt']=='ja',
               },
               icon: {
                 svg: row['Icon .svg'],
+                svg_menu: row['Icon menu .svg'],
                 origin: row['Herkunft Symbol'],
                 background_color: row['Icon: Farbe Hintergrund_Code'],
                 color: row['Icon: Farbe Symbol'],
@@ -112,10 +112,6 @@ axios
                 example: row['Beispielobjekt aus OSM'],
                 wiki: row['OSM-Wiki-Seite'],
                 overpass_query: row['Overpass Query'],
-              },
-              misc: {
-                comment: row['Kommentar'],
-                origin: row['Herkunft'],
               },
             };
           }

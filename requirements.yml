@@ -14,7 +14,7 @@ collections:
 #- source: ../../ansible-baseline
 #  type: dir
 - name: leonardehrenfried.baseline
-  version: 1.9.17
+  version: 1.9.19
 
 roles:
 - src: geerlingguy.docker

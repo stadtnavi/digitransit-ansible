@@ -1,6 +1,11 @@
 services.stadtnavi.eu {
   
   handle_path /layer-categories/* {
+    header {
+      Access-Control-Allow-Headers *
+      Access-Control-Allow-Methods *
+      Access-Control-Allow-Origin *
+    }
     file_server browse
     root * /var/layer-categories/
   }

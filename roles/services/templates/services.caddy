@@ -6,6 +6,7 @@ services.stadtnavi.eu {
       Access-Control-Allow-Methods *
       Access-Control-Allow-Origin *
     }
+    encode gzip
     file_server browse
     root * /var/layer-categories/
   }

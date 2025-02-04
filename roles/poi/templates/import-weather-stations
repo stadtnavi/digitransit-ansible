@@ -12,6 +12,6 @@ GEOJSON_FILE="$WORKDIR/weather-stations.geojson"
 curl $CURL_OPTS "$GEOJSON_URL" -o "$GEOJSON_FILE"
 
 echo "Importing into Postgres database..."
-ogr2ogr -f "PostgreSQL" PG:"host=localhost dbname=poi user=poi port={{ poi_postgres_port }} password={{ poi_postgres_password }}" "${GEOJSON_FILE}" -nln weather_stations -append -overwrite
+ogr2ogr -f "PostgreSQL" PG:"host=localhost dbname=poi user=poi port={{ poi_postgres_port }} password={{ poi_postgres_password }}" "${GEOJSON_FILE}" -nln weather_stations -lco LAUNDER=NO -append -overwrite
 
 #send-to-matrix "⛯ Imported weather stations on {{ inventory_hostname }}"

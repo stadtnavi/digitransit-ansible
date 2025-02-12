@@ -52,9 +52,9 @@ certbot_admin_email: mail@leonard.io
 certbot_auto_renew_minute: "2"
 certbot_auto_renew_hour: "0"
 
-map_url: "https://tiles.stadtnavi.eu/streets/{z}/{x}/{y}{r}.png"
-semi_transparent_map_url: "https://tiles.stadtnavi.eu/satellite-overlay/{z}/{x}/{y}{r}.png"
-bike_map_url: "https://tiles.stadtnavi.eu/bicycle/{z}/{x}/{y}{r}.png"
+map_url: "https://tiles-eu.stadtnavi.eu/streets/{z}/{x}/{y}{r}.png"
+semi_transparent_map_url: "https://tiles-eu.stadtnavi.eu/satellite-overlay/{z}/{x}/{y}{r}.png"
+bike_map_url: "https://tiles-eu.stadtnavi.eu/bicycle/{z}/{x}/{y}{r}.png"
 
 # the docker tag/sha used to build containers and run OTP itself in the digitransit docker-compose
 # cluster
@@ -72,8 +72,7 @@ matomo_port: 9000
 digitransit_port: 8080
 digitransit_static_message_url: /assets/messages/message.hb.json
 
-photon_hostname: photon.stadtnavi.eu
-photon_new_hostname: photon-eu.stadtnavi.eu
+photon_hostname: photon-eu.stadtnavi.eu
 photon_url: https://{{ photon_hostname }}
 
 additional_users: []

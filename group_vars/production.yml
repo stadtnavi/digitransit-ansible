@@ -33,7 +33,6 @@ certbot_certs:
 
 certbot_admin_email: mail@leonard.io
 
-
 encryption_secret_key: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           34323964326233643932303161613837376463333566336131356236643962356339333962396261

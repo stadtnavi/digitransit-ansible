@@ -12,11 +12,6 @@ firewall_allowed_tcp_ports:
 
 timezone: Europe/Berlin
 
-users:
-  - name: lenni
-    keys_url: https://github.com/leonardehrenfried.keys
-  - name: hbruch
-    keys_file: keys/hbruch.key
 
 podman_prune_users:
   - root

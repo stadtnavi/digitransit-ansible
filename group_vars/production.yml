@@ -11,7 +11,7 @@ otp_max_mem: 32G
 digitransit:
   images:
     otp: opentripplanner/opentripplanner:2.7.0_2025-02-12T09-51
-    ui: stadtnavi/digitransit-ui:2024-08-06T19.16.15-3544bad
+    ui: stadtnavi/digitransit-ui:2025-02-07T09.55.01-d6d9ba7
     map_server: stadtnavi/hsl-map-server:95b2b9fa2e748c839d8cb4bfaf0b6ef7fdbad1d8
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874
 
@@ -19,7 +19,9 @@ digitransit_static_message_url: https://mobiheader.de/stadtnavidata/latest
 
 api_hostname: api.stadtnavi.eu
 dt_api_hostname: "{{api_hostname}}"
+
 matomo_hostname: matomo.stadtnavi.leonard.io
+matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
 
 certbot_certs:
   - domains:
@@ -31,7 +33,6 @@ certbot_certs:
 
 certbot_admin_email: mail@leonard.io
 
-matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
 
 encryption_secret_key: !vault |
           $ANSIBLE_VAULT;1.1;AES256

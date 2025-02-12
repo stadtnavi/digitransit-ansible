@@ -3,10 +3,10 @@
 - name: Apply the digitransit stack
   hosts: all
   become: yes
-  user: root
+  #user: root
   roles:
     - base
     - clean_up
     - digitransit
     - thingsboard-enhancer
-    #- matomo
+    - matomo

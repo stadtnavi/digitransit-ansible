@@ -19,13 +19,15 @@ digitransit_static_message_url: https://mobiheader.de/stadtnavidata/latest
 
 api_hostname: api.stadtnavi.eu
 dt_api_hostname: "{{api_hostname}}"
-matomo_hostname: track.stadtnavi.de
+matomo_hostname: matomo.stadtnavi.leonard.io
 
 certbot_certs:
   - domains:
     - "{{ digitransit_ui[0].domain }}"
   - domains:
     - "{{ api_hostname }}"
+  - domains:
+    - "{{ matomo_hostname }}"
 
 certbot_admin_email: mail@leonard.io
 

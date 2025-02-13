@@ -6,9 +6,14 @@ export MYSQL_PWD={{ matomo_db_password }}
 
 echo "Dumping mysql file to ${file}"
 
+base_url="https://nextcloud.leonard.io/remote.php/dav/files/stadtnavi-backup/stadtnavi/{{ server_name }}/"
+
 mysqldump -u matomo --protocol=TCP --port 3306 --databases matomo | bzip2 > $file
 
+echo "Creating folder '${base_url}'"
+curl --silent --show-error --fail -X MKCOL -u 'stadtnavi-backup:{{ stadtnavi_backup_password }}' "$base_url" || true
+
 echo "Sending file to off-site storage"
-curl --silent --show-error --fail -T ${file} -u 'stadtnavi-backup:{{ stadtnavi_backup_password }}' "https://nx9239.your-storageshare.de/remote.php/dav/files/stadtnavi-backup/stadtnavi/{{ server_name }}/"
+curl --silent --show-error --fail -T ${file} -u 'stadtnavi-backup:{{ stadtnavi_backup_password }}' "$base_url"
 
 rm $file

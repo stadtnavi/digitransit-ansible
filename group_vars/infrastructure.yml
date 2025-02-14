@@ -93,3 +93,5 @@ mqtt_vehicle_position_feed: "https://gtfsr-vehpos.vvs.de/gtfsr-vehpos/vp"
 # the feed ID to be used to construct the MQTT topic
 # this must also match Digitransit config
 mqtt_feed_id: hbg
+
+vehicle_positions_poll_interval: 1

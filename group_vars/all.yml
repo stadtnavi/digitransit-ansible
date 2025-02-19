@@ -70,7 +70,7 @@ digitransit:
 
 matomo_port: 9000
 digitransit_port: 8080
-digitransit_static_message_url: /assets/messages/message.hb.json
+digitransit_static_message_url: https://mobiheader.de/stadtnavidata/latest
 
 photon_hostname: photon-eu.stadtnavi.eu
 photon_url: https://{{ photon_hostname }}

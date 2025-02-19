@@ -2,17 +2,12 @@
 timezone: Europe/Berlin
 server_name: monitoring.stadtnavi.eu
 
-users:
-  - name: lenni
-    keys_url: https://github.com/leonardehrenfried.keys
-  - name: hbruch
-    keys_file: keys/hbruch.key
-
 prometheus_source_url: http://localhost:9090
 prometheus_retention_time: "90d"
 
 otp_scrape_hosts:
   - api.dev.stadtnavi.eu
+  - api.stadtnavi.eu
 
 grafana_prometheus_source_url: http://localhost:9090
 grafana_domain_name: monitoring.stadtnavi.eu

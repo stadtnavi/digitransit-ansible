@@ -11,14 +11,13 @@ digitransit_ui:
   - config: herrenberg
     domain: engstingen.dev.landstadtmobil.de
 
-otp_docker_tag: 2.7.0_2024-12-17T12-00
 otp_router_config: herrenberg/router-config.json
 otp_max_mem: 24G
 
 digitransit:
   images:
     ui: stadtnavi/digitransit-ui:next
-    otp: lehrenfried/opentripplanner:stadtnavi-2024-01-28
+    otp: opentripplanner/opentripplanner:2.7.0_2025-02-12T09-51
     map_server: stadtnavi/hsl-map-server:latest
     fares_service: stadtnavi/fares-service:latest
 
@@ -26,8 +25,6 @@ delay_prediction_service_version: latest
 
 api_hostname: api.dev.stadtnavi.eu
 dt_api_hostname: "{{api_hostname}}"
-
-photon_url: https://{{ photon_new_hostname }}
 
 matomo_hostname: track.dev.stadtnavi.eu
 matomo_url: https://track.dev.stadtnavi.eu/js/container_T70NE3DF.js
@@ -59,9 +56,6 @@ encryption_secret_key: !vault |
           31323163326134613765666363363562646630366531346631326165323635656663363634346365
           64353861373138313034386539333462343735313462323563643165633731383733333530353532
           343837666130396238653565626438636136
-
-additional_users:
-  - jannis
 
 enable_fake_bike_box: true
 

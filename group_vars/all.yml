@@ -10,7 +10,10 @@ docker_install_compose: true
 swap_file_size_mb: '16000'
 
 users:
-  - lenni
+  - name: lenni
+    keys_url: https://github.com/leonardehrenfried.keys
+  - name: hbruch
+    keys_file: keys/hbruch.key
 
 firewall_allowed_tcp_ports:
   - "22"
@@ -49,9 +52,9 @@ certbot_admin_email: mail@leonard.io
 certbot_auto_renew_minute: "2"
 certbot_auto_renew_hour: "0"
 
-map_url: "https://tiles.stadtnavi.eu/streets/{z}/{x}/{y}{r}.png"
-semi_transparent_map_url: "https://tiles.stadtnavi.eu/satellite-overlay/{z}/{x}/{y}{r}.png"
-bike_map_url: "https://tiles.stadtnavi.eu/bicycle/{z}/{x}/{y}{r}.png"
+map_url: "https://tiles-eu.stadtnavi.eu/streets/{z}/{x}/{y}{r}.png"
+semi_transparent_map_url: "https://tiles-eu.stadtnavi.eu/satellite-overlay/{z}/{x}/{y}{r}.png"
+bike_map_url: "https://tiles-eu.stadtnavi.eu/bicycle/{z}/{x}/{y}{r}.png"
 
 # the docker tag/sha used to build containers and run OTP itself in the digitransit docker-compose
 # cluster
@@ -69,8 +72,7 @@ matomo_port: 9000
 digitransit_port: 8080
 digitransit_static_message_url: https://mobiheader.de/stadtnavidata/latest
 
-photon_hostname: photon.stadtnavi.eu
-photon_new_hostname: photon-eu.stadtnavi.eu
+photon_hostname: photon-eu.stadtnavi.eu
 photon_url: https://{{ photon_hostname }}
 
 additional_users: []
@@ -81,16 +83,6 @@ docker_prune_max_age: 168h
 thingsboard_to_parkapi_commit: 9a29c2842636ee9b3b684e34068b1343ac989653
 thingsboard_enhancer_commit: 4f589b3359fdda3361242969830cb0a5212ab913
 thingsboard_to_mqtt_version: abfbca97df0bcaa1c14a89cbe9dbdebcde7b3816
-
-delay_prediction_service_version: 517c0f8f57224b08317c3904b4370a3d577be87f
-
-delay_postgres_password: !vault |
-  $ANSIBLE_VAULT;1.1;AES256
-  63376632663933393033626565303131643664613466373132363633663332633263353364366264
-  3338653066326631643332323065343462383737626361360a663031326532343931646235616135
-  31656530623030313965396431343539363233626662343663396535393331303030653066633563
-  3566663832343935370a626361623634373464636662633033313464616634353062623831646666
-  66323462323330363937353233613064316264656666336562653735303136323362
 
 
 thingsboard_api_url: !vault |

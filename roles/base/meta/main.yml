@@ -1,5 +1,6 @@
 ---
 dependencies:
+  - role: leonardehrenfried.baseline.base
   - role: geerlingguy.firewall
   - role: geerlingguy.docker
   - role: devsec.hardening.ssh_hardening

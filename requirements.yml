@@ -18,7 +18,7 @@ collections:
 
 roles:
 - src: geerlingguy.docker
-  version: 4.1.0
+  version: 7.4.5
 - src: geerlingguy.certbot
   version: 4.2.0
 - src: geerlingguy.swap

@@ -3,6 +3,7 @@
 - name: Apply the digitransit stack
   hosts: all
   become: yes
+  #user: root
   roles:
     - base
     - clean_up

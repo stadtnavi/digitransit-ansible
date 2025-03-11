@@ -15,7 +15,7 @@
         "time": 0.3
       },
       "rental": {
-        "bannedNetworks": ["stadtmobil_stuttgart", "car-sharing", "taxi", "cargo-bike"],
+        "bannedNetworks": ["de.stadtnavi.gbfs.alf","de.stadtnavi.gbfs.gueltstein","de.stadtnavi.gbfs.stadtrad","de.stadtnavi.gbfs.bananologen"],
         "keepingAtDestinationCost": 180,
         "allowKeepingAtDestination": true,
         "pickupTime": "3m",
@@ -153,12 +153,6 @@
     {% endif %}
     {
       "type": "bike-rental",
-      "frequency": "10m",
-      "sourceType": "gbfs",
-      "url": "https://backend.open-booking.eu/api/gbfs/2.2/1/gbfs.json"
-    },
-    {
-      "type": "bike-rental",
       "frequency": "15m",
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/alf/gbfs.json"
@@ -170,12 +164,16 @@
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/gueltstein-mobil/gbfs.json"
     },
     {
-      // will be replaced by https://api.mobidata-bw.de/sharing/gbfs/regiorad_stuttgart/gbfs, temporarilly both feeds are ingested as they have differen system_ids
       "type": "bike-rental",
-      "frequency": "10m",
+      "frequency": "15m",
       "sourceType": "gbfs",
-      "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/gbfs.json",
-      "allowKeepingRentedVehicleAtDestination": true
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/bananologen/gbfs.json"
+    },
+    {
+      "type": "bike-rental",
+      "frequency": "15m",
+      "sourceType": "gbfs",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/stadtrad/gbfs.json"
     },
     {
       "type": "bike-rental",
@@ -205,7 +203,7 @@
     {
       "type": "bike-rental",
       "sourceType": "gbfs",
-      "url": "https://api.mobidata-bw.de/sharing/gbfs/tier_ludwigsburg/gbfs",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/voi_karlsruhe/gbfs",
       "headers": {
         "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
       }
@@ -213,14 +211,70 @@
     {
       "type": "bike-rental",
       "sourceType": "gbfs",
-      "url": "https://{{ api_hostname }}/herrenberg/taxi/gbfs.json"
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/zeus_tubingen/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
     },
     {
-      // will be replaced by stadtmobil_stuttgart , temporarilly both feeds are ingested as they have differen system_ids
       "type": "bike-rental",
-      "frequency": "1000m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing/gbfs.json"
+      "frequency": "10m",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/deer/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
+    },
+    {
+      "type": "bike-rental",
+      "sourceType": "gbfs",
+      "frequency": "10m",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/bolt_stuttgart/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
+    },
+    {
+      "type": "bike-rental",
+      "sourceType": "gbfs",
+      "frequency": "10m",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/bolt_reutlingen_tuebingen/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
+    },
+    {
+      "type": "bike-rental",
+      "sourceType": "gbfs",
+      "frequency": "10m",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/zeo_bruchsal/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
+    },
+    {
+      "type": "bike-rental",
+      "sourceType": "gbfs",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/dott_boblingen/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
+    },
+    {
+      "type": "bike-rental",
+      "sourceType": "gbfs",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/dott_ludwigsburg/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
+    },
+    {
+      "type": "bike-rental",
+      "sourceType": "gbfs",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/dott_stuttgart/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
     },
     {
       "type": "bike-rental",
@@ -235,19 +289,19 @@
       "type": "bike-rental",
       "frequency": "10m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-teilauto-neckar-alb/gbfs.json"
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/teilauto_neckar-alb/gbfs"
     },
     {
       "type": "bike-rental",
       "frequency": "10m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-stadtmobil-pforzheim/gbfs.json"
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/stadtmobil_karlsruhe/gbfs"
     },
     {
       "type": "bike-rental",
       "frequency": "10m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing-renningen/gbfs.json"
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/oekostadt_renningen/gbfs"
     },
     {% if enable_fake_bike_box -%}
     {

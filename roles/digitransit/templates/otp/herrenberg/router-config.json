@@ -203,7 +203,7 @@
     {
       "type": "bike-rental",
       "sourceType": "gbfs",
-      "url": "https://api.mobidata-bw.de/sharing/gbfs/voi_karlsruhe/gbfs",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/voi_de/gbfs",
       "headers": {
         "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
       }
@@ -221,6 +221,15 @@
       "sourceType": "gbfs",
       "frequency": "10m",
       "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/deer/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
+    },
+    {
+      "type": "bike-rental",
+      "sourceType": "gbfs",
+      "frequency": "10m",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/flinkster_carsharing/gbfs",
       "headers": {
         "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
       }
@@ -271,7 +280,23 @@
     {
       "type": "bike-rental",
       "sourceType": "gbfs",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/dott_reutlingen/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
+    },
+    {
+      "type": "bike-rental",
+      "sourceType": "gbfs",
       "url": "https://api.mobidata-bw.de/sharing/gbfs/dott_stuttgart/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
+    },
+    {
+      "type": "bike-rental",
+      "sourceType": "gbfs",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/dott_tubingen/gbfs",
       "headers": {
         "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
       }

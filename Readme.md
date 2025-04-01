@@ -113,6 +113,7 @@ a list of common `journalctl` commands.
 - Viewing POI import logs: `journalctl -u poi-import`
 - Viewing weather stations import logs: `journalctl -u import-weather-stations`
 - Viewing vehicle position forwarder logs: `journalctl -u gtfsrt2mqtt`
+- Viewing thingsboard to parkapi transformer logs: `journalctl -u thingsboard-to-parkapi`
 
 **Triggering a rebuild of the OTP graph**
 

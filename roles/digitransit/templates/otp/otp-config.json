@@ -6,6 +6,7 @@
     "ParallelRouting": true,
     "TransferConstraints": false,
     "Co2Emissions": true,
-    "ActuatorApi": true
+    "ActuatorApi": true,
+    "AsyncGraphQLFetchers": true
   }
 }

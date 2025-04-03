@@ -23,7 +23,14 @@
       }
     },
     "car" :{
-      "reluctance": 2
+      "reluctance": 2,
+      "rental": {
+        "bannedNetworks": [],
+        "keepingAtDestinationCost": 180,
+        "allowKeepingAtDestination": true,
+        "pickupTime": "3m",
+        "pickupCost": 850
+      }
     },
     "itineraryFilters" : {
       "bikeRentalDistanceRatio": 0.75,
@@ -221,6 +228,7 @@
       "sourceType": "gbfs",
       "frequency": "10m",
       "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/deer/gbfs",
+      "allowKeepingRentedVehicleAtDestination": true,
       "headers": {
         "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
       }
@@ -230,6 +238,7 @@
       "sourceType": "gbfs",
       "frequency": "10m",
       "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/flinkster_carsharing/gbfs",
+      "allowKeepingRentedVehicleAtDestination": true,
       "headers": {
         "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
       }
@@ -306,6 +315,7 @@
       "frequency": "10m",
       "sourceType": "gbfs",
       "url": "https://api.mobidata-bw.de/sharing/gbfs/stadtmobil_stuttgart/gbfs",
+      "allowKeepingRentedVehicleAtDestination": true,
       "headers": {
         "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
       }
@@ -314,19 +324,31 @@
       "type": "bike-rental",
       "frequency": "10m",
       "sourceType": "gbfs",
-      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/teilauto_neckar-alb/gbfs"
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/teilauto_neckar-alb/gbfs",
+      "allowKeepingRentedVehicleAtDestination": true,
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
     },
     {
       "type": "bike-rental",
       "frequency": "10m",
       "sourceType": "gbfs",
-      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/stadtmobil_karlsruhe/gbfs"
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/stadtmobil_karlsruhe/gbfs",
+      "allowKeepingRentedVehicleAtDestination": true,
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
     },
     {
       "type": "bike-rental",
       "frequency": "10m",
       "sourceType": "gbfs",
-      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/oekostadt_renningen/gbfs"
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/oekostadt_renningen/gbfs",
+      "allowKeepingRentedVehicleAtDestination": true,
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
     },
     {% if enable_fake_bike_box -%}
     {

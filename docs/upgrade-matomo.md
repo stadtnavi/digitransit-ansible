@@ -11,3 +11,14 @@ In order to upgrade Matomo, follow these steps:
   docker exec -it matomo_app_1 /bin/sh
   php /var/www/html/console core:update
   ```
+
+# Restore Matomo backup
+
+- On the old host run `sudo systemctl start matomo-backup`
+  - This will generate a bzip2 file into the Nextcloud instance on nextcloud.leonard.io
+- Create a public sharing link in Nextcloud
+- On the new host go into the Matomo DB container: `docker exec -it matomo-db-1 /bin/bash`
+- Install wget and bzip2 if they aren't already `apt install wget bzip2`
+- Download Matomo SQL archive: `wget https://nextcloud.leonard.io/s/KETpWMM6C3brTcN/download/matomo-db-2025-04-10.sql.bz2`
+- Unpack the archive: `bzip2 -dk matomo-db-2025-04-10.sql.bz2`
+- Restore the DB dump: `mysql -u matomo -p -h localhost < matomo-db-2025-04-10.sql` (Get password from docker-compose file)

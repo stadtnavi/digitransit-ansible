@@ -3,7 +3,7 @@ server_name: herrenberg.stadtnavi.eu
 
 digitransit_ui:
   - config: herrenberg
-    domain: herrenberg.stadtnavi.eu
+    domain: herrenberg.stadtnavi.de
 
 otp_router_config: herrenberg/router-config.json
 otp_max_mem: 32G
@@ -15,11 +15,11 @@ digitransit:
     map_server: stadtnavi/hsl-map-server:95b2b9fa2e748c839d8cb4bfaf0b6ef7fdbad1d8
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874
 
-api_hostname: api.stadtnavi.eu
+api_hostname: api.stadtnavi.de
 dt_api_hostname: "{{api_hostname}}"
 
 matomo_hostname: matomo.stadtnavi.leonard.io
-matomo_url: https://track.stadtnavi.de/js/container_uzMuZE7B.js
+matomo_url: https://{{ matomo_hostname }}/js/container_uzMuZE7B.js
 
 certbot_certs:
   - domains:

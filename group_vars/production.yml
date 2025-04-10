@@ -18,7 +18,7 @@ digitransit:
 api_hostname: api.stadtnavi.de
 dt_api_hostname: "{{api_hostname}}"
 
-matomo_hostname: matomo.stadtnavi.leonard.io
+matomo_hostname: track.stadtnavi.de
 matomo_url: https://{{ matomo_hostname }}/js/container_uzMuZE7B.js
 
 certbot_certs:

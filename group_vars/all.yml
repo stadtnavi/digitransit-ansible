@@ -80,7 +80,7 @@ additional_users: []
 # one week
 docker_prune_max_age: 168h
 
-thingsboard_to_parkapi_commit: 4fa338eadd72b7cf16f8e1cf7f47b52871789ea5
+thingsboard_to_parkapi_commit: e952a1abdbf6d64ea907ff47901d791fdcad5884
 thingsboard_enhancer_commit: 4f589b3359fdda3361242969830cb0a5212ab913
 thingsboard_to_mqtt_version: abfbca97df0bcaa1c14a89cbe9dbdebcde7b3816
 

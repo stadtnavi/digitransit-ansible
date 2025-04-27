@@ -1,5 +1,5 @@
 ---
-server_name: herrenberg.stadtnavi.eu
+server_name: herrenberg.stadtnavi.de
 
 digitransit_ui:
   - config: herrenberg

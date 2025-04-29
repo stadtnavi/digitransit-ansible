@@ -17,7 +17,7 @@ otp_max_mem: 24G
 digitransit:
   images:
     ui: stadtnavi/digitransit-ui:next
-    otp: lehrenfried/opentripplanner:fix-emmissions
+    otp: lehrenfried/opentripplanner:stadtnavi-dev
     map_server: stadtnavi/hsl-map-server:latest
     fares_service: stadtnavi/fares-service:latest
 

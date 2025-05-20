@@ -5,7 +5,7 @@
     "FloatingBike": true,
     "ParallelRouting": true,
     "TransferConstraints": false,
-    "Co2Emissions": true,
+    "Emission": true,
     "ActuatorApi": true,
     "AsyncGraphQLFetchers": true
   }

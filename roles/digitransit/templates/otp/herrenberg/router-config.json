@@ -162,25 +162,37 @@
       "type": "bike-rental",
       "frequency": "15m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/alf/gbfs.json"
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/herrenberg_alf/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
     },
     {
       "type": "bike-rental",
       "frequency": "15m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/gueltstein-mobil/gbfs.json"
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/herrenberg_guelf/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
     },
     {
       "type": "bike-rental",
       "frequency": "15m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/bananologen/gbfs.json"
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/herrenberg_fare/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
     },
     {
       "type": "bike-rental",
       "frequency": "15m",
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/stadtrad/gbfs.json"
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/herrenberg_stadtrad/gbfs",
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
     },
     {
       "type": "bike-rental",
@@ -350,30 +362,11 @@
         "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
       }
     },
-    {% if enable_fake_bike_box -%}
-    {
-      "type": "vehicle-parking",
-      "sourceType": "bicycle-park-api",
-      "frequency": "10m",
-      "feedId": "open-bike-box",
-      "url": "https://api.dev.stadtnavi.eu/herrenberg/parking/open-bike-box.json",
-      "tags": ["bike-locker"],
-      "timeZone": "Europe/Berlin"
-    },
-    {% endif %}
     {
       "type": "vehicle-parking",
       "sourceType": "park-api",
       "feedId": "park-api",
       "url": "https://{{ api_hostname }}/herrenberg/parking/parkapi.json",
-      "timeZone": "Europe/Berlin"
-    },
-    {
-      "type": "vehicle-parking",
-      "sourceType": "park-api",
-      "frequency": "10m",
-      "feedId": "park-api-rt",
-      "url": "https://{{ api_hostname }}/kreis_reutlingen/parking/parkapi.json",
       "timeZone": "Europe/Berlin"
     },
     {

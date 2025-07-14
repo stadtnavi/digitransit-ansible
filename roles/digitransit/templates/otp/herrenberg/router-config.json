@@ -206,6 +206,15 @@
     {
       "type": "bike-rental",
       "sourceType": "gbfs",
+      "url": "https://api.mobidata-bw.de/sharing/gbfs/v2/lime_stuttgart/gbfs",
+      "allowKeepingRentedVehicleAtDestination": true,
+      "headers": {
+        "User-Agent": "OpenTripPlanner (stadtnavi hbg)"
+      }
+    },
+    {
+      "type": "bike-rental",
+      "sourceType": "gbfs",
       "url": "https://api.mobidata-bw.de/sharing/gbfs/zeus_pforzheim/gbfs",
       "headers": {
         "User-Agent": "OpenTripPlanner (stadtnavi hbg)"

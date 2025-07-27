@@ -34,28 +34,30 @@
 
 - name: Deploy layer-categories.service
   ansible.builtin.template:
-    src: "systemd/{{ item }}"
-    dest: /etc/systemd/system/
+    src: "systemd/layer-categories-{{ item }}.service"
+    dest: "/etc/systemd/system/layer-categories-{{ item }}.service"
   with_items:
-    - layer-categories-hbg.timer
-    - layer-categories-hbg.service
-    - layer-categories-lbg.timer
-    - layer-categories-lbg.service
+    - hbg
+    - lbg
 
-- name: Enable and start Herrenberg layer-categories.timer
+- name: Deploy layer-categories timers
+  ansible.builtin.template:
+    src: "systemd/layer-categories.timer"
+    dest: "/etc/systemd/system/layer-categories-{{ item }}.timer"
+  with_items:
+    - hbg
+    - lbg
+
+- name: Enable and start layer-categories timers
   ansible.builtin.systemd:
-    name: layer-categories-hbg.timer
+    name: "layer-categories-{{ item }}.timer"
     enabled: true
     state: started
     daemon_reload: yes
-
-- name: Enable and start Ludwigsburg layer-categories.timer
-  ansible.builtin.systemd:
-    name: layer-categories-lbg.timer
-    enabled: true
-    state: started
-    daemon_reload: yes
-
+  with_items:
+    - hbg
+    - lbg
+    
 - name: Caddyfile
   ansible.builtin.template:
     src: templates/services.caddy

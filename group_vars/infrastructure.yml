@@ -61,7 +61,7 @@ photon_languages:
 photon_domain: "photon-eu.stadtnavi.eu"
 photon_enable_updates: true
 photon_volume_name: "photon-data-2024-11-30"
-photon_image: "ghcr.io/leonardehrenfried/photon:0.6.2-2025-01-30T13-53"
+photon_image: "ghcr.io/leonardehrenfried/photon:0.6.2-2025-07-31T09-26"
 
 photon_new_enabled: false
 photon_new_domain: "photon-new.stadtnavi.leonard.io"

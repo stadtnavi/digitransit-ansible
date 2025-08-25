@@ -63,10 +63,10 @@ photon_enable_updates: true
 photon_volume_name: "photon-data-2025-07-31"
 photon_image: "ghcr.io/leonardehrenfried/photon:0.6.2-2025-07-31T11-53"
 
-photon_new_enabled: false
+photon_new_enabled: true
 photon_new_domain: "photon-new.stadtnavi.leonard.io"
-photon_new_volume_name: "photon-data-2025-07-31"
-photon_new_image: "ghcr.io/leonardehrenfried/photon:0.6.2-2025-07-31Tt11-53"
+photon_new_volume_name: "photon-data-2025-08-25"
+photon_new_image: "ghcr.io/leonardehrenfried/photon:0.6.2-2025-07-31T11-53"
 
 poi_postgres_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256

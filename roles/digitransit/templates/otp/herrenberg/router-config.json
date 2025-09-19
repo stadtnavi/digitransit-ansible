@@ -380,6 +380,13 @@
     },
     {
       "type": "vehicle-parking",
+      "sourceType": "bicycle-park-api",
+      "feedId": "bicycle-park-api",
+      "url": "https://{{ api_hostname }}/herrenberg/parking/bicycle_parkapi.json",
+      "timeZone": "Europe/Berlin"
+    },
+    {
+      "type": "vehicle-parking",
       "sourceType": "park-api",
       "frequency": "10m",
       "feedId": "park-api-lbg",

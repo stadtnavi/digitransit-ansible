@@ -2,7 +2,7 @@
 server_name: dev
 
 digitransit_ui:
-  - config: herrenberg
+  - config: ludwigsburg
     domain: dev.stadtnavi.eu
   - config: herrenberg
     domain: landstadtmobil.dev.landstadtmobil.de

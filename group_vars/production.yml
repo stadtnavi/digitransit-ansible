@@ -10,7 +10,7 @@ otp_max_mem: 32G
 
 digitransit:
   images:
-    otp: opentripplanner/opentripplanner:2.8.0_2025-05-21T08-28
+    otp: opentripplanner/opentripplanner:2.9.0_2025-09-19T08-34
     ui: stadtnavi/digitransit-ui:2025-09-19T17.02.53-3e0bbd3
     map_server: stadtnavi/hsl-map-server:95b2b9fa2e748c839d8cb4bfaf0b6ef7fdbad1d8
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874

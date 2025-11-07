@@ -297,7 +297,7 @@ themepark:add_proc('way', function(object)
 end)
 
 themepark:add_proc('relation', function(object)
-    if object.type == 'multipolygon' then
+    if object.tags.type == 'multipolygon' then
         process_object(object, object:as_multipolygon():centroid())
     end
 end)

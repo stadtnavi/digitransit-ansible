@@ -47,7 +47,7 @@
       "maxDurationForMode": {
         "CAR_TO_PARK": "30m",
         "BIKE_RENTAL": "30m",
-        "BIKE": "30m",
+        "BIKE": "45m",
         "WALK": "30m"
       }
     }

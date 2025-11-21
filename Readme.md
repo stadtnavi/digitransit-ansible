@@ -110,7 +110,7 @@ a list of common `journalctl` commands.
 - Viewing digitransit-ui logs: `journalctl CONTAINER_NAME=digitransit-ui-hbnext`
 - Viewing opentripplanner logs: `journalctl CONTAINER_NAME=opentripplanner`
 - Viewing graph-build logs: `journalctl -u graph-build`
-- Viewing POI import logs: `journalctl -u poi-import`
+- Viewing POI import logs: `journalctl -u import-pois`
 - Viewing weather stations import logs: `journalctl -u import-weather-stations`
 - Viewing vehicle position forwarder logs: `journalctl -u gtfsrt2mqtt`
 - Viewing thingsboard to parkapi transformer logs: `journalctl -u thingsboard-to-parkapi`

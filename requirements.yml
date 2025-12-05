@@ -6,7 +6,7 @@ collections:
 - name: community.docker
   version: 3.7.0
 - name: devsec.hardening
-  version: 10.1.0
+  version: 10.4.0
 - name: fahcsim.grafana_stack
   version: 1.4.1
 
@@ -20,7 +20,7 @@ roles:
 - src: geerlingguy.docker
   version: 7.4.7
 - src: geerlingguy.certbot
-  version: 4.2.0
+  version: 5.4.1
 - src: geerlingguy.swap
   version: 1.0.1
 - src: geerlingguy.firewall

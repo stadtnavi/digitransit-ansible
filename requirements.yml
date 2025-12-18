@@ -18,10 +18,10 @@ collections:
 
 roles:
 - src: geerlingguy.docker
-  version: 7.4.7
+  version: 7.9.0
 - src: geerlingguy.certbot
   version: 5.4.1
 - src: geerlingguy.swap
   version: 1.0.1
 - src: geerlingguy.firewall
-  version: 2.5.0
+  version: 2.7.0

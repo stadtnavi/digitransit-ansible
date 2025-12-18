@@ -15,8 +15,6 @@ digitransit:
     map_server: stadtnavi/hsl-map-server:95b2b9fa2e748c839d8cb4bfaf0b6ef7fdbad1d8
     fares_service: stadtnavi/fares-service:5b14aa8d7951bfdedac626d73556b0a75aa7a874
 
-gtfsrthttp2mqtt_image: "docker.io/hsldevcom/gtfsrthttp2mqtt:latest-2025-12-08T10.52.34-93f91d7"
-
 api_hostname: api.stadtnavi.de
 dt_api_hostname: "{{api_hostname}}"
 

@@ -83,7 +83,7 @@ api_hostname: "api.dev.stadtnavi.eu"
 
 ### GTFS-RT VP to MQTT bridge
 
-gtfsrthttp2mqtt_image: "docker.io/hsldevcom/gtfsrthttp2mqtt:latest-2025-11-10T13.35.55-7a8e936"
+gtfsrthttp2mqtt_image: "docker.io/hsldevcom/gtfsrthttp2mqtt:latest-2025-12-08T10.52.34-93f91d7"
 # domain for the Websocket endpoint that the Digitransit instances connect to
 mqtt_domain: "vehiclepositions.stadtnavi.eu"
 # domain of the OTP instance where the GTFS-RT to MQTT bridge gets route color information from

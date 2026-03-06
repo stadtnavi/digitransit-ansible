@@ -57,7 +57,7 @@
     "maxNumberOfTransfers" : 6,
     "dynamicSearchWindow" : {
       "minTransitTimeCoefficient" : 0.5,
-      "minWindow" : "30m",
+      "minWindow" : "PT120M",
       "maxWindow" : "18h"
     }
   },

@@ -9,6 +9,7 @@
   with_items:
     - /etc/digitransit
     - /var/digitransit
+    - /var/digitransit/herrenberg
     - /var/graph-build/build
 
 - name: Create tile cache directory
@@ -52,6 +53,17 @@
     owner: www-data
     group: www-data
     mode: 0775
+
+- name: Copy herrenberg app pages
+  ansible.builtin.template:
+    src: "{{ item }}"
+    dest: /var/digitransit/herrenberg
+    owner: www-data
+    group: www-data
+    mode: 0775
+  with_items:
+    - herrenberg/apple-app-site-association
+    - herrenberg/assetlinks.json
 
 - name: Install docker-compose file
   ansible.builtin.template:

@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "de.stadtnavi.herrenberg",
+      "sha256_cert_fingerprints": [
+        "3E:0C:AC:31:09:76:7E:2C:D3:C9:3E:58:02:FB:66:FE:4B:72:DA:69:77:8B:47:FD:3B:2C:E7:08:8F:28:48:E1"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "de.stadtnavi.herrenberg.internal",
+      "sha256_cert_fingerprints": [
+        "39:9E:CC:29:A7:04:C8:A7:9C:53:7A:C5:1D:C6:29:49:97:D5:1B:FC:5F:30:19:B2:97:16:32:D0:46:78:F0:BB"
+      ]
+    }
+  }
+]

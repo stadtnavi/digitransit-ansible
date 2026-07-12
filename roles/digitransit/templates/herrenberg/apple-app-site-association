@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "NNB9PHQ49J.de.stadtnavi.herrenberg",
+        "paths": [
+          "*"
+        ]
+      },
+      {
+        "appID": "NNB9PHQ49J.de.stadtnavi.herrenberg.internal",
+        "paths": [
+          "*"
+        ]
+      }
+    ]
+  }
+}

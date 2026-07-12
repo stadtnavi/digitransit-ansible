@@ -137,7 +137,7 @@
     },
     {
       "type": "real-time-alerts",
-      "url": "https://data.mfdz.de/vvs_gtfsrt_alerts_herrenberg/body.pbf",
+      "url": "https://gtfs.mfdz.de/gtfs-rt/vvs_gtfsrt_alerts_herrenberg/body.pbf",
       "feedId": "hbg",
       "headers": {
         "User-Agent": "OpenTripPlanner (stadtnavi hbg)"

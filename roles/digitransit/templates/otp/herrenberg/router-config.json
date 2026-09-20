@@ -51,6 +51,27 @@
         "WALK": "30m"
       },
       "maxStopCount": 800
+    },
+    "wheelchairAccessibility" : {
+      "trip" : {
+        "onlyConsiderAccessible" : false,
+        "unknownCost" : 600,
+        "inaccessibleCost" : 3600
+      },
+      "stop" : {
+        "onlyConsiderAccessible" : false,
+        "unknownCost" : 600,
+        "inaccessibleCost" : 3600
+      },
+      "elevator" : {
+        "onlyConsiderAccessible" : false,
+        "unknownCost" : 20,
+        "inaccessibleCost" : 3600
+      },
+      "inaccessibleStreetReluctance" : 1000,
+      "maxSlope" : 0.083,
+      "slopeExceededReluctance" : 1,
+      "stairsReluctance" : 100
     }
   },
   "transit": {
